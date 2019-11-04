@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8"/>
+   <title>Golden Son</title>
+   <!--convert these to prod versions later-->
+   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   <script>
+      if (undefined === JSON.clone) {
+         JSON.clone = function (obj) {
+            return JSON.parse(JSON.stringify(obj));
+         };
+      }
+      /**Removes the element from this array that is located at the index specified.
+       Negative index is counted from the end.
+       If the index does not exist nothing happens.
+       This array is changed and nothing is returned.*/
+      Array.prototype.remove = function (index) {
+         if (typeof(index) === 'number' && isFinite(index)) this.splice(index, 1);
+      };
+      /**Removes the first element from this array that is equal to (type strict) the value specified.
+       If the value is not found, nothing happens.
+       This array is changed and nothing is returned.*/
+      Array.prototype.removeByValue = function (value) {
+         var index = this.indexOf(value);
+         if (-1 === index) return;  //not found
+         this.remove(index);
+      };
+      /**For each element of this array a type strict comparison is done against the parameter and returns true if any of them match*/
+      if (Array.prototype.contains === undefined) {
+         Array.prototype.contains = function (obj) {
+            return (this.indexOf(obj) !== -1);  //Array.prototype.indexOf is type strict (using ===)
+         };
+      }
+
+      var database = {
+         classes: {
+            Squire: {
+               name: 'Squire',
+               priority: 0,  //currently equal to the total djinn count. assumes that there's no conflict
+               requirements: {
+                  adept: ['earth'],
+                  combatType: ['Warrior'],
+                  djinnCount: {earth: 0, fire: 0, wind: 0, ice: 0}
+               },
+               //convert percent to multiplier:
+               statsMultiplier: {
+                  hp: 1.1, pp: 0.8, attack: 1.1, defense: 1, agility: 1.1, luck: 1
+               },
+               psynergy: [
+                  {level: 1, name: 'Cure'},
+                  {level: 2, name: 'Quake'},
+                  {level: 4, name: 'Earthquake'},
+                  {level: 6, name: 'Spire'},
+                  {level: 10, name: 'Cure Well'}
+               ]
+            },
+            Knight: {
+               name: 'Knight',
+               priority: 2,
+               requirements: {
+                  adept: ['earth'],
+                  combatType: ['Warrior'],
+                  djinnCount: {earth: 2, fire: 0, wind: 0, ice: 0}
+               },
+               statsMultiplier: {
+                  hp: 1.3, pp: 0.9, attack: 1.2, defense: 1.1, agility: 1.2, luck: 1
+               },
+               psynergy: [
+                  {level: 1, name: 'Cure'},
+                  {level: 2, name: 'Quake'},
+                  {level: 4, name: 'Earthquake'},
+                  {level: 6, name: 'Spire'},
+                  {level: 10, name: 'Cure Well'}
+               ]
+            },
+            Gallant: {
+               name: 'Gallant',
+               priority: 4,
+               requirements: {
+                  adept: ['earth'],
+                  combatType: ['Warrior'],
+                  djinnCount: {earth: 4, fire: 0, wind: 0, ice: 0}
+               },
+               statsMultiplier: {
+                  hp: 1.5, pp: 1, attack: 1.3, defense: 1.2, agility: 1.3, luck: 1
+               },
+               psynergy: [
+                  {level: 1, name: 'Cure'},
+                  {level: 2, name: 'Quake'},
+                  {level: 4, name: 'Earthquake'},
+                  {level: 6, name: 'Spire'},
+                  {level: 7, name: 'Gaia'},
+                  {level: 10, name: 'Cure Well'}
+               ]
+            },
+            'Water Seer': {
+               name: 'Water Seer',
+               priority: 0,
+               requirements: {
+                  adept: ['ice'],
+                  combatType: ['Mage'],
+                  djinnCount: {earth: 0, fire: 0, wind: 0, ice: 0}
+               },
+               statsMultiplier: {
+                  hp: 0.9, pp: 1.3, attack: 0.9, defense: 1, agility: 0.8, luck: 1.3
+               },
+               psynergy: []
+            },
+            names: ['Squire', 'Knight', 'Gallant', 'Water Seer']
+         },
+         djinn: {
+            Echo: {
+               name: 'Echo',
+               element: 'earth',
+               description: 'Attack with a double strike.',
+               statsAddend: {
+                  hp: 9, pp: 4, attack: 3, defense: 0, agility: 0, luck: 0
+               }
+            },
+            Iron: {
+               name: 'Iron',
+               element: 'earth',
+               description: 'Bolster the party\'s Defense.',
+               statsAddend: {hp: 11, pp: 0, attack: 0, defense: 2, agility: 3, luck: 0}
+            },
+            Steel: {
+               name: 'Steel',
+               element: 'earth',
+               description: 'Siphon a foe\'s HP with a kiss.',
+               statsAddend: {hp: 9, pp: 0, attack: 4, defense: 2, agility: 0, luck: 1}
+            },
+            Mud: {
+               name: 'Mud',
+               element: 'earth',
+               description: 'Slow a foe with sticky mud.',
+               statsAddend: {hp: 10, pp: 4, attack: 0, defense: 0, agility: 3, luck: 0}
+            },
+            names: ['Echo', 'Iron', 'Steel', 'Mud']
+         },
+         equipment: {
+            'Ixion Mail': {
+               name: 'Ixion Mail',
+               description: 'Armor: Resists Wind & Water',
+               statsAddend: {hp: 0, pp: 0, attack: 0, defense: 26, agility: 0, luck: 0}
+            },
+            names: ['Ixion Mail']
+         },
+         psynergy: {
+            'Cure': {name: 'Cure', description: 'Restore 70 HP.'},
+            Quake: {name: 'Quake', description: 'Attack with a powerful quake.'},
+            Earthquake: {name: 'Earthquake', description: 'Attack with a mighty tremor.'},
+            Spire: {name: 'Spire', description: 'Attack with earthen spire.'},
+            Gaia: {name: 'Gaia', description: 'Attack with the earth\'s might.'},
+            'Cure Well': {name: 'Cure Well', description: 'Restore 150 HP.'},
+            names: ["Cure", "Quake", "Earthquake", "Spire", "Gaia", "Cure Well"]
+         }
+      };
+
+      var character = {
+         name: '',
+         adept: 'none',
+         combatType: 'Warrior',
+         activeClass: 'None',
+         level: 1,
+         stats: {
+            base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+            addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+            multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+            final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
+         },
+         djinn: {counts: {earth: 0, fire: 0, wind: 0, ice: 0}, names: []},
+         equipment: [],
+         psynergy: []
+      };
+
+      function saveToFile() {
+         var link = document.getElementById('save-to-file-link');
+         link.download = document.getElementById('name').value + '.json';
+         link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(saveAsString());
+      }
+
+      function saveAsString() {
+         return JSON.stringify(save());
+      }
+
+      function saveToTextArea() {
+         document.getElementById('code-box').value = saveAsString();
+      }
+
+      function save() {
+         var jsonDoc = {stats: {}};
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         //gameVersion, parserVersion are strings to support possible future semantic versioning
+         //jsonDoc.gameVersion = '1';
+         //jsonDoc.parserVersion = '1';
+         jsonDoc.name = character.name;
+         jsonDoc.adept = character.adept;
+         jsonDoc.combatType = character.combatType;
+         jsonDoc.level = character.level;
+         jsonDoc.stats.hp = character.stats.base.hp;
+         jsonDoc.stats.pp = character.stats.base.pp;
+         jsonDoc.stats.attack = character.stats.base.attack;
+         jsonDoc.stats.defense = character.stats.base.defense;
+         jsonDoc.stats.agility = character.stats.base.agility;
+         jsonDoc.stats.luck = character.stats.base.luck;
+         jsonDoc.djinn = character.djinn.names;
+         jsonDoc.equipment = character.equipment;
+         return jsonDoc;
+      }
+
+      function loadFile() {
+         var filePath = document.getElementById('file-chooser').files[0];
+         if (undefined === filePath || null === filePath) return;  //no file to load
+         var oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
+         oFReader.readAsText(filePath);
+         oFReader.onload = function (oFREvent) {
+            loadFromString(oFREvent.target.result);
+         };
+      }
+
+      function loadFromTextArea() {
+         loadFromString(document.getElementById('code-box').value);
+      }
+
+      function loadFromString(fileString) {
+         fileString = fileString.trim();
+         if ('' === fileString) return;  //ignore
+
+         var jsonDoc;
+         try {
+            jsonDoc = JSON.parse(fileString);
+            document.getElementById('code-box').value = '';
+         }
+         catch (e) {
+            alert('A parsing error has occurred. The document you provided is not legal JSON.\n\n' + e);
+            //yeah I know the error message is completely unhelpful but there's nothing more I can do
+            throw e;  //stop the process and cause a console.error
+         }
+
+         load(jsonDoc);
+      }
+
+      function load(jsonDoc) {
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         document.getElementById('name').value = character.name = jsonDoc.name;
+         document.getElementById('adept').value = character.adept = jsonDoc.adept;
+         character.combatType = jsonDoc.combatType;
+         (function () {
+            var element = document.getElementById('combatType');
+            for (var i = 0; i < element.options.length; i++) {
+               if (element.options[i].text === character.combatType) {
+                  element.selectedIndex = i;
+                  return;
+               }
+               //onChange doesn't auto trigger when set like this
+            }
+            throw new Error('combatType doesn\'t contain ' + character.combatType);
+         })();
+         document.getElementById('level').value = character.level = jsonDoc.level;
+         document.getElementById('hp').value = character.hp = jsonDoc.hp;
+         document.getElementById('pp').value = character.pp = jsonDoc.pp;
+         document.getElementById('attack').value = character.attack = jsonDoc.attack;
+         document.getElementById('defense').value = character.defense = jsonDoc.defense;
+         document.getElementById('agility').value = character.agility = jsonDoc.agility;
+         document.getElementById('luck').value = character.luck = jsonDoc.luck;
+         character.stats = {
+            base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+            addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+            multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+            final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
+         };
+         character.stats.base = jsonDoc.stats;
+         character.djinn.counts = {earth: 0, fire: 0, wind: 0, ice: 0};
+         character.djinn.names = jsonDoc.djinn;
+         character.equipment = jsonDoc.equipment;
+
+         var i;
+         for (i = 0; i < character.djinn.length; ++i) {
+            var djinn = database.djinn[character.djinn[i]];
+            character.stats.addend.hp += djinn.statsAddend.hp;
+            character.stats.addend.pp += djinn.statsAddend.pp;
+            character.stats.addend.attack += djinn.statsAddend.attack;
+            character.stats.addend.defense += djinn.statsAddend.defense;
+            character.stats.addend.agility += djinn.statsAddend.agility;
+            character.stats.addend.luck += djinn.statsAddend.luck;
+            ++character.djinn.counts[djinn.element];
+         }
+         for (i = 0; i < character.equipment.length; ++i) {
+            var equipment = database.equipment[character.equipment[i]];
+            character.stats.addend.hp += equipment.statsAddend.hp;
+            character.stats.addend.pp += equipment.statsAddend.pp;
+            character.stats.addend.attack += equipment.statsAddend.attack;
+            character.stats.addend.defense += equipment.statsAddend.defense;
+            character.stats.addend.agility += equipment.statsAddend.agility;
+            character.stats.addend.luck += equipment.statsAddend.luck;
+         }
+         updateAllFinalStats();
+      }
+
+      function updateLevel() {
+         character.level = Number.parseInt(document.getElementById('level').value);
+         updatePsynergy();
+      }
+
+      function updateAdept() {
+         character.adept = document.getElementById('adept').value;
+         updateAllFinalStats();
+      }
+
+      function updateCombatType() {
+         character.combatType = document.getElementById('combatType').value;
+         updateAllFinalStats();
+      }
+
+      function updateBaseStat(stat) {
+         character.stats.base[stat] = Number.parseInt(document.getElementById(stat).value);
+         updateFinalStat(stat);
+      }
+
+      function updateFinalStat(stat) {
+         character.stats.final[stat] = (character.stats.base[stat] + character.stats.addend[stat]) * character.stats.multiplier[stat];
+         document.getElementById(stat + '-final').innerHTML = '' + Math.round(character.stats.final[stat]);
+      }
+
+      function updateClass() {
+         var activeClass = {
+            name: 'None',
+            priority: -Infinity,
+            statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+            psynergy: []
+         };
+         for (var i = 0; i < database.classes.names.length; ++i) {
+            var classInQuestion = database.classes[database.classes.names[i]];
+            var classIsPossible = (
+               classInQuestion.requirements.adept.contains(character.adept) &&
+               classInQuestion.requirements.combatType.contains(character.combatType)
+            );
+            var hasEnoughDjinnEquipped = (
+               character.djinn.counts.earth >= classInQuestion.requirements.djinnCount.earth &&
+               character.djinn.counts.fire >= classInQuestion.requirements.djinnCount.fire &&
+               character.djinn.counts.wind >= classInQuestion.requirements.djinnCount.wind &&
+               character.djinn.counts.ice >= classInQuestion.requirements.djinnCount.ice
+            );
+
+            if (classIsPossible &&
+               classInQuestion.priority > activeClass.priority &&
+               hasEnoughDjinnEquipped) {
+               activeClass = classInQuestion;
+            }
+         }
+         character.activeClass = activeClass.name;
+         character.stats.multiplier.hp = activeClass.statsMultiplier.hp;
+         character.stats.multiplier.pp = activeClass.statsMultiplier.pp;
+         character.stats.multiplier.attack = activeClass.statsMultiplier.attack;
+         character.stats.multiplier.defense = activeClass.statsMultiplier.defense;
+         character.stats.multiplier.agility = activeClass.statsMultiplier.agility;
+         character.stats.multiplier.luck = activeClass.statsMultiplier.luck;
+
+         document.getElementById('class').innerHTML = '' + activeClass.name;
+      }
+
+      function updatePsynergy() {
+         var activeClass = database.classes[character.activeClass];
+         character.psynergy = [];
+         if (undefined === activeClass) return;  //should only be when class is none
+         for (var i = 0; i < activeClass.psynergy.length; ++i) {
+            var psynergy = activeClass.psynergy[i];
+            if (character.level >= psynergy.level) {
+               character.psynergy.push(psynergy.name);
+            }
+         }
+         renderPsynergy();
+      }
+
+      function updateAllFinalStats() {
+         renderDjinn();
+         renderEquipment();
+         updateClass();
+         updatePsynergy();
+         updateFinalStat('hp');
+         updateFinalStat('pp');
+         updateFinalStat('attack');
+         updateFinalStat('defense');
+         updateFinalStat('agility');
+         updateFinalStat('luck');
+      }
+
+      function addDjinn(onClickEvent) {
+         var newName = onClickEvent.target.value;
+         var djinn = database.djinn[newName];
+         character.djinn.names.push(newName);
+
+         character.stats.addend.hp += djinn.statsAddend.hp;
+         character.stats.addend.pp += djinn.statsAddend.pp;
+         character.stats.addend.attack += djinn.statsAddend.attack;
+         character.stats.addend.defense += djinn.statsAddend.defense;
+         character.stats.addend.agility += djinn.statsAddend.agility;
+         character.stats.addend.luck += djinn.statsAddend.luck;
+         ++character.djinn.counts[djinn.element];
+
+         updateAllFinalStats();
+      }
+
+      function removeDjinn(onClickEvent) {
+         var oldName = onClickEvent.target.parentNode.dataset.name;
+         var djinn = database.djinn[oldName];
+         character.djinn.names.removeByValue(oldName);
+
+         character.stats.addend.hp -= djinn.statsAddend.hp;
+         character.stats.addend.pp -= djinn.statsAddend.pp;
+         character.stats.addend.attack -= djinn.statsAddend.attack;
+         character.stats.addend.defense -= djinn.statsAddend.defense;
+         character.stats.addend.agility -= djinn.statsAddend.agility;
+         character.stats.addend.luck -= djinn.statsAddend.luck;
+         --character.djinn.counts[djinn.element];
+
+         updateAllFinalStats();
+      }
+
+      function addEquipment(onClickEvent) {
+         var newName = onClickEvent.target.value;
+         var equipment = database.equipment[newName];
+         character.equipment.push(newName);
+
+         character.stats.addend.hp += equipment.statsAddend.hp;
+         character.stats.addend.pp += equipment.statsAddend.pp;
+         character.stats.addend.attack += equipment.statsAddend.attack;
+         character.stats.addend.defense += equipment.statsAddend.defense;
+         character.stats.addend.agility += equipment.statsAddend.agility;
+         character.stats.addend.luck += equipment.statsAddend.luck;
+
+         updateAllFinalStats();
+      }
+
+      function removeEquipment(onClickEvent) {
+         var oldName = onClickEvent.target.parentNode.dataset.name;
+         var equipment = database.equipment[oldName];
+         character.equipment.removeByValue(oldName);
+
+         character.stats.addend.hp -= equipment.statsAddend.hp;
+         character.stats.addend.pp -= equipment.statsAddend.pp;
+         character.stats.addend.attack -= equipment.statsAddend.attack;
+         character.stats.addend.defense -= equipment.statsAddend.defense;
+         character.stats.addend.agility -= equipment.statsAddend.agility;
+         character.stats.addend.luck -= equipment.statsAddend.luck;
+
+         updateAllFinalStats();
+      }
+   </script>
+</head>
+<body onload="updateAllFinalStats();">
+<h2>General</h2>
+<label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;"/></label><br/>
+<label>Adept (Elemental Alignment):
+   <select id="adept" onchange="updateAdept();">
+      <option value="none">None</option>
+      <option value="earth">Venus (Earth)</option>
+      <option value="fire">Mars (Fire)</option>
+      <option value="wind">Jupiter (Wind)</option>
+      <option value="ice">Mercury (Ice)</option>
+   </select>
+</label><br/>
+<label>Combat type:
+   <select id="combatType" onchange="updateCombatType();">
+      <option>Warrior</option>
+      <option>Mage</option>
+      <option>Scholar</option>
+   </select>
+</label><br/>
+<label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();"/></label><br/>
+<h2>Base stats</h2>
+<label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0"/></label><br/>
+<label>PP: <input type="number" id="pp" onChange="updateBaseStat('pp')" value="0" min="0"/></label><br/>
+<label>Attack: <input type="number" id="attack" onChange="updateBaseStat('attack')" value="0" min="0"/></label><br/>
+<label>Defense: <input type="number" id="defense" onChange="updateBaseStat('defense')" value="0" min="0"/></label><br/>
+<label>Agility: <input type="number" id="agility" onChange="updateBaseStat('agility')" value="0" min="0"/></label><br/>
+<label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0"/></label><br/>
+<h2>Djinn</h2>
+<div id="djinn"></div>
+<script type="text/babel">
+   function DjinnList(props) {
+      const numbers = props.names;
+      const listItems = numbers.map((name) => {
+         var djinn = database.djinn[name];
+         return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
+            <a href="#" onClick={removeDjinn}>Remove</a>
+            {' '}<b>{name}</b>{'. ' + djinn.description}
+         </li>);
+      });
+      const options = database.djinn.names.filter((name) => !character.djinn.names.contains(name)).map((name) =>
+         <option key={name}>{name}</option>
+      );
+      if (0 !== options.length) {
+         listItems.push(<li key={'add-djinn'} id={'add-djinn'}>
+            <select onChange={addDjinn}>
+               <option>Add Djinn...</option>
+               {options}
+            </select>
+         </li>);
+      }
+      return (
+         <ul>{listItems}</ul>
+      );
+   }
+
+   function renderDjinn() {
+      ReactDOM.render(
+         <DjinnList names={character.djinn.names}/>,
+         document.getElementById('djinn')
+      );
+   }
+</script>
+<h2>Equipment</h2>
+<div id="equipment"></div>
+<script type="text/babel">
+   function EquipmentList(props) {
+      const numbers = props.names;
+      const listItems = numbers.map((name) => {
+         var equipment = database.equipment[name];
+         return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
+            <a href="#" onClick={removeEquipment}>Remove</a>
+            {' '}<b>{name}</b>{'. ' + equipment.description}
+         </li>);
+      });
+      const options = database.equipment.names.filter((name) => !character.equipment.contains(name)).map((name) =>
+         <option key={name}>{name}</option>
+      );
+      if (0 !== options.length) {
+         listItems.push(<li key={'add-equipment'} id={'add-equipment'}>
+            <select onChange={addEquipment}>
+               <option>Add Equipment...</option>
+               {options}
+            </select>
+         </li>);
+      }
+      return (
+         <ul>{listItems}</ul>
+      );
+   }
+
+   function renderEquipment() {
+      ReactDOM.render(
+         <EquipmentList names={character.equipment}/>,
+         document.getElementById('equipment')
+      );
+   }
+</script>
+<h2>Final stats</h2>
+Class: <span id="class"></span><br/>
+HP: <span id="hp-final"></span><br/>
+PP: <span id="pp-final"></span><br/>
+Attack: <span id="attack-final"></span><br/>
+Defense: <span id="defense-final"></span><br/>
+Agility: <span id="agility-final"></span><br/>
+Luck: <span id="luck-final"></span><br/>
+<h2>Psynergy</h2>
+<div id="psynergy"></div>
+<script type="text/babel">
+   function PsynergyList(props) {
+      const numbers = props.names;
+      const listItems = numbers.map((name) => {
+         var psynergy = database.psynergy[name];
+         return (<li key={'psynergy-' + name} id={'psynergy-' + name} data-name={name}>
+            <b>{name}</b>{'. ' + psynergy.description}
+         </li>);
+      });
+      return (
+         <ul>{listItems}</ul>
+      );
+   }
+
+   function renderPsynergy() {
+      ReactDOM.render(
+         <PsynergyList names={character.psynergy}/>,
+         document.getElementById('psynergy')
+      );
+   }
+</script>
+<br/><br/>
+<span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
+                                 id="save-to-file-link">Save to File</a></span>
+<input type="button" value="Save To Text Area" onClick="saveToTextArea();" id="save-text-button"/>
+<br/>
+<input type="file" id="file-chooser" accept=".js,.json"/><br/>
+<input type="button" value="Load from File" onClick="loadFile();"/>
+<input type="button" value="Load from Text Area" onClick="loadFromTextArea();" id="load-text-button"/><br/>
+<br/>
+<textarea id="code-box" rows="10" cols="50"></textarea>
+</body>
+</html>
+<!--
+Background: Guard
+A. Character sheets that allow modifications and preferably let you pick adeptness, background, skills, and psyenergy.
+B. Djinn which are equippable
+C. Equipment same as above
+D. Classes that are switched between based on djinn, background, and adeptness
+Mostly I want equip logic. If you standby a djinn your stats and class changes
+
+https://docs.google.com/spreadsheets/d/1uYmx3L2Xn2MEsw-mm_WfiT-_W-UulH4iT0TJMUxNdsI/edit?usp=sharing
+Golden sun syndicate website with information on classes and djinn
+http://www.goldensun-syndicate.net/
+
+https://goldensun.fandom.com/wiki/Elements
+Sol (Light)
+Luna (Dark)
+https://goldensun.fandom.com/wiki/Djinn
+States
+- Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
+- Standby: can be summoned (big attack) which converts to Recovery
+- Recovery: does nothing for a bit then becomes Set
+
+https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html
+use react cdns and babel (although large hopefully not slow)
+-->

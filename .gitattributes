@@ -1,0 +1,7 @@
+* text eol=auto
+
+*.html text
+*.md text
+.* text
+.gitattributes text
+.gitignore text
