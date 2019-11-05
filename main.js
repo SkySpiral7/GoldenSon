@@ -128,6 +128,24 @@ function updateLevel() {
 }
 
 function updateAdept() {
+   /*
+   var equipment = database.adeptTypes[character.adept];
+   character.stats.addend.hp -= equipment.statsAddend.hp;
+   character.stats.addend.pp -= equipment.statsAddend.pp;
+   character.stats.addend.attack -= equipment.statsAddend.attack;
+   character.stats.addend.defense -= equipment.statsAddend.defense;
+   character.stats.addend.agility -= equipment.statsAddend.agility;
+   character.stats.addend.luck -= equipment.statsAddend.luck;
+
+   character.stats.addend.hp += equipment.statsAddend.hp;
+   character.stats.addend.pp += equipment.statsAddend.pp;
+   character.stats.addend.attack += equipment.statsAddend.attack;
+   character.stats.addend.defense += equipment.statsAddend.defense;
+   character.stats.addend.agility += equipment.statsAddend.agility;
+   character.stats.addend.luck += equipment.statsAddend.luck;
+   */
+   //TODO: I'm thinking I need react to manage state for me
+
    character.adept = document.getElementById('adept').value;
    updateAllFinalStats();
 }

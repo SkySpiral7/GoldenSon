@@ -2,23 +2,23 @@ var database = {
    //was planning to sort all classes etc alphabetically once I have all the data
    adeptTypes: {
       //TODO: use this data
-      "Earth": {
-         "name": "Earth",
+      "earth": {
+         "name": "earth",
          "statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}
       },
-      "Fire": {"name": "Fire", "statsAddend": {"hp": 10, "pp": 5, "attack": 0, "defense": 3, "agility": 2, "luck": 2}},
-      "Water": {
-         "name": "Water",
+      "fire": {"name": "fire", "statsAddend": {"hp": 10, "pp": 5, "attack": 0, "defense": 3, "agility": 2, "luck": 2}},
+      "ice": {
+         "name": "ice",
          "statsAddend": {"hp": 0, "pp": 15, "attack": 1, "defense": 1, "agility": 2, "luck": 3}
       },
-      "Air": {"name": "Air", "statsAddend": {"hp": 5, "pp": 5, "attack": 0, "defense": 1, "agility": 4, "luck": 3}},
-      "Moon": {"name": "Moon", "statsAddend": {"hp": 20, "pp": 0, "attack": 2, "defense": 2, "agility": 1, "luck": 1}},
-      "Sun": {"name": "Sun", "statsAddend": {"hp": 0, "pp": 20, "attack": 1, "defense": 1, "agility": 2, "luck": 2}},
-      "Typeless": {
-         "name": "Typeless",
+      "wind": {"name": "wind", "statsAddend": {"hp": 5, "pp": 5, "attack": 0, "defense": 1, "agility": 4, "luck": 3}},
+      "moon": {"name": "moon", "statsAddend": {"hp": 20, "pp": 0, "attack": 2, "defense": 2, "agility": 1, "luck": 1}},
+      "sun": {"name": "sun", "statsAddend": {"hp": 0, "pp": 20, "attack": 1, "defense": 1, "agility": 2, "luck": 2}},
+      "typeless": {
+         "name": "typeless",
          "statsAddend": {"hp": 20, "pp": 0, "attack": 4, "defense": 4, "agility": 4, "luck": 4}
       },
-      "names": ["Air", "Earth", "Fire", "Moon", "Sun", "Typeless", "Water"]
+      "names": ["earth", "fire", "ice", "moon", "sun", "typeless", "wind"]
    },
    backgrounds: {
       //TODO: use this data

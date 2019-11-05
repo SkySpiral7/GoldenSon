@@ -41,15 +41,37 @@
       <option value="fire">Mars (Fire)</option>
       <option value="wind">Jupiter (Wind)</option>
       <option value="ice">Mercury (Ice)</option>
+      <option value="sun">Sol (Sun)</option>
+      <option value="moon">Luna (Moon)</option>
    </select>
 </label><br/>
 <label>Combat type:
    <select id="combatType" onchange="updateCombatType();">
       <option>Warrior</option>
       <option>Mage</option>
-      <option>Scholar</option>
+      <option>Rogue</option>
    </select>
 </label><br/>
+<label for="backgroundSelect">Background:</label>
+<div style="display:inline-block;" id="backgroundDiv"></div>
+<script type="text/babel">
+   function BackgroundOptions() {
+      const options = database.backgrounds.names.map((name) =>
+         <option key={name}>{name}</option>
+      );
+      return (
+         <select id="backgroundSelect" onChange={updateCombatType}>
+            {options}
+         </select>
+      );
+   }
+
+   ReactDOM.render(
+      <BackgroundOptions />,
+      document.getElementById('backgroundDiv')
+   );
+</script>
+<br/>
 <label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();"/></label><br/>
 <h2>Base stats</h2>
 <label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0"/></label><br/>
