@@ -21,6 +21,7 @@ function save() {
    jsonDoc.name = character.name;
    jsonDoc.adept = character.adept;
    jsonDoc.combatType = character.combatType;
+   jsonDoc.background = character.background;
    jsonDoc.level = character.level;
    jsonDoc.stats.hp = character.stats.base.hp;
    jsonDoc.stats.pp = character.stats.base.pp;
@@ -66,35 +67,24 @@ function loadFromString(fileString) {
 }
 
 function load(jsonDoc) {
-   //gameVersion, parserVersion are ignored until there is reason to use them
-   document.getElementById('name').value = character.name = jsonDoc.name;
-   document.getElementById('adept').value = character.adept = jsonDoc.adept;
-   character.combatType = jsonDoc.combatType;
-   (function () {
-      var element = document.getElementById('combatType');
-      for (var i = 0; i < element.options.length; i++) {
-         if (element.options[i].text === character.combatType) {
-            element.selectedIndex = i;
-            return;
-         }
-         //onChange doesn't auto trigger when set like this
-      }
-      throw new Error('combatType doesn\'t contain ' + character.combatType);
-   })();
-   document.getElementById('level').value = character.level = jsonDoc.level;
-   document.getElementById('hp').value = character.hp = jsonDoc.hp;
-   document.getElementById('pp').value = character.pp = jsonDoc.pp;
-   document.getElementById('attack').value = character.attack = jsonDoc.attack;
-   document.getElementById('defense').value = character.defense = jsonDoc.defense;
-   document.getElementById('agility').value = character.agility = jsonDoc.agility;
-   document.getElementById('luck').value = character.luck = jsonDoc.luck;
    character.stats = {
       base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
       addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
       multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
    };
-   character.stats.base = jsonDoc.stats;
+   //gameVersion, parserVersion are ignored until there is reason to use them
+   document.getElementById('name').value = character.name = jsonDoc.name;
+   document.getElementById('adept').value = character.adept = jsonDoc.adept;
+   document.getElementById('combatType').value = character.combatType = jsonDoc.combatType;
+   document.getElementById('backgroundSelect').value = character.background = jsonDoc.background;
+   document.getElementById('level').value = character.level = jsonDoc.level;
+   document.getElementById('hp').value = character.stats.base.hp = jsonDoc.stats.hp;
+   document.getElementById('pp').value = character.stats.base.pp = jsonDoc.stats.pp;
+   document.getElementById('attack').value = character.stats.base.attack = jsonDoc.stats.attack;
+   document.getElementById('defense').value = character.stats.base.defense = jsonDoc.stats.defense;
+   document.getElementById('agility').value = character.stats.base.agility = jsonDoc.stats.agility;
+   document.getElementById('luck').value = character.stats.base.luck = jsonDoc.stats.luck;
    character.djinn.counts = {earth: 0, fire: 0, wind: 0, ice: 0};
    character.djinn.names = jsonDoc.djinn;
    character.equipment = jsonDoc.equipment;
@@ -148,6 +138,10 @@ function updateAdept() {
 
    character.adept = document.getElementById('adept').value;
    updateAllFinalStats();
+}
+
+function updateBackground() {
+   character.background = document.getElementById('backgroundSelect').value;
 }
 
 function updateCombatType() {

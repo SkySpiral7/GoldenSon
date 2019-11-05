@@ -17,6 +17,7 @@
          name: '',
          adept: 'none',
          combatType: 'Warrior',
+         background: 'Academic',
          activeClass: 'None',
          level: 1,
          stats: {
@@ -47,9 +48,9 @@
 </label><br/>
 <label>Combat type:
    <select id="combatType" onchange="updateCombatType();">
-      <option>Warrior</option>
-      <option>Mage</option>
-      <option>Rogue</option>
+      <option value="Warrior">Warrior</option>
+      <option value="Mage">Mage</option>
+      <option value="Rogue">Rogue</option>
    </select>
 </label><br/>
 <label for="backgroundSelect">Background:</label>
@@ -57,10 +58,10 @@
 <script type="text/babel">
    function BackgroundOptions() {
       const options = database.backgrounds.names.map((name) =>
-         <option key={name}>{name}</option>
+         <option key={name} value={name}>{name}</option>
       );
       return (
-         <select id="backgroundSelect" onChange={updateCombatType}>
+         <select id="backgroundSelect" onChange={updateBackground}>
             {options}
          </select>
       );
