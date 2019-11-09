@@ -186,6 +186,7 @@ Luck: <span id="luck-final"></span><br/>
             <b>{name}</b>{'. ' + psynergy.description}
          </li>);
       });
+      if(0 === listItems.length) return 'None';
       return (
          <ul>{listItems}</ul>
       );

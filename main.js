@@ -167,7 +167,7 @@ function updateClass() {
       psynergy: []
    };
    //TODO: should really use null instead of "none" etc
-   if('none' !== character.adept) {
+   if ('none' !== character.adept) {
       for (var i = 0; i < database.classRequirements[character.adept].names.length; ++i) {
          var className = database.classRequirements[character.adept].names[i];
          var newClass = database.classes[className];
@@ -200,14 +200,15 @@ function updateClass() {
 }
 
 function updatePsynergy() {
-   if('None' === character.activeClass) return;
-   var activeClass = database.classes[character.activeClass];
-   character.psynergy = [];
-   //if (undefined === activeClass) return;  //should only be when class is none
-   for (var i = 0; i < activeClass.psynergy.length; ++i) {
-      var psynergy = activeClass.psynergy[i];
-      if (character.level >= psynergy.level) {
-         character.psynergy.push(psynergy.name);
+   if ('None' !== character.activeClass) {
+      var activeClass = database.classes[character.activeClass];
+      character.psynergy = [];
+      //if (undefined === activeClass) return;  //should only be when class is none
+      for (var i = 0; i < activeClass.psynergy.length; ++i) {
+         var psynergy = activeClass.psynergy[i];
+         if (character.level >= psynergy.level) {
+            character.psynergy.push(psynergy.name);
+         }
       }
    }
    renderPsynergy();

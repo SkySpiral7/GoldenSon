@@ -1574,8 +1574,8 @@ var database = {
       },
       names: ['Ixion Mail']
    },
+   //this is the correct spelling from the video game (not Psy Energy even though it is "Psychic energy")
    psynergy: {
-      //TODO: correct spelling psynergy -> psyenergy
       //TODO: need data: psynergy (here and in the classes)
       'Cure': {name: 'Cure', description: 'Restore 70 HP.'},
       Quake: {name: 'Quake', description: 'Attack with a powerful quake.'},
