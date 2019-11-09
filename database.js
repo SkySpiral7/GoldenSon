@@ -1,7 +1,10 @@
+/*
+TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
+TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
+*/
 var database = {
    //was planning to sort all classes etc alphabetically once I have all the data
    adeptTypes: {
-      //TODO: use data: adeptTypes
       "earth": {
          "name": "earth",
          "statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}
@@ -21,7 +24,6 @@ var database = {
       "names": ["earth", "fire", "ice", "moon", "sun", "typeless", "wind"]
    },
    backgrounds: {
-      //TODO: use data: backgrounds
       "Healer": {
          "name": "Healer",
          "statsAddend": {"hp": 10, "pp": 10, "attack": 0, "defense": 0, "agility": 3, "luck": 4}
@@ -71,7 +73,6 @@ var database = {
       "names": ["Academic", "Apothecary", "Artist", "Craftsman", "Farmer", "Guard", "Healer", "Pirate", "Sage", "Sailor", "Seer", "Shaman", "Thief"]
    },
    combatTypes: {
-      //TODO: use data: combatTypes
       "Warrior": {
          "name": "Warrior",
          "statsAddend": {"hp": 15, "pp": 10, "attack": 6, "defense": 4, "agility": 4, "luck": 0}
@@ -84,7 +85,6 @@ var database = {
       "names": ["Mage", "Rogue", "Warrior"]
    },
    //class priority is currently equal to the total required djinn count (all adepts have same total). assumes that there's no conflict
-   //TODO: need classes for light/dark
    classes: {
       "Apostate": {
          "name": "Apostate",
@@ -1566,7 +1566,6 @@ var database = {
          "Spring", "Steam", "Steel", "Tinder", "Waft", "Wheeze", "Whorl"]
    },
    equipment: {
-      //TODO: need data: equipment
       'Ixion Mail': {
          name: 'Ixion Mail',
          description: 'Armor: Resists Wind & Water',
@@ -1576,7 +1575,6 @@ var database = {
    },
    //this is the correct spelling from the video game (not Psy Energy even though it is "Psychic energy")
    psynergy: {
-      //TODO: need data: psynergy (here and in the classes)
       'Cure': {name: 'Cure', description: 'Restore 70 HP.'},
       Quake: {name: 'Quake', description: 'Attack with a powerful quake.'},
       Earthquake: {name: 'Earthquake', description: 'Attack with a mighty tremor.'},
@@ -1584,5 +1582,35 @@ var database = {
       Gaia: {name: 'Gaia', description: 'Attack with the earth\'s might.'},
       'Cure Well': {name: 'Cure Well', description: 'Restore 150 HP.'},
       names: ["Cure", "Quake", "Earthquake", "Spire", "Gaia", "Cure Well"]
+   },
+   skills: {
+      //current: max of 2 ranks. only get skills from background (thus read only list)
+      names: ['Acrobatics',
+         'Alchemy',
+         'Athletics',
+         //boating removed. replaced by either Profession or background
+         'Craft',  //multiple sub options
+         'Persuasion',
+         'Psyenergy lore',
+         'Slight of hand',
+         'Stealth',
+         'Survival']
    }
 };
+/*
+what am I supposed to do with Weapon classes?
+Weapon classes:
+Light blade
+Long sword
+Great sword
+Axes
+Maces
+Staves
+Ankh
+Bows
+Crossbows
+Muskets
+Pole arms
+Claws
+Everything else?
+*/
