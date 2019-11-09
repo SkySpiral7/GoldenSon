@@ -93,6 +93,7 @@
             {' '}<b>{name}</b>{'. ' + djinn.description}
          </li>);
       });
+      //TODO: make a drop down per element
       const options = database.djinn.names.filter((name) => !character.djinn.names.contains(name)).map((name) =>
          <option key={name}>{name}</option>
       );
