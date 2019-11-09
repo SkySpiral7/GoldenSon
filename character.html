@@ -68,7 +68,7 @@
    }
 
    ReactDOM.render(
-      <BackgroundOptions />,
+      <BackgroundOptions/>,
       document.getElementById('backgroundDiv')
    );
 </script>
@@ -85,29 +85,46 @@
 <div id="djinn"></div>
 <script type="text/babel">
    function DjinnList(props) {
-      const numbers = props.names;
-      const listItems = numbers.map((name) => {
+      const listItems = props.names.map((name) => {
          var djinn = database.djinn[name];
          return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
             <a href="#" onClick={removeDjinn}>Remove</a>
             {' '}<b>{name}</b>{'. ' + djinn.description}
          </li>);
       });
-      //TODO: make a drop down per element
       const options = database.djinn.names.filter((name) => !character.djinn.names.contains(name)).map((name) =>
          <option key={name}>{name}</option>
       );
       if (0 !== options.length) {
          listItems.push(<li key={'add-djinn'} id={'add-djinn'}>
-            <select onChange={addDjinn}>
-               <option>Add Djinn...</option>
-               {options}
-            </select>
+            <DjinnDropDown element="earth" display="Venus (Earth)"/>
+            {' '}
+            <DjinnDropDown element="fire" display="Mars (Fire)"/>
+            {' '}
+            <DjinnDropDown element="wind" display="Jupiter (Wind)"/>
+            {' '}
+            <DjinnDropDown element="ice" display="Mercury (Ice)"/>
          </li>);
       }
       return (
          <ul>{listItems}</ul>
       );
+   }
+
+   function DjinnDropDown(props) {
+      const options = database.djinn.names
+         .filter((name) => database.djinn[name].element === props.element)
+         .filter((name) => !character.djinn.names.contains(name))
+         .map((name) =>
+            <option key={name}>{name}</option>
+         );
+      if (0 !== options.length) {
+         return (<select onChange={addDjinn}>
+            <option>Add {props.display} Djinn...</option>
+            {options}
+         </select>);
+      }
+      return '';
    }
 
    function renderDjinn() {
@@ -121,8 +138,7 @@
 <div id="equipment"></div>
 <script type="text/babel">
    function EquipmentList(props) {
-      const numbers = props.names;
-      const listItems = numbers.map((name) => {
+      const listItems = props.names.map((name) => {
          var equipment = database.equipment[name];
          return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
             <a href="#" onClick={removeEquipment}>Remove</a>
@@ -164,8 +180,7 @@ Luck: <span id="luck-final"></span><br/>
 <div id="psynergy"></div>
 <script type="text/babel">
    function PsynergyList(props) {
-      const numbers = props.names;
-      const listItems = numbers.map((name) => {
+      const listItems = props.names.map((name) => {
          var psynergy = database.psynergy[name];
          return (<li key={'psynergy-' + name} id={'psynergy-' + name} data-name={name}>
             <b>{name}</b>{'. ' + psynergy.description}
