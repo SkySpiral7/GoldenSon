@@ -1,7 +1,7 @@
 var database = {
    //was planning to sort all classes etc alphabetically once I have all the data
    adeptTypes: {
-      //TODO: use this data
+      //TODO: use data: adeptTypes
       "earth": {
          "name": "earth",
          "statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}
@@ -21,7 +21,7 @@ var database = {
       "names": ["earth", "fire", "ice", "moon", "sun", "typeless", "wind"]
    },
    backgrounds: {
-      //TODO: use this data
+      //TODO: use data: backgrounds
       "Healer": {
          "name": "Healer",
          "statsAddend": {"hp": 10, "pp": 10, "attack": 0, "defense": 0, "agility": 3, "luck": 4}
@@ -71,7 +71,7 @@ var database = {
       "names": ["Academic", "Apothecary", "Artist", "Craftsman", "Farmer", "Guard", "Healer", "Pirate", "Sage", "Sailor", "Seer", "Shaman", "Thief"]
    },
    combatTypes: {
-      //TODO: use this data
+      //TODO: use data: combatTypes
       "Warrior": {
          "name": "Warrior",
          "statsAddend": {"hp": 15, "pp": 10, "attack": 6, "defense": 4, "agility": 4, "luck": 0}
@@ -1566,7 +1566,7 @@ var database = {
          "Spring", "Steam", "Steel", "Tinder", "Waft", "Wheeze", "Whorl"]
    },
    equipment: {
-      //TODO: need data
+      //TODO: need data: equipment
       'Ixion Mail': {
          name: 'Ixion Mail',
          description: 'Armor: Resists Wind & Water',
@@ -1575,7 +1575,8 @@ var database = {
       names: ['Ixion Mail']
    },
    psynergy: {
-      //TODO: need data (here and in the classes)
+      //TODO: correct spelling psynergy -> psyenergy
+      //TODO: need data: psynergy (here and in the classes)
       'Cure': {name: 'Cure', description: 'Restore 70 HP.'},
       Quake: {name: 'Quake', description: 'Attack with a powerful quake.'},
       Earthquake: {name: 'Earthquake', description: 'Attack with a mighty tremor.'},
