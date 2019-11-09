@@ -166,23 +166,24 @@ function updateClass() {
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       psynergy: []
    };
-   for (var i = 0; i < database.classes.names.length; ++i) {
-      var classInQuestion = database.classes[database.classes.names[i]];
-      var classIsPossible = (
-         classInQuestion.requirements.adept.contains(character.adept) &&
-         classInQuestion.requirements.combatType.contains(character.combatType)
-      );
-      var hasEnoughDjinnEquipped = (
-         character.djinn.counts.earth >= classInQuestion.requirements.djinnCount.earth &&
-         character.djinn.counts.fire >= classInQuestion.requirements.djinnCount.fire &&
-         character.djinn.counts.wind >= classInQuestion.requirements.djinnCount.wind &&
-         character.djinn.counts.ice >= classInQuestion.requirements.djinnCount.ice
-      );
+   //TODO: should really use null instead of "none" etc
+   if('none' !== character.adept) {
+      for (var i = 0; i < database.classes[character.adept].names.length; ++i) {
+         var classInQuestion = database.classes[character.adept][database.classes[character.adept].names[i]];
 
-      if (classIsPossible &&
-         classInQuestion.priority > activeClass.priority &&
-         hasEnoughDjinnEquipped) {
-         activeClass = classInQuestion;
+         var hasMatchingCombatType = classInQuestion.requirements.combatType.contains(character.combatType);
+         var hasEnoughDjinnEquipped = (
+            character.djinn.counts.earth >= classInQuestion.requirements.djinnCount.earth &&
+            character.djinn.counts.fire >= classInQuestion.requirements.djinnCount.fire &&
+            character.djinn.counts.wind >= classInQuestion.requirements.djinnCount.wind &&
+            character.djinn.counts.ice >= classInQuestion.requirements.djinnCount.ice
+         );
+
+         if (hasMatchingCombatType &&
+            classInQuestion.priority > activeClass.priority &&
+            hasEnoughDjinnEquipped) {
+            activeClass = classInQuestion;
+         }
       }
    }
    character.activeClass = activeClass.name;
@@ -197,9 +198,10 @@ function updateClass() {
 }
 
 function updatePsynergy() {
-   var activeClass = database.classes[character.activeClass];
+   if('None' === character.activeClass) return;
+   var activeClass = database.classes[character.adept][character.activeClass];
    character.psynergy = [];
-   if (undefined === activeClass) return;  //should only be when class is none
+   //if (undefined === activeClass) return;  //should only be when class is none
    for (var i = 0; i < activeClass.psynergy.length; ++i) {
       var psynergy = activeClass.psynergy[i];
       if (character.level >= psynergy.level) {
