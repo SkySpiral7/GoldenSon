@@ -26,7 +26,14 @@
             multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
             final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
          },
-         djinn: {counts: {earth: 0, fire: 0, wind: 0, ice: 0}, names: []},
+         djinn: {
+            counts: {earth: 0, fire: 0, wind: 0, ice: 0},
+            names: [],
+            state: {},
+            set: [],
+            standby: [],
+            recovery: []
+         },
          equipment: [],
          psynergy: []
       };
@@ -94,14 +101,17 @@
       const listItems = props.names.map((name) => {
          var djinn = database.djinn[name];
          /*
-         TODO: Djinn States: Set, Standby, Recovery
-         - Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
-         - Standby: can be summoned (big attack) which converts to Recovery
-         - Recovery: does nothing for a bit then becomes Set
-         Have a select of these instead of remove link. have remove be last option (set as default)
+         Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
+         Standby: can be summoned (big attack) which converts to Recovery
+         Recovery: does nothing for a bit then becomes Set
          */
          return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
-            <a href="#" onClick={removeDjinn}>Remove</a>
+            <select onChange={onChangeUpdateDjinn}>
+               <option value="set">Set</option>
+               <option value="standby">Standby</option>
+               <option value="recovery">Recovery</option>
+               <option value="remove">Remove</option>
+            </select>
             {' '}<b>{name}</b>{'. ' + djinn.description}
          </li>);
       });

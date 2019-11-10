@@ -29,7 +29,7 @@ function save() {
    jsonDoc.stats.defense = character.stats.base.defense;
    jsonDoc.stats.agility = character.stats.base.agility;
    jsonDoc.stats.luck = character.stats.base.luck;
-   jsonDoc.djinn = character.djinn.names;
+   jsonDoc.djinn = character.djinn.state;
    jsonDoc.equipment = character.equipment;
    return jsonDoc;
 }
@@ -85,20 +85,22 @@ function load(jsonDoc) {
    document.getElementById('defense').value = character.stats.base.defense = jsonDoc.stats.defense;
    document.getElementById('agility').value = character.stats.base.agility = jsonDoc.stats.agility;
    document.getElementById('luck').value = character.stats.base.luck = jsonDoc.stats.luck;
-   character.djinn.counts = {earth: 0, fire: 0, wind: 0, ice: 0};
-   character.djinn.names = jsonDoc.djinn;
+   character.djinn = {
+      counts: {earth: 0, fire: 0, wind: 0, ice: 0},
+      names: [],
+      state: {},
+      set: [],
+      standby: [],
+      recovery: []
+   };
+   character.djinn.state = jsonDoc.djinn;
+   character.djinn.names = Object.keys(character.djinn.state);
    character.equipment = jsonDoc.equipment;
 
    var i;
-   for (i = 0; i < character.djinn.length; ++i) {
-      var djinn = database.djinn[character.djinn[i]];
-      character.stats.addend.hp += djinn.statsAddend.hp;
-      character.stats.addend.pp += djinn.statsAddend.pp;
-      character.stats.addend.attack += djinn.statsAddend.attack;
-      character.stats.addend.defense += djinn.statsAddend.defense;
-      character.stats.addend.agility += djinn.statsAddend.agility;
-      character.stats.addend.luck += djinn.statsAddend.luck;
-      ++character.djinn.counts[djinn.element];
+   for (i = 0; i < character.djinn.names.length; ++i) {
+      var djinnName = character.djinn.names[i];
+      updateDjinn(djinnName, character.djinn.state[djinnName], 'remove');
    }
    for (i = 0; i < character.equipment.length; ++i) {
       var equipment = database.equipment[character.equipment[i]];
@@ -233,6 +235,8 @@ function addDjinn(onClickEvent) {
    var newName = onClickEvent.target.value;
    var djinn = database.djinn[newName];
    character.djinn.names.push(newName);
+   character.djinn.set.push(newName);
+   character.djinn.state[newName] = 'set';
 
    character.stats.addend.hp += djinn.statsAddend.hp;
    character.stats.addend.pp += djinn.statsAddend.pp;
@@ -245,18 +249,46 @@ function addDjinn(onClickEvent) {
    updateAllFinalStats();
 }
 
-function removeDjinn(onClickEvent) {
-   var oldName = onClickEvent.target.parentNode.dataset.name;
-   var djinn = database.djinn[oldName];
-   character.djinn.names.removeByValue(oldName);
+function onChangeUpdateDjinn(onClickEvent) {
+   var djinnName = onClickEvent.target.parentNode.dataset.name;
+   var action = onClickEvent.target.value;
+   updateDjinn(djinnName, action, character.djinn.state[djinnName]);
+}
 
-   character.stats.addend.hp -= djinn.statsAddend.hp;
-   character.stats.addend.pp -= djinn.statsAddend.pp;
-   character.stats.addend.attack -= djinn.statsAddend.attack;
-   character.stats.addend.defense -= djinn.statsAddend.defense;
-   character.stats.addend.agility -= djinn.statsAddend.agility;
-   character.stats.addend.luck -= djinn.statsAddend.luck;
-   --character.djinn.counts[djinn.element];
+function updateDjinn(djinnName, action, previousState) {
+   var djinn = database.djinn[djinnName];
+
+   if ('set' === previousState) {
+      character.stats.addend.hp -= djinn.statsAddend.hp;
+      character.stats.addend.pp -= djinn.statsAddend.pp;
+      character.stats.addend.attack -= djinn.statsAddend.attack;
+      character.stats.addend.defense -= djinn.statsAddend.defense;
+      character.stats.addend.agility -= djinn.statsAddend.agility;
+      character.stats.addend.luck -= djinn.statsAddend.luck;
+      --character.djinn.counts[djinn.element];
+   }
+   else if ('set' === action) {
+      character.stats.addend.hp += djinn.statsAddend.hp;
+      character.stats.addend.pp += djinn.statsAddend.pp;
+      character.stats.addend.attack += djinn.statsAddend.attack;
+      character.stats.addend.defense += djinn.statsAddend.defense;
+      character.stats.addend.agility += djinn.statsAddend.agility;
+      character.stats.addend.luck += djinn.statsAddend.luck;
+      ++character.djinn.counts[djinn.element];
+   }
+
+   //if Standby/Recovery do nothing
+
+   //previous remove is only possible when loading
+   if ('remove' !== previousState) character.djinn[previousState].removeByValue(djinnName);
+
+   if ('remove' === action) {
+      character.djinn.names.removeByValue(djinnName);
+   }
+   else {
+      character.djinn.state[djinnName] = action;
+      character.djinn[action].push(djinnName);
+   }
 
    updateAllFinalStats();
 }
