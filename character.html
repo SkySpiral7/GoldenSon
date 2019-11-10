@@ -15,10 +15,10 @@
    <script>
       var character = {
          name: '',
-         adept: 'none',
+         adept: null,
          combatType: 'Warrior',
          background: 'Academic',
-         activeClass: 'None',
+         activeClass: null,
          level: 1,
          stats: {
             base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
@@ -93,6 +93,13 @@
    function DjinnList(props) {
       const listItems = props.names.map((name) => {
          var djinn = database.djinn[name];
+         /*
+         TODO: Djinn States: Set, Standby, Recovery
+         - Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
+         - Standby: can be summoned (big attack) which converts to Recovery
+         - Recovery: does nothing for a bit then becomes Set
+         Have a select of these instead of remove link. have remove be last option (set as default)
+         */
          return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
             <a href="#" onClick={removeDjinn}>Remove</a>
             {' '}<b>{name}</b>{'. ' + djinn.description}
@@ -238,23 +245,11 @@ testResults:<br />
 <!---->
 </body>
 </html>
-<!--Random notes:
-Background: Guard
-A. Character sheets that allow modifications and preferably let you pick adeptness, background, skills, and psyenergy.
-B. Djinn which are equippable
-C. Equipment same as above
-D. Classes that are switched between based on djinn, background, and adeptness
-Mostly I want equip logic. If you standby a djinn your stats and class changes
-
+<!--Links:
 Golden sun base stats: https://docs.google.com/spreadsheets/d/1uYmx3L2Xn2MEsw-mm_WfiT-_W-UulH4iT0TJMUxNdsI/edit?usp=sharing
 Golden Sun Reloaded Class Chart: https://docs.google.com/spreadsheets/d/1W9VJcbmV5l6wGSiDO4oM6IV566i7XvVFQs_5WT0ajN8/edit#gid=1049218258
 http://www.goldensun-syndicate.net/
 https://goldensun.fandom.com/wiki/Djinn
-
-TODO: Djinn States: Set, Standby, Recovery
-- Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
-- Standby: can be summoned (big attack) which converts to Recovery
-- Recovery: does nothing for a bit then becomes Set
 
 https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html
 not sure how much state can/should be managed by react

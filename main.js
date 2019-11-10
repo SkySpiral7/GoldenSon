@@ -137,6 +137,8 @@ function updateAdept() {
    //TODO: I'm thinking I need react to manage state for me
 
    character.adept = document.getElementById('adept').value;
+   //this is an option in the select
+   if ('none' === character.adept) character.adept = null;
    updateAllFinalStats();
 }
 
@@ -161,13 +163,12 @@ function updateFinalStat(stat) {
 
 function updateClass() {
    var activeClass = {
-      name: 'None',
+      name: null,
       priority: -Infinity,
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       psynergy: []
    };
-   //TODO: should really use null instead of "none" etc
-   if ('none' !== character.adept) {
+   if (null !== character.adept) {
       for (var i = 0; i < database.classRequirements[character.adept].names.length; ++i) {
          var className = database.classRequirements[character.adept].names[i];
          var newClass = database.classes[className];
@@ -196,11 +197,12 @@ function updateClass() {
    character.stats.multiplier.agility = activeClass.statsMultiplier.agility;
    character.stats.multiplier.luck = activeClass.statsMultiplier.luck;
 
-   document.getElementById('class').innerHTML = '' + activeClass.name;
+   if (null === activeClass.name) document.getElementById('class').innerHTML = 'None';
+   else document.getElementById('class').innerHTML = '' + activeClass.name;
 }
 
 function updatePsynergy() {
-   if ('None' !== character.activeClass) {
+   if (null !== character.activeClass) {
       var activeClass = database.classes[character.activeClass];
       character.psynergy = [];
       //if (undefined === activeClass) return;  //should only be when class is none
