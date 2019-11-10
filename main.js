@@ -75,7 +75,11 @@ function load(jsonDoc) {
    };
    //gameVersion, parserVersion are ignored until there is reason to use them
    document.getElementById('name').value = character.name = jsonDoc.name;
-   document.getElementById('adept').value = character.adept = jsonDoc.adept;
+   if (null === jsonDoc.adept) {
+      document.getElementById('adept').value = 'none';
+      character.adept = null;
+   }
+   else document.getElementById('adept').value = character.adept = jsonDoc.adept;
    document.getElementById('combatType').value = character.combatType = jsonDoc.combatType;
    document.getElementById('backgroundSelect').value = character.background = jsonDoc.background;
    document.getElementById('level').value = character.level = jsonDoc.level;
