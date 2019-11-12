@@ -1,6 +1,7 @@
 * text eol=auto
 
 *.html text
+*.json text
 *.md text
 .* text
 .gitattributes text
