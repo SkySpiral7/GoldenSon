@@ -6,8 +6,6 @@
    <!--convert these to prod versions later-->
    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-   <!--TODO: convert babel to js instead of using a large CDN-->
-   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
    <script src="src/javascript/main/database.js"></script>
    <script src="src/javascript/main/prototype.js"></script>
@@ -68,23 +66,7 @@
 </label><br/>
 <label for="backgroundSelect">Background:</label>
 <div style="display:inline-block;" id="backgroundDiv"></div>
-<script type="text/babel">
-   function BackgroundOptions() {
-      const options = database.backgrounds.names.map((name) =>
-         <option key={name} value={name}>{name}</option>
-      );
-      return (
-         <select id="backgroundSelect" onChange={updateBackground}>
-            {options}
-         </select>
-      );
-   }
-
-   ReactDOM.render(
-      <BackgroundOptions/>,
-      document.getElementById('backgroundDiv')
-   );
-</script>
+<script src="generated/background.js"></script>
 <br/>
 <label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();"/></label><br/>
 <h2>Base stats</h2>
@@ -96,101 +78,10 @@
 <label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0"/></label><br/>
 <h2>Djinn</h2>
 <div id="djinn"></div>
-<script type="text/babel">
-   function DjinnList(props) {
-      const listItems = props.names.map((name) => {
-         var djinn = database.djinn[name];
-         /*
-         Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
-         Standby: can be summoned (big attack) which converts to Recovery
-         Recovery: does nothing for a bit then becomes Set
-         */
-         return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
-            <select onChange={onChangeUpdateDjinn}>
-               <option value="set">Set</option>
-               <option value="standby">Standby</option>
-               <option value="recovery">Recovery</option>
-               <option value="remove">Remove</option>
-            </select>
-            {' '}<b>{name}</b>{'. ' + djinn.description}
-         </li>);
-      });
-      const options = database.djinn.names.filter((name) => !character.djinn.names.contains(name)).map((name) =>
-         <option key={name}>{name}</option>
-      );
-      if (0 !== options.length) {
-         listItems.push(<li key={'add-djinn'} id={'add-djinn'}>
-            <DjinnDropDown element="earth" display="Venus (Earth)"/>
-            {' '}
-            <DjinnDropDown element="fire" display="Mars (Fire)"/>
-            {' '}
-            <DjinnDropDown element="wind" display="Jupiter (Wind)"/>
-            {' '}
-            <DjinnDropDown element="ice" display="Mercury (Ice)"/>
-         </li>);
-      }
-      return (
-         <ul>{listItems}</ul>
-      );
-   }
-
-   function DjinnDropDown(props) {
-      const options = database.djinn.names
-         .filter((name) => database.djinn[name].element === props.element)
-         .filter((name) => !character.djinn.names.contains(name))
-         .map((name) =>
-            <option key={name}>{name}</option>
-         );
-      if (0 !== options.length) {
-         return (<select onChange={addDjinn}>
-            <option>Add {props.display} Djinn...</option>
-            {options}
-         </select>);
-      }
-      return '';
-   }
-
-   function renderDjinn() {
-      ReactDOM.render(
-         <DjinnList names={character.djinn.names}/>,
-         document.getElementById('djinn')
-      );
-   }
-</script>
+<script src="generated/djinn.js"></script>
 <h2>Equipment</h2>
 <div id="equipment"></div>
-<script type="text/babel">
-   function EquipmentList(props) {
-      const listItems = props.names.map((name) => {
-         var equipment = database.equipment[name];
-         return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
-            <a href="#" onClick={removeEquipment}>Remove</a>
-            {' '}<b>{name}</b>{'. ' + equipment.description}
-         </li>);
-      });
-      const options = database.equipment.names.filter((name) => !character.equipment.contains(name)).map((name) =>
-         <option key={name}>{name}</option>
-      );
-      if (0 !== options.length) {
-         listItems.push(<li key={'add-equipment'} id={'add-equipment'}>
-            <select onChange={addEquipment}>
-               <option>Add Equipment...</option>
-               {options}
-            </select>
-         </li>);
-      }
-      return (
-         <ul>{listItems}</ul>
-      );
-   }
-
-   function renderEquipment() {
-      ReactDOM.render(
-         <EquipmentList names={character.equipment}/>,
-         document.getElementById('equipment')
-      );
-   }
-</script>
+<script src="generated/equipment.js"></script>
 <h2>Final stats</h2>
 Class: <span id="class"></span><br/>
 HP: <span id="hp-final"></span><br/>
@@ -201,27 +92,7 @@ Agility: <span id="agility-final"></span><br/>
 Luck: <span id="luck-final"></span><br/>
 <h2>Psynergy</h2>
 <div id="psynergy"></div>
-<script type="text/babel">
-   function PsynergyList(props) {
-      const listItems = props.names.map((name) => {
-         var psynergy = database.psynergy[name];
-         return (<li key={'psynergy-' + name} id={'psynergy-' + name} data-name={name}>
-            <b>{name}</b>{'. ' + psynergy.description}
-         </li>);
-      });
-      if (0 === listItems.length) return 'None';
-      return (
-         <ul>{listItems}</ul>
-      );
-   }
-
-   function renderPsynergy() {
-      ReactDOM.render(
-         <PsynergyList names={character.psynergy}/>,
-         document.getElementById('psynergy')
-      );
-   }
-</script>
+<script src="generated/psynergy.js"></script>
 <br/><br/>
 <span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
                                  id="save-to-file-link">Save to File</a></span>
