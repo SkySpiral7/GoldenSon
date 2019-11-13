@@ -164,8 +164,8 @@ var database = {
          "statsMultiplier": {"hp": 1.8, "pp": 1.9, "attack": 1.4, "defense": 1.4, "agility": 1.7, "luck": 0.9},
          "psynergy": []
       },
-      "High Miko": {
-         "name": "High Miko",
+      "High Priestess": {
+         "name": "High Priestess",
          "priority": 2,
          "statsMultiplier": {"hp": 0.9, "pp": 1.6, "attack": 0.8, "defense": 1, "agility": 1.3, "luck": 1.2},
          "psynergy": []
@@ -212,20 +212,20 @@ var database = {
          "statsMultiplier": {"hp": 1.7, "pp": 1.15, "attack": 1.4, "defense": 1.3, "agility": 1.4, "luck": 1},
          "psynergy": []
       },
-      "Master Miko": {
-         "name": "Master Miko",
+      "Master Priestess": {
+         "name": "Master Priestess",
          "priority": 4,
          "statsMultiplier": {"hp": 1.1, "pp": 1.7, "attack": 0.9, "defense": 1.1, "agility": 1.4, "luck": 1.2},
          "psynergy": []
       },
-      "Miko": {
-         "name": "Miko",
+      "Priestess": {
+         "name": "Priestess",
          "priority": 0,
          "statsMultiplier": {"hp": 0.8, "pp": 1.5, "attack": 0.7, "defense": 0.9, "agility": 1.2, "luck": 1.2},
          "psynergy": []
       },
-      "Mystic Miko": {
-         "name": "Mystic Miko",
+      "Mystic Priestess": {
+         "name": "Mystic Priestess",
          "priority": 6,
          "statsMultiplier": {"hp": 1.3, "pp": 1.8, "attack": 1, "defense": 1.2, "agility": 1.5, "luck": 1.2},
          "psynergy": []
@@ -284,8 +284,8 @@ var database = {
          "statsMultiplier": {"hp": 1.7, "pp": 1.5, "attack": 1.5, "defense": 1.35, "agility": 1.5, "luck": 0.9},
          "psynergy": []
       },
-      "Radiant Miko": {
-         "name": "Radiant Miko",
+      "Radiant Priestess": {
+         "name": "Radiant Priestess",
          "priority": 8,
          "statsMultiplier": {"hp": 1.5, "pp": 1.9, "attack": 1.1, "defense": 1.3, "agility": 1.6, "luck": 1.2},
          "psynergy": []
@@ -1007,7 +1007,7 @@ var database = {
          "statsMultiplier": {"hp": 1.35, "pp": 1.7, "attack": 1.2, "defense": 1.15, "agility": 1.45, "luck": 0.8},
          "psynergy": []
       },
-      "names": ["Acolyte", "Admiral", "Angel", "Apostate", "Apprentice", "Arcanist", "Archmage", "Archon", "Armed", "Ascetic", "Augur", "Avenger", "Baron", "Berserker", "Black Knight", "Bolt User", "Brute", "Cannoneer", "Captain", "Channeler", "Chaos Lord", "Clairvoyant", "Cleric", "Commander", "Conqueror", "Corsair", "Counselor", "Cultist", "Defender", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Druid", "Duelist", "Elementalist", "Enlightened", "Explorer", "Fair", "Fanatic", "Fated", "Fateweaver", "Fearless", "Fire Master", "Flame User", "Fury", "Gallant", "General", "Globetrotter", "Guard", "Guardian", "Guru", "Haruspex", "Healer", "Herald", "Herbalist", "Heretic", "Hex", "High Miko", "Holy Knight", "Hull Reaver", "Ice Rogue 1", "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4", "Ice Rogue 5", "Illusionist", "Incantatrix", "Incendiary", "Infidel", "Inquisitor", "Jonin", "Knave", "Knight", "Leader", "Lord", "Luminier", "Magician", "Mariner", "Master Miko", "Miko", "Monk", "Mystic Knight", "Mystic Miko", "Naturalist", "Ninja", "Officiant", "Oracle", "Outlaw", "Page", "Paladin", "Paragon", "Phalanx", "Pirate", "Pirate King", "Practicant", "Privateer", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Pupil", "Pure Mage", "Radiant", "Radiant Miko", "Red Mage", "Renegade", "Researcher", "Righteous", "Rogue", "Ruffian", "Saint", "Saint Knight", "Samurai", "Savage", "Savant", "Scholar", "Sea Lord", "Seafarer", "Seer", "Shaman", "Shinobi", "Shogun", "Shugenja", "Soldier", "Sorcerer", "Sovereign", "Spellblade", "Squire", "Star Knight", "Strategist", "Student", "Sun Champion", "Swordsman", "Templar", "Thaumaturge", "Therapist", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Virtuous", "Warden", "Warlord", "Warrior", "Water User", "Waverider", "White Knight", "White Mage", "Wild Mage", "Wind Rogue 1", "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5", "Wind Warrior 1", "Wind Warrior 2", "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Windrider", "Wise", "Witch", "Worldwaker", "Yamabushi", "Zealot"]
+      "names": ["Acolyte", "Admiral", "Angel", "Apostate", "Apprentice", "Arcanist", "Archmage", "Archon", "Armed", "Ascetic", "Augur", "Avenger", "Baron", "Berserker", "Black Knight", "Bolt User", "Brute", "Cannoneer", "Captain", "Channeler", "Chaos Lord", "Clairvoyant", "Cleric", "Commander", "Conqueror", "Corsair", "Counselor", "Cultist", "Defender", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Druid", "Duelist", "Elementalist", "Enlightened", "Explorer", "Fair", "Fanatic", "Fated", "Fateweaver", "Fearless", "Fire Master", "Flame User", "Fury", "Gallant", "General", "Globetrotter", "Guard", "Guardian", "Guru", "Haruspex", "Healer", "Herald", "Herbalist", "Heretic", "Hex", "High Priestess", "Holy Knight", "Hull Reaver", "Ice Rogue 1", "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4", "Ice Rogue 5", "Illusionist", "Incantatrix", "Incendiary", "Infidel", "Inquisitor", "Jonin", "Knave", "Knight", "Leader", "Lord", "Luminier", "Magician", "Mariner", "Master Priestess", "Priestess", "Monk", "Mystic Knight", "Mystic Priestess", "Naturalist", "Ninja", "Officiant", "Oracle", "Outlaw", "Page", "Paladin", "Paragon", "Phalanx", "Pirate", "Pirate King", "Practicant", "Privateer", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Pupil", "Pure Mage", "Radiant", "Radiant Priestess", "Red Mage", "Renegade", "Researcher", "Righteous", "Rogue", "Ruffian", "Saint", "Saint Knight", "Samurai", "Savage", "Savant", "Scholar", "Sea Lord", "Seafarer", "Seer", "Shaman", "Shinobi", "Shogun", "Shugenja", "Soldier", "Sorcerer", "Sovereign", "Spellblade", "Squire", "Star Knight", "Strategist", "Student", "Sun Champion", "Swordsman", "Templar", "Thaumaturge", "Therapist", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Virtuous", "Warden", "Warlord", "Warrior", "Water User", "Waverider", "White Knight", "White Mage", "Wild Mage", "Wind Rogue 1", "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5", "Wind Warrior 1", "Wind Warrior 2", "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Windrider", "Wise", "Witch", "Worldwaker", "Yamabushi", "Zealot"]
    },
    classRequirements: {
       "earth": {
@@ -1025,22 +1025,22 @@ var database = {
          "Chaos Lord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 7, "wind": 0, "ice": 0}},
          "Conqueror": {"combatType": ["Rogue"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
          "Defender": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
+         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
          "Fearless": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
          "Gallant": {"combatType": ["Warrior"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
+         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
          "Heretic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
-         "High Miko": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
+         "High Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
+         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
          "Infidel": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
          "Jonin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
          "Knave": {"combatType": ["Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
          "Knight": {"combatType": ["Warrior"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 3}},
+         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 3}},
          "Lord": {"combatType": ["Warrior"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
-         "Master Miko": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Miko": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Mystic Miko": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
+         "Master Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
+         "Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
+         "Mystic Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
          "Ninja": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
          "Outlaw": {"combatType": ["Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
          "Paladin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
@@ -1053,14 +1053,14 @@ var database = {
             "djinnCount": {"earth": 2, "fire": 0, "wind": 7, "ice": 0}
          },
          "Psy Knight": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 1, "fire": 0, "wind": 6, "ice": 0}},
-         "Radiant Miko": {"combatType": ["Mage"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
-         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
+         "Radiant Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
+         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
          "Rogue": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Ruffian": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
+         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
          "Savage": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Shinobi": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
-         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
+         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
          "Sovereign": {"combatType": ["Warrior"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
          "Spellblade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
          "Squire": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
@@ -1070,13 +1070,13 @@ var database = {
          "Valkyrie": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
          "Vanguard": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
          "Veteran": {"combatType": ["Rogue"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
-         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
-         "Warlord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}},
+         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+         "Warlord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
          "White Knight": {
             "combatType": ["Warrior", "Rogue"],
             "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}
          },
-         "names": ["Apostate", "Apprentice", "Berserker", "Black Knight", "Brute", "Chaos Lord", "Conqueror", "Defender", "Duelist", "Fearless", "Gallant", "Guardian", "Heretic", "High Miko", "Incantatrix", "Infidel", "Jonin", "Knave", "Knight", "Leader", "Lord", "Master Miko", "Miko", "Mystic Miko", "Ninja", "Outlaw", "Paladin", "Paragon", "Practicant", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Radiant Miko", "Red Mage", "Rogue", "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun", "Sovereign", "Spellblade", "Squire", "Swordsman", "Templar", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Warden", "Warlord", "White Knight"]
+         "names": ["Apostate", "Apprentice", "Berserker", "Black Knight", "Brute", "Chaos Lord", "Conqueror", "Defender", "Duelist", "Fearless", "Gallant", "Guardian", "Heretic", "High Priestess", "Incantatrix", "Infidel", "Jonin", "Knave", "Knight", "Leader", "Lord", "Master Priestess", "Priestess", "Mystic Priestess", "Ninja", "Outlaw", "Paladin", "Paragon", "Practicant", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Radiant Priestess", "Red Mage", "Rogue", "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun", "Sovereign", "Spellblade", "Squire", "Swordsman", "Templar", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Warden", "Warlord", "White Knight"]
       },
       "fire": {
          "Apostate": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
@@ -1091,21 +1091,21 @@ var database = {
          "Cannoneer": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
          "Chaos Lord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 7, "fire": 2, "wind": 0, "ice": 0}},
          "Corsair": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
+         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
          "Fair": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
          "Fated": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
          "Fire Master": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
          "Flame User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Guard": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
          "Heretic": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
          "Hex": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Hull Reaver": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
-         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
          "Incendiary": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
          "Infidel": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
          "Jonin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
-         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 3}},
+         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 3}},
          "Luminier": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 6}},
          "Mystic Knight": {
             "combatType": ["Warrior", "Rogue"],
@@ -1119,13 +1119,13 @@ var database = {
          "Pirate King": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
          "Pupil": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
          "Radiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 7}},
-         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
          "Righteous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
          "Ruffian": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
          "Savage": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
          "Shinobi": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
-         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
          "Soldier": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
          "Star Knight": {
             "combatType": ["Warrior", "Rogue"],
@@ -1139,7 +1139,7 @@ var database = {
          "Valkyrie": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
          "Vanguard": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
          "Virtuous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
          "Warlord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
          "Warrior": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "White Knight": {
@@ -1153,7 +1153,7 @@ var database = {
          "Acolyte": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
          "Arcanist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 7, "ice": 2}},
          "Archmage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}},
-         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
+         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
          "Augur": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}},
          "Avenger": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
          "Bolt User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
@@ -1163,29 +1163,29 @@ var database = {
          "Cultist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Destroyer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
          "Disciple": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
-         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}},
+         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}},
          "Diviner": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
          "Elementalist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
          "Fanatic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 1, "ice": 0}},
-         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
+         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
          "Fury": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
          "General": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}},
          "Haruspex": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
+         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
          "Holy Knight": {
             "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}
+            "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}
          },
          "Illusionist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
          "Inquisitor": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 7, "wind": 2, "ice": 0}},
          "Magician": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
          "Oracle": {"combatType": ["Mage"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
-         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
+         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
          "Renegade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
          "Researcher": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
          "Saint Knight": {
             "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}
+            "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}
          },
          "Savant": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
          "Scholar": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
@@ -1194,7 +1194,7 @@ var database = {
          "Sorcerer": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}},
          "Strategist": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
          "Student": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}},
-         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
+         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
          "Wild Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
          "Wind Rogue 1": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Wind Rogue 2": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
@@ -1215,7 +1215,7 @@ var database = {
          "Admiral": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
          "Angel": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
          "Arcanist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 7}},
-         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
+         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
          "Armed": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
          "Ascetic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Avenger": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
@@ -1226,13 +1226,13 @@ var database = {
          "Counselor": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
          "Defender": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
          "Destroyer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}},
+         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}},
          "Druid": {"combatType": ["Mage"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
          "Elementalist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
          "Enlightened": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}},
          "Explorer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
          "Fair": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
+         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
          "Fearless": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
          "Fury": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
          "General": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
@@ -1242,11 +1242,11 @@ var database = {
          },
          "Guru": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}},
          "Healer": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
-         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
+         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
          "Herbalist": {"combatType": ["Mage"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}},
          "Holy Knight": {
             "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}
+            "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}
          },
          "Ice Rogue 1": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Ice Rogue 2": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
@@ -1261,7 +1261,7 @@ var database = {
          "Paragon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}},
          "Privateer": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
          "Protector": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
-         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
+         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
          "Radiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}},
          "Renegade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
          "Researcher": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
@@ -1269,7 +1269,7 @@ var database = {
          "Saint": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}},
          "Saint Knight": {
             "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}
+            "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}
          },
          "Savant": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
          "Scholar": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
@@ -1286,7 +1286,7 @@ var database = {
          "Virtuous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Water User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Waverider": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
-         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
+         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
          "Wild Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
          "Windrider": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}},
          "Wise": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 6}},
