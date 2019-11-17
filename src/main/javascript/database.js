@@ -1,6 +1,7 @@
 /*
 TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
 TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
+TODO: consider having a more compressed easier to use DB here and a full one in generated
 */
 var database = {
    //was planning to sort all classes etc alphabetically once I have all the data
