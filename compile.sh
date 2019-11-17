@@ -4,7 +4,7 @@ echo "starting"
 
 rm -rf generated/ &> /dev/null
 
-if [ ! -d node_modules/ ]; then
+if [[ ! -d node_modules/ ]]; then
    # command from https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
    # -g didn't seem to work
    npm install babel-cli@6 babel-preset-react-app@3

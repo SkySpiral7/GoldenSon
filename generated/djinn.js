@@ -7,7 +7,9 @@ function DjinnList(props) {
       Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
       Standby: can be summoned (big attack) which converts to Recovery
       Recovery: does nothing for a bit then becomes Set
+      TODO: form change buttons, Recovery rounds button
       */
+      //TODO: sort display and options by element then name
       return React.createElement(
          'li',
          { key: 'djinn-' + name, id: 'djinn-' + name, 'data-name': name },
