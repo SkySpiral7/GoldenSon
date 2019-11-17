@@ -7,9 +7,9 @@
    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
-   <script src="src/main/javascript/database.js"></script>
-   <script src="src/main/javascript/prototype.js"></script>
-   <script src="src/main/javascript/main.js"></script>
+   <script src="../javascript/database.js"></script>
+   <script src="../javascript/prototype.js"></script>
+   <script src="../javascript/main.js"></script>
    <script>
       var character = {
          name: '',
@@ -66,7 +66,7 @@
 </label><br/>
 <label for="backgroundSelect">Background:</label>
 <div style="display:inline-block;" id="backgroundDiv"></div>
-<script src="generated/background.js"></script>
+<script src="../../../generated/background.js"></script>
 <br/>
 <label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();"/></label><br/>
 <h2>Base stats</h2>
@@ -78,10 +78,10 @@
 <label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0"/></label><br/>
 <h2>Djinn</h2>
 <div id="djinn"></div>
-<script src="generated/djinn.js"></script>
+<script src="../../../generated/djinn.js"></script>
 <h2>Equipment</h2>
 <div id="equipment"></div>
-<script src="generated/equipment.js"></script>
+<script src="../../../generated/equipment.js"></script>
 <h2>Final stats</h2>
 Class: <span id="class"></span><br/>
 HP: <span id="hp-final"></span><br/>
@@ -92,7 +92,7 @@ Agility: <span id="agility-final"></span><br/>
 Luck: <span id="luck-final"></span><br/>
 <h2>Psynergy</h2>
 <div id="psynergy"></div>
-<script src="generated/psynergy.js"></script>
+<script src="../../../generated/psynergy.js"></script>
 <br/><br/>
 <span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
                                  id="save-to-file-link">Save to File</a></span>
@@ -104,8 +104,8 @@ Luck: <span id="luck-final"></span><br/>
 <br/>
 <textarea id="code-box" rows="10" cols="50"></textarea>
 <!----
-<script src="../Miscellaneous/src/main/javascript/testRunner.js"></script>
-<script src="src/test/javascript/database.js"></script>
+<script src="../../../../Miscellaneous/src/main/javascript/testRunner.js"></script>
+<script src="../../test/javascript/database.js"></script>
 <h2>Admin Powers</h2>
 <br />
 <form action="javascript:void(0);">
