@@ -1,3 +1,4 @@
+'use strict';
 function saveToFile() {
    var link = document.getElementById('save-to-file-link');
    link.download = document.getElementById('name').value + '.json';
@@ -167,25 +168,25 @@ function updateFinalStat(stat) {
    document.getElementById(stat + '-final').innerHTML = '' + Math.round(character.stats.final[stat]);
 }
 
-function updateClass() {
+function determineClass(adept, combatType, djinnCount) {
    var activeClass = {
       name: null,
       priority: -Infinity,
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       psynergy: []
    };
-   if (null !== character.adept) {
-      for (var i = 0; i < database.classRequirements[character.adept].names.length; ++i) {
-         var className = database.classRequirements[character.adept].names[i];
+   if (null !== adept) {
+      for (var i = 0; i < database.classRequirements[adept].names.length; ++i) {
+         var className = database.classRequirements[adept].names[i];
          var newClass = database.classes[className];
-         var requirementsInQuestion = database.classRequirements[character.adept][className];
+         var requirementsInQuestion = database.classRequirements[adept][className];
 
-         var hasMatchingCombatType = requirementsInQuestion.combatType.contains(character.combatType);
+         var hasMatchingCombatType = requirementsInQuestion.combatType.contains(combatType);
          var hasEnoughDjinnEquipped = (
-            character.djinn.counts.earth >= requirementsInQuestion.djinnCount.earth &&
-            character.djinn.counts.fire >= requirementsInQuestion.djinnCount.fire &&
-            character.djinn.counts.wind >= requirementsInQuestion.djinnCount.wind &&
-            character.djinn.counts.ice >= requirementsInQuestion.djinnCount.ice
+            djinnCount.earth >= requirementsInQuestion.djinnCount.earth &&
+            djinnCount.fire >= requirementsInQuestion.djinnCount.fire &&
+            djinnCount.wind >= requirementsInQuestion.djinnCount.wind &&
+            djinnCount.ice >= requirementsInQuestion.djinnCount.ice
          );
          var meetsRequirements = (hasMatchingCombatType && hasEnoughDjinnEquipped);
 
@@ -195,7 +196,13 @@ function updateClass() {
          }
       }
    }
-   character.activeClass = activeClass.name;
+   return activeClass.name;
+}
+
+function updateClass() {
+   var activeClassName = determineClass(character.adept, character.combatType, character.djinn.counts);
+   var activeClass = database.classes[activeClassName];
+   character.activeClass = activeClassName;
    character.stats.multiplier.hp = activeClass.statsMultiplier.hp;
    character.stats.multiplier.pp = activeClass.statsMultiplier.pp;
    character.stats.multiplier.attack = activeClass.statsMultiplier.attack;

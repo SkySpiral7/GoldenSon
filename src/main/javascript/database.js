@@ -1,3 +1,4 @@
+'use strict';
 /*
 TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
 TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes

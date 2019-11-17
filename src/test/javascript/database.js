@@ -92,6 +92,16 @@ TestSuite.database.integrityForClassRequirements = async function (testState = {
                Description: element + ' ' + combatType + ' exactly 1 base class'
             });
          }
+         /*
+         scenarios for each element/combatType:
+         - exact same djinn (same priority). Not allowed.
+         + different priority. allowed.
+         + {1,1,1,1} vs {4,0,0,0} allowed
+         + {2,2,2,2} vs {5,1,1,1} allowed
+         - {1,0,0,0} vs {0,1,0,0} not allowed unless {1,1,0,0} has a priority 2 class
+         every combination of same priority see if those counts trigger higher priority class
+         */
+
          // for (var priority in classByPriority) {
          //    var classNameList = classByPriority[priority];
          //    for (var combatType of database.combatTypes.names) {
