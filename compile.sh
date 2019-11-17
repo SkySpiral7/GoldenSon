@@ -11,4 +11,4 @@ if [[ ! -d node_modules/ ]]; then
 fi
 
 #TODO: I would like a non-npx command that uses global install
-npx babel --watch src/babel/ --out-dir generated/ --presets react-app/prod
+npx babel --watch src/main/babel/ --out-dir generated/ --presets react-app/prod
