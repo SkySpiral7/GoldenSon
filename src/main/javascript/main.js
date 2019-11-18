@@ -1,4 +1,5 @@
 'use strict';
+
 function saveToFile() {
    var link = document.getElementById('save-to-file-link');
    link.download = document.getElementById('name').value + '.json';
@@ -331,4 +332,24 @@ function removeEquipment(onClickEvent) {
    character.stats.addend.luck -= equipment.statsAddend.luck;
 
    updateAllFinalStats();
+}
+
+function djinnNameSortOrder(name1, name2) {
+   var djinn1 = database.djinn[name1];
+   var djinn2 = database.djinn[name2];
+
+   //element alphabetic is: earth, fire, ice, wind
+   if (djinn1.element > djinn2.element) {
+      return 1;
+   } else if (djinn1.element < djinn2.element) {
+      return -1;
+   }
+
+   if (name1 > name2) {
+      return 1;
+   } else if (name1 < name2) {
+      return -1;
+   }
+
+   return 0;
 }

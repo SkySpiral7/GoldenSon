@@ -1,7 +1,9 @@
 'use strict';
 
 function DjinnList(props) {
-   const listItems = props.names.map((name) => {
+   var givenNames = JSON.clone(props.names);
+   givenNames.sort(djinnNameSortOrder);
+   const listItems = givenNames.map((name) => {
       var djinn = database.djinn[name];
       /*
       Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
@@ -9,7 +11,7 @@ function DjinnList(props) {
       Recovery: does nothing for a bit then becomes Set
       TODO: form change buttons, Recovery rounds button
       */
-      //TODO: sort display and options by element then name
+      //TODO: label the elements of djinn set
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
          <select onChange={onChangeUpdateDjinn}>
             <option value="set">Set</option>

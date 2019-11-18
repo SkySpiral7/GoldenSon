@@ -6,3 +6,4 @@
 .* text
 .gitattributes text
 .gitignore text
+generated/* -diff

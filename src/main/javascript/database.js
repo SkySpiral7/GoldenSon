@@ -23,6 +23,7 @@ var database = {
          "name": "typeless",
          "statsAddend": {"hp": 20, "pp": 0, "attack": 4, "defense": 4, "agility": 4, "luck": 4}
       },
+      //TODO: element order is not same in each place
       "names": ["earth", "fire", "ice", "moon", "sun", "typeless", "wind"]
    },
    backgrounds: {
