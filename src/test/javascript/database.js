@@ -74,49 +74,59 @@ TestSuite.database.integrityForClassRequirements = async function (testState = {
       }
 
       try {
-         var classByPriority = {};
+         var classByCombatThenPriority = {};
+         for (var combatType of database.combatTypes.names) {
+            classByCombatThenPriority[combatType] = {};
+         }
          for (className of database.classRequirements[element].names) {
             var priority = database.classes[className].priority;
-            if (undefined === classByPriority[priority]) classByPriority[priority] = [className];
-            else classByPriority[priority].push(className);
-         }
-         var classNameList = classByPriority[0];
-         for (var combatType of database.combatTypes.names) {
-            var classCount = 0;
-            for (className of classNameList) {
-               if (database.classRequirements[element][className].combatType.contains(combatType)) ++classCount;
+            for (var combatType of database.classRequirements[element][className].combatType) {
+               if (undefined === classByCombatThenPriority[combatType][priority]) classByCombatThenPriority[combatType][priority] = [className];
+               else classByCombatThenPriority[combatType][priority].push(className);
             }
+         }
+         for (var combatType of database.combatTypes.names) {
             assertions.push({
                Expected: 1,
-               Actual: classCount,
+               Actual: classByCombatThenPriority[combatType][0].length,
                Description: element + ' ' + combatType + ' exactly 1 base class'
             });
          }
-         /*
-         scenarios for each element/combatType:
-         - exact same djinn (same priority). Not allowed.
-         + different priority. allowed.
-         + {1,1,1,1} vs {4,0,0,0} allowed
-         + {2,2,2,2} vs {5,1,1,1} allowed
-         - {1,0,0,0} vs {0,1,0,0} not allowed unless {1,1,0,0} has a priority 2 class
-         every combination of same priority see if those counts trigger higher priority class
-         */
+         //TODO: every single one of these fail. all that have multiples overlap
+         if (false) {
+            /*
+            for each element/combatType:
+            find every combination of 2 classes of the same priority
+            apply the djinn of both. not allowed to end up with 2 classes
+            the only way to prevent this is if those counts trigger a higher priority class
+            */
+            for (var combatType of database.combatTypes.names) {
+               for (var priority in classByCombatThenPriority[combatType]) {
+                  var classNameList = classByCombatThenPriority[combatType][priority];
+                  if (1 === classNameList.length) continue;  //nothing to overlap with
+                  //since I passed in 2 args the return value's elements will have a length of 2
+                  var everyPair = Combination.cartesianProduct([classNameList, classNameList]);
+                  for (var pair of everyPair) {
+                     if (pair[0] === pair[1]) continue;  //a class doesn't overlap with itself. exclude this combination
+                     var classDjinnCount = [database.classRequirements[element][pair[0]].djinnCount, database.classRequirements[element][pair[1]].djinnCount];
+                     var bothDjinnCount = {};
+                     bothDjinnCount.earth = Math.max(classDjinnCount[0].earth, classDjinnCount[1].earth);
+                     bothDjinnCount.fire = Math.max(classDjinnCount[0].fire, classDjinnCount[1].fire);
+                     bothDjinnCount.wind = Math.max(classDjinnCount[0].wind, classDjinnCount[1].wind);
+                     bothDjinnCount.ice = Math.max(classDjinnCount[0].ice, classDjinnCount[1].ice);
+                     //bothDjinnCount now has the counts that would qualify for both classes
 
-         // for (var priority in classByPriority) {
-         //    var classNameList = classByPriority[priority];
-         //    for (var combatType of database.combatTypes.names) {
-         //       var classCount = 0;
-         //       for (className of classNameList) {
-         //          if (database.classRequirements[element][className].combatType.contains(combatType)) ++classCount;
-         //       }
-         //       //TODO: how to determine if overlap? eg 1 of each element is priority 1
-         //       assertions.push({
-         //          Expected: true,
-         //          Actual: (classCount < 2),
-         //          Description: element + ' ' + combatType + ' has overlap for priority ' + priority + ' among ' + JSON.stringify(classNameList)
-         //       });
-         //    }
-         // }
+                     var resultClass = determineClass(element, combatType, bothDjinnCount);
+                     assertions.push({
+                        Expected: true,
+                        //in order for there to be no overlap bothDjinnCount must result in a higher priority class (rather than 2 of same priority)
+                        Actual: (priority < resultClass.priority),
+                        Description: element + ' ' + combatType + ' has overlap for priority ' + priority + ' among ' + JSON.stringify(pair)
+                     });
+                  }
+               }
+            }
+         }
       } catch (e) {
          assertions.push({Error: e, Description: element + ' classes do not overlap'});
       }

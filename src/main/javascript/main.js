@@ -196,13 +196,12 @@ function determineClass(adept, combatType, djinnCount) {
          }
       }
    }
-   return activeClass.name;
+   return activeClass;
 }
 
 function updateClass() {
-   var activeClassName = determineClass(character.adept, character.combatType, character.djinn.counts);
-   var activeClass = database.classes[activeClassName];
-   character.activeClass = activeClassName;
+   var activeClass = determineClass(character.adept, character.combatType, character.djinn.counts);
+   character.activeClass = activeClass.name;
    character.stats.multiplier.hp = activeClass.statsMultiplier.hp;
    character.stats.multiplier.pp = activeClass.statsMultiplier.pp;
    character.stats.multiplier.attack = activeClass.statsMultiplier.attack;
