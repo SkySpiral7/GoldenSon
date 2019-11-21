@@ -1097,7 +1097,7 @@ var database = {
          "Fire Master": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
          "Flame User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
          "Guard": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
+         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
          "Heretic": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
          "Hex": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
          "Hull Reaver": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
