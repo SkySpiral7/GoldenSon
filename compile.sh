@@ -10,5 +10,7 @@ if [[ ! -d node_modules/ ]]; then
    npm install babel-cli@6 babel-preset-react-app@3
 fi
 
+#TODO: run a script for generating database (rather than on load)
+    #in new db, split classRequirements by combatType?
 #TODO: I would like a non-npx command that uses global install
 npx babel --watch src/main/babel/ --out-dir generated/ --presets react-app/prod
