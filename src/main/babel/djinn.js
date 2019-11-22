@@ -3,10 +3,9 @@
 /**props: names*/
 function DjinnEntireList(props)
 {
-   const givenNames = JSON.clone(props.names);
-   givenNames.sort(djinnNameSortOrder);
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
-   givenNames.forEach((name) =>
+   props.names.sort();
+   props.names.forEach((name) =>
    {
       const djinn = database.djinn[name];
       namesByElement[djinn.element].push(name);
@@ -31,16 +30,14 @@ function DjinnEntireList(props)
 /**props: names, element, display*/
 function DjinnElementList(props)
 {
-   const givenNames = props.names;
-   givenNames.sort(djinnNameSortOrder);
-   const listItems = givenNames.map((name) =>
+   const listItems = props.names.map((name) =>
    {
       var djinn = database.djinn[name];
       /*
       Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
       Standby: can be summoned (big attack) which converts to Recovery
       Recovery: does nothing for a bit then becomes Set
-      TODO: form change buttons, Recovery rounds button
+      TODO: unleashed button, summon check boxes, Recovery rounds button. but still need an easy/quick way?
       */
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
          <select onChange={onChangeUpdateDjinn}>

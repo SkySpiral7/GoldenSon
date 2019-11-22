@@ -1,6 +1,6 @@
 'use strict';
 
-function DataTable()
+function ClassCountTable()
 {
    const headers = database.combatTypes.names.map((name) =>
    {
@@ -14,7 +14,7 @@ function DataTable()
    {
       return (<tr key={'tr-' + name}>
          <td key={'vth-' + name}>{name}</td>
-         <DataTableRow element={name}/>
+         <ClassCountTableRow element={name}/>
       </tr>);
    });
    return (
@@ -25,7 +25,7 @@ function DataTable()
    );
 }
 
-function DataTableRow(props)
+function ClassCountTableRow(props)
 {
    return database.combatTypes.names.map((name) =>
    {
@@ -45,6 +45,6 @@ function countClasses(element, combatTypes)
 }
 
 ReactDOM.render(
-   <DataTable/>,
-   document.getElementById('dataTable')
+   <ClassCountTable/>,
+   document.getElementById('classCountDiv')
 );
