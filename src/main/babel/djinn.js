@@ -1,7 +1,34 @@
 'use strict';
 
-function DjinnList(props) {
-   var givenNames = JSON.clone(props.names);
+/**props: names*/
+function DjinnEntireList(props) {
+   const givenNames = JSON.clone(props.names);
+   givenNames.sort(djinnNameSortOrder);
+   const namesByElement = {earth: [], fire: [], ice: [], wind: []};
+   givenNames.forEach((name) => {
+      const djinn = database.djinn[name];
+      namesByElement[djinn.element].push(name);
+   });
+   return (
+      <div>
+         <h3>Venus (Earth)</h3>
+         <DjinnElementList names={namesByElement.earth} element="earth" display="Venus (Earth)"/>
+
+         <h3>Mars (Fire)</h3>
+         <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)"/>
+
+         <h3>Jupiter (Wind)</h3>
+         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)"/>
+
+         <h3>Mercury (Ice)</h3>
+         <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)"/>
+      </div>
+   );
+}
+
+/**props: names, element, display*/
+function DjinnElementList(props) {
+   const givenNames = props.names;
    givenNames.sort(djinnNameSortOrder);
    const listItems = givenNames.map((name) => {
       var djinn = database.djinn[name];
@@ -11,7 +38,6 @@ function DjinnList(props) {
       Recovery: does nothing for a bit then becomes Set
       TODO: form change buttons, Recovery rounds button
       */
-      //TODO: label the elements of djinn set
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
          <select onChange={onChangeUpdateDjinn}>
             <option value="set">Set</option>
@@ -22,18 +48,17 @@ function DjinnList(props) {
          {' '}<b>{name}</b>{'. ' + djinn.description}
       </li>);
    });
-   const options = database.djinn.names.filter((name) => !character.djinn.names.contains(name)).map((name) =>
+   const options = database.djinn.names
+   .filter((name) => !character.djinn.names.contains(name))
+   .filter((name) => {
+      var djinn = database.djinn[name];
+      return djinn.element === props.element;
+   }).map((name) =>
       <option key={name}>{name}</option>
    );
    if (0 !== options.length) {
-      listItems.push(<li key={'add-djinn'} id={'add-djinn'}>
-         <DjinnDropDown element="earth" display="Venus (Earth)"/>
-         {' '}
-         <DjinnDropDown element="fire" display="Mars (Fire)"/>
-         {' '}
-         <DjinnDropDown element="wind" display="Jupiter (Wind)"/>
-         {' '}
-         <DjinnDropDown element="ice" display="Mercury (Ice)"/>
+      listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
+         <DjinnElementDropDown element={props.element} display={props.display}/>
       </li>);
    }
    return (
@@ -41,7 +66,8 @@ function DjinnList(props) {
    );
 }
 
-function DjinnDropDown(props) {
+/**props: element, display*/
+function DjinnElementDropDown(props) {
    const options = database.djinn.names
       .filter((name) => database.djinn[name].element === props.element)
       .filter((name) => !character.djinn.names.contains(name))
@@ -59,7 +85,7 @@ function DjinnDropDown(props) {
 
 function renderDjinn() {
    ReactDOM.render(
-      <DjinnList names={character.djinn.names}/>,
+      <DjinnEntireList names={character.djinn.names}/>,
       document.getElementById('djinn')
    );
 }
