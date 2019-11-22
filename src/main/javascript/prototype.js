@@ -6,6 +6,14 @@ if (undefined === JSON.clone)
       return JSON.parse(JSON.stringify(obj));
    };
 }
+/**For each element of this array a type strict comparison is done against the parameter and returns true if any of them match*/
+if (Array.prototype.contains === undefined)
+{
+   Array.prototype.contains = function (obj)
+   {
+      return (this.indexOf(obj) !== -1);  //Array.prototype.indexOf is type strict (using ===)
+   };
+}
 /**Removes the element from this array that is located at the index specified.
  Negative index is counted from the end.
  If the index does not exist nothing happens.
@@ -23,11 +31,3 @@ Array.prototype.removeByValue = function (value)
    if (-1 === index) return;  //not found
    this.remove(index);
 };
-/**For each element of this array a type strict comparison is done against the parameter and returns true if any of them match*/
-if (Array.prototype.contains === undefined)
-{
-   Array.prototype.contains = function (obj)
-   {
-      return (this.indexOf(obj) !== -1);  //Array.prototype.indexOf is type strict (using ===)
-   };
-}
