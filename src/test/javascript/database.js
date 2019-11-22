@@ -7,14 +7,33 @@ TestSuite.database.integrityForClasses = async function (testState = {})
 
    try
    {
-      for (var name of database.classes.names)
+      for (var className of database.classes.names)
       {
-         var isInEarth = (undefined !== database.classRequirements.earth[name]);
-         var isInFire = (undefined !== database.classRequirements.fire[name]);
-         var isInWind = (undefined !== database.classRequirements.wind[name]);
-         var isInIce = (undefined !== database.classRequirements.ice[name]);
-         var hasRequirements = (isInEarth || isInFire || isInWind || isInIce);
-         assertions.push({Expected: true, Actual: hasRequirements, Description: 'class ' + name + ' has requirements'});
+         var elementCount = Object.keys(database.classes[className].requirements).length;
+         assertions.push({
+            Expected: true,
+            Actual: (elementCount > 0),
+            Description: 'class ' + className + ' has element requirements'
+         });
+         for (var element in database.classes[className].requirements)
+         {
+            var combatTypeCount = Object.keys(database.classes[className].requirements[element]).length;
+            assertions.push({
+               Expected: true,
+               Actual: (combatTypeCount > 0),
+               Description: 'class ' + className + ' requirements.' + element + ' has combatTypes'
+            });
+            for (var combatType in database.classes[className].requirements[element])
+            {
+               var djinnCount = database.classes[className].requirements[element][combatType];
+               var totalDjinnCount = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
+               assertions.push({
+                  Expected: database.classes[className].priority,
+                  Actual: totalDjinnCount,
+                  Description: element + ' class ' + className + ' requirements.' + element + '.' + combatType + ' djinnCount matches priority'
+               });
+            }
+         }
       }
    }
    catch (e)
@@ -22,127 +41,48 @@ TestSuite.database.integrityForClasses = async function (testState = {})
       assertions.push({Error: e, Description: 'All classes have requirements'});
    }
 
-   return TestRunner.displayResults('TestSuite.database.integrityForClasses', assertions, testState);
-};
-TestSuite.database.integrityForClassRequirements = async function (testState = {})
-{
-   TestRunner.clearResults(testState);
-   var assertions = [], className;
-
-   function classRequirementsForElement(element)
+   try
    {
-      try
+      var count = Object.keys(database.classes.byRequirement).length;
+      assertions.push({
+         Expected: true,
+         Actual: (count > 0),
+         Description: 'database.classes.byRequirement has elements'
+      });
+      for (var element in database.classes.byRequirement)
       {
-         for (className of database.classRequirements[element].names)
+         count = Object.keys(database.classes.byRequirement[element]).length;
+         assertions.push({
+            Expected: true,
+            Actual: (count > 0),
+            Description: 'database.classes.byRequirement.' + element + ' has combatTypes'
+         });
+         for (var combatType in database.classes.byRequirement[element])
          {
-            var isAClass = (undefined !== database.classes[className]);
+            var nameByPriority = {};
+            count = database.classes.byRequirement[element][combatType].length;
             assertions.push({
                Expected: true,
-               Actual: isAClass,
-               Description: element + ' class ' + className + ' exists'
+               Actual: (count > 0),
+               Description: 'database.classes.byRequirement.' + element + '.' + combatType + ' has classes'
             });
-         }
-      }
-      catch (e)
-      {
-         assertions.push({Error: e, Description: element + ' classes exists'});
-      }
-
-      try
-      {
-         for (className of database.classRequirements[element].names)
-         {
-            var djinnCount = database.classRequirements[element][className].djinnCount;
-            var totalDjinnCount = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
-            assertions.push({
-               Expected: database.classes[className].priority,
-               Actual: totalDjinnCount,
-               Description: element + ' class ' + className + ' djinnCount matches priority'
-            });
-         }
-      }
-      catch (e)
-      {
-         assertions.push({Error: e, Description: element + ' classes djinnCount matches priority'});
-      }
-
-      try
-      {
-         var classByCombatThenPriority = {};
-         for (var combatType of database.combatTypes.names)
-         {
-            classByCombatThenPriority[combatType] = {};
-         }
-         for (className of database.classRequirements[element].names)
-         {
-            var priority = database.classes[className].priority;
-            for (var combatType of database.classRequirements[element][className].combatType)
+            for (var myClass of database.classes.byRequirement[element][combatType])
             {
-               if (undefined === classByCombatThenPriority[combatType][priority]) classByCombatThenPriority[combatType][priority] = [className];
-               else classByCombatThenPriority[combatType][priority].push(className);
+               if (undefined === nameByPriority[myClass.priority]) nameByPriority[myClass.priority] = [myClass.name];
+               else nameByPriority[myClass.priority].push(myClass.name);
             }
-         }
-         for (var combatType of database.combatTypes.names)
-         {
             assertions.push({
                Expected: 1,
-               Actual: classByCombatThenPriority[combatType][0].length,
+               Actual: nameByPriority[0].length,
                Description: element + ' ' + combatType + ' exactly 1 base class'
             });
          }
-         //TODO: every single one of these fail. all that have multiples overlap
-         if (false)
-         {
-            /*
-            for each element/combatType:
-            find every combination of 2 classes of the same priority
-            apply the djinn of both. not allowed to end up with 2 classes
-            the only way to prevent this is if those counts trigger a higher priority class
-            */
-            for (var combatType of database.combatTypes.names)
-            {
-               for (var priority in classByCombatThenPriority[combatType])
-               {
-                  var classNameList = classByCombatThenPriority[combatType][priority];
-                  if (1 === classNameList.length) continue;  //nothing to overlap with
-                  //since I passed in 2 args the return value's elements will have a length of 2
-                  var everyPair = Combination.cartesianProduct([classNameList, classNameList]);
-                  for (var pair of everyPair)
-                  {
-                     if (pair[0] === pair[1]) continue;  //a class doesn't overlap with itself. exclude this combination
-                     var classDjinnCount = [database.classRequirements[element][pair[0]].djinnCount,
-                        database.classRequirements[element][pair[1]].djinnCount];
-                     var bothDjinnCount = {};
-                     bothDjinnCount.earth = Math.max(classDjinnCount[0].earth, classDjinnCount[1].earth);
-                     bothDjinnCount.fire = Math.max(classDjinnCount[0].fire, classDjinnCount[1].fire);
-                     bothDjinnCount.wind = Math.max(classDjinnCount[0].wind, classDjinnCount[1].wind);
-                     bothDjinnCount.ice = Math.max(classDjinnCount[0].ice, classDjinnCount[1].ice);
-                     //bothDjinnCount now has the counts that would qualify for both classes
-
-                     var resultClass = determineClass(element, combatType, bothDjinnCount);
-                     assertions.push({
-                        Expected: true,
-                        //in order for there to be no overlap bothDjinnCount must result in a higher priority class
-                        // (rather than 2 of same priority)
-                        Actual: (priority < resultClass.priority),
-                        Description: element + ' ' + combatType + ' has overlap for priority ' + priority + ' among ' + JSON.stringify(
-                           pair)
-                     });
-                  }
-               }
-            }
-         }
-      }
-      catch (e)
-      {
-         assertions.push({Error: e, Description: element + ' classes do not overlap'});
       }
    }
+   catch (e)
+   {
+      assertions.push({Error: e, Description: 'exactly 1 base class'});
+   }
 
-   classRequirementsForElement('earth');
-   classRequirementsForElement('fire');
-   classRequirementsForElement('wind');
-   classRequirementsForElement('ice');
-
-   return TestRunner.displayResults('TestSuite.database.integrityForClassRequirements', assertions, testState);
+   return TestRunner.displayResults('TestSuite.database.integrityForClasses', assertions, testState);
 };

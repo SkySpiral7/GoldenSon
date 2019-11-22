@@ -56,35 +56,10 @@ function ClassCountTableRow(props) {
    });
 }
 
-function countClasses(element, combatTypes) {
-   if (undefined === database.classRequirements[element]) return 0;
-   var count = 0;
-   var _iteratorNormalCompletion = true;
-   var _didIteratorError = false;
-   var _iteratorError = undefined;
-
-   try {
-      for (var _iterator = database.classRequirements[element].names[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-         var className = _step.value;
-
-         if (database.classRequirements[element][className].combatType.contains(combatTypes)) ++count;
-      }
-   } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-   } finally {
-      try {
-         if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-         }
-      } finally {
-         if (_didIteratorError) {
-            throw _iteratorError;
-         }
-      }
-   }
-
-   return count;
+function countClasses(element, combatType) {
+   if (undefined === database.classes.byRequirement[element]) return 0;
+   if (undefined === database.classes.byRequirement[element][combatType]) return 0;
+   return database.classes.byRequirement[element][combatType].length;
 }
 
 ReactDOM.render(React.createElement(ClassCountTable, null), document.getElementById('classCountDiv'));

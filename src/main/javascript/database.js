@@ -41,1114 +41,1508 @@ var database = {
       "Apostate": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}}
+         }
       },
       "Apprentice": {
          "priority": 1,
          "statsMultiplier": {"hp": 1, "pp": 1.15, "attack": 1.15, "defense": 1, "agility": 1.15, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 1, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}
+            }
+         }
       },
       "Berserker": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.65, "pp": 1.15, "attack": 1.5, "defense": 1.35, "agility": 1.35, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 5, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Black Knight": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.85, "pp": 1.25, "attack": 1.6, "defense": 1.45, "agility": 1.45, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 1, "fire": 6, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 1, "fire": 6, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 6, "fire": 1, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 6, "fire": 1, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Brute": {
          "priority": 1,
          "statsMultiplier": {"hp": 1.15, "pp": 0.9, "attack": 1.2, "defense": 1.1, "agility": 1.1, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 1, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 1, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Chaos Lord": {
          "priority": 9,
          "statsMultiplier": {"hp": 2.05, "pp": 1.35, "attack": 1.7, "defense": 1.55, "agility": 1.55, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 2, "fire": 7, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 2, "fire": 7, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 7, "fire": 2, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 7, "fire": 2, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Conqueror": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.9, "pp": 1.2, "attack": 1.55, "defense": 1.45, "agility": 1.5, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Rogue": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Defender": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 1.15, "attack": 1.2, "defense": 1.25, "agility": 0.95, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 2},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}
+            },
+            "ice": {
+               "Warrior": {"earth": 2, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Duelist": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.55, "pp": 1.5, "attack": 1.4, "defense": 1.4, "agility": 1.35, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
+            "fire": {"Mage": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}}
+         }
       },
       "Fearless": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.6, "pp": 1.3, "attack": 1.35, "defense": 1.4, "agility": 1.1, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}
+            },
+            "ice": {
+               "Warrior": {"earth": 5, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Gallant": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.05, "attack": 1.3, "defense": 1.2, "agility": 1.3, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Guardian": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.85, "attack": 1.35, "defense": 1.4, "agility": 1.6, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+            "fire": {"Mage": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}}
+         }
       },
       "Heretic": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.9, "attack": 1.4, "defense": 1.4, "agility": 1.7, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}}
+         }
       },
       "High Priestess": {
          "priority": 2,
          "statsMultiplier": {"hp": 0.9, "pp": 1.6, "attack": 0.8, "defense": 1, "agility": 1.3, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Incantatrix": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.9, "attack": 1.35, "defense": 1.35, "agility": 1.7, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+            "fire": {"Mage": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}}
+         }
       },
       "Infidel": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.25, "defense": 1.25, "agility": 1.55, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
+            "fire": {"Mage": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}}
+         }
       },
       "Jonin": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.7, "attack": 1.7, "defense": 1.4, "agility": 1.7, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}
+            }
+         }
       },
       "Knave": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 0.9, "attack": 1.25, "defense": 1.15, "agility": 1.2, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Rogue": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Knight": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 0.95, "attack": 1.2, "defense": 1.1, "agility": 1.2, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Warrior": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Leader": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.8, "pp": 1.4, "attack": 1.5, "defense": 1.45, "agility": 1.5, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 3}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 3}
+            }
+         }
       },
       "Lord": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.7, "pp": 1.15, "attack": 1.4, "defense": 1.3, "agility": 1.4, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Warrior": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Master Priestess": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.1, "pp": 1.7, "attack": 0.9, "defense": 1.1, "agility": 1.4, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Priestess": {
          "priority": 0,
          "statsMultiplier": {"hp": 0.8, "pp": 1.5, "attack": 0.7, "defense": 0.9, "agility": 1.2, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Mystic Priestess": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.3, "pp": 1.8, "attack": 1, "defense": 1.2, "agility": 1.5, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ninja": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.65, "attack": 1.65, "defense": 1.35, "agility": 1.65, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}
+            }
+         }
       },
       "Outlaw": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1, "attack": 1.35, "defense": 1.25, "agility": 1.3, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Paladin": {
          "priority": 9,
          "statsMultiplier": {"hp": 2.05, "pp": 1.55, "attack": 1.6, "defense": 1.6, "agility": 1.3, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}
+            }
+         }
       },
       "Paragon": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.8, "pp": 1.4, "attack": 1.45, "defense": 1.5, "agility": 1.2, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 1, "fire": 0, "wind": 0, "ice": 6},
+               "Rogue": {"earth": 1, "fire": 0, "wind": 0, "ice": 6}
+            },
+            "ice": {
+               "Warrior": {"earth": 6, "fire": 0, "wind": 0, "ice": 1},
+               "Rogue": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}
+            }
+         }
       },
       "Practicant": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.2, "pp": 1.25, "attack": 1.25, "defense": 1.1, "agility": 1.25, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 2, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}
+            }
+         }
       },
       "Protector": {
          "priority": 9,
          "statsMultiplier": {"hp": 2, "pp": 1.5, "attack": 1.55, "defense": 1.6, "agility": 1.3, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 2, "fire": 0, "wind": 0, "ice": 7},
+               "Rogue": {"earth": 2, "fire": 0, "wind": 0, "ice": 7}
+            },
+            "ice": {
+               "Warrior": {"earth": 7, "fire": 0, "wind": 0, "ice": 2},
+               "Rogue": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}
+            }
+         }
       },
       "Psionicist": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.4, "pp": 1.35, "attack": 1.35, "defense": 1.2, "agility": 1.35, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}
+            }
+         }
       },
       "Psy Champion": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.9, "pp": 1.6, "attack": 1.6, "defense": 1.45, "agility": 1.6, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 2, "fire": 0, "wind": 7, "ice": 0},
+               "Rogue": {"earth": 2, "fire": 0, "wind": 7, "ice": 0}
+            }
+         }
       },
       "Psy Knight": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.7, "pp": 1.5, "attack": 1.5, "defense": 1.35, "agility": 1.5, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 1, "fire": 0, "wind": 6, "ice": 0},
+               "Rogue": {"earth": 1, "fire": 0, "wind": 6, "ice": 0}
+            }
+         }
       },
       "Radiant Priestess": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.5, "pp": 1.9, "attack": 1.1, "defense": 1.3, "agility": 1.6, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Mage": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Red Mage": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.8, "attack": 1.25, "defense": 1.25, "agility": 1.6, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}}
+         }
       },
       "Rogue": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.8, "attack": 1.15, "defense": 1.05, "agility": 1.1, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ruffian": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.35, "pp": 1, "attack": 1.3, "defense": 1.2, "agility": 1.2, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 2, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Samurai": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.9, "pp": 1.35, "attack": 1.55, "defense": 1.5, "agility": 1.55, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}
+            }
+         }
       },
       "Savage": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.55, "pp": 1.1, "attack": 1.4, "defense": 1.3, "agility": 1.3, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Shinobi": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.5, "pp": 1.55, "attack": 1.55, "defense": 1.25, "agility": 1.55, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}
+            }
+         }
       },
       "Shogun": {
          "priority": 9,
          "statsMultiplier": {"hp": 2.1, "pp": 1.45, "attack": 1.65, "defense": 1.6, "agility": 1.65, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}
+            },
+            "fire": {
+               "Warrior": {"earth": 5, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}
+            }
+         }
       },
       "Sovereign": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.9, "pp": 1.25, "attack": 1.5, "defense": 1.4, "agility": 1.5, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Warrior": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Spellblade": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.5, "pp": 1.4, "attack": 1.4, "defense": 1.25, "agility": 1.4, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}
+            }
+         }
       },
       "Squire": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.85, "attack": 1.1, "defense": 1, "agility": 1.1, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Swordsman": {
          "priority": 1,
          "statsMultiplier": {"hp": 1.1, "pp": 1.05, "attack": 1.1, "defense": 1.15, "agility": 0.85, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 1},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}
+            },
+            "ice": {
+               "Warrior": {"earth": 1, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Templar": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.95, "pp": 1.5, "attack": 1.55, "defense": 1.55, "agility": 1.25, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}
+            },
+            "fire": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Valiant": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.25, "attack": 1.3, "defense": 1.35, "agility": 1.05, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}
+            },
+            "ice": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Valkyrie": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.85, "pp": 1.65, "attack": 1.55, "defense": 1.55, "agility": 1.5, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}}
+         }
       },
       "Vanguard": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.75, "pp": 1.6, "attack": 1.5, "defense": 1.5, "agility": 1.45, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}}
+         }
       },
       "Veteran": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.7, "pp": 1.1, "attack": 1.45, "defense": 1.35, "agility": 1.4, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"earth": {"Rogue": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Warden": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.75, "attack": 1.25, "defense": 1.3, "agility": 1.5, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
+            "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}}
+         }
       },
       "Warlord": {
          "priority": 9,
          "statsMultiplier": {"hp": 2, "pp": 1.5, "attack": 1.6, "defense": 1.55, "agility": 1.6, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}
+            },
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}
+            }
+         }
       },
       "White Knight": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.75, "pp": 1.4, "attack": 1.45, "defense": 1.45, "agility": 1.15, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "earth": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}
+            },
+            "fire": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}
+            }
+         }
       },
       "Armed": {
          "priority": 1,
          "statsMultiplier": {"hp": 1.05, "pp": 1, "attack": 1.15, "defense": 1.1, "agility": 1.05, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 1},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 1, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Baron": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.8, "pp": 1.1, "attack": 1.35, "defense": 1.4, "agility": 1.25, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Cannoneer": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 1, "attack": 1.1, "defense": 1.1, "agility": 1, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Corsair": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.1, "attack": 1.2, "defense": 1.2, "agility": 1.1, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Fair": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.25, "pp": 1.1, "attack": 1.25, "defense": 1.2, "agility": 1.15, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 2},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Fated": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.4, "pp": 1.3, "attack": 1.3, "defense": 1.3, "agility": 1.3, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}
+            }
+         }
       },
       "Fire Master": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.5, "pp": 1.5, "attack": 1.2, "defense": 1.25, "agility": 1.45, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Flame User": {
          "priority": 0,
          "statsMultiplier": {"hp": 1, "pp": 1.2, "attack": 0.9, "defense": 0.95, "agility": 1.15, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Guard": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.2, "pp": 0.8, "attack": 1.05, "defense": 1.1, "agility": 0.95, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Hex": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.3, "pp": 1.4, "attack": 1.1, "defense": 1.15, "agility": 1.35, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Hull Reaver": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.9, "pp": 1.3, "attack": 1.4, "defense": 1.4, "agility": 1.3, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Incendiary": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.6, "attack": 1.3, "defense": 1.35, "agility": 1.55, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Luminier": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.75, "pp": 1.35, "attack": 1.5, "defense": 1.45, "agility": 1.4, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 1, "wind": 0, "ice": 6},
+               "Rogue": {"earth": 0, "fire": 1, "wind": 0, "ice": 6}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 6, "wind": 0, "ice": 1},
+               "Rogue": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}
+            }
+         }
       },
       "Mystic Knight": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.5, "pp": 1.35, "attack": 1.35, "defense": 1.35, "agility": 1.35, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}
+            }
+         }
       },
       "Page": {
          "priority": 1,
          "statsMultiplier": {"hp": 1, "pp": 1.1, "attack": 1.1, "defense": 1.1, "agility": 1.1, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 1, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}
+            }
+         }
       },
       "Phalanx": {
          "priority": 8,
          "statsMultiplier": {"hp": 2, "pp": 1.2, "attack": 1.45, "defense": 1.5, "agility": 1.35, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Pirate": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.9, "attack": 1, "defense": 1, "agility": 0.9, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Pirate King": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.7, "pp": 1.2, "attack": 1.3, "defense": 1.3, "agility": 1.2, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Pupil": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.2, "pp": 1.2, "attack": 1.2, "defense": 1.2, "agility": 1.2, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 2, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}
+            }
+         }
       },
       "Radiant": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.95, "pp": 1.45, "attack": 1.6, "defense": 1.55, "agility": 1.5, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 7},
+               "Rogue": {"earth": 0, "fire": 2, "wind": 0, "ice": 7}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 7, "wind": 0, "ice": 2},
+               "Rogue": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}
+            }
+         }
       },
       "Righteous": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.55, "pp": 1.25, "attack": 1.4, "defense": 1.35, "agility": 1.3, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Soldier": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.4, "pp": 0.9, "attack": 1.15, "defense": 1.2, "agility": 1.05, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Star Knight": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.7, "pp": 1.45, "attack": 1.45, "defense": 1.45, "agility": 1.45, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 1, "wind": 6, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 1, "wind": 6, "ice": 0}
+            }
+         }
       },
       "Sun Champion": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.9, "pp": 1.55, "attack": 1.55, "defense": 1.55, "agility": 1.55, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 2, "wind": 7, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 2, "wind": 7, "ice": 0}
+            }
+         }
       },
       "Virtuous": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.45, "pp": 1.2, "attack": 1.35, "defense": 1.3, "agility": 1.25, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "fire": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}
+            },
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}
+            }
+         }
       },
       "Warrior": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.6, "pp": 1, "attack": 1.25, "defense": 1.3, "agility": 1.15, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Witch": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.15, "pp": 1.3, "attack": 1, "defense": 1.05, "agility": 1.25, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Admiral": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.95, "pp": 1.3, "attack": 1.45, "defense": 1.45, "agility": 1.35, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Angel": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.65, "pp": 1.65, "attack": 1.2, "defense": 1.3, "agility": 1.4, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Arcanist": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.35, "agility": 1.65, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 7}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 7, "ice": 2}}
+         }
       },
       "Archon": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.95, "pp": 1.5, "attack": 1.65, "defense": 1.5, "agility": 1.65, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}
+            }
+         }
       },
       "Ascetic": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.3, "pp": 1.55, "attack": 1.1, "defense": 1.15, "agility": 1.25, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Avenger": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.95, "pp": 1.4, "attack": 1.65, "defense": 1.55, "agility": 1.55, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Captain": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.55, "pp": 1.1, "attack": 1.25, "defense": 1.25, "agility": 1.15, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Channeler": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.75, "attack": 1.55, "defense": 1.45, "agility": 1.65, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}}
+         }
       },
       "Cleric": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.25, "pp": 1.45, "attack": 1, "defense": 1.1, "agility": 1.2, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Commander": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.75, "pp": 1.2, "attack": 1.35, "defense": 1.35, "agility": 1.25, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Counselor": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.6, "pp": 1.6, "attack": 1.45, "defense": 1.35, "agility": 1.45, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}
+            }
+         }
       },
       "Destroyer": {
          "priority": 9,
          "statsMultiplier": {"hp": 2.05, "pp": 1.45, "attack": 1.7, "defense": 1.6, "agility": 1.6, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 0, "fire": 5, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Divine Mage": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.75, "attack": 1.25, "defense": 1.25, "agility": 1.6, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}}
+         }
       },
       "Druid": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.8, "attack": 1.3, "defense": 1.35, "agility": 1.6, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Elementalist": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.2, "agility": 1.5, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
+            "wind": {"Mage": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}}
+         }
       },
       "Enlightened": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.6, "pp": 1.75, "attack": 1.25, "defense": 1.3, "agility": 1.4, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}}}
       },
       "Explorer": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 1.05, "attack": 1.3, "defense": 1.15, "agility": 1.25, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 2, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}
+            }
+         }
       },
       "Fateweaver": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.85, "attack": 1.35, "defense": 1.35, "agility": 1.7, "luck": 1.2},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
+            "wind": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}}
+         }
       },
       "Fury": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.8, "attack": 1.6, "defense": 1.5, "agility": 1.7, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}}
+         }
       },
       "General": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.9, "pp": 1.75, "attack": 1.6, "defense": 1.5, "agility": 1.6, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 5, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 5, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Globetrotter": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.15, "attack": 1.4, "defense": 1.25, "agility": 1.35, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}
+            }
+         }
       },
       "Guru": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.85, "attack": 1.35, "defense": 1.4, "agility": 1.5, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}}}
       },
       "Healer": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.35, "pp": 1.6, "attack": 1.1, "defense": 1.15, "agility": 1.4, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Herald": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.75, "pp": 1.4, "attack": 1.55, "defense": 1.4, "agility": 1.55, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 3, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Herbalist": {
          "priority": 1,
          "statsMultiplier": {"hp": 0.95, "pp": 1.25, "attack": 0.85, "defense": 0.9, "agility": 1.15, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Holy Knight": {
          "priority": 9,
          "statsMultiplier": {"hp": 2.1, "pp": 1.55, "attack": 1.55, "defense": 1.6, "agility": 1.3, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 5},
+               "Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}
+            }
+         }
       },
       "Ice Rogue 1": {
          "priority": 0,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ice Rogue 2": {
          "priority": 2,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Ice Rogue 3": {
          "priority": 4,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Ice Rogue 4": {
          "priority": 6,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Ice Rogue 5": {
          "priority": 8,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Mariner": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.15, "pp": 0.9, "attack": 1.05, "defense": 1.05, "agility": 0.95, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Monk": {
          "priority": 1,
          "statsMultiplier": {"hp": 1, "pp": 1.3, "attack": 0.9, "defense": 0.95, "agility": 1.05, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}}}
       },
       "Naturalist": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.1, "pp": 1.35, "attack": 0.95, "defense": 1, "agility": 1.25, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Officiant": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.1, "pp": 1.35, "attack": 0.9, "defense": 1, "agility": 1.1, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Privateer": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.35, "pp": 1, "attack": 1.15, "defense": 1.15, "agility": 1.05, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Pure Mage": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.8, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
+            "wind": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}}
+         }
       },
       "Renegade": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.75, "pp": 1.3, "attack": 1.55, "defense": 1.45, "agility": 1.45, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 3, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 0, "ice": 3},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}
+            }
+         }
       },
       "Researcher": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.05, "pp": 1.4, "attack": 0.95, "defense": 1, "agility": 1.3, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}
+         }
       },
       "Saint": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.45, "pp": 1.55, "attack": 1.1, "defense": 1.2, "agility": 1.3, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Saint Knight": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.9, "pp": 1.45, "attack": 1.45, "defense": 1.5, "agility": 1.2, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 0, "fire": 3, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Savant": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.3, "pp": 1.65, "attack": 1.1, "defense": 1.15, "agility": 1.45, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}}
+         }
       },
       "Scholar": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.2, "pp": 1.55, "attack": 1.05, "defense": 1.1, "agility": 1.4, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}
+         }
       },
       "Sea Lord": {
          "priority": 9,
          "statsMultiplier": {"hp": 2, "pp": 1.4, "attack": 1.65, "defense": 1.5, "agility": 1.6, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 7, "ice": 2},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 7, "ice": 2}
+            }
+         }
       },
       "Seafarer": {
          "priority": 1,
          "statsMultiplier": {"hp": 1.1, "pp": 0.95, "attack": 1.2, "defense": 1.05, "agility": 1.15, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 1, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}
+            }
+         }
       },
       "Shaman": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.3, "agility": 1.6, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}}
+         }
       },
       "Shugenja": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.4, "pp": 1.65, "attack": 1.15, "defense": 1.2, "agility": 1.3, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
       },
       "Strategist": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.8, "pp": 1.7, "attack": 1.55, "defense": 1.45, "agility": 1.55, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 4, "ice": 0},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}
+            },
+            "wind": {
+               "Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 4},
+               "Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}
+            }
+         }
       },
       "Student": {
          "priority": 1,
          "statsMultiplier": {"hp": 0.9, "pp": 1.3, "attack": 0.85, "defense": 0.9, "agility": 1.2, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}}
+         }
       },
       "Thaumaturge": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.7, "attack": 1.2, "defense": 1.25, "agility": 1.5, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
       },
       "Therapist": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.25, "pp": 1.5, "attack": 1.05, "defense": 1.1, "agility": 1.35, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Water User": {
          "priority": 0,
          "statsMultiplier": {"hp": 0.95, "pp": 1.25, "attack": 0.8, "defense": 0.9, "agility": 1, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Waverider": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.6, "pp": 1.2, "attack": 1.45, "defense": 1.3, "agility": 1.4, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 5, "ice": 0},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}
+            }
+         }
       },
       "White Mage": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.7, "attack": 1.25, "defense": 1.25, "agility": 1.55, "luck": 1.3},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}}
+         }
       },
       "Wild Mage": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.5, "pp": 1.65, "attack": 1.45, "defense": 1.35, "agility": 1.55, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
+            "wind": {"Mage": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}}
+         }
       },
       "Windrider": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.8, "pp": 1.3, "attack": 1.55, "defense": 1.4, "agility": 1.5, "luck": 0.9},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {
+               "Warrior": {"earth": 0, "fire": 0, "wind": 6, "ice": 1},
+               "Rogue": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}
+            }
+         }
       },
       "Wise": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.25, "agility": 1.55, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 1, "ice": 6}},
+            "wind": {"Mage": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}}
+         }
       },
       "Worldwaker": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.9, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {
+            "ice": {"Mage": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
+            "wind": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}}
+         }
       },
       "Yamabushi": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.15, "pp": 1.4, "attack": 1, "defense": 1.05, "agility": 1.15, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Acolyte": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.1, "pp": 1.45, "attack": 1.05, "defense": 1, "agility": 1.3, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Archmage": {
          "priority": 6,
          "statsMultiplier": {"hp": 1.4, "pp": 1.55, "attack": 1.15, "defense": 1.2, "agility": 1.55, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Augur": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.25, "agility": 1.55, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
       },
       "Bolt User": {
          "priority": 0,
          "statsMultiplier": {"hp": 0.9, "pp": 1.25, "attack": 0.85, "defense": 0.9, "agility": 1.25, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Clairvoyant": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.3, "pp": 1.65, "attack": 1.1, "defense": 1.15, "agility": 1.45, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Cultist": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.25, "pp": 1.6, "attack": 1.15, "defense": 1.1, "agility": 1.4, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Disciple": {
          "priority": 1,
          "statsMultiplier": {"hp": 0.95, "pp": 1.35, "attack": 0.95, "defense": 0.9, "agility": 1.2, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}}}
       },
       "Diviner": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.2, "pp": 1.55, "attack": 1.05, "defense": 1.1, "agility": 1.4, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Fanatic": {
          "priority": 7,
          "statsMultiplier": {"hp": 1.55, "pp": 1.8, "attack": 1.3, "defense": 1.25, "agility": 1.55, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 6, "wind": 1, "ice": 0}}}
       },
       "Haruspex": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.05, "pp": 1.4, "attack": 0.95, "defense": 1, "agility": 1.3, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Illusionist": {
          "priority": 4,
          "statsMultiplier": {"hp": 1.2, "pp": 1.45, "attack": 1.05, "defense": 1.1, "agility": 1.45, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Inquisitor": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.9, "attack": 1.4, "defense": 1.35, "agility": 1.65, "luck": 0.8},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 7, "wind": 2, "ice": 0}}}
       },
       "Magician": {
          "priority": 2,
          "statsMultiplier": {"hp": 1.05, "pp": 1.35, "attack": 0.95, "defense": 1, "agility": 1.35, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Oracle": {
          "priority": 9,
          "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.35, "agility": 1.65, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Seer": {
          "priority": 1,
          "statsMultiplier": {"hp": 0.9, "pp": 1.3, "attack": 0.85, "defense": 0.9, "agility": 1.2, "luck": 1.1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Sorcerer": {
          "priority": 8,
          "statsMultiplier": {"hp": 1.6, "pp": 1.65, "attack": 1.25, "defense": 1.3, "agility": 1.65, "luck": 1},
-         "psynergy": []
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Wind Rogue 1": {
          "priority": 0,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Wind Rogue 2": {
          "priority": 2,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Wind Rogue 3": {
          "priority": 4,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Wind Rogue 4": {
          "priority": 6,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Wind Rogue 5": {
          "priority": 8,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Wind Warrior 1": {
          "priority": 0,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Wind Warrior 2": {
          "priority": 2,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Wind Warrior 3": {
          "priority": 4,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Wind Warrior 4": {
          "priority": 6,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Wind Warrior 5": {
          "priority": 8,
-         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         "psynergy": []
+         "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
+         "psynergy": [],
+         "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Zealot": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.35, "pp": 1.7, "attack": 1.2, "defense": 1.15, "agility": 1.45, "luck": 0.8},
-         "psynergy": []
-      }
-   },
-   classRequirements: {
-      "earth": {
-         "Apostate": {
-            "combatType": ["Mage"],
-            "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}
-         },
-         "Apprentice": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}},
-         "Berserker": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}},
-         "Black Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 1, "fire": 6, "wind": 0, "ice": 0}
-         },
-         "Brute": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
-         "Chaos Lord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 7, "wind": 0, "ice": 0}},
-         "Conqueror": {"combatType": ["Rogue"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
-         "Defender": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
-         "Fearless": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
-         "Gallant": {"combatType": ["Warrior"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "Heretic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
-         "High Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "Infidel": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
-         "Jonin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
-         "Knave": {"combatType": ["Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Knight": {"combatType": ["Warrior"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 3}},
-         "Lord": {"combatType": ["Warrior"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
-         "Master Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Mystic Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
-         "Ninja": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
-         "Outlaw": {"combatType": ["Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Paladin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
-         "Paragon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 6}},
-         "Practicant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Protector": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 7}},
-         "Psionicist": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Psy Champion": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 2, "fire": 0, "wind": 7, "ice": 0}
-         },
-         "Psy Knight": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 1, "fire": 0, "wind": 6, "ice": 0}},
-         "Radiant Priestess": {"combatType": ["Mage"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
-         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
-         "Rogue": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Ruffian": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
-         "Savage": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Shinobi": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
-         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "Sovereign": {"combatType": ["Warrior"], "djinnCount": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}},
-         "Spellblade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
-         "Squire": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Swordsman": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}},
-         "Templar": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
-         "Valiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Valkyrie": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
-         "Vanguard": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
-         "Veteran": {"combatType": ["Rogue"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}},
-         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
-         "Warlord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
-         "White Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}
-         }
-      },
-      "fire": {
-         "Apostate": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
-         "Armed": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}},
-         "Baron": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
-         "Berserker": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
-         "Black Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 6, "fire": 1, "wind": 0, "ice": 0}
-         },
-         "Brute": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}},
-         "Cannoneer": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Chaos Lord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 7, "fire": 2, "wind": 0, "ice": 0}},
-         "Corsair": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Duelist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
-         "Fair": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Fated": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Fire Master": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
-         "Flame User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Guard": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Guardian": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
-         "Heretic": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
-         "Hex": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Hull Reaver": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
-         "Incantatrix": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
-         "Incendiary": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
-         "Infidel": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
-         "Jonin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
-         "Leader": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 3}},
-         "Luminier": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 6}},
-         "Mystic Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}
-         },
-         "Ninja": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
-         "Page": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}},
-         "Paladin": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
-         "Phalanx": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}},
-         "Pirate": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Pirate King": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}},
-         "Pupil": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Radiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 7}},
-         "Red Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
-         "Righteous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
-         "Ruffian": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Samurai": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
-         "Savage": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Shinobi": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
-         "Shogun": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
-         "Soldier": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Star Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 1, "wind": 6, "ice": 0}
-         },
-         "Sun Champion": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 2, "wind": 7, "ice": 0}
-         },
-         "Templar": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
-         "Valkyrie": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
-         "Vanguard": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
-         "Virtuous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Warden": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 3, "ice": 0}},
-         "Warlord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
-         "Warrior": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "White Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}
-         },
-         "Witch": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}
-      },
-      "wind": {
-         "Acolyte": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Arcanist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 7, "ice": 2}},
-         "Archmage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}},
-         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
-         "Augur": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}},
-         "Avenger": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
-         "Bolt User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Channeler": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
-         "Clairvoyant": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
-         "Counselor": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
-         "Cultist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Destroyer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
-         "Disciple": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
-         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}},
-         "Diviner": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Elementalist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
-         "Fanatic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 1, "ice": 0}},
-         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
-         "Fury": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 4}},
-         "General": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}},
-         "Haruspex": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
-         "Holy Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}
-         },
-         "Illusionist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Inquisitor": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 7, "wind": 2, "ice": 0}},
-         "Magician": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Oracle": {"combatType": ["Mage"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
-         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 5}},
-         "Renegade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
-         "Researcher": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Saint Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 4}
-         },
-         "Savant": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
-         "Scholar": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Seer": {"combatType": ["Mage"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}},
-         "Shaman": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
-         "Sorcerer": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}},
-         "Strategist": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 4}},
-         "Student": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}},
-         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 4}},
-         "Wild Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}},
-         "Wind Rogue 1": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Wind Rogue 2": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Wind Rogue 3": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Wind Rogue 4": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}},
-         "Wind Rogue 5": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}},
-         "Wind Warrior 1": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Wind Warrior 2": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Wind Warrior 3": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}},
-         "Wind Warrior 4": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}},
-         "Wind Warrior 5": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}},
-         "Wise": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}},
-         "Worldwaker": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}},
-         "Zealot": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}
-      },
-      "ice": {
-         "Admiral": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
-         "Angel": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
-         "Arcanist": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 7}},
-         "Archon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
-         "Armed": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
-         "Ascetic": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Avenger": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
-         "Captain": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Channeler": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
-         "Cleric": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Commander": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}},
-         "Counselor": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
-         "Defender": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Destroyer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "Divine Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}},
-         "Druid": {"combatType": ["Mage"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
-         "Elementalist": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
-         "Enlightened": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}},
-         "Explorer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}},
-         "Fair": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "Fateweaver": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
-         "Fearless": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
-         "Fury": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
-         "General": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
-         "Globetrotter": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}
-         },
-         "Guru": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}},
-         "Healer": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}},
-         "Herald": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
-         "Herbalist": {"combatType": ["Mage"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}},
-         "Holy Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}
-         },
-         "Ice Rogue 1": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Ice Rogue 2": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Ice Rogue 3": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Ice Rogue 4": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}},
-         "Ice Rogue 5": {"combatType": ["Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
-         "Luminier": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}},
-         "Mariner": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Monk": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}},
-         "Naturalist": {"combatType": ["Mage"], "djinnCount": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}},
-         "Officiant": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Paragon": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}},
-         "Privateer": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Protector": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}},
-         "Pure Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
-         "Radiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}},
-         "Renegade": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
-         "Researcher": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
-         "Righteous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}},
-         "Saint": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}},
-         "Saint Knight": {
-            "combatType": ["Warrior", "Rogue"],
-            "djinnCount": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}
-         },
-         "Savant": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
-         "Scholar": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
-         "Sea Lord": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 7, "ice": 2}},
-         "Seafarer": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 0}},
-         "Shaman": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
-         "Shugenja": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}},
-         "Strategist": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
-         "Student": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}},
-         "Swordsman": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}},
-         "Thaumaturge": {"combatType": ["Mage"], "djinnCount": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}},
-         "Therapist": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Valiant": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}},
-         "Virtuous": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}},
-         "Water User": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}},
-         "Waverider": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 5, "ice": 0}},
-         "White Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
-         "Wild Mage": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
-         "Windrider": {"combatType": ["Warrior", "Rogue"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}},
-         "Wise": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 6}},
-         "Worldwaker": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
-         "Yamabushi": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}
+         "psynergy": [],
+         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
       }
    },
    djinn: {
@@ -1435,10 +1829,21 @@ assignNames(database.adeptTypes);
 assignNames(database.backgrounds);
 assignNames(database.combatTypes);
 assignNames(database.classes);
-assignNames(database.classRequirements.earth);
-assignNames(database.classRequirements.fire);
-assignNames(database.classRequirements.ice);
-assignNames(database.classRequirements.wind);
 assignNames(database.djinn);
 assignNames(database.equipment);
 assignNames(database.psynergy);
+
+database.classes.byRequirement = {};
+for (var name of database.classes.names)
+{
+   var classReq = database.classes[name].requirements;
+   for (var element in classReq)
+   {
+      for (var combatType in classReq[element])
+      {
+         if (undefined === database.classes.byRequirement[element]) database.classes.byRequirement[element] = {};
+         if (undefined === database.classes.byRequirement[element][combatType]) database.classes.byRequirement[element][combatType] = [];
+         database.classes.byRequirement[element][combatType].push(database.classes[name]);
+      }
+   }
+}

@@ -194,25 +194,37 @@ function determineClass(adept, combatType, djinnCount)
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       psynergy: []
    };
-   if (null !== adept)
+   if (null !== adept && undefined !== database.classes.byRequirement[adept][combatType])
    {
-      for (var i = 0; i < database.classRequirements[adept].names.length; ++i)
+      for (var i = 0; i < database.classes.byRequirement[adept][combatType].length; ++i)
       {
-         var className = database.classRequirements[adept].names[i];
-         var newClass = database.classes[className];
-         var requirementsInQuestion = database.classRequirements[adept][className];
+         var newClass = database.classes.byRequirement[adept][combatType][i];
+         var requirementsInQuestion = newClass.requirements[adept][combatType];
 
-         var hasMatchingCombatType = requirementsInQuestion.combatType.contains(combatType);
-         var hasEnoughDjinnEquipped = (
-            djinnCount.earth >= requirementsInQuestion.djinnCount.earth &&
-            djinnCount.fire >= requirementsInQuestion.djinnCount.fire &&
-            djinnCount.wind >= requirementsInQuestion.djinnCount.wind &&
-            djinnCount.ice >= requirementsInQuestion.djinnCount.ice
+         var meetsRequirements = (
+            djinnCount.earth >= requirementsInQuestion.earth &&
+            djinnCount.fire >= requirementsInQuestion.fire &&
+            djinnCount.wind >= requirementsInQuestion.wind &&
+            djinnCount.ice >= requirementsInQuestion.ice
          );
-         var meetsRequirements = (hasMatchingCombatType && hasEnoughDjinnEquipped);
+         //TODO: resolve priority also by element:
+         /*
+         Earth -> Fire > Water > Wind
+         Fire -> Earth > Wind > Water
+         Water -> Wind > Earth > Fire
+         Wind -> Water > Fire > Earth
 
-         if (meetsRequirements &&
-            newClass.priority > activeClass.priority)
+         the steps for an Earth adept:
+         * get all the classes you qualify for
+         * filter out all the ones that are not tied with the highest priority
+         * find the one that requires the most Earth djinn
+         * if tie use the one that requires the most fire
+         * then water
+         * then wind (unreachable)
+         done
+         */
+
+         if (meetsRequirements && newClass.priority > activeClass.priority)
          {
             activeClass = newClass;
          }

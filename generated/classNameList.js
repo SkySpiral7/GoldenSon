@@ -43,36 +43,41 @@ function updateCombatType() {
 }
 
 function ClassListTable() {
-   //TODO: include djinn count requirements
-   if (undefined === database.classRequirements[classNameListState.element]) return '';
-   var nameList = database.classRequirements[classNameListState.element].names.map(function (name) {
-      return database.classRequirements[classNameListState.element][name];
-   }).filter(function (classReq) {
-      return classReq.combatType.contains(classNameListState.combatType);
+   if (undefined === database.classes.byRequirement[classNameListState.element]) return '';
+   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return '';
+   var classList = database.classes.byRequirement[classNameListState.element][classNameListState.combatType].map(function (myClass) {
+      return {
+         name: myClass.name,
+         requirements: myClass.requirements[classNameListState.element][classNameListState.combatType]
+      };
    });
-   nameList.sort(requirementSortOrder);
-   nameList = nameList.map(function (classReq) {
+   classList.sort(requirementSortOrder);
+   classList = classList.map(function (myClass) {
+      var counts = myClass.requirements;
       return React.createElement(
          'li',
-         { key: classReq.name },
-         JSON.stringify(classReq.djinnCount) + ' ' + classReq.name
+         { key: myClass.name },
+         JSON.stringify(counts) + ' ' + myClass.name
       );
    });
    return React.createElement(
       'ol',
       null,
-      nameList
+      classList
    );
 }
 
-function requirementSortOrder(req1, req2) {
-   if (req1.djinnCount.earth > req2.djinnCount.earth) return 1;else if (req1.djinnCount.earth < req2.djinnCount.earth) return -1;
+function requirementSortOrder(class1, class2) {
+   var req1 = class1.requirements;
+   var req2 = class2.requirements;
 
-   if (req1.djinnCount.fire > req2.djinnCount.fire) return 1;else if (req1.djinnCount.fire < req2.djinnCount.fire) return -1;
+   if (req1.earth > req2.earth) return 1;else if (req1.earth < req2.earth) return -1;
 
-   if (req1.djinnCount.wind > req2.djinnCount.wind) return 1;else if (req1.djinnCount.wind < req2.djinnCount.wind) return -1;
+   if (req1.fire > req2.fire) return 1;else if (req1.fire < req2.fire) return -1;
 
-   if (req1.djinnCount.ice > req2.djinnCount.ice) return 1;else if (req1.djinnCount.ice < req2.djinnCount.ice) return -1;
+   if (req1.wind > req2.wind) return 1;else if (req1.wind < req2.wind) return -1;
+
+   if (req1.ice > req2.ice) return 1;else if (req1.ice < req2.ice) return -1;
 
    if (req1.name > req2.name) return 1;else if (req1.name < req2.name) return -1;
 

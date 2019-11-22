@@ -33,15 +33,11 @@ function ClassCountTableRow(props)
    });
 }
 
-function countClasses(element, combatTypes)
+function countClasses(element, combatType)
 {
-   if (undefined === database.classRequirements[element]) return 0;
-   var count = 0;
-   for (var className of database.classRequirements[element].names)
-   {
-      if (database.classRequirements[element][className].combatType.contains(combatTypes)) ++count;
-   }
-   return count;
+   if (undefined === database.classes.byRequirement[element]) return 0;
+   if (undefined === database.classes.byRequirement[element][combatType]) return 0;
+   return database.classes.byRequirement[element][combatType].length;
 }
 
 ReactDOM.render(
