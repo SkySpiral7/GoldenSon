@@ -14,7 +14,7 @@ function ClassCountTable()
    {
       return (<tr key={'tr-' + name}>
          <td key={'vth-' + name}>{name}</td>
-         <ClassCountTableRow element={name}/>
+         <ClassCountTableRow element={name} />
       </tr>);
    });
    return (
@@ -41,6 +41,6 @@ function countClasses(element, combatType)
 }
 
 ReactDOM.render(
-   <ClassCountTable/>,
+   <ClassCountTable />,
    document.getElementById('classCountDiv')
 );

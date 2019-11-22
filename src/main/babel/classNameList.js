@@ -84,11 +84,11 @@ function renderClassList()
 {
    ReactDOM.render(
       (<div>
-         <ElementDropDown/>
+         <ElementDropDown />
          {' '}
-         <CombatTypeDropDown/>
-         <br/>
-         <ClassListTable/>
+         <CombatTypeDropDown />
+         <br />
+         <ClassListTable />
       </div>),
       document.getElementById('classNameListDiv')
    );

@@ -13,6 +13,6 @@ function BackgroundOptions()
 }
 
 ReactDOM.render(
-   <BackgroundOptions/>,
+   <BackgroundOptions />,
    document.getElementById('backgroundDiv')
 );

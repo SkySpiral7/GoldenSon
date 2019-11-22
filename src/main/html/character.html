@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8"/>
+   <meta charset="UTF-8" />
    <title>Golden Son</title>
    <!--convert these to prod versions later-->
    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -45,7 +45,7 @@
 </head>
 <body onload="updateAllFinalStats();">
 <h2>General</h2>
-<label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;"/></label><br/>
+<label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;" /></label><br />
 <label>Adept (Elemental Alignment):
    <select id="adept" onchange="updateAdept();">
       <option value="none">None</option>
@@ -56,26 +56,28 @@
       <option value="sun">Sol (Sun)</option>
       <option value="moon">Luna (Moon)</option>
    </select>
-</label><br/>
+</label><br />
 <label>Combat type:
    <select id="combatType" onchange="updateCombatType();">
       <option value="Warrior">Warrior</option>
       <option value="Mage">Mage</option>
       <option value="Rogue">Rogue</option>
    </select>
-</label><br/>
+</label><br />
 <label for="backgroundSelect">Background:</label>
 <div style="display:inline-block;" id="backgroundDiv"></div>
 <script src="../../../generated/background.js"></script>
-<br/>
-<label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();"/></label><br/>
+<br />
+<label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();" /></label><br />
 <h2>Base stats</h2>
-<label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0"/></label><br/>
-<label>PP: <input type="number" id="pp" onChange="updateBaseStat('pp')" value="0" min="0"/></label><br/>
-<label>Attack: <input type="number" id="attack" onChange="updateBaseStat('attack')" value="0" min="0"/></label><br/>
-<label>Defense: <input type="number" id="defense" onChange="updateBaseStat('defense')" value="0" min="0"/></label><br/>
-<label>Agility: <input type="number" id="agility" onChange="updateBaseStat('agility')" value="0" min="0"/></label><br/>
-<label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0"/></label><br/>
+<label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0" /></label><br />
+<label>PP: <input type="number" id="pp" onChange="updateBaseStat('pp')" value="0" min="0" /></label><br />
+<label>Attack: <input type="number" id="attack" onChange="updateBaseStat('attack')" value="0" min="0" /></label><br />
+<label>Defense: <input type="number" id="defense" onChange="updateBaseStat('defense')" value="0"
+                       min="0" /></label><br />
+<label>Agility: <input type="number" id="agility" onChange="updateBaseStat('agility')" value="0"
+                       min="0" /></label><br />
+<label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0" /></label><br />
 <h2>Djinn</h2>
 <div id="djinn"></div>
 <script src="../../../generated/djinn.js"></script>
@@ -83,25 +85,25 @@
 <div id="equipment"></div>
 <script src="../../../generated/equipment.js"></script>
 <h2>Final stats</h2>
-Class: <span id="class"></span><br/>
-HP: <span id="hp-final"></span><br/>
-PP: <span id="pp-final"></span><br/>
-Attack: <span id="attack-final"></span><br/>
-Defense: <span id="defense-final"></span><br/>
-Agility: <span id="agility-final"></span><br/>
-Luck: <span id="luck-final"></span><br/>
+Class: <span id="class"></span><br />
+HP: <span id="hp-final"></span><br />
+PP: <span id="pp-final"></span><br />
+Attack: <span id="attack-final"></span><br />
+Defense: <span id="defense-final"></span><br />
+Agility: <span id="agility-final"></span><br />
+Luck: <span id="luck-final"></span><br />
 <h2>Psynergy</h2>
 <div id="psynergy"></div>
 <script src="../../../generated/psynergy.js"></script>
-<br/><br/>
+<br /><br />
 <span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
                                  id="save-to-file-link">Save to File</a></span>
-<input type="button" value="Save To Text Area" onClick="saveToTextArea();" id="save-text-button"/>
-<br/>
-<input type="file" id="file-chooser" accept=".js,.json"/><br/>
-<input type="button" value="Load from File" onClick="loadFile();"/>
-<input type="button" value="Load from Text Area" onClick="loadFromTextArea();" id="load-text-button"/><br/>
-<br/>
+<input type="button" value="Save To Text Area" onClick="saveToTextArea();" id="save-text-button" />
+<br />
+<input type="file" id="file-chooser" accept=".js,.json" /><br />
+<input type="button" value="Load from File" onClick="loadFile();" />
+<input type="button" value="Load from Text Area" onClick="loadFromTextArea();" id="load-text-button" /><br />
+<br />
 <textarea id="code-box" rows="10" cols="50"></textarea>
 </body>
 </html>

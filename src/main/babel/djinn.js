@@ -13,16 +13,16 @@ function DjinnEntireList(props)
    return (
       <div>
          <h3>Venus (Earth)</h3>
-         <DjinnElementList names={namesByElement.earth} element="earth" display="Venus (Earth)"/>
+         <DjinnElementList names={namesByElement.earth} element="earth" display="Venus (Earth)" />
 
          <h3>Mars (Fire)</h3>
-         <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)"/>
+         <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)" />
 
          <h3>Jupiter (Wind)</h3>
-         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)"/>
+         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)" />
 
          <h3>Mercury (Ice)</h3>
-         <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)"/>
+         <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)" />
       </div>
    );
 }
@@ -62,7 +62,7 @@ function DjinnElementList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
-         <DjinnElementDropDown element={props.element} display={props.display}/>
+         <DjinnElementDropDown element={props.element} display={props.display} />
       </li>);
    }
    return (
@@ -92,7 +92,7 @@ function DjinnElementDropDown(props)
 function renderDjinn()
 {
    ReactDOM.render(
-      <DjinnEntireList names={character.djinn.names}/>,
+      <DjinnEntireList names={character.djinn.names} />,
       document.getElementById('djinn')
    );
 }

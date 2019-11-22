@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8"/>
+   <meta charset="UTF-8" />
    <title>Run tests</title>
    <script src="../javascript/database.js"></script>
    <script src="../javascript/main.js"></script>
@@ -20,17 +20,17 @@
 </head>
 <body onload="document.getElementById('command-text').focus();">
 <form action="javascript:void(0);">
-   <input type="text" value="TestRunner.testAll();" id="command-text"/>
-   <input type="submit" value="Execute" onClick="eval(document.getElementById('command-text').value);"/><br/>
+   <input type="text" value="TestRunner.testAll();" id="command-text" />
+   <input type="submit" value="Execute" onClick="eval(document.getElementById('command-text').value);" /><br />
 </form>
-<a href="javascript:TestRunner.testAll();">Run all tests</a><br/>
+<a href="javascript:TestRunner.testAll();">Run all tests</a><br />
 Hide tests that pass?
-<label>Yes: <input type="radio" name="hidePassed" onchange="TestConfig.hidePassed = true;"/></label>
-<label>No: <input type="radio" name="hidePassed" onchange="TestConfig.hidePassed = false;"/></label>
+<label>Yes: <input type="radio" name="hidePassed" onchange="TestConfig.hidePassed = true;" /></label>
+<label>No: <input type="radio" name="hidePassed" onchange="TestConfig.hidePassed = false;" /></label>
 <label>Only for testAll: <input type="radio" name="hidePassed" onchange="TestConfig.hidePassed = undefined;"
-                                checked="true"/></label>
-<br/><br/>
-<label for="testResults">Test Results:</label><br/>
+                                checked="true" /></label>
+<br /><br />
+<label for="testResults">Test Results:</label><br />
 <textarea id="testResults" rows="20" cols="100"></textarea>
 </body>
 </html>

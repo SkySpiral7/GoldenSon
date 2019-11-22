@@ -31,7 +31,7 @@ function EquipmentList(props)
 function renderEquipment()
 {
    ReactDOM.render(
-      <EquipmentList names={character.equipment}/>,
+      <EquipmentList names={character.equipment} />,
       document.getElementById('equipment')
    );
 }
