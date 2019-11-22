@@ -568,11 +568,31 @@ var database = {
          "statsMultiplier": {"hp": 2.1, "pp": 1.55, "attack": 1.55, "defense": 1.6, "agility": 1.3, "luck": 1.3},
          "psynergy": []
       },
-      "Ice Rogue 1": {"priority": 0, "statsMultiplier": {}, "psynergy": []},
-      "Ice Rogue 2": {"priority": 2, "statsMultiplier": {}, "psynergy": []},
-      "Ice Rogue 3": {"priority": 4, "statsMultiplier": {}, "psynergy": []},
-      "Ice Rogue 4": {"priority": 6, "statsMultiplier": {}, "psynergy": []},
-      "Ice Rogue 5": {"priority": 8, "statsMultiplier": {}, "psynergy": []},
+      "Ice Rogue 1": {
+         "priority": 0,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Ice Rogue 2": {
+         "priority": 2,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Ice Rogue 3": {
+         "priority": 4,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Ice Rogue 4": {
+         "priority": 6,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Ice Rogue 5": {
+         "priority": 8,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
       "Mariner": {
          "priority": 0,
          "statsMultiplier": {"hp": 1.15, "pp": 0.9, "attack": 1.05, "defense": 1.05, "agility": 0.95, "luck": 1},
@@ -793,16 +813,56 @@ var database = {
          "statsMultiplier": {"hp": 1.6, "pp": 1.65, "attack": 1.25, "defense": 1.3, "agility": 1.65, "luck": 1},
          "psynergy": []
       },
-      "Wind Rogue 1": {"priority": 0, "statsMultiplier": {}, "psynergy": []},
-      "Wind Rogue 2": {"priority": 2, "statsMultiplier": {}, "psynergy": []},
-      "Wind Rogue 3": {"priority": 4, "statsMultiplier": {}, "psynergy": []},
-      "Wind Rogue 4": {"priority": 6, "statsMultiplier": {}, "psynergy": []},
-      "Wind Rogue 5": {"priority": 8, "statsMultiplier": {}, "psynergy": []},
-      "Wind Warrior 1": {"priority": 0, "statsMultiplier": {}, "psynergy": []},
-      "Wind Warrior 2": {"priority": 2, "statsMultiplier": {}, "psynergy": []},
-      "Wind Warrior 3": {"priority": 4, "statsMultiplier": {}, "psynergy": []},
-      "Wind Warrior 4": {"priority": 6, "statsMultiplier": {}, "psynergy": []},
-      "Wind Warrior 5": {"priority": 8, "statsMultiplier": {}, "psynergy": []},
+      "Wind Rogue 1": {
+         "priority": 0,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Rogue 2": {
+         "priority": 2,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Rogue 3": {
+         "priority": 4,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Rogue 4": {
+         "priority": 6,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Rogue 5": {
+         "priority": 8,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Warrior 1": {
+         "priority": 0,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Warrior 2": {
+         "priority": 2,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Warrior 3": {
+         "priority": 4,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Warrior 4": {
+         "priority": 6,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
+      "Wind Warrior 5": {
+         "priority": 8,
+         "statsMultiplier": {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
+         "psynergy": []
+      },
       "Zealot": {
          "priority": 5,
          "statsMultiplier": {"hp": 1.35, "pp": 1.7, "attack": 1.2, "defense": 1.15, "agility": 1.45, "luck": 0.8},

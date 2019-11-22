@@ -7,18 +7,6 @@ TestSuite.database.integrityForClasses = async function (testState = {})
 
    try
    {
-      var keys = Object.keys(database.classes);
-      keys.removeByValue('names');
-      keys.sort();
-      assertions.push({Expected: keys, Actual: database.classes.names, Description: 'All classes are in names'});
-   }
-   catch (e)
-   {
-      assertions.push({Error: e, Description: 'All classes are in names'});
-   }
-
-   try
-   {
       for (var name of database.classes.names)
       {
          var isInEarth = (undefined !== database.classRequirements.earth[name]);
@@ -43,22 +31,6 @@ TestSuite.database.integrityForClassRequirements = async function (testState = {
 
    function classRequirementsForElement(element)
    {
-      try
-      {
-         var keys = Object.keys(database.classRequirements[element]);
-         keys.removeByValue('names');
-         keys.sort();
-         assertions.push({
-            Expected: keys,
-            Actual: database.classRequirements[element].names,
-            Description: 'All ' + element + ' classRequirements are in names'
-         });
-      }
-      catch (e)
-      {
-         assertions.push({Error: e, Description: 'All ' + element + ' classRequirements are in names'});
-      }
-
       try
       {
          for (className of database.classRequirements[element].names)
