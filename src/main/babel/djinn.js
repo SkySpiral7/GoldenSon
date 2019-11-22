@@ -1,11 +1,13 @@
 'use strict';
 
 /**props: names*/
-function DjinnEntireList(props) {
+function DjinnEntireList(props)
+{
    const givenNames = JSON.clone(props.names);
    givenNames.sort(djinnNameSortOrder);
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
-   givenNames.forEach((name) => {
+   givenNames.forEach((name) =>
+   {
       const djinn = database.djinn[name];
       namesByElement[djinn.element].push(name);
    });
@@ -27,10 +29,12 @@ function DjinnEntireList(props) {
 }
 
 /**props: names, element, display*/
-function DjinnElementList(props) {
+function DjinnElementList(props)
+{
    const givenNames = props.names;
    givenNames.sort(djinnNameSortOrder);
-   const listItems = givenNames.map((name) => {
+   const listItems = givenNames.map((name) =>
+   {
       var djinn = database.djinn[name];
       /*
       Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
@@ -50,13 +54,16 @@ function DjinnElementList(props) {
    });
    const options = database.djinn.names
    .filter((name) => !character.djinn.names.contains(name))
-   .filter((name) => {
+   .filter((name) =>
+   {
       var djinn = database.djinn[name];
       return djinn.element === props.element;
-   }).map((name) =>
+   })
+   .map((name) =>
       <option key={name}>{name}</option>
    );
-   if (0 !== options.length) {
+   if (0 !== options.length)
+   {
       listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
          <DjinnElementDropDown element={props.element} display={props.display}/>
       </li>);
@@ -67,14 +74,16 @@ function DjinnElementList(props) {
 }
 
 /**props: element, display*/
-function DjinnElementDropDown(props) {
+function DjinnElementDropDown(props)
+{
    const options = database.djinn.names
-      .filter((name) => database.djinn[name].element === props.element)
-      .filter((name) => !character.djinn.names.contains(name))
-      .map((name) =>
-         <option key={name}>{name}</option>
-      );
-   if (0 !== options.length) {
+   .filter((name) => database.djinn[name].element === props.element)
+   .filter((name) => !character.djinn.names.contains(name))
+   .map((name) =>
+      <option key={name}>{name}</option>
+   );
+   if (0 !== options.length)
+   {
       return (<select onChange={addDjinn}>
          <option>Add {props.display} Djinn...</option>
          {options}
@@ -83,7 +92,8 @@ function DjinnElementDropDown(props) {
    return '';
 }
 
-function renderDjinn() {
+function renderDjinn()
+{
    ReactDOM.render(
       <DjinnEntireList names={character.djinn.names}/>,
       document.getElementById('djinn')

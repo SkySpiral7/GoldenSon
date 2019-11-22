@@ -1,20 +1,24 @@
 'use strict';
 
-function saveToFile() {
+function saveToFile()
+{
    var link = document.getElementById('save-to-file-link');
    link.download = document.getElementById('name').value + '.json';
    link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(saveAsString());
 }
 
-function saveAsString() {
+function saveAsString()
+{
    return JSON.stringify(save());
 }
 
-function saveToTextArea() {
+function saveToTextArea()
+{
    document.getElementById('code-box').value = saveAsString();
 }
 
-function save() {
+function save()
+{
    var jsonDoc = {stats: {}};
    //gameVersion, parserVersion are ignored until there is reason to use them
    //gameVersion, parserVersion are strings to support possible future semantic versioning
@@ -36,30 +40,33 @@ function save() {
    return jsonDoc;
 }
 
-function loadFile() {
+function loadFile()
+{
    var filePath = document.getElementById('file-chooser').files[0];
    if (undefined === filePath || null === filePath) return;  //no file to load
    var oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
    oFReader.readAsText(filePath);
-   oFReader.onload = function (oFREvent) {
-      loadFromString(oFREvent.target.result);
-   };
+   oFReader.onload = function (oFREvent) {loadFromString(oFREvent.target.result);};
 }
 
-function loadFromTextArea() {
+function loadFromTextArea()
+{
    loadFromString(document.getElementById('code-box').value);
 }
 
-function loadFromString(fileString) {
+function loadFromString(fileString)
+{
    fileString = fileString.trim();
    if ('' === fileString) return;  //ignore
 
    var jsonDoc;
-   try {
+   try
+   {
       jsonDoc = JSON.parse(fileString);
       document.getElementById('code-box').value = '';
    }
-   catch (e) {
+   catch (e)
+   {
       alert('A parsing error has occurred. The document you provided is not legal JSON.\n\n' + e);
       //yeah I know the error message is completely unhelpful but there's nothing more I can do
       throw e;  //stop the process and cause a console.error
@@ -68,7 +75,8 @@ function loadFromString(fileString) {
    load(jsonDoc);
 }
 
-function load(jsonDoc) {
+function load(jsonDoc)
+{
    character.stats = {
       base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
       addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
@@ -77,7 +85,8 @@ function load(jsonDoc) {
    };
    //gameVersion, parserVersion are ignored until there is reason to use them
    document.getElementById('name').value = character.name = jsonDoc.name;
-   if (null === jsonDoc.adept) {
+   if (null === jsonDoc.adept)
+   {
       document.getElementById('adept').value = 'none';
       character.adept = null;
    }
@@ -104,11 +113,13 @@ function load(jsonDoc) {
    character.equipment = jsonDoc.equipment;
 
    var i;
-   for (i = 0; i < character.djinn.names.length; ++i) {
+   for (i = 0; i < character.djinn.names.length; ++i)
+   {
       var djinnName = character.djinn.names[i];
       updateDjinn(djinnName, character.djinn.state[djinnName], 'remove');
    }
-   for (i = 0; i < character.equipment.length; ++i) {
+   for (i = 0; i < character.equipment.length; ++i)
+   {
       var equipment = database.equipment[character.equipment[i]];
       character.stats.addend.hp += equipment.statsAddend.hp;
       character.stats.addend.pp += equipment.statsAddend.pp;
@@ -120,12 +131,14 @@ function load(jsonDoc) {
    updateAllFinalStats();
 }
 
-function updateLevel() {
+function updateLevel()
+{
    character.level = Number.parseInt(document.getElementById('level').value);
    updatePsynergy();
 }
 
-function updateAdept() {
+function updateAdept()
+{
    /*
    var equipment = database.adeptTypes[character.adept];
    character.stats.addend.hp -= equipment.statsAddend.hp;
@@ -150,34 +163,41 @@ function updateAdept() {
    updateAllFinalStats();
 }
 
-function updateBackground() {
+function updateBackground()
+{
    character.background = document.getElementById('backgroundSelect').value;
 }
 
-function updateCombatType() {
+function updateCombatType()
+{
    character.combatType = document.getElementById('combatType').value;
    updateAllFinalStats();
 }
 
-function updateBaseStat(stat) {
+function updateBaseStat(stat)
+{
    character.stats.base[stat] = Number.parseInt(document.getElementById(stat).value);
    updateFinalStat(stat);
 }
 
-function updateFinalStat(stat) {
+function updateFinalStat(stat)
+{
    character.stats.final[stat] = (character.stats.base[stat] + character.stats.addend[stat]) * character.stats.multiplier[stat];
    document.getElementById(stat + '-final').innerHTML = '' + Math.round(character.stats.final[stat]);
 }
 
-function determineClass(adept, combatType, djinnCount) {
+function determineClass(adept, combatType, djinnCount)
+{
    var activeClass = {
       name: null,
       priority: -Infinity,
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       psynergy: []
    };
-   if (null !== adept) {
-      for (var i = 0; i < database.classRequirements[adept].names.length; ++i) {
+   if (null !== adept)
+   {
+      for (var i = 0; i < database.classRequirements[adept].names.length; ++i)
+      {
          var className = database.classRequirements[adept].names[i];
          var newClass = database.classes[className];
          var requirementsInQuestion = database.classRequirements[adept][className];
@@ -192,7 +212,8 @@ function determineClass(adept, combatType, djinnCount) {
          var meetsRequirements = (hasMatchingCombatType && hasEnoughDjinnEquipped);
 
          if (meetsRequirements &&
-            newClass.priority > activeClass.priority) {
+            newClass.priority > activeClass.priority)
+         {
             activeClass = newClass;
          }
       }
@@ -200,7 +221,8 @@ function determineClass(adept, combatType, djinnCount) {
    return activeClass;
 }
 
-function updateClass() {
+function updateClass()
+{
    var activeClass = determineClass(character.adept, character.combatType, character.djinn.counts);
    character.activeClass = activeClass.name;
    character.stats.multiplier.hp = activeClass.statsMultiplier.hp;
@@ -214,14 +236,18 @@ function updateClass() {
    else document.getElementById('class').innerHTML = '' + activeClass.name;
 }
 
-function updatePsynergy() {
-   if (null !== character.activeClass) {
+function updatePsynergy()
+{
+   if (null !== character.activeClass)
+   {
       var activeClass = database.classes[character.activeClass];
       character.psynergy = [];
       //if (undefined === activeClass) return;  //should only be when class is none
-      for (var i = 0; i < activeClass.psynergy.length; ++i) {
+      for (var i = 0; i < activeClass.psynergy.length; ++i)
+      {
          var psynergy = activeClass.psynergy[i];
-         if (character.level >= psynergy.level) {
+         if (character.level >= psynergy.level)
+         {
             character.psynergy.push(psynergy.name);
          }
       }
@@ -229,7 +255,8 @@ function updatePsynergy() {
    renderPsynergy();
 }
 
-function updateAllFinalStats() {
+function updateAllFinalStats()
+{
    renderDjinn();
    renderEquipment();
    updateClass();
@@ -242,7 +269,8 @@ function updateAllFinalStats() {
    updateFinalStat('luck');
 }
 
-function addDjinn(onClickEvent) {
+function addDjinn(onClickEvent)
+{
    var newName = onClickEvent.target.value;
    var djinn = database.djinn[newName];
    character.djinn.names.push(newName);
@@ -260,16 +288,19 @@ function addDjinn(onClickEvent) {
    updateAllFinalStats();
 }
 
-function onChangeUpdateDjinn(onClickEvent) {
+function onChangeUpdateDjinn(onClickEvent)
+{
    var djinnName = onClickEvent.target.parentNode.dataset.name;
    var action = onClickEvent.target.value;
    updateDjinn(djinnName, action, character.djinn.state[djinnName]);
 }
 
-function updateDjinn(djinnName, action, previousState) {
+function updateDjinn(djinnName, action, previousState)
+{
    var djinn = database.djinn[djinnName];
 
-   if ('set' === previousState) {
+   if ('set' === previousState)
+   {
       character.stats.addend.hp -= djinn.statsAddend.hp;
       character.stats.addend.pp -= djinn.statsAddend.pp;
       character.stats.addend.attack -= djinn.statsAddend.attack;
@@ -278,7 +309,8 @@ function updateDjinn(djinnName, action, previousState) {
       character.stats.addend.luck -= djinn.statsAddend.luck;
       --character.djinn.counts[djinn.element];
    }
-   else if ('set' === action) {
+   else if ('set' === action)
+   {
       character.stats.addend.hp += djinn.statsAddend.hp;
       character.stats.addend.pp += djinn.statsAddend.pp;
       character.stats.addend.attack += djinn.statsAddend.attack;
@@ -293,10 +325,12 @@ function updateDjinn(djinnName, action, previousState) {
    //previous remove is only possible when loading
    if ('remove' !== previousState) character.djinn[previousState].removeByValue(djinnName);
 
-   if ('remove' === action) {
+   if ('remove' === action)
+   {
       character.djinn.names.removeByValue(djinnName);
    }
-   else {
+   else
+   {
       character.djinn.state[djinnName] = action;
       character.djinn[action].push(djinnName);
    }
@@ -304,7 +338,8 @@ function updateDjinn(djinnName, action, previousState) {
    updateAllFinalStats();
 }
 
-function addEquipment(onClickEvent) {
+function addEquipment(onClickEvent)
+{
    var newName = onClickEvent.target.value;
    var equipment = database.equipment[newName];
    character.equipment.push(newName);
@@ -319,7 +354,8 @@ function addEquipment(onClickEvent) {
    updateAllFinalStats();
 }
 
-function removeEquipment(onClickEvent) {
+function removeEquipment(onClickEvent)
+{
    var oldName = onClickEvent.target.parentNode.dataset.name;
    var equipment = database.equipment[oldName];
    character.equipment.removeByValue(oldName);
@@ -334,22 +370,17 @@ function removeEquipment(onClickEvent) {
    updateAllFinalStats();
 }
 
-function djinnNameSortOrder(name1, name2) {
+function djinnNameSortOrder(name1, name2)
+{
    var djinn1 = database.djinn[name1];
    var djinn2 = database.djinn[name2];
 
    //element alphabetic is: earth, fire, ice, wind
-   if (djinn1.element > djinn2.element) {
-      return 1;
-   } else if (djinn1.element < djinn2.element) {
-      return -1;
-   }
+   if (djinn1.element > djinn2.element) return 1;
+   else if (djinn1.element < djinn2.element) return -1;
 
-   if (name1 > name2) {
-      return 1;
-   } else if (name1 < name2) {
-      return -1;
-   }
+   if (name1 > name2) return 1;
+   else if (name1 < name2) return -1;
 
    return 0;
 }

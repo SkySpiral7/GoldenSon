@@ -73,7 +73,8 @@ var database = {
          "name": "Academic",
          "statsAddend": {"hp": 10, "pp": 15, "attack": 0, "defense": 0, "agility": 3, "luck": 3}
       },
-      "names": ["Academic", "Apothecary", "Artist", "Craftsman", "Farmer", "Guard", "Healer", "Pirate", "Sage", "Sailor", "Seer", "Shaman", "Thief"]
+      "names": ["Academic", "Apothecary", "Artist", "Craftsman", "Farmer", "Guard", "Healer", "Pirate", "Sage",
+         "Sailor", "Seer", "Shaman", "Thief"]
    },
    combatTypes: {
       "Warrior": {
@@ -87,7 +88,8 @@ var database = {
       },
       "names": ["Mage", "Rogue", "Warrior"]
    },
-   //class priority is currently equal to the total required djinn count (all adepts have same total). assumes that there's no conflict
+   //class priority is currently equal to the total required djinn count (all adepts have same total). assumes that
+   // there's no conflict
    classes: {
       "Apostate": {
          "name": "Apostate",
@@ -1010,7 +1012,26 @@ var database = {
          "statsMultiplier": {"hp": 1.35, "pp": 1.7, "attack": 1.2, "defense": 1.15, "agility": 1.45, "luck": 0.8},
          "psynergy": []
       },
-      "names": ["Acolyte", "Admiral", "Angel", "Apostate", "Apprentice", "Arcanist", "Archmage", "Archon", "Armed", "Ascetic", "Augur", "Avenger", "Baron", "Berserker", "Black Knight", "Bolt User", "Brute", "Cannoneer", "Captain", "Channeler", "Chaos Lord", "Clairvoyant", "Cleric", "Commander", "Conqueror", "Corsair", "Counselor", "Cultist", "Defender", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Druid", "Duelist", "Elementalist", "Enlightened", "Explorer", "Fair", "Fanatic", "Fated", "Fateweaver", "Fearless", "Fire Master", "Flame User", "Fury", "Gallant", "General", "Globetrotter", "Guard", "Guardian", "Guru", "Haruspex", "Healer", "Herald", "Herbalist", "Heretic", "Hex", "High Priestess", "Holy Knight", "Hull Reaver", "Ice Rogue 1", "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4", "Ice Rogue 5", "Illusionist", "Incantatrix", "Incendiary", "Infidel", "Inquisitor", "Jonin", "Knave", "Knight", "Leader", "Lord", "Luminier", "Magician", "Mariner", "Master Priestess", "Monk", "Mystic Knight", "Mystic Priestess", "Naturalist", "Ninja", "Officiant", "Oracle", "Outlaw", "Page", "Paladin", "Paragon", "Phalanx", "Pirate", "Pirate King", "Practicant", "Priestess", "Privateer", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Pupil", "Pure Mage", "Radiant", "Radiant Priestess", "Red Mage", "Renegade", "Researcher", "Righteous", "Rogue", "Ruffian", "Saint", "Saint Knight", "Samurai", "Savage", "Savant", "Scholar", "Sea Lord", "Seafarer", "Seer", "Shaman", "Shinobi", "Shogun", "Shugenja", "Soldier", "Sorcerer", "Sovereign", "Spellblade", "Squire", "Star Knight", "Strategist", "Student", "Sun Champion", "Swordsman", "Templar", "Thaumaturge", "Therapist", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Virtuous", "Warden", "Warlord", "Warrior", "Water User", "Waverider", "White Knight", "White Mage", "Wild Mage", "Wind Rogue 1", "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5", "Wind Warrior 1", "Wind Warrior 2", "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Windrider", "Wise", "Witch", "Worldwaker", "Yamabushi", "Zealot"]
+      "names": ["Acolyte", "Admiral", "Angel", "Apostate", "Apprentice", "Arcanist", "Archmage", "Archon", "Armed",
+         "Ascetic", "Augur", "Avenger", "Baron", "Berserker", "Black Knight", "Bolt User", "Brute", "Cannoneer",
+         "Captain", "Channeler", "Chaos Lord", "Clairvoyant", "Cleric", "Commander", "Conqueror", "Corsair",
+         "Counselor", "Cultist", "Defender", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Druid", "Duelist",
+         "Elementalist", "Enlightened", "Explorer", "Fair", "Fanatic", "Fated", "Fateweaver", "Fearless", "Fire Master",
+         "Flame User", "Fury", "Gallant", "General", "Globetrotter", "Guard", "Guardian", "Guru", "Haruspex", "Healer",
+         "Herald", "Herbalist", "Heretic", "Hex", "High Priestess", "Holy Knight", "Hull Reaver", "Ice Rogue 1",
+         "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4", "Ice Rogue 5", "Illusionist", "Incantatrix", "Incendiary",
+         "Infidel", "Inquisitor", "Jonin", "Knave", "Knight", "Leader", "Lord", "Luminier", "Magician", "Mariner",
+         "Master Priestess", "Monk", "Mystic Knight", "Mystic Priestess", "Naturalist", "Ninja", "Officiant", "Oracle",
+         "Outlaw", "Page", "Paladin", "Paragon", "Phalanx", "Pirate", "Pirate King", "Practicant", "Priestess",
+         "Privateer", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Pupil", "Pure Mage", "Radiant",
+         "Radiant Priestess", "Red Mage", "Renegade", "Researcher", "Righteous", "Rogue", "Ruffian", "Saint",
+         "Saint Knight", "Samurai", "Savage", "Savant", "Scholar", "Sea Lord", "Seafarer", "Seer", "Shaman", "Shinobi",
+         "Shogun", "Shugenja", "Soldier", "Sorcerer", "Sovereign", "Spellblade", "Squire", "Star Knight", "Strategist",
+         "Student", "Sun Champion", "Swordsman", "Templar", "Thaumaturge", "Therapist", "Valiant", "Valkyrie",
+         "Vanguard", "Veteran", "Virtuous", "Warden", "Warlord", "Warrior", "Water User", "Waverider", "White Knight",
+         "White Mage", "Wild Mage", "Wind Rogue 1", "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5",
+         "Wind Warrior 1", "Wind Warrior 2", "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Windrider", "Wise",
+         "Witch", "Worldwaker", "Yamabushi", "Zealot"]
    },
    classRequirements: {
       "earth": {
@@ -1079,7 +1100,13 @@ var database = {
             "combatType": ["Warrior", "Rogue"],
             "djinnCount": {"earth": 0, "fire": 3, "wind": 0, "ice": 3}
          },
-         "names": ["Apostate", "Apprentice", "Berserker", "Black Knight", "Brute", "Chaos Lord", "Conqueror", "Defender", "Duelist", "Fearless", "Gallant", "Guardian", "Heretic", "High Priestess", "Incantatrix", "Infidel", "Jonin", "Knave", "Knight", "Leader", "Lord", "Master Priestess", "Mystic Priestess", "Ninja", "Outlaw", "Paladin", "Paragon", "Practicant", "Priestess", "Protector", "Psionicist", "Psy Champion", "Psy Knight", "Radiant Priestess", "Red Mage", "Rogue", "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun", "Sovereign", "Spellblade", "Squire", "Swordsman", "Templar", "Valiant", "Valkyrie", "Vanguard", "Veteran", "Warden", "Warlord", "White Knight"]
+         "names": ["Apostate", "Apprentice", "Berserker", "Black Knight", "Brute", "Chaos Lord", "Conqueror",
+            "Defender", "Duelist", "Fearless", "Gallant", "Guardian", "Heretic", "High Priestess", "Incantatrix",
+            "Infidel", "Jonin", "Knave", "Knight", "Leader", "Lord", "Master Priestess", "Mystic Priestess", "Ninja",
+            "Outlaw", "Paladin", "Paragon", "Practicant", "Priestess", "Protector", "Psionicist", "Psy Champion",
+            "Psy Knight", "Radiant Priestess", "Red Mage", "Rogue", "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun",
+            "Sovereign", "Spellblade", "Squire", "Swordsman", "Templar", "Valiant", "Valkyrie", "Vanguard", "Veteran",
+            "Warden", "Warlord", "White Knight"]
       },
       "fire": {
          "Apostate": {"combatType": ["Mage"], "djinnCount": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}},
@@ -1150,7 +1177,12 @@ var database = {
             "djinnCount": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}
          },
          "Witch": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "names": ["Apostate", "Armed", "Baron", "Berserker", "Black Knight", "Brute", "Cannoneer", "Chaos Lord", "Corsair", "Duelist", "Fair", "Fated", "Fire Master", "Flame User", "Guard", "Guardian", "Heretic", "Hex", "Hull Reaver", "Incantatrix", "Incendiary", "Infidel", "Jonin", "Leader", "Luminier", "Mystic Knight", "Ninja", "Page", "Paladin", "Phalanx", "Pirate", "Pirate King", "Pupil", "Radiant", "Red Mage", "Righteous", "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun", "Soldier", "Star Knight", "Sun Champion", "Templar", "Valkyrie", "Vanguard", "Virtuous", "Warden", "Warlord", "Warrior", "White Knight", "Witch"]
+         "names": ["Apostate", "Armed", "Baron", "Berserker", "Black Knight", "Brute", "Cannoneer", "Chaos Lord",
+            "Corsair", "Duelist", "Fair", "Fated", "Fire Master", "Flame User", "Guard", "Guardian", "Heretic", "Hex",
+            "Hull Reaver", "Incantatrix", "Incendiary", "Infidel", "Jonin", "Leader", "Luminier", "Mystic Knight",
+            "Ninja", "Page", "Paladin", "Phalanx", "Pirate", "Pirate King", "Pupil", "Radiant", "Red Mage", "Righteous",
+            "Ruffian", "Samurai", "Savage", "Shinobi", "Shogun", "Soldier", "Star Knight", "Sun Champion", "Templar",
+            "Valkyrie", "Vanguard", "Virtuous", "Warden", "Warlord", "Warrior", "White Knight", "Witch"]
       },
       "wind": {
          "Acolyte": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
@@ -1212,7 +1244,13 @@ var database = {
          "Wise": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 6, "ice": 1}},
          "Worldwaker": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 0, "ice": 4}},
          "Zealot": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}},
-         "names": ["Acolyte", "Arcanist", "Archmage", "Archon", "Augur", "Avenger", "Bolt User", "Channeler", "Clairvoyant", "Counselor", "Cultist", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Elementalist", "Fanatic", "Fateweaver", "Fury", "General", "Haruspex", "Herald", "Holy Knight", "Illusionist", "Inquisitor", "Magician", "Oracle", "Pure Mage", "Renegade", "Researcher", "Saint Knight", "Savant", "Scholar", "Seer", "Shaman", "Sorcerer", "Strategist", "Student", "White Mage", "Wild Mage", "Wind Rogue 1", "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5", "Wind Warrior 1", "Wind Warrior 2", "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Wise", "Worldwaker", "Zealot"]
+         "names": ["Acolyte", "Arcanist", "Archmage", "Archon", "Augur", "Avenger", "Bolt User", "Channeler",
+            "Clairvoyant", "Counselor", "Cultist", "Destroyer", "Disciple", "Divine Mage", "Diviner", "Elementalist",
+            "Fanatic", "Fateweaver", "Fury", "General", "Haruspex", "Herald", "Holy Knight", "Illusionist",
+            "Inquisitor", "Magician", "Oracle", "Pure Mage", "Renegade", "Researcher", "Saint Knight", "Savant",
+            "Scholar", "Seer", "Shaman", "Sorcerer", "Strategist", "Student", "White Mage", "Wild Mage", "Wind Rogue 1",
+            "Wind Rogue 2", "Wind Rogue 3", "Wind Rogue 4", "Wind Rogue 5", "Wind Warrior 1", "Wind Warrior 2",
+            "Wind Warrior 3", "Wind Warrior 4", "Wind Warrior 5", "Wise", "Worldwaker", "Zealot"]
       },
       "ice": {
          "Admiral": {"combatType": ["Warrior"], "djinnCount": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}},
@@ -1295,7 +1333,15 @@ var database = {
          "Wise": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 0, "wind": 1, "ice": 6}},
          "Worldwaker": {"combatType": ["Mage"], "djinnCount": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
          "Yamabushi": {"combatType": ["Mage"], "djinnCount": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}},
-         "names": ["Admiral", "Angel", "Arcanist", "Archon", "Armed", "Ascetic", "Avenger", "Captain", "Channeler", "Cleric", "Commander", "Counselor", "Defender", "Destroyer", "Divine Mage", "Druid", "Elementalist", "Enlightened", "Explorer", "Fair", "Fateweaver", "Fearless", "Fury", "General", "Globetrotter", "Guru", "Healer", "Herald", "Herbalist", "Holy Knight", "Ice Rogue 1", "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4", "Ice Rogue 5", "Luminier", "Mariner", "Monk", "Naturalist", "Officiant", "Paragon", "Privateer", "Protector", "Pure Mage", "Radiant", "Renegade", "Researcher", "Righteous", "Saint", "Saint Knight", "Savant", "Scholar", "Sea Lord", "Seafarer", "Shaman", "Shugenja", "Strategist", "Student", "Swordsman", "Thaumaturge", "Therapist", "Valiant", "Virtuous", "Water User", "Waverider", "White Mage", "Wild Mage", "Windrider", "Wise", "Worldwaker", "Yamabushi"]
+         "names": ["Admiral", "Angel", "Arcanist", "Archon", "Armed", "Ascetic", "Avenger", "Captain", "Channeler",
+            "Cleric", "Commander", "Counselor", "Defender", "Destroyer", "Divine Mage", "Druid", "Elementalist",
+            "Enlightened", "Explorer", "Fair", "Fateweaver", "Fearless", "Fury", "General", "Globetrotter", "Guru",
+            "Healer", "Herald", "Herbalist", "Holy Knight", "Ice Rogue 1", "Ice Rogue 2", "Ice Rogue 3", "Ice Rogue 4",
+            "Ice Rogue 5", "Luminier", "Mariner", "Monk", "Naturalist", "Officiant", "Paragon", "Privateer",
+            "Protector", "Pure Mage", "Radiant", "Renegade", "Researcher", "Righteous", "Saint", "Saint Knight",
+            "Savant", "Scholar", "Sea Lord", "Seafarer", "Shaman", "Shugenja", "Strategist", "Student", "Swordsman",
+            "Thaumaturge", "Therapist", "Valiant", "Virtuous", "Water User", "Waverider", "White Mage", "Wild Mage",
+            "Windrider", "Wise", "Worldwaker", "Yamabushi"]
       }
    },
    djinn: {

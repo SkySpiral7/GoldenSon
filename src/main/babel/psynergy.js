@@ -1,7 +1,9 @@
 'use strict';
 
-function PsynergyList(props) {
-   const listItems = props.names.map((name) => {
+function PsynergyList(props)
+{
+   const listItems = props.names.map((name) =>
+   {
       var psynergy = database.psynergy[name];
       return (<li key={'psynergy-' + name} id={'psynergy-' + name} data-name={name}>
          <b>{name}</b>{'. ' + psynergy.description}
@@ -13,7 +15,8 @@ function PsynergyList(props) {
    );
 }
 
-function renderPsynergy() {
+function renderPsynergy()
+{
    ReactDOM.render(
       <PsynergyList names={character.psynergy}/>,
       document.getElementById('psynergy')
