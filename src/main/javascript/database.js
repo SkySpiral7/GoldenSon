@@ -35,12 +35,16 @@ var database = {
       "Mage": {"statsAddend": {"hp": 5, "pp": 25, "attack": 0, "defense": 3, "agility": 4, "luck": 6}},
       "Rogue": {"statsAddend": {"hp": 10, "pp": 10, "attack": 1, "defense": 4, "agility": 6, "luck": 4}}
    },
-   //class priority is currently equal to the total required djinn count (all adepts have same total). assumes that
-   // there's no conflict
    classes: {
       "Apostate": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.85,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
@@ -48,8 +52,14 @@ var database = {
          }
       },
       "Apprentice": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 1, "pp": 1.15, "attack": 1.15, "defense": 1, "agility": 1.15, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1,
+            "pp": 1.15,
+            "attack": 1.15,
+            "defense": 1,
+            "agility": 1.15,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -59,8 +69,14 @@ var database = {
          }
       },
       "Berserker": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.65, "pp": 1.15, "attack": 1.5, "defense": 1.35, "agility": 1.35, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.65,
+            "pp": 1.15,
+            "attack": 1.5,
+            "defense": 1.35,
+            "agility": 1.35,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -74,8 +90,14 @@ var database = {
          }
       },
       "Black Knight": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.85, "pp": 1.25, "attack": 1.6, "defense": 1.45, "agility": 1.45, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.85,
+            "pp": 1.25,
+            "attack": 1.6,
+            "defense": 1.45,
+            "agility": 1.45,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -89,7 +111,6 @@ var database = {
          }
       },
       "Brute": {
-         "priority": 1,
          "statsMultiplier": {"hp": 1.15, "pp": 0.9, "attack": 1.2, "defense": 1.1, "agility": 1.1, "luck": 0.8},
          "psynergy": [],
          "requirements": {
@@ -104,8 +125,14 @@ var database = {
          }
       },
       "Chaos Lord": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2.05, "pp": 1.35, "attack": 1.7, "defense": 1.55, "agility": 1.55, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 2.05,
+            "pp": 1.35,
+            "attack": 1.7,
+            "defense": 1.55,
+            "agility": 1.55,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -119,14 +146,24 @@ var database = {
          }
       },
       "Conqueror": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.2, "attack": 1.55, "defense": 1.45, "agility": 1.5, "luck": 0.9},
-         "psynergy": [],
-         "requirements": {"earth": {"Rogue": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.2,
+            "attack": 1.55,
+            "defense": 1.45,
+            "agility": 1.5,
+            "luck": 0.9
+         }, "psynergy": [], "requirements": {"earth": {"Rogue": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Defender": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.15, "attack": 1.2, "defense": 1.25, "agility": 0.95, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.15,
+            "attack": 1.2,
+            "defense": 1.25,
+            "agility": 0.95,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -140,8 +177,14 @@ var database = {
          }
       },
       "Duelist": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.5, "attack": 1.4, "defense": 1.4, "agility": 1.35, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.5,
+            "attack": 1.4,
+            "defense": 1.4,
+            "agility": 1.35,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 3, "fire": 0, "wind": 0, "ice": 3}},
@@ -149,8 +192,14 @@ var database = {
          }
       },
       "Fearless": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.6, "pp": 1.3, "attack": 1.35, "defense": 1.4, "agility": 1.1, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.6,
+            "pp": 1.3,
+            "attack": 1.35,
+            "defense": 1.4,
+            "agility": 1.1,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -164,14 +213,19 @@ var database = {
          }
       },
       "Gallant": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.05, "attack": 1.3, "defense": 1.2, "agility": 1.3, "luck": 1},
          "psynergy": [],
          "requirements": {"earth": {"Warrior": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Guardian": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.85, "attack": 1.35, "defense": 1.4, "agility": 1.6, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.85,
+            "attack": 1.35,
+            "defense": 1.4,
+            "agility": 1.6,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
@@ -179,7 +233,6 @@ var database = {
          }
       },
       "Heretic": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.9, "attack": 1.4, "defense": 1.4, "agility": 1.7, "luck": 0.9},
          "psynergy": [],
          "requirements": {
@@ -188,14 +241,24 @@ var database = {
          }
       },
       "High Priestess": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 0.9, "pp": 1.6, "attack": 0.8, "defense": 1, "agility": 1.3, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"earth": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.9,
+            "pp": 1.6,
+            "attack": 0.8,
+            "defense": 1,
+            "agility": 1.3,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"earth": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Incantatrix": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.9, "attack": 1.35, "defense": 1.35, "agility": 1.7, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.9,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.7,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 5, "wind": 4, "ice": 0}},
@@ -203,8 +266,14 @@ var database = {
          }
       },
       "Infidel": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.25, "defense": 1.25, "agility": 1.55, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.75,
+            "attack": 1.25,
+            "defense": 1.25,
+            "agility": 1.55,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
@@ -212,7 +281,6 @@ var database = {
          }
       },
       "Jonin": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.7, "attack": 1.7, "defense": 1.4, "agility": 1.7, "luck": 0.9},
          "psynergy": [],
          "requirements": {
@@ -227,19 +295,16 @@ var database = {
          }
       },
       "Knave": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 0.9, "attack": 1.25, "defense": 1.15, "agility": 1.2, "luck": 0.9},
          "psynergy": [],
          "requirements": {"earth": {"Rogue": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Knight": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 0.95, "attack": 1.2, "defense": 1.1, "agility": 1.2, "luck": 1},
          "psynergy": [],
          "requirements": {"earth": {"Warrior": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Leader": {
-         "priority": 7,
          "statsMultiplier": {"hp": 1.8, "pp": 1.4, "attack": 1.5, "defense": 1.45, "agility": 1.5, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -254,32 +319,49 @@ var database = {
          }
       },
       "Lord": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1.7, "pp": 1.15, "attack": 1.4, "defense": 1.3, "agility": 1.4, "luck": 1},
          "psynergy": [],
          "requirements": {"earth": {"Warrior": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Master Priestess": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.1, "pp": 1.7, "attack": 0.9, "defense": 1.1, "agility": 1.4, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"earth": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.1,
+            "pp": 1.7,
+            "attack": 0.9,
+            "defense": 1.1,
+            "agility": 1.4,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"earth": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Priestess": {
-         "priority": 0,
-         "statsMultiplier": {"hp": 0.8, "pp": 1.5, "attack": 0.7, "defense": 0.9, "agility": 1.2, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"earth": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.8,
+            "pp": 1.5,
+            "attack": 0.7,
+            "defense": 0.9,
+            "agility": 1.2,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"earth": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Mystic Priestess": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.8, "attack": 1, "defense": 1.2, "agility": 1.5, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"earth": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.8,
+            "attack": 1,
+            "defense": 1.2,
+            "agility": 1.5,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"earth": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ninja": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.65, "attack": 1.65, "defense": 1.35, "agility": 1.65, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.65,
+            "attack": 1.65,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -293,14 +375,19 @@ var database = {
          }
       },
       "Outlaw": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1, "attack": 1.35, "defense": 1.25, "agility": 1.3, "luck": 0.9},
          "psynergy": [],
          "requirements": {"earth": {"Rogue": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Paladin": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2.05, "pp": 1.55, "attack": 1.6, "defense": 1.6, "agility": 1.3, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 2.05,
+            "pp": 1.55,
+            "attack": 1.6,
+            "defense": 1.6,
+            "agility": 1.3,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -314,8 +401,14 @@ var database = {
          }
       },
       "Paragon": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.8, "pp": 1.4, "attack": 1.45, "defense": 1.5, "agility": 1.2, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.8,
+            "pp": 1.4,
+            "attack": 1.45,
+            "defense": 1.5,
+            "agility": 1.2,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -329,8 +422,14 @@ var database = {
          }
       },
       "Practicant": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.2, "pp": 1.25, "attack": 1.25, "defense": 1.1, "agility": 1.25, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.2,
+            "pp": 1.25,
+            "attack": 1.25,
+            "defense": 1.1,
+            "agility": 1.25,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -340,8 +439,14 @@ var database = {
          }
       },
       "Protector": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2, "pp": 1.5, "attack": 1.55, "defense": 1.6, "agility": 1.3, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 2,
+            "pp": 1.5,
+            "attack": 1.55,
+            "defense": 1.6,
+            "agility": 1.3,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -355,8 +460,14 @@ var database = {
          }
       },
       "Psionicist": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.4, "pp": 1.35, "attack": 1.35, "defense": 1.2, "agility": 1.35, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.4,
+            "pp": 1.35,
+            "attack": 1.35,
+            "defense": 1.2,
+            "agility": 1.35,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -366,8 +477,14 @@ var database = {
          }
       },
       "Psy Champion": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.6, "attack": 1.6, "defense": 1.45, "agility": 1.6, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.6,
+            "attack": 1.6,
+            "defense": 1.45,
+            "agility": 1.6,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -377,8 +494,14 @@ var database = {
          }
       },
       "Psy Knight": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.5, "attack": 1.5, "defense": 1.35, "agility": 1.5, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.5,
+            "attack": 1.5,
+            "defense": 1.35,
+            "agility": 1.5,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -388,14 +511,24 @@ var database = {
          }
       },
       "Radiant Priestess": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.9, "attack": 1.1, "defense": 1.3, "agility": 1.6, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"earth": {"Mage": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.9,
+            "attack": 1.1,
+            "defense": 1.3,
+            "agility": 1.6,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"earth": {"Mage": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Red Mage": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.8, "attack": 1.25, "defense": 1.25, "agility": 1.6, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.8,
+            "attack": 1.25,
+            "defense": 1.25,
+            "agility": 1.6,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
@@ -403,13 +536,11 @@ var database = {
          }
       },
       "Rogue": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.8, "attack": 1.15, "defense": 1.05, "agility": 1.1, "luck": 0.9},
          "psynergy": [],
          "requirements": {"earth": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ruffian": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.35, "pp": 1, "attack": 1.3, "defense": 1.2, "agility": 1.2, "luck": 0.8},
          "psynergy": [],
          "requirements": {
@@ -424,8 +555,14 @@ var database = {
          }
       },
       "Samurai": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.35, "attack": 1.55, "defense": 1.5, "agility": 1.55, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.35,
+            "attack": 1.55,
+            "defense": 1.5,
+            "agility": 1.55,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -439,7 +576,6 @@ var database = {
          }
       },
       "Savage": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.55, "pp": 1.1, "attack": 1.4, "defense": 1.3, "agility": 1.3, "luck": 0.8},
          "psynergy": [],
          "requirements": {
@@ -454,8 +590,14 @@ var database = {
          }
       },
       "Shinobi": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.55, "attack": 1.55, "defense": 1.25, "agility": 1.55, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.55,
+            "attack": 1.55,
+            "defense": 1.25,
+            "agility": 1.55,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -469,8 +611,14 @@ var database = {
          }
       },
       "Shogun": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2.1, "pp": 1.45, "attack": 1.65, "defense": 1.6, "agility": 1.65, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 2.1,
+            "pp": 1.45,
+            "attack": 1.65,
+            "defense": 1.6,
+            "agility": 1.65,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -484,14 +632,24 @@ var database = {
          }
       },
       "Sovereign": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.25, "attack": 1.5, "defense": 1.4, "agility": 1.5, "luck": 1},
-         "psynergy": [],
-         "requirements": {"earth": {"Warrior": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.25,
+            "attack": 1.5,
+            "defense": 1.4,
+            "agility": 1.5,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"earth": {"Warrior": {"earth": 8, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Spellblade": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.4, "attack": 1.4, "defense": 1.25, "agility": 1.4, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.4,
+            "attack": 1.4,
+            "defense": 1.25,
+            "agility": 1.4,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -501,14 +659,19 @@ var database = {
          }
       },
       "Squire": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.85, "attack": 1.1, "defense": 1, "agility": 1.1, "luck": 1},
          "psynergy": [],
          "requirements": {"earth": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Swordsman": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 1.1, "pp": 1.05, "attack": 1.1, "defense": 1.15, "agility": 0.85, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.1,
+            "pp": 1.05,
+            "attack": 1.1,
+            "defense": 1.15,
+            "agility": 0.85,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -522,8 +685,14 @@ var database = {
          }
       },
       "Templar": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.95, "pp": 1.5, "attack": 1.55, "defense": 1.55, "agility": 1.25, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.95,
+            "pp": 1.5,
+            "attack": 1.55,
+            "defense": 1.55,
+            "agility": 1.25,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -537,8 +706,14 @@ var database = {
          }
       },
       "Valiant": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.25, "attack": 1.3, "defense": 1.35, "agility": 1.05, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.25,
+            "attack": 1.3,
+            "defense": 1.35,
+            "agility": 1.05,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -552,8 +727,14 @@ var database = {
          }
       },
       "Valkyrie": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.85, "pp": 1.65, "attack": 1.55, "defense": 1.55, "agility": 1.5, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.85,
+            "pp": 1.65,
+            "attack": 1.55,
+            "defense": 1.55,
+            "agility": 1.5,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 5}},
@@ -561,8 +742,14 @@ var database = {
          }
       },
       "Vanguard": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.6, "attack": 1.5, "defense": 1.5, "agility": 1.45, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.6,
+            "attack": 1.5,
+            "defense": 1.5,
+            "agility": 1.45,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 4}},
@@ -570,14 +757,24 @@ var database = {
          }
       },
       "Veteran": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.1, "attack": 1.45, "defense": 1.35, "agility": 1.4, "luck": 0.9},
-         "psynergy": [],
-         "requirements": {"earth": {"Rogue": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.1,
+            "attack": 1.45,
+            "defense": 1.35,
+            "agility": 1.4,
+            "luck": 0.9
+         }, "psynergy": [], "requirements": {"earth": {"Rogue": {"earth": 6, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Warden": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.75, "attack": 1.25, "defense": 1.3, "agility": 1.5, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.75,
+            "attack": 1.25,
+            "defense": 1.3,
+            "agility": 1.5,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 3, "ice": 0}},
@@ -585,7 +782,6 @@ var database = {
          }
       },
       "Warlord": {
-         "priority": 9,
          "statsMultiplier": {"hp": 2, "pp": 1.5, "attack": 1.6, "defense": 1.55, "agility": 1.6, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -600,8 +796,14 @@ var database = {
          }
       },
       "White Knight": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.4, "attack": 1.45, "defense": 1.45, "agility": 1.15, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.4,
+            "attack": 1.45,
+            "defense": 1.45,
+            "agility": 1.15,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "earth": {
@@ -615,7 +817,6 @@ var database = {
          }
       },
       "Armed": {
-         "priority": 1,
          "statsMultiplier": {"hp": 1.05, "pp": 1, "attack": 1.15, "defense": 1.1, "agility": 1.05, "luck": 1.1},
          "psynergy": [],
          "requirements": {
@@ -630,25 +831,21 @@ var database = {
          }
       },
       "Baron": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1.8, "pp": 1.1, "attack": 1.35, "defense": 1.4, "agility": 1.25, "luck": 1.1},
          "psynergy": [],
          "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Cannoneer": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.3, "pp": 1, "attack": 1.1, "defense": 1.1, "agility": 1, "luck": 1.2},
          "psynergy": [],
          "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Corsair": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.5, "pp": 1.1, "attack": 1.2, "defense": 1.2, "agility": 1.1, "luck": 1.2},
          "psynergy": [],
          "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Fair": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.25, "pp": 1.1, "attack": 1.25, "defense": 1.2, "agility": 1.15, "luck": 1.1},
          "psynergy": [],
          "requirements": {
@@ -663,7 +860,6 @@ var database = {
          }
       },
       "Fated": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.4, "pp": 1.3, "attack": 1.3, "defense": 1.3, "agility": 1.3, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -674,44 +870,64 @@ var database = {
          }
       },
       "Fire Master": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.5, "attack": 1.2, "defense": 1.25, "agility": 1.45, "luck": 0.9},
-         "psynergy": [],
-         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.5,
+            "attack": 1.2,
+            "defense": 1.25,
+            "agility": 1.45,
+            "luck": 0.9
+         }, "psynergy": [], "requirements": {"fire": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Flame User": {
-         "priority": 0,
-         "statsMultiplier": {"hp": 1, "pp": 1.2, "attack": 0.9, "defense": 0.95, "agility": 1.15, "luck": 0.9},
-         "psynergy": [],
-         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1,
+            "pp": 1.2,
+            "attack": 0.9,
+            "defense": 0.95,
+            "agility": 1.15,
+            "luck": 0.9
+         }, "psynergy": [], "requirements": {"fire": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Guard": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1.2, "pp": 0.8, "attack": 1.05, "defense": 1.1, "agility": 0.95, "luck": 1.1},
          "psynergy": [],
          "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Hex": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.3, "pp": 1.4, "attack": 1.1, "defense": 1.15, "agility": 1.35, "luck": 0.9},
          "psynergy": [],
          "requirements": {"fire": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Hull Reaver": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.3, "attack": 1.4, "defense": 1.4, "agility": 1.3, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.3,
+            "attack": 1.4,
+            "defense": 1.4,
+            "agility": 1.3,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Incendiary": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.6, "attack": 1.3, "defense": 1.35, "agility": 1.55, "luck": 0.9},
-         "psynergy": [],
-         "requirements": {"fire": {"Mage": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.6,
+            "attack": 1.3,
+            "defense": 1.35,
+            "agility": 1.55,
+            "luck": 0.9
+         }, "psynergy": [], "requirements": {"fire": {"Mage": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Luminier": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.35, "attack": 1.5, "defense": 1.45, "agility": 1.4, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.35,
+            "attack": 1.5,
+            "defense": 1.45,
+            "agility": 1.4,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -725,8 +941,14 @@ var database = {
          }
       },
       "Mystic Knight": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.35, "attack": 1.35, "defense": 1.35, "agility": 1.35, "luck": 1},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.35,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.35,
+            "luck": 1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -736,7 +958,6 @@ var database = {
          }
       },
       "Page": {
-         "priority": 1,
          "statsMultiplier": {"hp": 1, "pp": 1.1, "attack": 1.1, "defense": 1.1, "agility": 1.1, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -747,25 +968,26 @@ var database = {
          }
       },
       "Phalanx": {
-         "priority": 8,
          "statsMultiplier": {"hp": 2, "pp": 1.2, "attack": 1.45, "defense": 1.5, "agility": 1.35, "luck": 1.1},
          "psynergy": [],
          "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 8, "wind": 0, "ice": 0}}}
       },
       "Pirate": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1.1, "pp": 0.9, "attack": 1, "defense": 1, "agility": 0.9, "luck": 1.2},
          "psynergy": [],
          "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Pirate King": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.2, "attack": 1.3, "defense": 1.3, "agility": 1.2, "luck": 1.2},
-         "psynergy": [],
-         "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.2,
+            "attack": 1.3,
+            "defense": 1.3,
+            "agility": 1.2,
+            "luck": 1.2
+         }, "psynergy": [], "requirements": {"fire": {"Rogue": {"earth": 0, "fire": 6, "wind": 0, "ice": 0}}}
       },
       "Pupil": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.2, "pp": 1.2, "attack": 1.2, "defense": 1.2, "agility": 1.2, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -776,8 +998,14 @@ var database = {
          }
       },
       "Radiant": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.95, "pp": 1.45, "attack": 1.6, "defense": 1.55, "agility": 1.5, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.95,
+            "pp": 1.45,
+            "attack": 1.6,
+            "defense": 1.55,
+            "agility": 1.5,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -791,8 +1019,14 @@ var database = {
          }
       },
       "Righteous": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.25, "attack": 1.4, "defense": 1.35, "agility": 1.3, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.25,
+            "attack": 1.4,
+            "defense": 1.35,
+            "agility": 1.3,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -806,14 +1040,24 @@ var database = {
          }
       },
       "Soldier": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.4, "pp": 0.9, "attack": 1.15, "defense": 1.2, "agility": 1.05, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.4,
+            "pp": 0.9,
+            "attack": 1.15,
+            "defense": 1.2,
+            "agility": 1.05,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Star Knight": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.45, "attack": 1.45, "defense": 1.45, "agility": 1.45, "luck": 1},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.45,
+            "attack": 1.45,
+            "defense": 1.45,
+            "agility": 1.45,
+            "luck": 1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -823,8 +1067,14 @@ var database = {
          }
       },
       "Sun Champion": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.55, "attack": 1.55, "defense": 1.55, "agility": 1.55, "luck": 1},
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.55,
+            "attack": 1.55,
+            "defense": 1.55,
+            "agility": 1.55,
+            "luck": 1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -834,8 +1084,14 @@ var database = {
          }
       },
       "Virtuous": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.45, "pp": 1.2, "attack": 1.35, "defense": 1.3, "agility": 1.25, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.45,
+            "pp": 1.2,
+            "attack": 1.35,
+            "defense": 1.3,
+            "agility": 1.25,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "fire": {
@@ -849,32 +1105,39 @@ var database = {
          }
       },
       "Warrior": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.6, "pp": 1, "attack": 1.25, "defense": 1.3, "agility": 1.15, "luck": 1.1},
          "psynergy": [],
          "requirements": {"fire": {"Warrior": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Witch": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.15, "pp": 1.3, "attack": 1, "defense": 1.05, "agility": 1.25, "luck": 0.9},
          "psynergy": [],
          "requirements": {"fire": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Admiral": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.95, "pp": 1.3, "attack": 1.45, "defense": 1.45, "agility": 1.35, "luck": 1},
-         "psynergy": [],
-         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
+         "statsMultiplier": {
+            "hp": 1.95,
+            "pp": 1.3,
+            "attack": 1.45,
+            "defense": 1.45,
+            "agility": 1.35,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Angel": {
-         "priority": 8,
          "statsMultiplier": {"hp": 1.65, "pp": 1.65, "attack": 1.2, "defense": 1.3, "agility": 1.4, "luck": 1.3},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Arcanist": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.35, "agility": 1.65, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.85,
+            "attack": 1.3,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 7}},
@@ -882,7 +1145,6 @@ var database = {
          }
       },
       "Archon": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.95, "pp": 1.5, "attack": 1.65, "defense": 1.5, "agility": 1.65, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -897,14 +1159,24 @@ var database = {
          }
       },
       "Ascetic": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.55, "attack": 1.1, "defense": 1.15, "agility": 1.25, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.55,
+            "attack": 1.1,
+            "defense": 1.15,
+            "agility": 1.25,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Avenger": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.95, "pp": 1.4, "attack": 1.65, "defense": 1.55, "agility": 1.55, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.95,
+            "pp": 1.4,
+            "attack": 1.65,
+            "defense": 1.55,
+            "agility": 1.55,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -918,14 +1190,24 @@ var database = {
          }
       },
       "Captain": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.1, "attack": 1.25, "defense": 1.25, "agility": 1.15, "luck": 1},
-         "psynergy": [],
-         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.1,
+            "attack": 1.25,
+            "defense": 1.25,
+            "agility": 1.15,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Channeler": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.75, "attack": 1.55, "defense": 1.45, "agility": 1.65, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.75,
+            "attack": 1.55,
+            "defense": 1.45,
+            "agility": 1.65,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
@@ -933,20 +1215,29 @@ var database = {
          }
       },
       "Cleric": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1.25, "pp": 1.45, "attack": 1, "defense": 1.1, "agility": 1.2, "luck": 1.3},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Commander": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.2, "attack": 1.35, "defense": 1.35, "agility": 1.25, "luck": 1},
-         "psynergy": [],
-         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.2,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.25,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Counselor": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.6, "pp": 1.6, "attack": 1.45, "defense": 1.35, "agility": 1.45, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.6,
+            "pp": 1.6,
+            "attack": 1.45,
+            "defense": 1.35,
+            "agility": 1.45,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -960,8 +1251,14 @@ var database = {
          }
       },
       "Destroyer": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2.05, "pp": 1.45, "attack": 1.7, "defense": 1.6, "agility": 1.6, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 2.05,
+            "pp": 1.45,
+            "attack": 1.7,
+            "defense": 1.6,
+            "agility": 1.6,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -975,8 +1272,14 @@ var database = {
          }
       },
       "Divine Mage": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.75, "attack": 1.25, "defense": 1.25, "agility": 1.6, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.75,
+            "attack": 1.25,
+            "defense": 1.25,
+            "agility": 1.6,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 3, "wind": 4, "ice": 0}},
@@ -984,14 +1287,19 @@ var database = {
          }
       },
       "Druid": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.75, "pp": 1.8, "attack": 1.3, "defense": 1.35, "agility": 1.6, "luck": 1.3},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Elementalist": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.2, "agility": 1.5, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.75,
+            "attack": 1.2,
+            "defense": 1.2,
+            "agility": 1.5,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 3, "fire": 0, "wind": 3, "ice": 0}},
@@ -999,14 +1307,24 @@ var database = {
          }
       },
       "Enlightened": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.6, "pp": 1.75, "attack": 1.25, "defense": 1.3, "agility": 1.4, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}}}
+         "statsMultiplier": {
+            "hp": 1.6,
+            "pp": 1.75,
+            "attack": 1.25,
+            "defense": 1.3,
+            "agility": 1.4,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 6, "wind": 0, "ice": 1}}}
       },
       "Explorer": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.05, "attack": 1.3, "defense": 1.15, "agility": 1.25, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.05,
+            "attack": 1.3,
+            "defense": 1.15,
+            "agility": 1.25,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1016,8 +1334,14 @@ var database = {
          }
       },
       "Fateweaver": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.85, "attack": 1.35, "defense": 1.35, "agility": 1.7, "luck": 1.2},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.85,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.7,
+            "luck": 1.2
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 4, "wind": 5, "ice": 0}},
@@ -1025,7 +1349,6 @@ var database = {
          }
       },
       "Fury": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.8, "attack": 1.6, "defense": 1.5, "agility": 1.7, "luck": 0.8},
          "psynergy": [],
          "requirements": {
@@ -1034,8 +1357,14 @@ var database = {
          }
       },
       "General": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.75, "attack": 1.6, "defense": 1.5, "agility": 1.6, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.75,
+            "attack": 1.6,
+            "defense": 1.5,
+            "agility": 1.6,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1049,8 +1378,14 @@ var database = {
          }
       },
       "Globetrotter": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.15, "attack": 1.4, "defense": 1.25, "agility": 1.35, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.15,
+            "attack": 1.4,
+            "defense": 1.25,
+            "agility": 1.35,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1060,19 +1395,21 @@ var database = {
          }
       },
       "Guru": {
-         "priority": 9,
          "statsMultiplier": {"hp": 1.8, "pp": 1.85, "attack": 1.35, "defense": 1.4, "agility": 1.5, "luck": 1.1},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 0, "fire": 7, "wind": 0, "ice": 2}}}
       },
       "Healer": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.35, "pp": 1.6, "attack": 1.1, "defense": 1.15, "agility": 1.4, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.35,
+            "pp": 1.6,
+            "attack": 1.1,
+            "defense": 1.15,
+            "agility": 1.4,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Herald": {
-         "priority": 7,
          "statsMultiplier": {"hp": 1.75, "pp": 1.4, "attack": 1.55, "defense": 1.4, "agility": 1.55, "luck": 1},
          "psynergy": [],
          "requirements": {
@@ -1087,14 +1424,24 @@ var database = {
          }
       },
       "Herbalist": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 0.95, "pp": 1.25, "attack": 0.85, "defense": 0.9, "agility": 1.15, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.95,
+            "pp": 1.25,
+            "attack": 0.85,
+            "defense": 0.9,
+            "agility": 1.15,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Holy Knight": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 2.1, "pp": 1.55, "attack": 1.55, "defense": 1.6, "agility": 1.3, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 2.1,
+            "pp": 1.55,
+            "attack": 1.55,
+            "defense": 1.6,
+            "agility": 1.3,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1108,68 +1455,84 @@ var database = {
          }
       },
       "Ice Rogue 1": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Ice Rogue 2": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Ice Rogue 3": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}}}
       },
       "Ice Rogue 4": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Ice Rogue 5": {
-         "priority": 8,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"ice": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 8}}}
       },
       "Mariner": {
-         "priority": 0,
-         "statsMultiplier": {"hp": 1.15, "pp": 0.9, "attack": 1.05, "defense": 1.05, "agility": 0.95, "luck": 1},
-         "psynergy": [],
-         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.15,
+            "pp": 0.9,
+            "attack": 1.05,
+            "defense": 1.05,
+            "agility": 0.95,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Monk": {
-         "priority": 1,
          "statsMultiplier": {"hp": 1, "pp": 1.3, "attack": 0.9, "defense": 0.95, "agility": 1.05, "luck": 1.1},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}}}
       },
       "Naturalist": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.1, "pp": 1.35, "attack": 0.95, "defense": 1, "agility": 1.25, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.1,
+            "pp": 1.35,
+            "attack": 0.95,
+            "defense": 1,
+            "agility": 1.25,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Officiant": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.1, "pp": 1.35, "attack": 0.9, "defense": 1, "agility": 1.1, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
+         "statsMultiplier": {
+            "hp": 1.1,
+            "pp": 1.35,
+            "attack": 0.9,
+            "defense": 1,
+            "agility": 1.1,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Privateer": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.35, "pp": 1, "attack": 1.15, "defense": 1.15, "agility": 1.05, "luck": 1},
-         "psynergy": [],
-         "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
+         "statsMultiplier": {
+            "hp": 1.35,
+            "pp": 1,
+            "attack": 1.15,
+            "defense": 1.15,
+            "agility": 1.05,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"ice": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Pure Mage": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.8, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.8,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 4, "fire": 0, "wind": 5, "ice": 0}},
@@ -1177,8 +1540,14 @@ var database = {
          }
       },
       "Renegade": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.3, "attack": 1.55, "defense": 1.45, "agility": 1.45, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.3,
+            "attack": 1.55,
+            "defense": 1.45,
+            "agility": 1.45,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1192,8 +1561,14 @@ var database = {
          }
       },
       "Researcher": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.05, "pp": 1.4, "attack": 0.95, "defense": 1, "agility": 1.3, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.05,
+            "pp": 1.4,
+            "attack": 0.95,
+            "defense": 1,
+            "agility": 1.3,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 2}},
@@ -1201,14 +1576,19 @@ var database = {
          }
       },
       "Saint": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1.45, "pp": 1.55, "attack": 1.1, "defense": 1.2, "agility": 1.3, "luck": 1.3},
          "psynergy": [],
          "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 6}}}
       },
       "Saint Knight": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.9, "pp": 1.45, "attack": 1.45, "defense": 1.5, "agility": 1.2, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.9,
+            "pp": 1.45,
+            "attack": 1.45,
+            "defense": 1.5,
+            "agility": 1.2,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1222,8 +1602,14 @@ var database = {
          }
       },
       "Savant": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.65, "attack": 1.1, "defense": 1.15, "agility": 1.45, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.65,
+            "attack": 1.1,
+            "defense": 1.15,
+            "agility": 1.45,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 5}},
@@ -1231,8 +1617,14 @@ var database = {
          }
       },
       "Scholar": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.2, "pp": 1.55, "attack": 1.05, "defense": 1.1, "agility": 1.4, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.2,
+            "pp": 1.55,
+            "attack": 1.05,
+            "defense": 1.1,
+            "agility": 1.4,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 4}},
@@ -1240,7 +1632,6 @@ var database = {
          }
       },
       "Sea Lord": {
-         "priority": 9,
          "statsMultiplier": {"hp": 2, "pp": 1.4, "attack": 1.65, "defense": 1.5, "agility": 1.6, "luck": 0.9},
          "psynergy": [],
          "requirements": {
@@ -1251,8 +1642,14 @@ var database = {
          }
       },
       "Seafarer": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 1.1, "pp": 0.95, "attack": 1.2, "defense": 1.05, "agility": 1.15, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.1,
+            "pp": 0.95,
+            "attack": 1.2,
+            "defense": 1.05,
+            "agility": 1.15,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1262,7 +1659,6 @@ var database = {
          }
       },
       "Shaman": {
-         "priority": 8,
          "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.3, "agility": 1.6, "luck": 1.1},
          "psynergy": [],
          "requirements": {
@@ -1271,14 +1667,24 @@ var database = {
          }
       },
       "Shugenja": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.4, "pp": 1.65, "attack": 1.15, "defense": 1.2, "agility": 1.3, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.4,
+            "pp": 1.65,
+            "attack": 1.15,
+            "defense": 1.2,
+            "agility": 1.3,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
       },
       "Strategist": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.8, "pp": 1.7, "attack": 1.55, "defense": 1.45, "agility": 1.55, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.8,
+            "pp": 1.7,
+            "attack": 1.55,
+            "defense": 1.45,
+            "agility": 1.55,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1292,8 +1698,14 @@ var database = {
          }
       },
       "Student": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 0.9, "pp": 1.3, "attack": 0.85, "defense": 0.9, "agility": 1.2, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 0.9,
+            "pp": 1.3,
+            "attack": 0.85,
+            "defense": 0.9,
+            "agility": 1.2,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 1}},
@@ -1301,26 +1713,44 @@ var database = {
          }
       },
       "Thaumaturge": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.7, "attack": 1.2, "defense": 1.25, "agility": 1.5, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.7,
+            "attack": 1.2,
+            "defense": 1.25,
+            "agility": 1.5,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
       },
       "Therapist": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.25, "pp": 1.5, "attack": 1.05, "defense": 1.1, "agility": 1.35, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.25,
+            "pp": 1.5,
+            "attack": 1.05,
+            "defense": 1.1,
+            "agility": 1.35,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Water User": {
-         "priority": 0,
-         "statsMultiplier": {"hp": 0.95, "pp": 1.25, "attack": 0.8, "defense": 0.9, "agility": 1, "luck": 1.3},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.95,
+            "pp": 1.25,
+            "attack": 0.8,
+            "defense": 0.9,
+            "agility": 1,
+            "luck": 1.3
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Waverider": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.6, "pp": 1.2, "attack": 1.45, "defense": 1.3, "agility": 1.4, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.6,
+            "pp": 1.2,
+            "attack": 1.45,
+            "defense": 1.3,
+            "agility": 1.4,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1330,8 +1760,14 @@ var database = {
          }
       },
       "White Mage": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.7, "attack": 1.25, "defense": 1.25, "agility": 1.55, "luck": 1.3},
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.7,
+            "attack": 1.25,
+            "defense": 1.25,
+            "agility": 1.55,
+            "luck": 1.3
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 3, "fire": 0, "wind": 4, "ice": 0}},
@@ -1339,8 +1775,14 @@ var database = {
          }
       },
       "Wild Mage": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.65, "attack": 1.45, "defense": 1.35, "agility": 1.55, "luck": 0.8},
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.65,
+            "attack": 1.45,
+            "defense": 1.35,
+            "agility": 1.55,
+            "luck": 0.8
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 0, "fire": 3, "wind": 3, "ice": 0}},
@@ -1348,8 +1790,14 @@ var database = {
          }
       },
       "Windrider": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.8, "pp": 1.3, "attack": 1.55, "defense": 1.4, "agility": 1.5, "luck": 0.9},
+         "statsMultiplier": {
+            "hp": 1.8,
+            "pp": 1.3,
+            "attack": 1.55,
+            "defense": 1.4,
+            "agility": 1.5,
+            "luck": 0.9
+         },
          "psynergy": [],
          "requirements": {
             "ice": {
@@ -1359,7 +1807,6 @@ var database = {
          }
       },
       "Wise": {
-         "priority": 7,
          "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.25, "agility": 1.55, "luck": 1.1},
          "psynergy": [],
          "requirements": {
@@ -1368,8 +1815,14 @@ var database = {
          }
       },
       "Worldwaker": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.8, "pp": 1.9, "attack": 1.35, "defense": 1.35, "agility": 1.65, "luck": 1.1},
+         "statsMultiplier": {
+            "hp": 1.8,
+            "pp": 1.9,
+            "attack": 1.35,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 1.1
+         },
          "psynergy": [],
          "requirements": {
             "ice": {"Mage": {"earth": 5, "fire": 0, "wind": 4, "ice": 0}},
@@ -1377,172 +1830,224 @@ var database = {
          }
       },
       "Yamabushi": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.15, "pp": 1.4, "attack": 1, "defense": 1.05, "agility": 1.15, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"ice": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.15,
+            "pp": 1.4,
+            "attack": 1,
+            "defense": 1.05,
+            "agility": 1.15,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"ice": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Acolyte": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1.1, "pp": 1.45, "attack": 1.05, "defense": 1, "agility": 1.3, "luck": 0.8},
          "psynergy": [],
          "requirements": {"wind": {"Mage": {"earth": 0, "fire": 2, "wind": 0, "ice": 0}}}
       },
       "Archmage": {
-         "priority": 6,
-         "statsMultiplier": {"hp": 1.4, "pp": 1.55, "attack": 1.15, "defense": 1.2, "agility": 1.55, "luck": 1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.4,
+            "pp": 1.55,
+            "attack": 1.15,
+            "defense": 1.2,
+            "agility": 1.55,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Augur": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.5, "pp": 1.75, "attack": 1.2, "defense": 1.25, "agility": 1.55, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
+         "statsMultiplier": {
+            "hp": 1.5,
+            "pp": 1.75,
+            "attack": 1.2,
+            "defense": 1.25,
+            "agility": 1.55,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 6, "fire": 0, "wind": 0, "ice": 1}}}
       },
       "Bolt User": {
-         "priority": 0,
-         "statsMultiplier": {"hp": 0.9, "pp": 1.25, "attack": 0.85, "defense": 0.9, "agility": 1.25, "luck": 1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.9,
+            "pp": 1.25,
+            "attack": 0.85,
+            "defense": 0.9,
+            "agility": 1.25,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Clairvoyant": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.3, "pp": 1.65, "attack": 1.1, "defense": 1.15, "agility": 1.45, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.3,
+            "pp": 1.65,
+            "attack": 1.1,
+            "defense": 1.15,
+            "agility": 1.45,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 5, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Cultist": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.25, "pp": 1.6, "attack": 1.15, "defense": 1.1, "agility": 1.4, "luck": 0.8},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.25,
+            "pp": 1.6,
+            "attack": 1.15,
+            "defense": 1.1,
+            "agility": 1.4,
+            "luck": 0.8
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 4, "wind": 0, "ice": 0}}}
       },
       "Disciple": {
-         "priority": 1,
-         "statsMultiplier": {"hp": 0.95, "pp": 1.35, "attack": 0.95, "defense": 0.9, "agility": 1.2, "luck": 0.8},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 0.95,
+            "pp": 1.35,
+            "attack": 0.95,
+            "defense": 0.9,
+            "agility": 1.2,
+            "luck": 0.8
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 1, "wind": 0, "ice": 0}}}
       },
       "Diviner": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.2, "pp": 1.55, "attack": 1.05, "defense": 1.1, "agility": 1.4, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.2,
+            "pp": 1.55,
+            "attack": 1.05,
+            "defense": 1.1,
+            "agility": 1.4,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 4, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Fanatic": {
-         "priority": 7,
-         "statsMultiplier": {"hp": 1.55, "pp": 1.8, "attack": 1.3, "defense": 1.25, "agility": 1.55, "luck": 0.8},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 6, "wind": 1, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.55,
+            "pp": 1.8,
+            "attack": 1.3,
+            "defense": 1.25,
+            "agility": 1.55,
+            "luck": 0.8
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 6, "wind": 1, "ice": 0}}}
       },
       "Haruspex": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.05, "pp": 1.4, "attack": 0.95, "defense": 1, "agility": 1.3, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.05,
+            "pp": 1.4,
+            "attack": 0.95,
+            "defense": 1,
+            "agility": 1.3,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 2, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Illusionist": {
-         "priority": 4,
-         "statsMultiplier": {"hp": 1.2, "pp": 1.45, "attack": 1.05, "defense": 1.1, "agility": 1.45, "luck": 1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.2,
+            "pp": 1.45,
+            "attack": 1.05,
+            "defense": 1.1,
+            "agility": 1.45,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Inquisitor": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.75, "pp": 1.9, "attack": 1.4, "defense": 1.35, "agility": 1.65, "luck": 0.8},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 7, "wind": 2, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.75,
+            "pp": 1.9,
+            "attack": 1.4,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 0.8
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 7, "wind": 2, "ice": 0}}}
       },
       "Magician": {
-         "priority": 2,
-         "statsMultiplier": {"hp": 1.05, "pp": 1.35, "attack": 0.95, "defense": 1, "agility": 1.35, "luck": 1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.05,
+            "pp": 1.35,
+            "attack": 0.95,
+            "defense": 1,
+            "agility": 1.35,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Oracle": {
-         "priority": 9,
-         "statsMultiplier": {"hp": 1.7, "pp": 1.85, "attack": 1.3, "defense": 1.35, "agility": 1.65, "luck": 1.1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}}}
+         "statsMultiplier": {
+            "hp": 1.7,
+            "pp": 1.85,
+            "attack": 1.3,
+            "defense": 1.35,
+            "agility": 1.65,
+            "luck": 1.1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 7, "fire": 0, "wind": 0, "ice": 2}}}
       },
       "Seer": {
-         "priority": 1,
          "statsMultiplier": {"hp": 0.9, "pp": 1.3, "attack": 0.85, "defense": 0.9, "agility": 1.2, "luck": 1.1},
          "psynergy": [],
          "requirements": {"wind": {"Mage": {"earth": 1, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Sorcerer": {
-         "priority": 8,
-         "statsMultiplier": {"hp": 1.6, "pp": 1.65, "attack": 1.25, "defense": 1.3, "agility": 1.65, "luck": 1},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.6,
+            "pp": 1.65,
+            "attack": 1.25,
+            "defense": 1.3,
+            "agility": 1.65,
+            "luck": 1
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Wind Rogue 1": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Wind Rogue 2": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Wind Rogue 3": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Wind Rogue 4": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Wind Rogue 5": {
-         "priority": 8,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Rogue": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Wind Warrior 1": {
-         "priority": 0,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 0, "ice": 0}}}
       },
       "Wind Warrior 2": {
-         "priority": 2,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 2, "ice": 0}}}
       },
       "Wind Warrior 3": {
-         "priority": 4,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 4, "ice": 0}}}
       },
       "Wind Warrior 4": {
-         "priority": 6,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 6, "ice": 0}}}
       },
       "Wind Warrior 5": {
-         "priority": 8,
          "statsMultiplier": {"hp": 1, "pp": 1, "attack": 1, "defense": 1, "agility": 1, "luck": 1},
          "psynergy": [],
          "requirements": {"wind": {"Warrior": {"earth": 0, "fire": 0, "wind": 8, "ice": 0}}}
       },
       "Zealot": {
-         "priority": 5,
-         "statsMultiplier": {"hp": 1.35, "pp": 1.7, "attack": 1.2, "defense": 1.15, "agility": 1.45, "luck": 0.8},
-         "psynergy": [],
-         "requirements": {"wind": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
+         "statsMultiplier": {
+            "hp": 1.35,
+            "pp": 1.7,
+            "attack": 1.2,
+            "defense": 1.15,
+            "agility": 1.45,
+            "luck": 0.8
+         }, "psynergy": [], "requirements": {"wind": {"Mage": {"earth": 0, "fire": 5, "wind": 0, "ice": 0}}}
       }
    },
    djinn: {
@@ -1844,6 +2349,10 @@ for (var name of database.classes.names)
          if (undefined === database.classes.byRequirement[element]) database.classes.byRequirement[element] = {};
          if (undefined === database.classes.byRequirement[element][combatType]) database.classes.byRequirement[element][combatType] = [];
          database.classes.byRequirement[element][combatType].push(database.classes[name]);
+
+         //priority will get written a lot but it's fine
+         var djinnCount = classReq[element][combatType];
+         database.classes[name].priority = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
       }
    }
 }
