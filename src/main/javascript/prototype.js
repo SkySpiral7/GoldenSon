@@ -1,13 +1,4 @@
 'use strict';
-if (undefined === JSON.clone)
-{
-   Object.defineProperty(JSON, 'clone', {
-      value: function (obj)
-      {
-         return JSON.parse(JSON.stringify(obj));
-      }
-   })
-}
 if (undefined === Array.prototype.contains)
 {
    Object.defineProperty(Array.prototype, 'contains', {
@@ -47,4 +38,24 @@ if (undefined === Array.prototype.removeByValue)
             this.remove(index);
          }
    });
+}
+if (undefined === String.prototype.contains)
+{
+   Object.defineProperty(String.prototype, 'contains', {
+      value:
+         /**For each element of this array a type strict comparison is done against the parameter and returns true if any of them match*/
+         function (obj)
+         {
+            return (this.indexOf(obj) !== -1);
+         }
+   });
+}
+if (undefined === JSON.clone)
+{
+   Object.defineProperty(JSON, 'clone', {
+      value: function (obj)
+      {
+         return JSON.parse(JSON.stringify(obj));
+      }
+   })
 }

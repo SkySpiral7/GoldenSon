@@ -11,46 +11,51 @@
       }
    </style>
    <script>
+      'use strict';
+
       function convert()
       {
          var output = {};
          var input = document.getElementById('input').value;
-         var rowList = input.replace(/\t/g, '","')
-         .split('\n');
+         if (input.contains('\t')) input = '"' + input.replace(/\t/g, '","') + '"';
+         var rowList = input.split('\r?\n');
          for (var rawRow of rowList)
          {
             var row = JSON.parse('[' + rawRow + ']');
             if (0 === row.length) continue;
-            var className = row[0];
-            if (undefined === output[className]) output[className] = {
-               statsMultiplier: {hp: null},
-               psynergy: [],
-               requirements: {}
-            };
-            //1: adept, 2: Combat Type
-            if (undefined === output[className].requirements[row[1]]) output[className].requirements[row[1]] = {};
-            output[className].requirements[row[1]][row[2]] = {
-               "earth": row[3],
-               "fire": row[4],
-               "wind": row[5],
-               "ice": row[6]
-            };
-            //null is only possible the first time
-            if (null === output[className].statsMultiplier.hp)
+            var className = row[0], initializeClass = false;
+            if (undefined === output[className])
             {
-               output[className].statsMultiplier = {
-                  "hp": row[7],
-                  "pp": row[8],
-                  "attack": row[9],
-                  "defense": row[10],
-                  "agility": row[11],
-                  "luck": row[12]
+               output[className] = {
+                  statsMultiplier: {},
+                  psynergy: [],
+                  requirements: {}
+               };
+               initializeClass = true;
+            }
+            var classData = output[className];
+            //1: adept, 2: Combat Type
+            if (undefined === classData.requirements[row[1]]) classData.requirements[row[1]] = {};
+            classData.requirements[row[1]][row[2]] = {
+               "earth": Number.parseInt(row[3]),
+               "fire": Number.parseInt(row[4]),
+               "wind": Number.parseInt(row[5]),
+               "ice": Number.parseInt(row[6])
+            };
+            if (initializeClass)
+            {
+               classData.statsMultiplier = {
+                  "hp": Number.parseFloat(row[7]),  //Number.parseFloat ignores tailing %
+                  "pp": Number.parseFloat(row[8]),
+                  "attack": Number.parseFloat(row[9]),
+                  "defense": Number.parseFloat(row[10]),
+                  "agility": Number.parseFloat(row[11]),
+                  "luck": Number.parseFloat(row[12])
                };
                var psynergyList = row.slice(13);
-               for (var psynergy of psynergyList)
+               for (var i = 0; (i + 1) < psynergyList.length; i += 2)
                {
-                  var execResult = (/^(\d)+: ?(.+)/).exec(psynergy);
-                  output[className].psynergy.push({level: Number.parseInt(execResult[1]), name: execResult[2]});
+                  classData.psynergy.push({level: Number.parseInt(psynergyList[i]), name: psynergyList[i + 1]});
                }
             }
          }
@@ -60,10 +65,10 @@
 </head>
 <body onload="document.getElementById('input').focus();">
 <label for="input">Input CSV:</label><br />
-<!--"Class","adept","Combat Type","earth","fire","wind","ice","hp","pp","attack","defense","agility","luck","psynergy"-->
+<!--"Class","adept","Combat Type","earth","fire","wind","ice","hp","pp","attack","defense","agility","luck","psynergy level learned","psynergy name"-->
 <textarea id="input" rows="10" cols="50">
-"Apostate","earth","Mage",0,4,4,0,1.7,1.85,1.35,1.35,1.65,0.9,"1: Cure","5: Quake"
-"Apostate","fire","Mage",4,0,4,0,1.7,1.85,1.35,1.35,1.65,0.9,"1: Cure","5: Quake"
+"Apostate","earth","Mage",0,4,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
+"Apostate","fire","Mage",4,0,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
 </textarea><br />
 <input type="button" value="Convert" onClick="convert()" /><br />
 <label for="output">Output JSON:</label><br />
