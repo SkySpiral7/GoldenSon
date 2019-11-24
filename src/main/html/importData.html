@@ -23,10 +23,10 @@
       function convertClassCsvToJson(input)
       {
          var output = {};
-         if (input.contains('\t')) input = '"' + input.replace(/\t/g, '","') + '"';
          var rowList = input.split(/\r?\n/);
          for (var rawRow of rowList)
          {
+            if (rawRow.contains('\t')) rawRow = '"' + rawRow.replace(/\t/g, '","') + '"';
             var row = JSON.parse('[' + rawRow + ']');
             if (0 === row.length) continue;
             var rowObject = mapClassCsvArrayToObject(...row);

@@ -37,7 +37,7 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
 
    try
    {
-      input = 'Apostate\t8\tearth\tMage\t0\t4\t4\t0\t170%\t185%\t135%\t135%\t165%\t90%\t880%';
+      input = 'Apostate\t8\tearth\tMage\t0\t4\t4\t0\t170%\t185%\t135%\t135%\t165%\t90%\t880%\t1\tCure\t5\tQuake';
       expected = {
          "Apostate": {
             "statsMultiplier": {
@@ -48,7 +48,7 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
                "agility": 1.65,
                "luck": 0.9
             },
-            "psynergy": [],
+            "psynergy": [{level: 1, name: "Cure"}, {level: 5, name: "Quake"}],
             "requirements": {
                "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}}
             }
@@ -119,12 +119,44 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
       assertions.push({
          Expected: expected,
          Actual: convertClassCsvToJson(input),
-         Description: 'Handles multiple requirements'
+         Description: 'Handles multiple CSV requirements'
       });
    }
    catch (e)
    {
-      assertions.push({Error: e, Description: 'Handles multiple requirements'});
+      assertions.push({Error: e, Description: 'Handles multiple CSV requirements'});
+   }
+
+   try
+   {
+      input = 'Apostate\t8\tearth\tMage\t0\t4\t4\t0\t170%\t185%\t135%\t135%\t165%\t90%\t880%\r\n' +
+         'Apostate\t8\tfire\tMage\t4\t0\t4\t0\t170%\t185%\t135%\t135%\t165%\t90%\t880%';
+      expected = {
+         "Apostate": {
+            "statsMultiplier": {
+               "hp": 1.7,
+               "pp": 1.85,
+               "attack": 1.35,
+               "defense": 1.35,
+               "agility": 1.65,
+               "luck": 0.9
+            },
+            "psynergy": [],
+            "requirements": {
+               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
+               "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}}
+            }
+         }
+      };
+      assertions.push({
+         Expected: expected,
+         Actual: convertClassCsvToJson(input),
+         Description: 'Handles multiple tab requirements and windows end lines'
+      });
+   }
+   catch (e)
+   {
+      assertions.push({Error: e, Description: 'Handles multiple tab requirements and windows end lines'});
    }
 
    return TestRunner.displayResults('TestSuite.importData.convertClassCsvToJson', assertions, testState);
