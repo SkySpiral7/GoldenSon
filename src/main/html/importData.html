@@ -24,7 +24,7 @@
       {
          var output = {};
          if (input.contains('\t')) input = '"' + input.replace(/\t/g, '","') + '"';
-         var rowList = input.split('\r?\n');
+         var rowList = input.split(/\r?\n/);
          for (var rawRow of rowList)
          {
             var row = JSON.parse('[' + rawRow + ']');
@@ -96,13 +96,19 @@
 </head>
 <body onload="document.getElementById('input').focus();">
 <label for="input">Input CSV:</label><br />
-<!--"Class","adept","Combat Type","earth","fire","wind","ice","hp","pp","attack","defense","agility","luck","psynergy level learned","psynergy name"-->
-<textarea id="input" rows="10" cols="50">
-"Apostate","earth","Mage",0,4,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
-"Apostate","fire","Mage",4,0,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
-</textarea><br />
-<input type="button" value="Convert" onClick="importClass()" /><br />
+<textarea id="input" rows="10" cols="50"></textarea><br />
+<input type="button" value="Convert" onClick="importClass()" id="convertButton" /><br />
 <label for="output">Output JSON:</label><br />
 <textarea id="output" rows="10" cols="50"></textarea>
+
+<!--testRunner only works locally-->
+<!---->
+<script src="../../../../Miscellaneous/src/main/javascript/testRunner.js"></script>
+<script src="../../test/html/importData.js"></script>
+<br /><br />
+<a href="javascript:TestRunner.testAll();">Run all tests</a><br />
+<label for="testResults">Test Results:</label><br />
+<textarea id="testResults" rows="10" cols="50"></textarea>
+<!---->
 </body>
 </html>
