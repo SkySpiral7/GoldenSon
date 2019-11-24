@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <title>Import Data</title>
+   <script src="../javascript/prototype.js"></script>
+   <style>
+      body {
+         padding-left: 10px;
+         padding-bottom: 150px;
+      }
+   </style>
+   <script>
+      function convert()
+      {
+         var output = {};
+         var input = document.getElementById('input').value;
+         var rowList = input.replace(/\t/g, '","')
+         .split('\n');
+         for (var rawRow of rowList)
+         {
+            var row = JSON.parse('[' + rawRow + ']');
+            if (0 === row.length) continue;
+            var className = row[0];
+            if (undefined === output[className]) output[className] = {
+               statsMultiplier: {hp: null},
+               psynergy: [],
+               requirements: {}
+            };
+            //1: adept, 2: Combat Type
+            if (undefined === output[className].requirements[row[1]]) output[className].requirements[row[1]] = {};
+            output[className].requirements[row[1]][row[2]] = {
+               "earth": row[3],
+               "fire": row[4],
+               "wind": row[5],
+               "ice": row[6]
+            };
+            //null is only possible the first time
+            if (null === output[className].statsMultiplier.hp)
+            {
+               output[className].statsMultiplier = {
+                  "hp": row[7],
+                  "pp": row[8],
+                  "attack": row[9],
+                  "defense": row[10],
+                  "agility": row[11],
+                  "luck": row[12]
+               };
+               var psynergyList = row.slice(13);
+               for (var psynergy of psynergyList)
+               {
+                  var execResult = (/^(\d)+: ?(.+)/).exec(psynergy);
+                  output[className].psynergy.push({level: Number.parseInt(execResult[1]), name: execResult[2]});
+               }
+            }
+         }
+         document.getElementById('output').value = JSON.stringify(output);
+      }
+   </script>
+</head>
+<body onload="document.getElementById('input').focus();">
+<label for="input">Input CSV:</label><br />
+<!--"Class","adept","Combat Type","earth","fire","wind","ice","hp","pp","attack","defense","agility","luck","psynergy"-->
+<textarea id="input" rows="10" cols="50">
+"Apostate","earth","Mage",0,4,4,0,1.7,1.85,1.35,1.35,1.65,0.9,"1: Cure","5: Quake"
+"Apostate","fire","Mage",4,0,4,0,1.7,1.85,1.35,1.35,1.65,0.9,"1: Cure","5: Quake"
+</textarea><br />
+<input type="button" value="Convert" onClick="convert()" /><br />
+<label for="output">Output JSON:</label><br />
+<textarea id="output" rows="10" cols="50"></textarea>
+</body>
+</html>
