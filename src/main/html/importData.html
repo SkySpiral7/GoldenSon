@@ -13,53 +13,84 @@
    <script>
       'use strict';
 
-      function convert()
+      function importClass()
+      {
+         var input = document.getElementById('input').value;
+         var output = convertClassCsvToJson(input);
+         document.getElementById('output').value = JSON.stringify(output);
+      }
+
+      function convertClassCsvToJson(input)
       {
          var output = {};
-         var input = document.getElementById('input').value;
          if (input.contains('\t')) input = '"' + input.replace(/\t/g, '","') + '"';
          var rowList = input.split('\r?\n');
          for (var rawRow of rowList)
          {
             var row = JSON.parse('[' + rawRow + ']');
             if (0 === row.length) continue;
-            var className = row[0], initializeClass = false;
-            if (undefined === output[className])
+            var rowObject = mapClassCsvArrayToObject(...row);
+            var initializeClass = false;
+            if (undefined === output[rowObject.className])
             {
-               output[className] = {
+               output[rowObject.className] = {
                   statsMultiplier: {},
                   psynergy: [],
                   requirements: {}
                };
                initializeClass = true;
             }
-            var classData = output[className];
+            var classData = output[rowObject.className];
             //1: adept, 2: Combat Type
-            if (undefined === classData.requirements[row[1]]) classData.requirements[row[1]] = {};
-            classData.requirements[row[1]][row[2]] = {
-               "earth": Number.parseInt(row[3]),
-               "fire": Number.parseInt(row[4]),
-               "wind": Number.parseInt(row[5]),
-               "ice": Number.parseInt(row[6])
+            if (undefined === classData.requirements[rowObject.adept]) classData.requirements[rowObject.adept] = {};
+            classData.requirements[rowObject.adept][rowObject.combatType] = {
+               "earth": Number.parseInt(rowObject.earth),
+               "fire": Number.parseInt(rowObject.fire),
+               "wind": Number.parseInt(rowObject.wind),
+               "ice": Number.parseInt(rowObject.ice)
             };
             if (initializeClass)
             {
                classData.statsMultiplier = {
-                  "hp": Number.parseFloat(row[7]),  //Number.parseFloat ignores tailing %
-                  "pp": Number.parseFloat(row[8]),
-                  "attack": Number.parseFloat(row[9]),
-                  "defense": Number.parseFloat(row[10]),
-                  "agility": Number.parseFloat(row[11]),
-                  "luck": Number.parseFloat(row[12])
+                  "hp": (Number.parseFloat(rowObject.hp) / 100),  //Number.parseFloat ignores tailing %
+                  "pp": (Number.parseFloat(rowObject.pp) / 100),
+                  "attack": (Number.parseFloat(rowObject.attack) / 100),
+                  "defense": (Number.parseFloat(rowObject.defense) / 100),
+                  "agility": (Number.parseFloat(rowObject.agility) / 100),
+                  "luck": (Number.parseFloat(rowObject.luck) / 100)
                };
-               var psynergyList = row.slice(13);
-               for (var i = 0; (i + 1) < psynergyList.length; i += 2)
+               for (var i = 0; (i + 1) < rowObject.psynergyList.length; i += 2)
                {
-                  classData.psynergy.push({level: Number.parseInt(psynergyList[i]), name: psynergyList[i + 1]});
+                  classData.psynergy.push({
+                     level: Number.parseInt(rowObject.psynergyList[i]),
+                     name: rowObject.psynergyList[i + 1]
+                  });
                }
             }
          }
-         document.getElementById('output').value = JSON.stringify(output);
+         return output;
+      }
+
+      /**unused: priority, percentage*/
+      function mapClassCsvArrayToObject(className, priority, adept, combatType, earth, fire, wind, ice, hp, pp, attack,
+                                        defense, agility, luck, percentage, ...psynergyList)
+      {
+         return {
+            className,
+            adept,
+            combatType,
+            earth,
+            fire,
+            wind,
+            ice,
+            hp,
+            pp,
+            attack,
+            defense,
+            agility,
+            luck,
+            psynergyList
+         };
       }
    </script>
 </head>
@@ -70,7 +101,7 @@
 "Apostate","earth","Mage",0,4,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
 "Apostate","fire","Mage",4,0,4,0,1.7,1.85,1.35,1.35,1.65,0.9,1,"Cure",5,"Quake"
 </textarea><br />
-<input type="button" value="Convert" onClick="convert()" /><br />
+<input type="button" value="Convert" onClick="importClass()" /><br />
 <label for="output">Output JSON:</label><br />
 <textarea id="output" rows="10" cols="50"></textarea>
 </body>
