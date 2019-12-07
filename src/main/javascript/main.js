@@ -188,50 +188,73 @@ function updateFinalStat(stat)
 
 function determineClass(adept, combatType, djinnCount)
 {
-   var activeClass = {
-      name: null,
-      priority: -Infinity,
-      statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1}
-   };
-   if (null !== adept && undefined !== database.classes.byRequirement[adept]
-      && undefined !== database.classes.byRequirement[adept][combatType])
+   if (null === adept || undefined === database.classes.byRequirement[adept]
+      || undefined === database.classes.byRequirement[adept][combatType])
    {
-      for (var i = 0; i < database.classes.byRequirement[adept][combatType].length; ++i)
-      {
-         var newClass = database.classes.byRequirement[adept][combatType][i];
-         var requirementsInQuestion = newClass.requirements[adept][combatType];
-
-         var meetsRequirements = (
-            djinnCount.earth >= requirementsInQuestion.earth &&
-            djinnCount.fire >= requirementsInQuestion.fire &&
-            djinnCount.wind >= requirementsInQuestion.wind &&
-            djinnCount.ice >= requirementsInQuestion.ice
-         );
-         //TODO: resolve priority also by element:
-         /*
-         Earth -> Fire > Water > Wind
-         Fire -> Earth > Wind > Water
-         Water -> Wind > Earth > Fire
-         Wind -> Water > Fire > Earth
-
-         the steps for an Earth adept:
-         * get all the classes you qualify for
-         * filter out all the ones that are not tied with the highest priority
-         * find the one that requires the most Earth djinn
-         * if tie use the one that requires the most fire
-         * then water
-         * then wind (unreachable)
-         done
-         */
-
-         if (meetsRequirements && newClass.priority > activeClass.priority)
-         {
-            activeClass = newClass;
-         }
-      }
+      return {
+         name: null,
+         //need to return all 1 for updateClass
+         statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1}
+      };
    }
-   return activeClass;
+
+   var classList = database.classes.byRequirement[adept][combatType]
+   //get all the classes you qualify for
+   .filter((newClass) =>
+   {
+      var requirementsInQuestion = newClass.requirements[adept][combatType];
+
+      return (
+         djinnCount.earth >= requirementsInQuestion.earth &&
+         djinnCount.fire >= requirementsInQuestion.fire &&
+         djinnCount.wind >= requirementsInQuestion.wind &&
+         djinnCount.ice >= requirementsInQuestion.ice
+      );
+   })
+   .sorted((class1, class2) =>
+   {
+      //TODO: rename priority to totalDjinn
+      if (class1.priority > class2.priority) return -1;
+      if (class1.priority < class2.priority) return 1;
+      return 0;
+   });
+   var highestPriority = classList[0].priority;
+   //filter out all the ones that are not tied with the highest priority
+   classList = classList.filter((newClass) =>
+   {
+      return newClass.priority === highestPriority;
+   })
+   .sorted((class1, class2) =>
+   {
+      //TODO: combined both sorts
+      var req1 = class1.requirements[adept][combatType];
+      var req2 = class2.requirements[adept][combatType];
+
+      if (req1[adept] > req2[adept]) return -1;
+      if (req1[adept] < req2[adept]) return 1;
+
+      var elementOrder = classElementSortOrder[adept];
+      if (req1[elementOrder[0]] > req2[elementOrder[0]]) return -1;
+      if (req1[elementOrder[0]] < req2[elementOrder[0]]) return 1;
+
+      if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
+      if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
+
+      //2 is a no-op since they have same priority
+      if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
+      if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
+
+      return 0;
+   });
+   return classList[0];
 }
+
+var classElementSortOrder = {
+   earth: ['fire', 'ice', 'wind'],
+   fire: ['earth', 'wind', 'ice'],
+   ice: ['wind', 'earth', 'fire'],
+   wind: ['ice', 'fire', 'earth']
+};
 
 function updateClass()
 {

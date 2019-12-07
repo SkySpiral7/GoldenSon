@@ -7,7 +7,6 @@ TestSuite.main.determineClass = async function (testState = {})
 
    var noClass = {
       name: null,
-      priority: -Infinity,  //priority doesn't need to be tested but makes Expected simple
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1}
    };
 
@@ -56,6 +55,7 @@ TestSuite.main.determineClass = async function (testState = {})
       Actual: actual.name,
       Description: 'Earth: take Fire first'
    });
+   //TODO: will likely need to mock the DB to test every element
 
    return TestRunner.displayResults('TestSuite.main.determineClass', assertions, testState);
 };
