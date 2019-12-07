@@ -41,7 +41,6 @@
                initializeClass = true;
             }
             var classData = output[rowObject.className];
-            //1: adept, 2: Combat Type
             if (undefined === classData.requirements[rowObject.adept]) classData.requirements[rowObject.adept] = {};
             classData.requirements[rowObject.adept][rowObject.combatType] = {
                "earth": Number.parseInt(rowObject.earth),

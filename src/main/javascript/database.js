@@ -2320,39 +2320,4 @@ Claws
 Everything else?
 */
 
-function assignNames(object)
-{
-   for (var key in object)
-   {
-      object[key].name = key;
-   }
-   object.names = Object.keys(object);
-   object.names.sort();
-}
-
-assignNames(database.adeptTypes);
-assignNames(database.backgrounds);
-assignNames(database.combatTypes);
-assignNames(database.classes);
-assignNames(database.djinn);
-assignNames(database.equipment);
-assignNames(database.psynergy);
-
-database.classes.byRequirement = {};
-for (var name of database.classes.names)
-{
-   var classReq = database.classes[name].requirements;
-   for (var element in classReq)
-   {
-      for (var combatType in classReq[element])
-      {
-         if (undefined === database.classes.byRequirement[element]) database.classes.byRequirement[element] = {};
-         if (undefined === database.classes.byRequirement[element][combatType]) database.classes.byRequirement[element][combatType] = [];
-         database.classes.byRequirement[element][combatType].push(database.classes[name]);
-
-         //priority will get written a lot but it's fine
-         var djinnCount = classReq[element][combatType];
-         database.classes[name].priority = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
-      }
-   }
-}
+module.exports.database = database;
