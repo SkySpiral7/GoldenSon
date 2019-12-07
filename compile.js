@@ -4,43 +4,59 @@ const fs = require('fs');
 
 function rethrow(err) {if (err) throw err;}
 
-console.log('starting');
-
-//rm -rf generated/ &> /dev/null
-fs.rmdirSync('generated/', {recursive: true});
-fs.mkdirSync('generated/');
-
-try
+function main()
 {
-   fs.accessSync('node_modules/');
-}
-catch (err)
-{
-   const execSync = require('child_process').execSync;
-   //command from https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
-   //-g didn't seem to work
-   //TODO: is it possible to not require an install? if install is required then avoid try/catch
-   execSync('npm install babel-cli@6 babel-preset-react-app@3');
-}
+   console.log('starting');
 
-var babel = require('babel-core');
+   //rm -rf generated/ &> /dev/null
+   fs.rmdirSync('generated/', {recursive: true});
+   fs.mkdirSync('generated/');
 
-fs.readdir('./src/main/babel', (err, files) =>
-{
-   if (err) throw err;
-   files.forEach(fileName =>
+   fs.access('node_modules/', (err) =>
    {
-      babel.transformFile('./src/main/babel/' + fileName, {presets: ['babel-preset-react-app/prod']},
-         function (err, result)
-         {
-            if (err) throw err;
-            //result; // => { code, map, ast }
-            fs.writeFile('generated/' + fileName, result.code, 'utf8', rethrow);
-         });
-   });
-});
+      if (err)
+      {
+         const execSync = require('child_process').execSync;
+         //command from https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+         //-g didn't seem to work
+         execSync('npm install babel-cli@6 babel-preset-react-app@3');
+      }
+      generateFromBabel();
+      generateDatabase();
 
-const database = require('./src/main/javascript/database.js').database;
+      console.log('end');
+   });
+}
+
+function generateFromBabel()
+{
+   var babel = require('babel-core');
+
+   fs.readdir('./src/main/babel', (err, files) =>
+   {
+      if (err) throw err;
+      files.forEach(fileName =>
+      {
+         babel.transformFile('./src/main/babel/' + fileName, {presets: ['babel-preset-react-app/prod']},
+            function (err, result)
+            {
+               if (err) throw err;
+               //result; // => { code, map, ast }
+               fs.writeFile('generated/' + fileName, result.code, 'utf8', rethrow);
+            });
+      });
+   });
+}
+
+function generateDatabase()
+{
+   const database = require('./src/main/javascript/database.js').database;
+   processDatabase(database);
+
+   let fileContents = '\'use strict\';\nvar database = ' + JSON.stringify(database) + ';\n';
+
+   fs.writeFile('generated/database.js', fileContents, 'utf8', rethrow);
+}
 
 function processDatabase(database)
 {
@@ -82,10 +98,4 @@ function processDatabase(database)
    }
 }
 
-processDatabase(database);
-
-let fileContents = '\'use strict\';\nvar database = ' + JSON.stringify(database) + ';\n';
-
-fs.writeFile('generated/database.js', fileContents, 'utf8', rethrow);
-
-console.log('end');
+main();
