@@ -10,6 +10,17 @@ if (undefined === Array.prototype.contains)
          }
    });
 }
+if (undefined === Array.prototype.copy)
+{
+   Object.defineProperty(Array.prototype, 'copy', {
+      value:
+         /**Returns a shallow copy of this array.*/
+         function ()
+         {
+            return this.slice();
+         }
+   });
+}
 if (undefined === Array.prototype.remove)
 {
    Object.defineProperty(Array.prototype, 'remove', {
@@ -36,6 +47,19 @@ if (undefined === Array.prototype.removeByValue)
             var index = this.indexOf(value);
             if (-1 === index) return;  //not found
             this.remove(index);
+         }
+   });
+}
+if (undefined === Array.prototype.sorted)
+{
+   Object.defineProperty(Array.prototype, 'sorted', {
+      value:
+         /**Returns a shallow copy of this which is sorted.*/
+         function (sortBy)
+         {
+            var result = this.copy();
+            result.sort(sortBy);
+            return result;
          }
    });
 }

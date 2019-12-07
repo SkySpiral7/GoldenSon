@@ -50,9 +50,7 @@ function ClassListTable() {
          name: myClass.name,
          requirements: myClass.requirements[classNameListState.element][classNameListState.combatType]
       };
-   });
-   classList.sort(requirementSortOrder);
-   classList = classList.map(function (myClass) {
+   }).sorted(requirementSortOrder).map(function (myClass) {
       var counts = myClass.requirements;
       return React.createElement(
          'li',

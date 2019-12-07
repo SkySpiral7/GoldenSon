@@ -4,8 +4,7 @@
 function DjinnEntireList(props)
 {
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
-   props.names.sort();
-   props.names.forEach((name) =>
+   props.names.sorted().forEach((name) =>
    {
       const djinn = database.djinn[name];
       namesByElement[djinn.element].push(name);

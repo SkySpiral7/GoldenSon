@@ -47,9 +47,9 @@ function ClassListTable()
          name: myClass.name,
          requirements: myClass.requirements[classNameListState.element][classNameListState.combatType]
       }
-   });
-   classList.sort(requirementSortOrder);
-   classList = classList.map((myClass) =>
+   })
+   .sorted(requirementSortOrder)
+   .map((myClass) =>
    {
       let counts = myClass.requirements;
       return (<li key={myClass.name}>{JSON.stringify(counts) + ' ' + myClass.name}</li>);
