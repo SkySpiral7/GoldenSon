@@ -6,8 +6,6 @@ function rethrow(err) {if (err) throw err;}
 
 function main()
 {
-   console.log('starting');
-
    //rm -rf generated/ &> /dev/null
    fs.rmdirSync('generated/', {recursive: true});
    fs.mkdirSync('generated/');
@@ -24,7 +22,7 @@ function main()
       generateFromBabel();
       generateDatabase();
 
-      console.log('end');
+      console.log('done');
    });
 }
 

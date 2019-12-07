@@ -1,5 +1,6 @@
 'use strict';
 TestSuite.database = {};
+/**This tests for integrity of original DB and that the preprocessing works. Therefore it requires the generated DB*/
 TestSuite.database.integrityForClasses = async function (testState = {})
 {
    TestRunner.clearResults(testState);

@@ -191,10 +191,10 @@ function determineClass(adept, combatType, djinnCount)
    var activeClass = {
       name: null,
       priority: -Infinity,
-      statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-      psynergy: []
+      statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1}
    };
-   if (null !== adept && undefined !== database.classes.byRequirement[adept][combatType])
+   if (null !== adept && undefined !== database.classes.byRequirement[adept]
+      && undefined !== database.classes.byRequirement[adept][combatType])
    {
       for (var i = 0; i < database.classes.byRequirement[adept][combatType].length; ++i)
       {
