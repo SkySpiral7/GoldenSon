@@ -60,21 +60,20 @@ TestSuite.database.integrityForClasses = async function (testState = {})
          });
          for (var combatType in database.classes.byRequirement[element])
          {
-            var nameByTotalDjinn = {};
             count = database.classes.byRequirement[element][combatType].length;
             assertions.push({
                Expected: true,
                Actual: (count > 0),
                Description: 'database.classes.byRequirement.' + element + '.' + combatType + ' has classes'
             });
+            var baseClassList = [];
             for (var myClass of database.classes.byRequirement[element][combatType])
             {
-               if (undefined === nameByTotalDjinn[myClass.totalDjinn]) nameByTotalDjinn[myClass.totalDjinn] = [myClass.name];
-               else nameByTotalDjinn[myClass.totalDjinn].push(myClass.name);
+               if (0 === myClass.totalDjinn) baseClassList.push(myClass.name);
             }
             assertions.push({
                Expected: 1,
-               Actual: nameByTotalDjinn[0].length,
+               Actual: baseClassList.length,
                Description: element + ' ' + combatType + ' exactly 1 base class'
             });
          }

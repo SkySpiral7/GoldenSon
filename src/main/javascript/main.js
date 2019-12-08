@@ -199,7 +199,7 @@ function determineClass(adept, combatType, djinnCount)
    }
 
    var classList = database.classes.byRequirement[adept][combatType]
-   //get all the classes you qualify for
+   //remove classes you don't qualify for
    .filter((newClass) =>
    {
       var requirementsInQuestion = newClass.requirements[adept][combatType];
@@ -215,17 +215,7 @@ function determineClass(adept, combatType, djinnCount)
    {
       if (class1.totalDjinn > class2.totalDjinn) return -1;
       if (class1.totalDjinn < class2.totalDjinn) return 1;
-      return 0;
-   });
-   var highestTotal = classList[0].totalDjinn;
-   //filter out all the ones that are not tied with the highest total
-   classList = classList.filter((newClass) =>
-   {
-      return newClass.totalDjinn === highestTotal;
-   })
-   .sorted((class1, class2) =>
-   {
-      //TODO: combined both sorts
+
       var req1 = class1.requirements[adept][combatType];
       var req2 = class2.requirements[adept][combatType];
 
