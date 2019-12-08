@@ -29,9 +29,9 @@ TestSuite.database.integrityForClasses = async function (testState = {})
                var djinnCount = database.classes[className].requirements[element][combatType];
                var totalDjinnCount = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
                assertions.push({
-                  Expected: database.classes[className].priority,
+                  Expected: database.classes[className].totalDjinn,
                   Actual: totalDjinnCount,
-                  Description: element + ' class ' + className + ' requirements.' + element + '.' + combatType + ' djinnCount matches priority'
+                  Description: element + ' class ' + className + ' requirements.' + element + '.' + combatType + ' djinnCount matches totalDjinn'
                });
             }
          }
@@ -60,7 +60,7 @@ TestSuite.database.integrityForClasses = async function (testState = {})
          });
          for (var combatType in database.classes.byRequirement[element])
          {
-            var nameByPriority = {};
+            var nameByTotalDjinn = {};
             count = database.classes.byRequirement[element][combatType].length;
             assertions.push({
                Expected: true,
@@ -69,12 +69,12 @@ TestSuite.database.integrityForClasses = async function (testState = {})
             });
             for (var myClass of database.classes.byRequirement[element][combatType])
             {
-               if (undefined === nameByPriority[myClass.priority]) nameByPriority[myClass.priority] = [myClass.name];
-               else nameByPriority[myClass.priority].push(myClass.name);
+               if (undefined === nameByTotalDjinn[myClass.totalDjinn]) nameByTotalDjinn[myClass.totalDjinn] = [myClass.name];
+               else nameByTotalDjinn[myClass.totalDjinn].push(myClass.name);
             }
             assertions.push({
                Expected: 1,
-               Actual: nameByPriority[0].length,
+               Actual: nameByTotalDjinn[0].length,
                Description: element + ' ' + combatType + ' exactly 1 base class'
             });
          }

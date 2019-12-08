@@ -37,7 +37,7 @@ TestSuite.main.determineClass = async function (testState = {})
    assertions.push({
       Expected: database.classes.Swordsman.name,
       Actual: actual.name,
-      Description: 'takes highest priority'
+      Description: 'takes highest totalDjinn'
    });
 
    actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,

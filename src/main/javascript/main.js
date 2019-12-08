@@ -213,16 +213,15 @@ function determineClass(adept, combatType, djinnCount)
    })
    .sorted((class1, class2) =>
    {
-      //TODO: rename priority to totalDjinn
-      if (class1.priority > class2.priority) return -1;
-      if (class1.priority < class2.priority) return 1;
+      if (class1.totalDjinn > class2.totalDjinn) return -1;
+      if (class1.totalDjinn < class2.totalDjinn) return 1;
       return 0;
    });
-   var highestPriority = classList[0].priority;
-   //filter out all the ones that are not tied with the highest priority
+   var highestTotal = classList[0].totalDjinn;
+   //filter out all the ones that are not tied with the highest total
    classList = classList.filter((newClass) =>
    {
-      return newClass.priority === highestPriority;
+      return newClass.totalDjinn === highestTotal;
    })
    .sorted((class1, class2) =>
    {
@@ -240,7 +239,7 @@ function determineClass(adept, combatType, djinnCount)
       if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
       if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
 
-      //2 is a no-op since they have same priority
+      //2 is a no-op since they have same totalDjinn
       if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
       if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
 

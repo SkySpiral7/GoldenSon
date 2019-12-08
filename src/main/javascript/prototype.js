@@ -14,7 +14,7 @@ if (undefined === Array.prototype.copy)
 {
    Object.defineProperty(Array.prototype, 'copy', {
       value:
-         /**Returns a shallow copy of this array.*/
+         /**@return a shallow copy of this array.*/
          function ()
          {
             return this.slice();
@@ -54,7 +54,7 @@ if (undefined === Array.prototype.sorted)
 {
    Object.defineProperty(Array.prototype, 'sorted', {
       value:
-         /**Returns a shallow copy of this which is sorted.*/
+         /**@return a shallow copy of this which is sorted.*/
          function (sortBy)
          {
             var result = this.copy();
@@ -77,9 +77,11 @@ if (undefined === String.prototype.contains)
 if (undefined === JSON.clone)
 {
    Object.defineProperty(JSON, 'clone', {
-      value: function (obj)
-      {
-         return JSON.parse(JSON.stringify(obj));
-      }
+      value:
+         /**@return a deep clone of the JSON object (functions etc will be stripped)*/
+         function (obj)
+         {
+            return JSON.parse(JSON.stringify(obj));
+         }
    })
 }

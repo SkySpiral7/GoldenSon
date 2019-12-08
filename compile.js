@@ -88,9 +88,9 @@ function processDatabase(database)
             if (undefined === database.classes.byRequirement[element][combatType]) database.classes.byRequirement[element][combatType] = [];
             database.classes.byRequirement[element][combatType].push(database.classes[name]);
 
-            //priority will get written a lot but it's fine
+            //totalDjinn will get written a lot but it's fine
             var djinnCount = classReq[element][combatType];
-            database.classes[name].priority = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
+            database.classes[name].totalDjinn = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
          }
       }
    }
