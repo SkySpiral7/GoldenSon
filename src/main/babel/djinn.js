@@ -17,11 +17,11 @@ function DjinnEntireList(props)
          <h3>Mars (Fire)</h3>
          <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)" />
 
-         <h3>Jupiter (Wind)</h3>
-         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)" />
-
          <h3>Mercury (Ice)</h3>
          <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)" />
+
+         <h3>Jupiter (Wind)</h3>
+         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)" />
       </div>
    );
 }

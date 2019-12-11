@@ -27,7 +27,7 @@ TestSuite.database.integrityForClasses = async function (testState = {})
             for (var combatType in database.classes[className].requirements[element])
             {
                var djinnCount = database.classes[className].requirements[element][combatType];
-               var totalDjinnCount = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
+               var totalDjinnCount = (djinnCount.earth + djinnCount.fire + djinnCount.ice + djinnCount.wind);
                assertions.push({
                   Expected: database.classes[className].totalDjinn,
                   Actual: totalDjinnCount,

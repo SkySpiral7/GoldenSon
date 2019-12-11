@@ -101,7 +101,7 @@ function load(jsonDoc)
    document.getElementById('agility').value = character.stats.base.agility = jsonDoc.stats.agility;
    document.getElementById('luck').value = character.stats.base.luck = jsonDoc.stats.luck;
    character.djinn = {
-      counts: {earth: 0, fire: 0, wind: 0, ice: 0},
+      counts: {earth: 0, fire: 0, ice: 0, wind: 0},
       names: [],
       state: {},
       set: [],
@@ -207,8 +207,8 @@ function determineClass(adept, combatType, djinnCount)
       return (
          djinnCount.earth >= requirementsInQuestion.earth &&
          djinnCount.fire >= requirementsInQuestion.fire &&
-         djinnCount.wind >= requirementsInQuestion.wind &&
-         djinnCount.ice >= requirementsInQuestion.ice
+         djinnCount.ice >= requirementsInQuestion.ice &&
+         djinnCount.wind >= requirementsInQuestion.wind
       );
    })
    .sorted((class1, class2) =>
@@ -239,6 +239,7 @@ function determineClass(adept, combatType, djinnCount)
 }
 
 var classElementSortOrder = {
+   //element => symbiotic, neutral, conflict
    earth: ['fire', 'ice', 'wind'],
    fire: ['earth', 'wind', 'ice'],
    ice: ['wind', 'earth', 'fire'],

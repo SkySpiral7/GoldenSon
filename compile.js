@@ -90,7 +90,7 @@ function processDatabase(database)
 
             //totalDjinn will get written a lot but it's fine
             var djinnCount = classReq[element][combatType];
-            database.classes[name].totalDjinn = (djinnCount.earth + djinnCount.fire + djinnCount.wind + djinnCount.ice);
+            database.classes[name].totalDjinn = (djinnCount.earth + djinnCount.fire + djinnCount.ice + djinnCount.wind);
          }
       }
    }

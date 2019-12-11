@@ -2,10 +2,11 @@
 /*
 TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
 TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
+TODO: sort DB: elements (see below order), names (alphabetically)
 */
 var database = {
-   //was planning to sort all classes etc alphabetically once I have all the data
-   //TODO: element order is not same in each place
+   //element order: Venus, Mars, Mercury, Jupiter, Luna, Sol, typeless
+   //=> earth, fire, ice, wind, moon, sun, typeless
    adeptTypes: {
       "earth": {"statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}},
       "fire": {"statsAddend": {"hp": 10, "pp": 5, "attack": 0, "defense": 3, "agility": 2, "luck": 2}},

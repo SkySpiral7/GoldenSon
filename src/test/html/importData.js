@@ -20,7 +20,7 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
             },
             "psynergy": [{level: 1, name: "Cure"}, {level: 5, name: "Quake"}],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}}
             }
          }
       };
@@ -50,7 +50,7 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
             },
             "psynergy": [{level: 1, name: "Cure"}, {level: 5, name: "Quake"}],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}}
             }
          }
       };
@@ -80,7 +80,7 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
             },
             "psynergy": [],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}}
             }
          }
       };
@@ -111,8 +111,8 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
             },
             "psynergy": [{level: 1, name: "Cure"}, {level: 5, name: "Quake"}],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
-               "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}},
+               "fire": {"Mage": {"earth": 4, "fire": 0, "ice": 0, "wind": 4}}
             }
          }
       };
@@ -143,8 +143,8 @@ TestSuite.importData.convertClassCsvToJson = async function (testState = {})
             },
             "psynergy": [],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}},
-               "fire": {"Mage": {"earth": 4, "fire": 0, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}},
+               "fire": {"Mage": {"earth": 4, "fire": 0, "ice": 0, "wind": 4}}
             }
          }
       };
@@ -182,7 +182,7 @@ TestSuite.importData.ui = async function (testState = {})
             },
             "psynergy": [{level: 1, name: "Cure"}, {level: 5, name: "Quake"}],
             "requirements": {
-               "earth": {"Mage": {"earth": 0, "fire": 4, "wind": 4, "ice": 0}}
+               "earth": {"Mage": {"earth": 0, "fire": 4, "ice": 0, "wind": 4}}
             }
          }
       });

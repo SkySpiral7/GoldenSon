@@ -25,7 +25,7 @@ TestSuite.main.determineClass = async function (testState = {})
    }
 
    actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
-      {"earth": 0, "fire": 0, "wind": 0, "ice": 0});
+      {"earth": 0, "fire": 0, "ice": 0, "wind": 0});
    assertions.push({
       Expected: database.classes.Squire.name,
       Actual: actual.name,
@@ -33,7 +33,7 @@ TestSuite.main.determineClass = async function (testState = {})
    });
 
    actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
-      {"earth": 0, "fire": 0, "wind": 0, "ice": 1});
+      {"earth": 0, "fire": 0, "ice": 1, "wind": 0});
    assertions.push({
       Expected: database.classes.Swordsman.name,
       Actual: actual.name,
@@ -41,7 +41,7 @@ TestSuite.main.determineClass = async function (testState = {})
    });
 
    actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
-      {"earth": 0, "fire": 0, "wind": 0, "ice": 8});
+      {"earth": 0, "fire": 0, "ice": 8, "wind": 0});
    assertions.push({
       Expected: database.classes.Fearless.name,
       Actual: actual.name,
@@ -49,7 +49,7 @@ TestSuite.main.determineClass = async function (testState = {})
    });
 
    actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
-      {"earth": 0, "fire": 1, "wind": 1, "ice": 1});
+      {"earth": 0, "fire": 1, "ice": 1, "wind": 1});
    assertions.push({
       Expected: database.classes.Brute.name,
       Actual: actual.name,

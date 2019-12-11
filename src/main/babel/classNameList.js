@@ -68,12 +68,13 @@ function requirementSortOrder(class1, class2)
    if (req1.fire > req2.fire) return 1;
    else if (req1.fire < req2.fire) return -1;
 
-   if (req1.wind > req2.wind) return 1;
-   else if (req1.wind < req2.wind) return -1;
-
    if (req1.ice > req2.ice) return 1;
    else if (req1.ice < req2.ice) return -1;
 
+   if (req1.wind > req2.wind) return 1;
+   else if (req1.wind < req2.wind) return -1;
+
+   //name should be a no-op
    if (req1.name > req2.name) return 1;
    else if (req1.name < req2.name) return -1;
 

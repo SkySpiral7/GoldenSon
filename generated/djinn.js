@@ -26,15 +26,15 @@ function DjinnEntireList(props) {
       React.createElement(
          "h3",
          null,
-         "Jupiter (Wind)"
+         "Mercury (Ice)"
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind", display: "Jupiter (Wind)" }),
+      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice", display: "Mercury (Ice)" }),
       React.createElement(
          "h3",
          null,
-         "Mercury (Ice)"
+         "Jupiter (Wind)"
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice", display: "Mercury (Ice)" })
+      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind", display: "Jupiter (Wind)" })
    );
 }
 
