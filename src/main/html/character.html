@@ -46,7 +46,7 @@
 </head>
 <body onload="updateAllFinalStats();">
 <h2>General</h2>
-<label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;" /></label><br />
+<label>Name: <input type="text" id="name" value="" onchange="updateCharacterName();" /></label><br />
 <label for="adeptSelect">Adept (Elemental Alignment):</label>
 <div style="display:inline-block;" id="adeptDiv"></div>
 <script src="../../../generated/element.js"></script>
@@ -60,14 +60,15 @@
 <br />
 <label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();" /></label><br />
 <h2>Base stats</h2>
-<label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0" /></label><br />
-<label>PP: <input type="number" id="pp" onChange="updateBaseStat('pp')" value="0" min="0" /></label><br />
-<label>Attack: <input type="number" id="attack" onChange="updateBaseStat('attack')" value="0" min="0" /></label><br />
-<label>Defense: <input type="number" id="defense" onChange="updateBaseStat('defense')" value="0"
+<label>HP: <input type="number" id="hp" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>PP: <input type="number" id="pp" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>Attack: <input type="number" id="attack" onChange="updateBaseStat({target: this})" value="0"
+                      min="0" /></label><br />
+<label>Defense: <input type="number" id="defense" onChange="updateBaseStat({target: this})" value="0"
                        min="0" /></label><br />
-<label>Agility: <input type="number" id="agility" onChange="updateBaseStat('agility')" value="0"
+<label>Agility: <input type="number" id="agility" onChange="updateBaseStat({target: this})" value="0"
                        min="0" /></label><br />
-<label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0" /></label><br />
+<label>Luck: <input type="number" id="luck" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
 <h2>Djinn</h2>
 <div id="djinn"></div>
 <script src="../../../generated/djinn.js"></script>

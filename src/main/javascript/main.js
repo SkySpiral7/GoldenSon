@@ -174,8 +174,14 @@ function updateCombatType()
    updateAllFinalStats();
 }
 
-function updateBaseStat(stat)
+function updateCharacterName()
 {
+   character.name = document.getElementById('name').value;
+}
+
+function updateBaseStat(onChangeEvent)
+{
+   var stat = onChangeEvent.target.id;
    character.stats.base[stat] = Number.parseInt(document.getElementById(stat).value);
    updateFinalStat(stat);
 }
