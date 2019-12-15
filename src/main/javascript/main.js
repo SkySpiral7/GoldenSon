@@ -87,10 +87,10 @@ function load(jsonDoc)
    document.getElementById('name').value = character.name = jsonDoc.name;
    if (null === jsonDoc.adept)
    {
-      document.getElementById('adept').value = 'none';
+      document.getElementById('adeptSelect').value = 'none';
       character.adept = null;
    }
-   else document.getElementById('adept').value = character.adept = jsonDoc.adept;
+   else document.getElementById('adeptSelect').value = character.adept = jsonDoc.adept;
    document.getElementById('combatTypeSelect').value = character.combatType = jsonDoc.combatType;
    document.getElementById('backgroundSelect').value = character.background = jsonDoc.background;
    document.getElementById('level').value = character.level = jsonDoc.level;
@@ -157,7 +157,7 @@ function updateAdept()
    */
    //TODO: I'm thinking I need react to manage state for me
 
-   character.adept = document.getElementById('adept').value;
+   character.adept = document.getElementById('adeptSelect').value;
    //this is an option in the select
    if ('none' === character.adept) character.adept = null;
    updateAllFinalStats();

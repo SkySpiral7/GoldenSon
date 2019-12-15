@@ -1,7 +1,7 @@
 'use strict';
 /*
 TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
-TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
+TODO: use data: elements, backgrounds, combatTypes, skills, Weapon classes
 TODO: sort DB: elements (see below order), names (alphabetically)
 */
 var database = {
@@ -30,13 +30,13 @@ var database = {
          display: 'Sol (Sun)',
          "statsAddend": {"hp": 0, "pp": 20, "attack": 1, "defense": 1, "agility": 2, "luck": 2}
       },
-      "typeless": {
+      "none": {
          display: 'None',
          "statsAddend": {"hp": 20, "pp": 0, "attack": 4, "defense": 4, "agility": 4, "luck": 4}
-      },
-      //names in order: Venus, Mars, Mercury, Jupiter, Luna, Sol, typeless
-      "order": ['earth', 'fire', 'ice', 'wind', 'moon', 'sun', 'typeless']
+      }
    },
+   //names in order: Venus, Mars, Mercury, Jupiter, Luna, Sol, none
+   elementOrder: ['earth', 'fire', 'ice', 'wind', 'moon', 'sun', 'none'],
    backgrounds: {
       "Healer": {"statsAddend": {"hp": 10, "pp": 10, "attack": 0, "defense": 0, "agility": 3, "luck": 4}},
       "Seer": {"statsAddend": {"hp": 5, "pp": 10, "attack": 0, "defense": 2, "agility": 3, "luck": 3}},

@@ -14,7 +14,7 @@
       'use strict';
       var character = {
          name: '',
-         adept: null,
+         adept: database.elementOrder[0],
          combatType: database.combatTypes.names[0],
          background: database.backgrounds.names[0],
          activeClass: null,
@@ -47,17 +47,10 @@
 <body onload="updateAllFinalStats();">
 <h2>General</h2>
 <label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;" /></label><br />
-<label>Adept (Elemental Alignment):
-   <select id="adept" onchange="updateAdept();">
-      <option value="none">None</option>
-      <option value="earth">Venus (Earth)</option>
-      <option value="fire">Mars (Fire)</option>
-      <option value="ice">Mercury (Ice)</option>
-      <option value="wind">Jupiter (Wind)</option>
-      <option value="sun">Sol (Sun)</option>
-      <option value="moon">Luna (Moon)</option>
-   </select>
-</label><br />
+<label for="adeptSelect">Adept (Elemental Alignment):</label>
+<div style="display:inline-block;" id="adeptDiv"></div>
+<script src="../../../generated/element.js"></script>
+<br />
 <label for="combatTypeSelect">Combat type:</label>
 <div style="display:inline-block;" id="combatTypeDiv"></div>
 <br />
