@@ -21,7 +21,7 @@ function EquipmentList(props) {
       );
    });
    var options = database.equipment.names.filter(function (name) {
-      return !character.equipment.contains(name);
+      return !props.names.contains(name);
    }).map(function (name) {
       return React.createElement(
          'option',

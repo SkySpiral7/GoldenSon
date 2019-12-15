@@ -10,7 +10,7 @@ function EquipmentList(props)
          {' '}<b>{name}</b>{'. ' + equipment.description}
       </li>);
    });
-   const options = database.equipment.names.filter((name) => !character.equipment.contains(name))
+   const options = database.equipment.names.filter((name) => !props.names.contains(name))
    .map((name) =>
       <option key={name}>{name}</option>
    );

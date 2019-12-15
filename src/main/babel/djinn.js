@@ -50,7 +50,7 @@ function DjinnElementList(props)
       </li>);
    });
    const options = database.djinn.names
-   .filter((name) => !character.djinn.names.contains(name))
+   .filter((name) => !props.names.contains(name))
    .filter((name) =>
    {
       var djinn = database.djinn[name];
@@ -62,7 +62,7 @@ function DjinnElementList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
-         <DjinnElementDropDown element={props.element} />
+         <DjinnElementDropDown names={props.names} element={props.element} />
       </li>);
    }
    return (
@@ -70,12 +70,12 @@ function DjinnElementList(props)
    );
 }
 
-/**props: element*/
+/**props: names, element*/
 function DjinnElementDropDown(props)
 {
    const options = database.djinn.names
    .filter((name) => database.djinn[name].element === props.element)
-   .filter((name) => !character.djinn.names.contains(name))
+   .filter((name) => !props.names.contains(name))
    .map((name) =>
       <option key={name}>{name}</option>
    );

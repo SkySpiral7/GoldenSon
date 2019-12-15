@@ -85,7 +85,7 @@ function DjinnElementList(props) {
       );
    });
    var options = database.djinn.names.filter(function (name) {
-      return !character.djinn.names.contains(name);
+      return !props.names.contains(name);
    }).filter(function (name) {
       var djinn = database.djinn[name];
       return djinn.element === props.element;
@@ -100,7 +100,7 @@ function DjinnElementList(props) {
       listItems.push(React.createElement(
          "li",
          { key: 'add-' + props.element + '-djinn', id: 'add-' + props.element + '-djinn' },
-         React.createElement(DjinnElementDropDown, { element: props.element })
+         React.createElement(DjinnElementDropDown, { names: props.names, element: props.element })
       ));
    }
    return React.createElement(
@@ -110,12 +110,12 @@ function DjinnElementList(props) {
    );
 }
 
-/**props: element*/
+/**props: names, element*/
 function DjinnElementDropDown(props) {
    var options = database.djinn.names.filter(function (name) {
       return database.djinn[name].element === props.element;
    }).filter(function (name) {
-      return !character.djinn.names.contains(name);
+      return !props.names.contains(name);
    }).map(function (name) {
       return React.createElement(
          "option",
