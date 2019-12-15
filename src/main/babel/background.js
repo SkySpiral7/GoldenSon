@@ -1,18 +1,21 @@
 'use strict';
 
-function BackgroundOptions()
+class BackgroundOptions extends React.PureComponent
 {
-   const options = database.backgrounds.names.map((name) =>
-      <option key={name} value={name}>{name}</option>
-   );
-   return (
-      <select id="backgroundSelect" onChange={updateBackground}>
-         {options}
-      </select>
-   );
+   render()
+   {
+      const options = this.props.names.map((name) =>
+         <option key={name} value={name}>{name}</option>
+      );
+      return (
+         <select id="backgroundSelect" onChange={updateBackground}>
+            {options}
+         </select>
+      );
+   }
 }
 
 ReactDOM.render(
-   <BackgroundOptions />,
+   <BackgroundOptions names={database.backgrounds.names} />,
    document.getElementById('backgroundDiv')
 );
