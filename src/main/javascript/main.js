@@ -140,7 +140,7 @@ function updateLevel()
 function updateAdept()
 {
    /*
-   var equipment = database.adeptTypes[character.adept];
+   var equipment = database.elements[character.adept];
    character.stats.addend.hp -= equipment.statsAddend.hp;
    character.stats.addend.pp -= equipment.statsAddend.pp;
    character.stats.addend.attack -= equipment.statsAddend.attack;

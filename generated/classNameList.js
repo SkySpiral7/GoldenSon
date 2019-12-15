@@ -3,7 +3,7 @@
 var classNameListState = { element: 'earth', combatType: 'Mage' };
 
 function ElementDropDown() {
-   var options = database.adeptTypes.names.map(function (name) {
+   var options = database.elements.names.map(function (name) {
       return React.createElement(
          'option',
          { key: name },

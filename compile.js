@@ -68,7 +68,7 @@ function processDatabase(database)
       object.names.sort();
    }
 
-   assignNames(database.adeptTypes);
+   assignNames(database.elements);
    assignNames(database.backgrounds);
    assignNames(database.combatTypes);
    assignNames(database.classes);

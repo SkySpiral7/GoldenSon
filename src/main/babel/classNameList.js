@@ -4,7 +4,7 @@ let classNameListState = {element: 'earth', combatType: 'Mage'};
 
 function ElementDropDown()
 {
-   const options = database.adeptTypes.names
+   const options = database.elements.names
    .map((name) =>
       <option key={name}>{name}</option>
    );

@@ -12,16 +12,16 @@ function DjinnEntireList(props)
    });
    return (
       <div>
-         <h3>{database.adeptTypes.earth.display}</h3>
+         <h3>{database.elements.earth.display}</h3>
          <DjinnElementList names={namesByElement.earth} element="earth" />
 
-         <h3>{database.adeptTypes.fire.display}</h3>
+         <h3>{database.elements.fire.display}</h3>
          <DjinnElementList names={namesByElement.fire} element="fire" />
 
-         <h3>{database.adeptTypes.ice.display}</h3>
+         <h3>{database.elements.ice.display}</h3>
          <DjinnElementList names={namesByElement.ice} element="ice" />
 
-         <h3>{database.adeptTypes.wind.display}</h3>
+         <h3>{database.elements.wind.display}</h3>
          <DjinnElementList names={namesByElement.wind} element="wind" />
       </div>
    );
@@ -82,7 +82,7 @@ function DjinnElementDropDown(props)
    if (0 !== options.length)
    {
       return (<select onChange={addDjinn}>
-         <option>Add {database.adeptTypes[props.element].display} Djinn...</option>
+         <option>Add {database.elements[props.element].display} Djinn...</option>
          {options}
       </select>);
    }

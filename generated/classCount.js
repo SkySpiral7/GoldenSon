@@ -18,7 +18,7 @@ function ClassCountTable() {
       { key: 'tr-headers' },
       headers
    );
-   var rows = database.adeptTypes.names.map(function (name) {
+   var rows = database.elements.names.map(function (name) {
       return React.createElement(
          'tr',
          { key: 'tr-' + name },

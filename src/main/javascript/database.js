@@ -5,7 +5,7 @@ TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
 TODO: sort DB: elements (see below order), names (alphabetically)
 */
 var database = {
-   adeptTypes: {
+   elements: {
       "earth": {
          display: "Venus (Earth)",
          "statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}

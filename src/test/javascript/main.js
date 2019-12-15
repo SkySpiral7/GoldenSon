@@ -15,7 +15,7 @@ TestSuite.main.determineClass = async function (testState = {})
       actual = determineClass(null);  //ignore combatType, djinnCount
       assertions.push({Expected: noClass, Actual: actual, Description: 'only adepts have classes'});
 
-      actual = determineClass(database.adeptTypes.moon.name, database.combatTypes.Mage.name);  //ignore djinnCount
+      actual = determineClass(database.elements.moon.name, database.combatTypes.Mage.name);  //ignore djinnCount
       assertions.push({Expected: noClass, Actual: actual, Description: 'no classes found'});
       //this test (and prod if check) is temporary. eventually all should have classes
    }
@@ -24,7 +24,7 @@ TestSuite.main.determineClass = async function (testState = {})
       assertions.push({Error: e, Description: 'no classes'});
    }
 
-   actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
+   actual = determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 0, "wind": 0});
    assertions.push({
       Expected: database.classes.Squire.name,
@@ -32,7 +32,7 @@ TestSuite.main.determineClass = async function (testState = {})
       Description: 'base class'
    });
 
-   actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
+   actual = determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 1, "wind": 0});
    assertions.push({
       Expected: database.classes.Swordsman.name,
@@ -40,7 +40,7 @@ TestSuite.main.determineClass = async function (testState = {})
       Description: 'takes highest totalDjinn'
    });
 
-   actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
+   actual = determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 8, "wind": 0});
    assertions.push({
       Expected: database.classes.Fearless.name,
@@ -48,7 +48,7 @@ TestSuite.main.determineClass = async function (testState = {})
       Description: 'allowed to exceed requirements'
    });
 
-   actual = determineClass(database.adeptTypes.earth.name, database.combatTypes.Warrior.name,
+   actual = determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 1, "ice": 1, "wind": 1});
    assertions.push({
       Expected: database.classes.Brute.name,

@@ -14,25 +14,25 @@ function DjinnEntireList(props) {
       React.createElement(
          "h3",
          null,
-         database.adeptTypes.earth.display
+         database.elements.earth.display
       ),
       React.createElement(DjinnElementList, { names: namesByElement.earth, element: "earth" }),
       React.createElement(
          "h3",
          null,
-         database.adeptTypes.fire.display
+         database.elements.fire.display
       ),
       React.createElement(DjinnElementList, { names: namesByElement.fire, element: "fire" }),
       React.createElement(
          "h3",
          null,
-         database.adeptTypes.ice.display
+         database.elements.ice.display
       ),
       React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice" }),
       React.createElement(
          "h3",
          null,
-         database.adeptTypes.wind.display
+         database.elements.wind.display
       ),
       React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind" })
    );
@@ -131,7 +131,7 @@ function DjinnElementDropDown(props) {
             "option",
             null,
             "Add ",
-            database.adeptTypes[props.element].display,
+            database.elements[props.element].display,
             " Djinn..."
          ),
          options
