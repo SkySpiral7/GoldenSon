@@ -91,7 +91,7 @@ function load(jsonDoc)
       character.adept = null;
    }
    else document.getElementById('adept').value = character.adept = jsonDoc.adept;
-   document.getElementById('combatType').value = character.combatType = jsonDoc.combatType;
+   document.getElementById('combatTypeSelect').value = character.combatType = jsonDoc.combatType;
    document.getElementById('backgroundSelect').value = character.background = jsonDoc.background;
    document.getElementById('level').value = character.level = jsonDoc.level;
    document.getElementById('hp').value = character.stats.base.hp = jsonDoc.stats.hp;
@@ -170,7 +170,7 @@ function updateBackground()
 
 function updateCombatType()
 {
-   character.combatType = document.getElementById('combatType').value;
+   character.combatType = document.getElementById('combatTypeSelect').value;
    updateAllFinalStats();
 }
 

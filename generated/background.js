@@ -39,4 +39,3 @@ var BackgroundOptions = function (_React$PureComponent) {
 }(React.PureComponent);
 
 ReactDOM.render(React.createElement(BackgroundOptions, { names: database.backgrounds.names }), document.getElementById('backgroundDiv'));
-document.getElementById('backgroundDiv').onchange();

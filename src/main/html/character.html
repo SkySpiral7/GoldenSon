@@ -15,7 +15,7 @@
       var character = {
          name: '',
          adept: null,
-         combatType: 'Warrior',
+         combatType: database.combatTypes.names[0],
          background: database.backgrounds.names[0],
          activeClass: null,
          level: 1,
@@ -58,13 +58,10 @@
       <option value="moon">Luna (Moon)</option>
    </select>
 </label><br />
-<label>Combat type:
-   <select id="combatType" onchange="updateCombatType();">
-      <option value="Warrior">Warrior</option>
-      <option value="Mage">Mage</option>
-      <option value="Rogue">Rogue</option>
-   </select>
-</label><br />
+<label for="combatTypeSelect">Combat type:</label>
+<div style="display:inline-block;" id="combatTypeDiv"></div>
+<script src="../../../generated/combatType.js"></script>
+<br />
 <label for="backgroundSelect">Background:</label>
 <div style="display:inline-block;" id="backgroundDiv"></div>
 <script src="../../../generated/background.js"></script>
