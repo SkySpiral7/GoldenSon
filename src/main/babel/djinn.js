@@ -4,29 +4,30 @@
 function DjinnEntireList(props)
 {
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
-   props.names.sorted().forEach((name) =>
+   props.names.sorted()
+   .forEach((name) =>
    {
       const djinn = database.djinn[name];
       namesByElement[djinn.element].push(name);
    });
    return (
       <div>
-         <h3>Venus (Earth)</h3>
-         <DjinnElementList names={namesByElement.earth} element="earth" display="Venus (Earth)" />
+         <h3>{database.adeptTypes.earth.display}</h3>
+         <DjinnElementList names={namesByElement.earth} element="earth" />
 
-         <h3>Mars (Fire)</h3>
-         <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)" />
+         <h3>{database.adeptTypes.fire.display}</h3>
+         <DjinnElementList names={namesByElement.fire} element="fire" />
 
-         <h3>Mercury (Ice)</h3>
-         <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)" />
+         <h3>{database.adeptTypes.ice.display}</h3>
+         <DjinnElementList names={namesByElement.ice} element="ice" />
 
-         <h3>Jupiter (Wind)</h3>
-         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)" />
+         <h3>{database.adeptTypes.wind.display}</h3>
+         <DjinnElementList names={namesByElement.wind} element="wind" />
       </div>
    );
 }
 
-/**props: names, element, display*/
+/**props: names, element*/
 function DjinnElementList(props)
 {
    const listItems = props.names.map((name) =>
@@ -61,7 +62,7 @@ function DjinnElementList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
-         <DjinnElementDropDown element={props.element} display={props.display} />
+         <DjinnElementDropDown element={props.element} />
       </li>);
    }
    return (
@@ -69,7 +70,7 @@ function DjinnElementList(props)
    );
 }
 
-/**props: element, display*/
+/**props: element*/
 function DjinnElementDropDown(props)
 {
    const options = database.djinn.names
@@ -81,7 +82,7 @@ function DjinnElementDropDown(props)
    if (0 !== options.length)
    {
       return (<select onChange={addDjinn}>
-         <option>Add {props.display} Djinn...</option>
+         <option>Add {database.adeptTypes[props.element].display} Djinn...</option>
          {options}
       </select>);
    }

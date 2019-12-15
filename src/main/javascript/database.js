@@ -5,16 +5,37 @@ TODO: use data: adeptTypes, backgrounds, combatTypes, skills, Weapon classes
 TODO: sort DB: elements (see below order), names (alphabetically)
 */
 var database = {
-   //element order: Venus, Mars, Mercury, Jupiter, Luna, Sol, typeless
-   //=> earth, fire, ice, wind, moon, sun, typeless
    adeptTypes: {
-      "earth": {"statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}},
-      "fire": {"statsAddend": {"hp": 10, "pp": 5, "attack": 0, "defense": 3, "agility": 2, "luck": 2}},
-      "ice": {"statsAddend": {"hp": 0, "pp": 15, "attack": 1, "defense": 1, "agility": 2, "luck": 3}},
-      "wind": {"statsAddend": {"hp": 5, "pp": 5, "attack": 0, "defense": 1, "agility": 4, "luck": 3}},
-      "moon": {"statsAddend": {"hp": 20, "pp": 0, "attack": 2, "defense": 2, "agility": 1, "luck": 1}},
-      "sun": {"statsAddend": {"hp": 0, "pp": 20, "attack": 1, "defense": 1, "agility": 2, "luck": 2}},
-      "typeless": {"statsAddend": {"hp": 20, "pp": 0, "attack": 4, "defense": 4, "agility": 4, "luck": 4}}
+      "earth": {
+         display: "Venus (Earth)",
+         "statsAddend": {"hp": 5, "pp": 10, "attack": 3, "defense": 0, "agility": 2, "luck": 2}
+      },
+      "fire": {
+         display: 'Mars (Fire)',
+         "statsAddend": {"hp": 10, "pp": 5, "attack": 0, "defense": 3, "agility": 2, "luck": 2}
+      },
+      "ice": {
+         display: 'Mercury (Ice)',
+         "statsAddend": {"hp": 0, "pp": 15, "attack": 1, "defense": 1, "agility": 2, "luck": 3}
+      },
+      "wind": {
+         display: 'Jupiter (Wind)',
+         "statsAddend": {"hp": 5, "pp": 5, "attack": 0, "defense": 1, "agility": 4, "luck": 3}
+      },
+      "moon": {
+         display: 'Luna (Moon)',
+         "statsAddend": {"hp": 20, "pp": 0, "attack": 2, "defense": 2, "agility": 1, "luck": 1}
+      },
+      "sun": {
+         display: 'Sol (Sun)',
+         "statsAddend": {"hp": 0, "pp": 20, "attack": 1, "defense": 1, "agility": 2, "luck": 2}
+      },
+      "typeless": {
+         display: 'None',
+         "statsAddend": {"hp": 20, "pp": 0, "attack": 4, "defense": 4, "agility": 4, "luck": 4}
+      },
+      //names in order: Venus, Mars, Mercury, Jupiter, Luna, Sol, typeless
+      "order": ['earth', 'fire', 'ice', 'wind', 'moon', 'sun', 'typeless']
    },
    backgrounds: {
       "Healer": {"statsAddend": {"hp": 10, "pp": 10, "attack": 0, "defense": 0, "agility": 3, "luck": 4}},
@@ -2290,7 +2311,8 @@ var database = {
    },
    skills: {
       //current: max of 2 ranks. only get skills from background (thus read only list)
-      names: ['Acrobatics',
+      names: [
+         'Acrobatics',
          'Alchemy',
          'Athletics',
          //boating removed. replaced by either Profession or background

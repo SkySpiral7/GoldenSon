@@ -14,31 +14,31 @@ function DjinnEntireList(props) {
       React.createElement(
          "h3",
          null,
-         "Venus (Earth)"
+         database.adeptTypes.earth.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.earth, element: "earth", display: "Venus (Earth)" }),
+      React.createElement(DjinnElementList, { names: namesByElement.earth, element: "earth" }),
       React.createElement(
          "h3",
          null,
-         "Mars (Fire)"
+         database.adeptTypes.fire.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.fire, element: "fire", display: "Mars (Fire)" }),
+      React.createElement(DjinnElementList, { names: namesByElement.fire, element: "fire" }),
       React.createElement(
          "h3",
          null,
-         "Mercury (Ice)"
+         database.adeptTypes.ice.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice", display: "Mercury (Ice)" }),
+      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice" }),
       React.createElement(
          "h3",
          null,
-         "Jupiter (Wind)"
+         database.adeptTypes.wind.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind", display: "Jupiter (Wind)" })
+      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind" })
    );
 }
 
-/**props: names, element, display*/
+/**props: names, element*/
 function DjinnElementList(props) {
    var listItems = props.names.map(function (name) {
       var djinn = database.djinn[name];
@@ -100,7 +100,7 @@ function DjinnElementList(props) {
       listItems.push(React.createElement(
          "li",
          { key: 'add-' + props.element + '-djinn', id: 'add-' + props.element + '-djinn' },
-         React.createElement(DjinnElementDropDown, { element: props.element, display: props.display })
+         React.createElement(DjinnElementDropDown, { element: props.element })
       ));
    }
    return React.createElement(
@@ -110,7 +110,7 @@ function DjinnElementList(props) {
    );
 }
 
-/**props: element, display*/
+/**props: element*/
 function DjinnElementDropDown(props) {
    var options = database.djinn.names.filter(function (name) {
       return database.djinn[name].element === props.element;
@@ -131,7 +131,7 @@ function DjinnElementDropDown(props) {
             "option",
             null,
             "Add ",
-            props.display,
+            database.adeptTypes[props.element].display,
             " Djinn..."
          ),
          options
