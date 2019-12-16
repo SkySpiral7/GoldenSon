@@ -48,7 +48,8 @@
                        min="0" /></label><br />
 <label>Agility: <input type="number" id="agility" onChange="character.updateBaseStat({target: this})" value="0"
                        min="0" /></label><br />
-<label>Luck: <input type="number" id="luck" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>Luck: <input type="number" id="luck" onChange="character.updateBaseStat({target: this})" value="0"
+                    min="0" /></label><br />
 <h2>Djinn</h2>
 <div id="djinn"></div>
 <h2>Equipment</h2>
@@ -64,8 +65,9 @@ Luck: <span id="luck-final"></span><br />
 <h2>Psynergy</h2>
 <div id="psynergy"></div>
 <br /><br />
-<span onClick="character.saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
-                                 id="save-to-file-link">Save to File</a></span>
+<span onClick="character.saveToFile();"><a href="javascript:alert('This link changes to data as you click it');"
+                                           download=""
+                                           id="save-to-file-link">Save to File</a></span>
 <input type="button" value="Save To Text Area" onClick="character.saveToTextArea();" id="save-text-button" />
 <br />
 <input type="file" id="file-chooser" accept=".js,.json" /><br />
@@ -119,7 +121,15 @@ http://www.goldensun-syndicate.net/
 https://goldensun.fandom.com/wiki/Djinn
 
 https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html
+
 not sure how much state can/should be managed by react
 https://reactjs.org/docs/state-and-lifecycle.html
 https://reactjs.org/docs/faq-state.html
+https://redux.js.org/
+
+class help
+https://itnext.io/how-to-properly-define-state-in-react-components-47544eb4c15d
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+
+overall example: https://stackoverflow.com/questions/54121602/displaying-the-sum-of-values-in-react-jsx
 -->

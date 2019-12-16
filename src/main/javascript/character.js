@@ -2,20 +2,8 @@
 
 function CharacterApp()
 {
-   this.state = {
-      //gameVersion, parserVersion are ignored until there is reason to use them
-      //gameVersion, parserVersion are strings to support possible future semantic versioning
-      //gameVersion: '1',
-      //parserVersion: '1',
-      name: '',
-      adept: database.elementOrder[0],
-      combatType: database.combatTypes.names[0],
-      background: database.backgrounds.names[0],
-      level: 1,
-      stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-      djinn: {},
-      equipment: []
-   };
+   //for class: (rename to this.#charCalc etc. can make things static)
+   //#charCalc; static #classElementSortOrder; state;
 
    var charCalc = {
       activeClass: null,
@@ -33,6 +21,28 @@ function CharacterApp()
          standby: [],
          recovery: []
       }
+   };
+   var classElementSortOrder = {
+      //element => symbiotic, neutral, conflict
+      earth: ['fire', 'ice', 'wind'],
+      fire: ['earth', 'wind', 'ice'],
+      ice: ['wind', 'earth', 'fire'],
+      wind: ['ice', 'fire', 'earth']
+   };
+
+   this.state = {
+      //gameVersion, parserVersion are ignored until there is reason to use them
+      //gameVersion, parserVersion are strings to support possible future semantic versioning
+      //gameVersion: '1',
+      //parserVersion: '1',
+      name: '',
+      adept: database.elementOrder[0],
+      combatType: database.combatTypes.names[0],
+      background: database.backgrounds.names[0],
+      level: 1,
+      stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+      djinn: {},
+      equipment: []
    };
 
    this.saveToFile = function ()
@@ -260,14 +270,6 @@ function CharacterApp()
          return 0;
       });
       return classList[0];
-   };
-
-   var classElementSortOrder = {
-      //element => symbiotic, neutral, conflict
-      earth: ['fire', 'ice', 'wind'],
-      fire: ['earth', 'wind', 'ice'],
-      ice: ['wind', 'earth', 'fire'],
-      wind: ['ice', 'fire', 'earth']
    };
 
    this.updateClass = function ()
