@@ -38,8 +38,8 @@ function updateCombatType()
 
 function ClassListTable()
 {
-   if (undefined === database.classes.byRequirement[classNameListState.element]) return '';
-   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return '';
+   if (undefined === database.classes.byRequirement[classNameListState.element]) return null;
+   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return null;
    let classList = database.classes.byRequirement[classNameListState.element][classNameListState.combatType]
    .map((myClass) =>
    {

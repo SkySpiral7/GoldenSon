@@ -86,7 +86,7 @@ function DjinnElementDropDown(props)
          {options}
       </select>);
    }
-   return '';
+   return null;
 }
 
 function renderDjinn()
