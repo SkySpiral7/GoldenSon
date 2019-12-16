@@ -29,8 +29,3 @@ function updateAdeptEventForward(onClickEvent)
 {
    character.updateAdept(onClickEvent);
 }
-
-ReactDOM.render(
-   <ElementOptions names={database.elements.names} onChange={updateAdeptEventForward} />,
-   document.getElementById('adeptDiv')
-);

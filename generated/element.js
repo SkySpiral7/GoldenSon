@@ -18,7 +18,7 @@ var ElementOptions = function (_React$Component) {
    }
 
    _createClass(ElementOptions, [{
-      key: 'render',
+      key: "render",
       value: function render() {
          var options = this.props.names.sorted(function (name1, name2) {
             var index1 = database.elementOrder.indexOf(name1);
@@ -30,14 +30,14 @@ var ElementOptions = function (_React$Component) {
             return 0;
          }).map(function (name) {
             return React.createElement(
-               'option',
+               "option",
                { key: name, value: name },
                database.elements[name].display
             );
          });
          return React.createElement(
-            'select',
-            { id: 'adeptSelect', onChange: this.props.onChange },
+            "select",
+            { id: "adeptSelect", onChange: this.props.onChange },
             options
          );
       }
@@ -49,5 +49,3 @@ var ElementOptions = function (_React$Component) {
 function updateAdeptEventForward(onClickEvent) {
    character.updateAdept(onClickEvent);
 }
-
-ReactDOM.render(React.createElement(ElementOptions, { names: database.elements.names, onChange: updateAdeptEventForward }), document.getElementById('adeptDiv'));

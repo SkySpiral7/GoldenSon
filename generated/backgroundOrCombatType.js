@@ -45,8 +45,3 @@ function updateCombatTypeEventForward(onClickEvent) {
 function updateBackgroundEventForward(onClickEvent) {
    character.updateBackground(onClickEvent);
 }
-
-ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.combatTypes.names, id: 'combatTypeSelect',
-   onChange: updateCombatTypeEventForward }), document.getElementById('combatTypeDiv'));
-ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.backgrounds.names, id: 'backgroundSelect',
-   onChange: updateBackgroundEventForward }), document.getElementById('backgroundDiv'));
