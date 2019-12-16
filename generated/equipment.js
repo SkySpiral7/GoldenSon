@@ -32,10 +32,10 @@ function EquipmentList(props) {
    if (0 !== options.length) {
       listItems.push(React.createElement(
          'li',
-         { key: 'add-equipment', id: 'add-equipment' },
+         { key: 'add-equipment', id: 'add-equipment-li' },
          React.createElement(
             'select',
-            { onChange: addEquipmentEventForward },
+            { onChange: addEquipmentEventForward, id: 'add-equipment-select' },
             React.createElement(
                'option',
                null,

@@ -99,7 +99,7 @@ function DjinnElementList(props) {
    if (0 !== options.length) {
       listItems.push(React.createElement(
          "li",
-         { key: 'add-' + props.element + '-djinn', id: 'add-' + props.element + '-djinn' },
+         { key: 'add-' + props.element + '-djinn', id: 'add-' + props.element + '-djinn-li' },
          React.createElement(DjinnElementDropDown, { names: props.names, element: props.element })
       ));
    }
@@ -134,7 +134,7 @@ function DjinnElementDropDown(props) {
    if (0 !== options.length) {
       return React.createElement(
          "select",
-         { onChange: addDjinnEventForward },
+         { onChange: addDjinnEventForward, id: 'add-' + props.element + '-djinn-select' },
          React.createElement(
             "option",
             null,

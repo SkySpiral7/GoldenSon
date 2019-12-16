@@ -28,6 +28,59 @@ TestSuite.characterJs.load = function (testState = {})
 
    return TestRunner.displayResults('character.js save/load', assertions, testState);
 };
+TestSuite.characterJs.updateFinalStat = function (testState = {})
+{
+   TestRunner.clearResults(testState);
+   var assertions = [];
+
+   function domOnChange(id, value)
+   {
+      document.getElementById(id).value = value;
+      document.getElementById(id)
+      .onchange();
+   }
+
+   function domInnerHtml(id)
+   {
+      return document.getElementById(id).innerHTML;
+   }
+
+   function addEquipment(name)
+   {
+      var select = document.getElementById('add-equipment-select');
+      select.value = name;
+      character.addEquipment({target: select});
+   }
+
+   function addDjinn(element, name)
+   {
+      var select = document.getElementById('add-' + element + '-djinn-select');
+      select.value = name;
+      character.addDjinn({target: select});
+   }
+
+   try
+   {
+      assertions.push({Expected: 'Priestess', Actual: domInnerHtml('class'), Description: 'class'});
+
+      domOnChange('defense', '100');
+      assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'defense class multiply'});
+
+      addEquipment('Ixion Mail');
+      domOnChange('defense', '74');
+      assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'def mul right order'});
+
+      addDjinn('earth', 'Echo');
+      addDjinn('earth', 'Mud');
+      assertions.push({Expected: 'High Priestess', Actual: domInnerHtml('class'), Description: 'class 2'});
+   }
+   catch (e)
+   {
+      assertions.push({Error: e, Description: 'mirror'});
+   }
+
+   return TestRunner.displayResults('character.js updateFinalStat', assertions, testState);
+};
 TestSuite.characterJs.determineClass = async function (testState = {})
 {
    TestRunner.clearResults(testState);
@@ -43,7 +96,8 @@ TestSuite.characterJs.determineClass = async function (testState = {})
       actual = character.determineClass(null);  //ignore combatType, djinnCount
       assertions.push({Expected: noClass, Actual: actual, Description: 'only adepts have classes'});
 
-      actual = character.determineClass(database.elements.moon.name, database.combatTypes.Mage.name);  //ignore djinnCount
+      //ignore djinnCount
+      actual = character.determineClass(database.elements.moon.name, database.combatTypes.Mage.name);
       assertions.push({Expected: noClass, Actual: actual, Description: 'no classes found'});
       //this test (and prod if check) is temporary. eventually all should have classes
    }

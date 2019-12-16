@@ -61,7 +61,7 @@ function DjinnElementList(props)
    );
    if (0 !== options.length)
    {
-      listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
+      listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn-li'}>
          <DjinnElementDropDown names={props.names} element={props.element} />
       </li>);
    }
@@ -91,7 +91,7 @@ function DjinnElementDropDown(props)
    );
    if (0 !== options.length)
    {
-      return (<select onChange={addDjinnEventForward}>
+      return (<select onChange={addDjinnEventForward} id={'add-' + props.element + '-djinn-select'}>
          <option>Add {database.elements[props.element].display} Djinn...</option>
          {options}
       </select>);

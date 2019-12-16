@@ -2,7 +2,7 @@
 
 function CharacterApp()
 {
-   //for class: (rename to this.#charCalc etc. can make things static)
+   //for class: (rename to this.#charCalc etc. can make some methods static)
    //#charCalc; static #classElementSortOrder; state;
 
    var charCalc = {

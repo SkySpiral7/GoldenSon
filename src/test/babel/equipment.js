@@ -6,8 +6,8 @@ TestSuite.equipment = async function (testState = {})
 
    assertions.push({
       Expected: true,
-      Actual: document.getElementById('add-equipment') !== null,
-      Description: 'add-equipment exists'
+      Actual: document.getElementById('add-equipment-li') !== null,
+      Description: 'add-equipment-li exists'
    });
 
    return TestRunner.displayResults('equipment.js', assertions, testState);

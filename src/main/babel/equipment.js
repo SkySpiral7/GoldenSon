@@ -16,8 +16,8 @@ function EquipmentList(props)
    );
    if (0 !== options.length)
    {
-      listItems.push(<li key={'add-equipment'} id={'add-equipment'}>
-         <select onChange={addEquipmentEventForward}>
+      listItems.push(<li key={'add-equipment'} id={'add-equipment-li'}>
+         <select onChange={addEquipmentEventForward} id='add-equipment-select'>
             <option>Add Equipment...</option>
             {options}
          </select>
