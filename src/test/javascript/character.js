@@ -33,11 +33,11 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
    TestRunner.clearResults(testState);
    var assertions = [];
 
-   function domOnChange(id, value)
+   function statOnChange(id, value)
    {
-      document.getElementById(id).value = value;
-      document.getElementById(id)
-      .onchange();
+      var input = document.getElementById(id);
+      input.value = value;
+      updateBaseStatCharForward({target: input});
    }
 
    function domInnerHtml(id)
@@ -63,11 +63,11 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
    {
       assertions.push({Expected: 'Priestess', Actual: domInnerHtml('class'), Description: 'class'});
 
-      domOnChange('defense', '100');
+      statOnChange('defense', '100');
       assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'defense class multiply'});
 
       addEquipment('Ixion Mail');
-      domOnChange('defense', '74');
+      statOnChange('defense', '74');
       assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'def mul right order'});
 
       addDjinn('earth', 'Echo');

@@ -17,7 +17,7 @@
    <script src="../../../generated/psynergy.js"></script>
    <script>
       'use strict';
-      var character = new CharacterApp();
+      var character;
    </script>
    <style>
       body {
@@ -27,55 +27,7 @@
    </style>
 </head>
 <body onload="character.updateAllFinalStats();">
-<h2>General</h2>
-<label>Name: <input type="text" id="name" value="" onchange="character.updateCharacterName();" /></label><br />
-<label for="adeptSelect">Adept (Elemental Alignment):</label>
-<div style="display:inline-block;" id="adeptDiv"></div>
-<br />
-<label for="combatTypeSelect">Combat type:</label>
-<div style="display:inline-block;" id="combatTypeDiv"></div>
-<br />
-<label for="backgroundSelect">Background:</label>
-<div style="display:inline-block;" id="backgroundDiv"></div>
-<br />
-<label>Level: <input type="number" id="level" value="1" min="1" onchange="character.updateLevel();" /></label><br />
-<h2>Base stats</h2>
-<label>HP: <input type="number" id="hp" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
-<label>PP: <input type="number" id="pp" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
-<label>Attack: <input type="number" id="attack" onChange="character.updateBaseStat({target: this})" value="0"
-                      min="0" /></label><br />
-<label>Defense: <input type="number" id="defense" onChange="character.updateBaseStat({target: this})" value="0"
-                       min="0" /></label><br />
-<label>Agility: <input type="number" id="agility" onChange="character.updateBaseStat({target: this})" value="0"
-                       min="0" /></label><br />
-<label>Luck: <input type="number" id="luck" onChange="character.updateBaseStat({target: this})" value="0"
-                    min="0" /></label><br />
-<h2>Djinn</h2>
-<div id="djinn"></div>
-<h2>Equipment</h2>
-<div id="equipment"></div>
-<h2>Final stats</h2>
-Class: <span id="class"></span><br />
-HP: <span id="hp-final"></span><br />
-PP: <span id="pp-final"></span><br />
-Attack: <span id="attack-final"></span><br />
-Defense: <span id="defense-final"></span><br />
-Agility: <span id="agility-final"></span><br />
-Luck: <span id="luck-final"></span><br />
-<h2>Psynergy</h2>
-<div id="psynergy"></div>
-<br /><br />
-<span onClick="character.saveToFile();"><a href="javascript:alert('This link changes to data as you click it');"
-                                           download=""
-                                           id="save-to-file-link">Save to File</a></span>
-<input type="button" value="Save To Text Area" onClick="character.saveToTextArea();" id="save-text-button" />
-<br />
-<input type="file" id="file-chooser" accept=".js,.json" /><br />
-<input type="button" value="Load from File" onClick="character.loadFile();" />
-<input type="button" value="Load from Text Area" onClick="character.loadFromTextArea();" id="load-text-button" /><br />
-<br />
-<textarea id="code-box" rows="10" cols="50"></textarea>
-
+<div style="display:inline-block;" id="characterDiv"></div>
 <script src="../../../generated/character.js"></script>
 
 <!--testRunner only works locally-->
@@ -86,14 +38,26 @@ Luck: <span id="luck-final"></span><br />
    var Loader = {};
    Loader.resetData = function ()
    {
-      character = new CharacterApp();
+      character.load({
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         //gameVersion, parserVersion are strings to support possible future semantic versioning
+         //gameVersion: '1',
+         //parserVersion: '1',
+         name: '',
+         adept: database.elementOrder[0],
+         combatType: database.combatTypes.names[0],
+         background: database.backgrounds.names[0],
+         level: 1,
+         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+         djinn: {},
+         equipment: []
+      });
       character.updateAllFinalStats();
    };
    Loader.sendData = function (jsonData)
    {
       document.getElementById('code-box').value = JSON.stringify(jsonData);  //to simulate user input
-      document.getElementById('load-text-button')
-      .onclick();
+      loadFromTextAreaCharForward();
    };
 
    TestConfig.betweenEach = function ()
