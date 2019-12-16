@@ -8,7 +8,7 @@ function EquipmentList(props) {
          { key: 'equipment-' + name, id: 'equipment-' + name, 'data-name': name },
          React.createElement(
             'a',
-            { href: '#', onClick: removeEquipment },
+            { href: '#', onClick: removeEquipmentEventForward },
             'Remove'
          ),
          ' ',
@@ -35,7 +35,7 @@ function EquipmentList(props) {
          { key: 'add-equipment', id: 'add-equipment' },
          React.createElement(
             'select',
-            { onChange: addEquipment },
+            { onChange: addEquipmentEventForward },
             React.createElement(
                'option',
                null,
@@ -50,6 +50,14 @@ function EquipmentList(props) {
       null,
       listItems
    );
+}
+
+function removeEquipmentEventForward(onClickEvent) {
+   character.removeEquipment(onClickEvent);
+}
+
+function addEquipmentEventForward(onClickEvent) {
+   character.addEquipment(onClickEvent);
 }
 
 function renderEquipment(equipment) {

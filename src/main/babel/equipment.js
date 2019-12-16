@@ -6,7 +6,7 @@ function EquipmentList(props)
    {
       var equipment = database.equipment[name];
       return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
-         <a href="#" onClick={removeEquipment}>Remove</a>
+         <a href="#" onClick={removeEquipmentEventForward}>Remove</a>
          {' '}<b>{name}</b>{'. ' + equipment.description}
       </li>);
    });
@@ -17,7 +17,7 @@ function EquipmentList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-equipment'} id={'add-equipment'}>
-         <select onChange={addEquipment}>
+         <select onChange={addEquipmentEventForward}>
             <option>Add Equipment...</option>
             {options}
          </select>
@@ -26,6 +26,16 @@ function EquipmentList(props)
    return (
       <ul>{listItems}</ul>
    );
+}
+
+function removeEquipmentEventForward(onClickEvent)
+{
+   character.removeEquipment(onClickEvent);
+}
+
+function addEquipmentEventForward(onClickEvent)
+{
+   character.addEquipment(onClickEvent);
 }
 
 function renderEquipment(equipment)

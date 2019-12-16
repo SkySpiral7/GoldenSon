@@ -38,5 +38,15 @@ var BackgroundOrCombatTypeOptions = function (_React$PureComponent) {
    return BackgroundOrCombatTypeOptions;
 }(React.PureComponent);
 
-ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.combatTypes.names, id: 'combatTypeSelect', onChange: updateCombatType }), document.getElementById('combatTypeDiv'));
-ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.backgrounds.names, id: 'backgroundSelect', onChange: updateBackground }), document.getElementById('backgroundDiv'));
+function updateCombatTypeEventForward(onClickEvent) {
+   character.updateCombatType(onClickEvent);
+}
+
+function updateBackgroundEventForward(onClickEvent) {
+   character.updateBackground(onClickEvent);
+}
+
+ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.combatTypes.names, id: 'combatTypeSelect',
+   onChange: updateCombatTypeEventForward }), document.getElementById('combatTypeDiv'));
+ReactDOM.render(React.createElement(BackgroundOrCombatTypeOptions, { names: database.backgrounds.names, id: 'backgroundSelect',
+   onChange: updateBackgroundEventForward }), document.getElementById('backgroundDiv'));

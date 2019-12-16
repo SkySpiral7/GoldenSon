@@ -46,4 +46,8 @@ var ElementOptions = function (_React$Component) {
    return ElementOptions;
 }(React.Component);
 
-ReactDOM.render(React.createElement(ElementOptions, { names: database.elements.names, onChange: updateAdept }), document.getElementById('adeptDiv'));
+function updateAdeptEventForward(onClickEvent) {
+   character.updateAdept(onClickEvent);
+}
+
+ReactDOM.render(React.createElement(ElementOptions, { names: database.elements.names, onChange: updateAdeptEventForward }), document.getElementById('adeptDiv'));

@@ -40,7 +40,7 @@ function DjinnElementList(props)
       TODO: unleashed button, summon check boxes, Recovery rounds button. but still need an easy/quick way?
       */
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
-         <select onChange={onChangeUpdateDjinn}>
+         <select onChange={onChangeUpdateDjinnEventForward}>
             <option value="set">Set</option>
             <option value="standby">Standby</option>
             <option value="recovery">Recovery</option>
@@ -70,6 +70,16 @@ function DjinnElementList(props)
    );
 }
 
+function onChangeUpdateDjinnEventForward(onClickEvent)
+{
+   character.onChangeUpdateDjinn(onClickEvent);
+}
+
+function addDjinnEventForward(onClickEvent)
+{
+   character.addDjinn(onClickEvent);
+}
+
 /**props: names, element*/
 function DjinnElementDropDown(props)
 {
@@ -81,7 +91,7 @@ function DjinnElementDropDown(props)
    );
    if (0 !== options.length)
    {
-      return (<select onChange={addDjinn}>
+      return (<select onChange={addDjinnEventForward}>
          <option>Add {database.elements[props.element].display} Djinn...</option>
          {options}
       </select>);

@@ -12,37 +12,7 @@
    <script src="../javascript/character.js"></script>
    <script>
       'use strict';
-      var character = {
-         //gameVersion, parserVersion are ignored until there is reason to use them
-         //gameVersion, parserVersion are strings to support possible future semantic versioning
-         //gameVersion: '1',
-         //parserVersion: '1',
-         name: '',
-         adept: database.elementOrder[0],
-         combatType: database.combatTypes.names[0],
-         background: database.backgrounds.names[0],
-         level: 1,
-         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-         djinn: {},
-         equipment: []
-      };
-      var charCalc = {
-         activeClass: null,
-         stats: {
-            //see character for base
-            addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-            multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-            final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
-         },
-         djinn: {
-            counts: {earth: 0, fire: 0, ice: 0, wind: 0},
-            names: [],
-            //see character for state
-            set: [],
-            standby: [],
-            recovery: []
-         }
-      };
+      var character = new CharacterApp();
    </script>
    <style>
       body {
@@ -51,9 +21,9 @@
       }
    </style>
 </head>
-<body onload="updateAllFinalStats();">
+<body onload="character.updateAllFinalStats();">
 <h2>General</h2>
-<label>Name: <input type="text" id="name" value="" onchange="updateCharacterName();" /></label><br />
+<label>Name: <input type="text" id="name" value="" onchange="character.updateCharacterName();" /></label><br />
 <label for="adeptSelect">Adept (Elemental Alignment):</label>
 <div style="display:inline-block;" id="adeptDiv"></div>
 <script src="../../../generated/element.js"></script>
@@ -65,17 +35,17 @@
 <div style="display:inline-block;" id="backgroundDiv"></div>
 <script src="../../../generated/backgroundOrCombatType.js"></script>
 <br />
-<label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();" /></label><br />
+<label>Level: <input type="number" id="level" value="1" min="1" onchange="character.updateLevel();" /></label><br />
 <h2>Base stats</h2>
-<label>HP: <input type="number" id="hp" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
-<label>PP: <input type="number" id="pp" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
-<label>Attack: <input type="number" id="attack" onChange="updateBaseStat({target: this})" value="0"
+<label>HP: <input type="number" id="hp" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>PP: <input type="number" id="pp" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>Attack: <input type="number" id="attack" onChange="character.updateBaseStat({target: this})" value="0"
                       min="0" /></label><br />
-<label>Defense: <input type="number" id="defense" onChange="updateBaseStat({target: this})" value="0"
+<label>Defense: <input type="number" id="defense" onChange="character.updateBaseStat({target: this})" value="0"
                        min="0" /></label><br />
-<label>Agility: <input type="number" id="agility" onChange="updateBaseStat({target: this})" value="0"
+<label>Agility: <input type="number" id="agility" onChange="character.updateBaseStat({target: this})" value="0"
                        min="0" /></label><br />
-<label>Luck: <input type="number" id="luck" onChange="updateBaseStat({target: this})" value="0" min="0" /></label><br />
+<label>Luck: <input type="number" id="luck" onChange="character.updateBaseStat({target: this})" value="0" min="0" /></label><br />
 <h2>Djinn</h2>
 <div id="djinn"></div>
 <script src="../../../generated/djinn.js"></script>
@@ -94,13 +64,13 @@ Luck: <span id="luck-final"></span><br />
 <div id="psynergy"></div>
 <script src="../../../generated/psynergy.js"></script>
 <br /><br />
-<span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
+<span onClick="character.saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
                                  id="save-to-file-link">Save to File</a></span>
-<input type="button" value="Save To Text Area" onClick="saveToTextArea();" id="save-text-button" />
+<input type="button" value="Save To Text Area" onClick="character.saveToTextArea();" id="save-text-button" />
 <br />
 <input type="file" id="file-chooser" accept=".js,.json" /><br />
-<input type="button" value="Load from File" onClick="loadFile();" />
-<input type="button" value="Load from Text Area" onClick="loadFromTextArea();" id="load-text-button" /><br />
+<input type="button" value="Load from File" onClick="character.loadFile();" />
+<input type="button" value="Load from Text Area" onClick="character.loadFromTextArea();" id="load-text-button" /><br />
 <br />
 <textarea id="code-box" rows="10" cols="50"></textarea>
 
@@ -112,17 +82,8 @@ Luck: <span id="luck-final"></span><br />
    var Loader = {};
    Loader.resetData = function ()
    {
-      character = {
-         name: '',
-         adept: database.elementOrder[0],
-         combatType: database.combatTypes.names[0],
-         background: database.backgrounds.names[0],
-         level: 1,
-         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-         djinn: {},
-         equipment: []
-      };
-      updateAllFinalStats();
+      character = new CharacterApp();
+      character.updateAllFinalStats();
    };
    Loader.sendData = function (jsonData)
    {

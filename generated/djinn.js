@@ -53,7 +53,7 @@ function DjinnElementList(props) {
          { key: 'djinn-' + name, id: 'djinn-' + name, "data-name": name },
          React.createElement(
             "select",
-            { onChange: onChangeUpdateDjinn },
+            { onChange: onChangeUpdateDjinnEventForward },
             React.createElement(
                "option",
                { value: "set" },
@@ -110,6 +110,14 @@ function DjinnElementList(props) {
    );
 }
 
+function onChangeUpdateDjinnEventForward(onClickEvent) {
+   character.onChangeUpdateDjinn(onClickEvent);
+}
+
+function addDjinnEventForward(onClickEvent) {
+   character.addDjinn(onClickEvent);
+}
+
 /**props: names, element*/
 function DjinnElementDropDown(props) {
    var options = database.djinn.names.filter(function (name) {
@@ -126,7 +134,7 @@ function DjinnElementDropDown(props) {
    if (0 !== options.length) {
       return React.createElement(
          "select",
-         { onChange: addDjinn },
+         { onChange: addDjinnEventForward },
          React.createElement(
             "option",
             null,

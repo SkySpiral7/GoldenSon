@@ -15,11 +15,23 @@ class BackgroundOrCombatTypeOptions extends React.PureComponent
    }
 }
 
+function updateCombatTypeEventForward(onClickEvent)
+{
+   character.updateCombatType(onClickEvent);
+}
+
+function updateBackgroundEventForward(onClickEvent)
+{
+   character.updateBackground(onClickEvent);
+}
+
 ReactDOM.render(
-   <BackgroundOrCombatTypeOptions names={database.combatTypes.names} id="combatTypeSelect" onChange={updateCombatType} />,
+   <BackgroundOrCombatTypeOptions names={database.combatTypes.names} id="combatTypeSelect"
+                                  onChange={updateCombatTypeEventForward} />,
    document.getElementById('combatTypeDiv')
 );
 ReactDOM.render(
-   <BackgroundOrCombatTypeOptions names={database.backgrounds.names} id="backgroundSelect" onChange={updateBackground} />,
+   <BackgroundOrCombatTypeOptions names={database.backgrounds.names} id="backgroundSelect"
+                                  onChange={updateBackgroundEventForward} />,
    document.getElementById('backgroundDiv')
 );
