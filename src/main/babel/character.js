@@ -4,8 +4,7 @@ class CharacterApp extends React.Component
 {
    //TODO: make class things private and static
    //rename to this.#charCalc etc. can make some methods static
-   //#charCalc; static #classElementSortOrder; state;
-   charCalc;
+   //static #classElementSortOrder; state;
    classElementSortOrder;
    state;
 
@@ -14,26 +13,6 @@ class CharacterApp extends React.Component
       super(props);
       character = this;
 
-      //TODO: recreate charCalc each render
-      this.charCalc = {
-         activeClass: null,
-         activeClassDisplay: null,
-         stats: {
-            //see character for base
-            addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-            multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-            final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
-         },
-         djinn: {
-            counts: {earth: 0, fire: 0, ice: 0, wind: 0},
-            names: [],
-            //see character for state
-            set: [],
-            standby: [],
-            recovery: []
-         },
-         psynergy: []
-      };
       this.classElementSortOrder = {
          //element => symbiotic, neutral, conflict
          earth: ['fire', 'ice', 'wind'],
@@ -71,11 +50,10 @@ class CharacterApp extends React.Component
       this.updateCombatType = this.updateCombatType.bind(this);
       this.updateCharacterName = this.updateCharacterName.bind(this);
       this.updateBaseStat = this.updateBaseStat.bind(this);
-      this.updateFinalStat = this.updateFinalStat.bind(this);
       this.determineClass = this.determineClass.bind(this);
       this.updateClass = this.updateClass.bind(this);
-      this.updatePsynergy = this.updatePsynergy.bind(this);
-      this.updateAllFinalStats = this.updateAllFinalStats.bind(this);
+      this.calcPsynergy = this.calcPsynergy.bind(this);
+      this.calcAll = this.calcAll.bind(this);
       this.addDjinn = this.addDjinn.bind(this);
       this.onChangeUpdateDjinn = this.onChangeUpdateDjinn.bind(this);
       this.updateDjinn = this.updateDjinn.bind(this);
@@ -142,12 +120,6 @@ class CharacterApp extends React.Component
 
    load(jsonDoc)
    {
-      this.charCalc.stats = {
-         //see this.state for base
-         addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-         multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-         final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
-      };
       //this.state = jsonDoc  don't do this: we don't want to keep redundant fields
       var newState = {
          stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
@@ -171,34 +143,8 @@ class CharacterApp extends React.Component
       document.getElementById('defense').value = newState.stats.defense = jsonDoc.stats.defense;
       document.getElementById('agility').value = newState.stats.agility = jsonDoc.stats.agility;
       document.getElementById('luck').value = newState.stats.luck = jsonDoc.stats.luck;
-      this.charCalc.djinn = {
-         counts: {earth: 0, fire: 0, ice: 0, wind: 0},
-         names: [],
-         //see newState for state
-         set: [],
-         standby: [],
-         recovery: []
-      };
       newState.djinn = jsonDoc.djinn;
-      this.charCalc.djinn.names = Object.keys(newState.djinn);
       newState.equipment = jsonDoc.equipment;
-
-      var i;
-      for (i = 0; i < this.charCalc.djinn.names.length; ++i)
-      {
-         var djinnName = this.charCalc.djinn.names[i];
-         this.updateDjinn(djinnName, newState.djinn[djinnName], 'remove');
-      }
-      for (i = 0; i < newState.equipment.length; ++i)
-      {
-         var equipment = database.equipment[newState.equipment[i]];
-         this.charCalc.stats.addend.hp += equipment.statsAddend.hp;
-         this.charCalc.stats.addend.pp += equipment.statsAddend.pp;
-         this.charCalc.stats.addend.attack += equipment.statsAddend.attack;
-         this.charCalc.stats.addend.defense += equipment.statsAddend.defense;
-         this.charCalc.stats.addend.agility += equipment.statsAddend.agility;
-         this.charCalc.stats.addend.luck += equipment.statsAddend.luck;
-      }
       this.setState(newState);
    }
 
@@ -206,29 +152,10 @@ class CharacterApp extends React.Component
    {
       var level = Number.parseInt(document.getElementById('level').value);
       this.setState({level: level});
-      this.updatePsynergy();
    }
 
    updateAdept()
    {
-      /*
-      var equipment = database.elements[this.state.adept];
-      this.charCalc.stats.addend.hp -= equipment.statsAddend.hp;
-      this.charCalc.stats.addend.pp -= equipment.statsAddend.pp;
-      this.charCalc.stats.addend.attack -= equipment.statsAddend.attack;
-      this.charCalc.stats.addend.defense -= equipment.statsAddend.defense;
-      this.charCalc.stats.addend.agility -= equipment.statsAddend.agility;
-      this.charCalc.stats.addend.luck -= equipment.statsAddend.luck;
-
-      this.charCalc.stats.addend.hp += equipment.statsAddend.hp;
-      this.charCalc.stats.addend.pp += equipment.statsAddend.pp;
-      this.charCalc.stats.addend.attack += equipment.statsAddend.attack;
-      this.charCalc.stats.addend.defense += equipment.statsAddend.defense;
-      this.charCalc.stats.addend.agility += equipment.statsAddend.agility;
-      this.charCalc.stats.addend.luck += equipment.statsAddend.luck;
-      */
-      //TODO: I'm thinking I need react to manage state for me
-
       var adept = document.getElementById('adeptSelect').value;
       //this is an option in the select
       if ('none' === adept) adept = null;
@@ -262,12 +189,6 @@ class CharacterApp extends React.Component
          state.stats[stat] = newVal;
          return state;
       });
-      this.updateFinalStat(stat);
-   }
-
-   updateFinalStat(stat)
-   {
-      this.charCalc.stats.final[stat] = (this.state.stats[stat] + this.charCalc.stats.addend[stat]) * this.charCalc.stats.multiplier[stat];
    }
 
    determineClass(adept, combatType, djinnCount)
@@ -322,112 +243,107 @@ class CharacterApp extends React.Component
       return classList[0];
    }
 
-   updateClass()
+   updateClass(charCalc)
    {
-      var activeClass = this.determineClass(this.state.adept, this.state.combatType, this.charCalc.djinn.counts);
-      this.charCalc.activeClass = activeClass.name;
-      this.charCalc.stats.multiplier.hp = activeClass.statsMultiplier.hp;
-      this.charCalc.stats.multiplier.pp = activeClass.statsMultiplier.pp;
-      this.charCalc.stats.multiplier.attack = activeClass.statsMultiplier.attack;
-      this.charCalc.stats.multiplier.defense = activeClass.statsMultiplier.defense;
-      this.charCalc.stats.multiplier.agility = activeClass.statsMultiplier.agility;
-      this.charCalc.stats.multiplier.luck = activeClass.statsMultiplier.luck;
+      var activeClass = this.determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
+      charCalc.activeClass = activeClass.name;
 
-      if (null === activeClass.name) this.charCalc.activeClassDisplay = 'None';
-      else this.charCalc.activeClassDisplay = '' + activeClass.name;
+      if (null === activeClass.name) charCalc.activeClassDisplay = 'None';
+      else charCalc.activeClassDisplay = '' + activeClass.name;
+
+      return activeClass.statsMultiplier;
    }
 
-   updatePsynergy()
+   calcPsynergy(activeClassName)
    {
-      this.charCalc.psynergy = [];
-      if (null !== this.charCalc.activeClass)
+      var psynergyList = [];
+      if (null !== activeClassName)
       {
-         var activeClass = database.classes[this.charCalc.activeClass];
+         var activeClass = database.classes[activeClassName];
          //if (undefined === activeClass) return;  //should only be when class is none
          for (var i = 0; i < activeClass.psynergy.length; ++i)
          {
             var psynergy = activeClass.psynergy[i];
             if (this.state.level >= psynergy.level)
             {
-               this.charCalc.psynergy.push(psynergy.name);
+               psynergyList.push(psynergy.name);
             }
          }
       }
+      return psynergyList;
    }
 
-   updateAllFinalStats()
+   calcAll()
    {
-      this.updateClass();
-      this.updatePsynergy();
-      this.updateFinalStat('hp');
-      this.updateFinalStat('pp');
-      this.updateFinalStat('attack');
-      this.updateFinalStat('defense');
-      this.updateFinalStat('agility');
-      this.updateFinalStat('luck');
+      var statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
+      //these are final stats
+      var charCalc = {stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}};
+      charCalc.djinn = {
+         counts: {earth: 0, fire: 0, ice: 0, wind: 0},
+         names: []
+         //see this.state for state
+         /*set: [], might be useful for summon but not used now
+         standby: [],
+         recovery: []*/
+      };
+      charCalc.djinn.names = Object.keys(this.state.djinn);
+
+      var addend = {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0};
+      for (var djinnName of charCalc.djinn.names)
+      {
+         var djinnState = this.state.djinn[djinnName];
+         if ('set' === djinnState)
+         {
+            var djinn = database.djinn[djinnName];
+            statList.forEach(stat =>
+               {addend[stat] += djinn.statsAddend[stat];}
+            );
+            ++charCalc.djinn.counts[djinn.element];
+         }
+         //charCalc.djinn[djinnState].push(djinnName);
+      }
+      for (var equipmentName of this.state.equipment)
+      {
+         var equipment = database.equipment[equipmentName];
+         statList.forEach(stat =>
+            {addend[stat] += equipment.statsAddend[stat];}
+         );
+      }
+      var multiplier = this.updateClass(charCalc);
+      charCalc.psynergy = this.calcPsynergy(charCalc.activeClass);
+      statList.forEach(stat =>
+         {charCalc.stats[stat] = (this.state.stats[stat] + addend[stat]) * multiplier[stat];}
+      );
+
+      return charCalc;
    }
 
    addDjinn(onClickEvent)
    {
       var newName = onClickEvent.target.value;
-      var djinn = database.djinn[newName];
-      this.charCalc.djinn.names.push(newName);
-      this.charCalc.djinn.set.push(newName);
       this.setState((state, props) =>
       {
          state.djinn[newName] = 'set';
          return state;
       });
-
-      this.charCalc.stats.addend.hp += djinn.statsAddend.hp;
-      this.charCalc.stats.addend.pp += djinn.statsAddend.pp;
-      this.charCalc.stats.addend.attack += djinn.statsAddend.attack;
-      this.charCalc.stats.addend.defense += djinn.statsAddend.defense;
-      this.charCalc.stats.addend.agility += djinn.statsAddend.agility;
-      this.charCalc.stats.addend.luck += djinn.statsAddend.luck;
-      ++this.charCalc.djinn.counts[djinn.element];
    }
 
    onChangeUpdateDjinn(onClickEvent)
    {
       var djinnName = onClickEvent.target.parentNode.dataset.name;
       var action = onClickEvent.target.value;
-      this.updateDjinn(djinnName, action, this.state.djinn[djinnName]);
+      this.updateDjinn(djinnName, action);
    }
 
-   updateDjinn(djinnName, action, previousState)
+   updateDjinn(djinnName, action)
    {
-      var djinn = database.djinn[djinnName];
-
-      if ('set' === previousState)
-      {
-         this.charCalc.stats.addend.hp -= djinn.statsAddend.hp;
-         this.charCalc.stats.addend.pp -= djinn.statsAddend.pp;
-         this.charCalc.stats.addend.attack -= djinn.statsAddend.attack;
-         this.charCalc.stats.addend.defense -= djinn.statsAddend.defense;
-         this.charCalc.stats.addend.agility -= djinn.statsAddend.agility;
-         this.charCalc.stats.addend.luck -= djinn.statsAddend.luck;
-         --this.charCalc.djinn.counts[djinn.element];
-      }
-      else if ('set' === action)
-      {
-         this.charCalc.stats.addend.hp += djinn.statsAddend.hp;
-         this.charCalc.stats.addend.pp += djinn.statsAddend.pp;
-         this.charCalc.stats.addend.attack += djinn.statsAddend.attack;
-         this.charCalc.stats.addend.defense += djinn.statsAddend.defense;
-         this.charCalc.stats.addend.agility += djinn.statsAddend.agility;
-         this.charCalc.stats.addend.luck += djinn.statsAddend.luck;
-         ++this.charCalc.djinn.counts[djinn.element];
-      }
-
-      //if Standby/Recovery do nothing
-
-      //previous remove is only possible when loading
-      if ('remove' !== previousState) this.charCalc.djinn[previousState].removeByValue(djinnName);
-
       if ('remove' === action)
       {
-         this.charCalc.djinn.names.removeByValue(djinnName);
+         this.setState((state, props) =>
+         {
+            delete state.djinn[djinnName];
+            return state;
+         });
       }
       else
       {
@@ -436,49 +352,32 @@ class CharacterApp extends React.Component
             state.djinn[djinnName] = action;
             return state;
          });
-         this.charCalc.djinn[action].push(djinnName);
       }
    }
 
    addEquipment(onClickEvent)
    {
       var newName = onClickEvent.target.value;
-      var equipment = database.equipment[newName];
       this.setState((state, props) =>
       {
          state.equipment.push(newName);
          return state;
       });
-
-      this.charCalc.stats.addend.hp += equipment.statsAddend.hp;
-      this.charCalc.stats.addend.pp += equipment.statsAddend.pp;
-      this.charCalc.stats.addend.attack += equipment.statsAddend.attack;
-      this.charCalc.stats.addend.defense += equipment.statsAddend.defense;
-      this.charCalc.stats.addend.agility += equipment.statsAddend.agility;
-      this.charCalc.stats.addend.luck += equipment.statsAddend.luck;
    }
 
    removeEquipment(onClickEvent)
    {
       var oldName = onClickEvent.target.parentNode.dataset.name;
-      var equipment = database.equipment[oldName];
       this.setState((state, props) =>
       {
          state.equipment.removeByValue(oldName);
          return state;
       });
-
-      this.charCalc.stats.addend.hp -= equipment.statsAddend.hp;
-      this.charCalc.stats.addend.pp -= equipment.statsAddend.pp;
-      this.charCalc.stats.addend.attack -= equipment.statsAddend.attack;
-      this.charCalc.stats.addend.defense -= equipment.statsAddend.defense;
-      this.charCalc.stats.addend.agility -= equipment.statsAddend.agility;
-      this.charCalc.stats.addend.luck -= equipment.statsAddend.luck;
    }
 
    render()
    {
-      this.updateAllFinalStats();
+      var charCalc = this.calcAll();
       return (
          <div>
             <h2>General</h2>
@@ -512,19 +411,19 @@ class CharacterApp extends React.Component
                                 defaultValue={"0"} value={this.state.luck}
                                 min="0" /></label><br />
             <h2>Djinn</h2>
-            <DjinnEntireList names={this.charCalc.djinn.names} />
+            <DjinnEntireList names={charCalc.djinn.names} />
             <h2>Equipment</h2>
             <EquipmentList names={this.state.equipment} />
             <h2>Final stats</h2>
-            Class: {this.charCalc.activeClassDisplay}<br />
-            HP: {Math.round(this.charCalc.stats.final.hp)}<br />
-            PP: {Math.round(this.charCalc.stats.final.pp)}<br />
-            Attack: {Math.round(this.charCalc.stats.final.attack)}<br />
-            Defense: {Math.round(this.charCalc.stats.final.defense)}<br />
-            Agility: {Math.round(this.charCalc.stats.final.agility)}<br />
-            Luck: {Math.round(this.charCalc.stats.final.luck)}<br />
+            Class: {charCalc.activeClassDisplay}<br />
+            HP: {Math.round(charCalc.stats.hp)}<br />
+            PP: {Math.round(charCalc.stats.pp)}<br />
+            Attack: {Math.round(charCalc.stats.attack)}<br />
+            Defense: {Math.round(charCalc.stats.defense)}<br />
+            Agility: {Math.round(charCalc.stats.agility)}<br />
+            Luck: {Math.round(charCalc.stats.luck)}<br />
             <h2>Psynergy</h2>
-            <PsynergyList names={this.charCalc.psynergy} />
+            <PsynergyList names={charCalc.psynergy} />
             <br /><br />
             <span onClick={this.saveToFile}><a
                href="javascript:alert('This link changes to data as you click it');"

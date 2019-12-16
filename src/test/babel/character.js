@@ -54,21 +54,20 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
       character.addDjinn({target: select});
    }
 
-   assertions.push({Expected: 'Priestess', Actual: character.charCalc.activeClass, Description: 'class'});
+   assertions.push({Expected: 'Priestess', Actual: character.calcAll().activeClass, Description: 'class'});
 
    statOnChange('defense', '100');
    assertions.push(
-      {Expected: 90, Actual: character.charCalc.stats.final.defense, Description: 'defense class multiply'});
+      {Expected: 90, Actual: character.calcAll().stats.defense, Description: 'defense class multiply'});
 
    addEquipment('Ixion Mail');
    statOnChange('defense', '74');
    assertions.push(
-      {Expected: 90, Actual: character.charCalc.stats.final.defense, Description: 'def mul right order'});
+      {Expected: 90, Actual: character.calcAll().stats.defense, Description: 'def mul right order'});
 
    addDjinn('earth', 'Echo');
    addDjinn('earth', 'Mud');
-   character.updateClass();
-   assertions.push({Expected: 'High Priestess', Actual: character.charCalc.activeClass, Description: 'class 2'});
+   assertions.push({Expected: 'High Priestess', Actual: character.calcAll().activeClass, Description: 'class 2'});
 
    return TestRunner.displayResults('character.js updateFinalStat', assertions, testState);
 };
