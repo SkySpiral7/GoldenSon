@@ -29,13 +29,13 @@ function save()
    jsonDoc.combatType = character.combatType;
    jsonDoc.background = character.background;
    jsonDoc.level = character.level;
-   jsonDoc.stats.hp = character.stats.base.hp;
-   jsonDoc.stats.pp = character.stats.base.pp;
-   jsonDoc.stats.attack = character.stats.base.attack;
-   jsonDoc.stats.defense = character.stats.base.defense;
-   jsonDoc.stats.agility = character.stats.base.agility;
-   jsonDoc.stats.luck = character.stats.base.luck;
-   jsonDoc.djinn = character.djinn.state;
+   jsonDoc.stats.hp = character.stats.hp;
+   jsonDoc.stats.pp = character.stats.pp;
+   jsonDoc.stats.attack = character.stats.attack;
+   jsonDoc.stats.defense = character.stats.defense;
+   jsonDoc.stats.agility = character.stats.agility;
+   jsonDoc.stats.luck = character.stats.luck;
+   jsonDoc.djinn = character.djinn;
    jsonDoc.equipment = character.equipment;
    return jsonDoc;
 }
@@ -77,8 +77,8 @@ function loadFromString(fileString)
 
 function load(jsonDoc)
 {
-   character.stats = {
-      base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+   charCalc.stats = {
+      //see character for base
       addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
       multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
@@ -94,39 +94,39 @@ function load(jsonDoc)
    document.getElementById('combatTypeSelect').value = character.combatType = jsonDoc.combatType;
    document.getElementById('backgroundSelect').value = character.background = jsonDoc.background;
    document.getElementById('level').value = character.level = jsonDoc.level;
-   document.getElementById('hp').value = character.stats.base.hp = jsonDoc.stats.hp;
-   document.getElementById('pp').value = character.stats.base.pp = jsonDoc.stats.pp;
-   document.getElementById('attack').value = character.stats.base.attack = jsonDoc.stats.attack;
-   document.getElementById('defense').value = character.stats.base.defense = jsonDoc.stats.defense;
-   document.getElementById('agility').value = character.stats.base.agility = jsonDoc.stats.agility;
-   document.getElementById('luck').value = character.stats.base.luck = jsonDoc.stats.luck;
-   character.djinn = {
+   document.getElementById('hp').value = character.stats.hp = jsonDoc.stats.hp;
+   document.getElementById('pp').value = character.stats.pp = jsonDoc.stats.pp;
+   document.getElementById('attack').value = character.stats.attack = jsonDoc.stats.attack;
+   document.getElementById('defense').value = character.stats.defense = jsonDoc.stats.defense;
+   document.getElementById('agility').value = character.stats.agility = jsonDoc.stats.agility;
+   document.getElementById('luck').value = character.stats.luck = jsonDoc.stats.luck;
+   charCalc.djinn = {
       counts: {earth: 0, fire: 0, ice: 0, wind: 0},
       names: [],
-      state: {},
+      //see character for state
       set: [],
       standby: [],
       recovery: []
    };
-   character.djinn.state = jsonDoc.djinn;
-   character.djinn.names = Object.keys(character.djinn.state);
+   character.djinn = jsonDoc.djinn;
+   charCalc.djinn.names = Object.keys(character.djinn);
    character.equipment = jsonDoc.equipment;
 
    var i;
-   for (i = 0; i < character.djinn.names.length; ++i)
+   for (i = 0; i < charCalc.djinn.names.length; ++i)
    {
-      var djinnName = character.djinn.names[i];
-      updateDjinn(djinnName, character.djinn.state[djinnName], 'remove');
+      var djinnName = charCalc.djinn.names[i];
+      updateDjinn(djinnName, character.djinn[djinnName], 'remove');
    }
    for (i = 0; i < character.equipment.length; ++i)
    {
       var equipment = database.equipment[character.equipment[i]];
-      character.stats.addend.hp += equipment.statsAddend.hp;
-      character.stats.addend.pp += equipment.statsAddend.pp;
-      character.stats.addend.attack += equipment.statsAddend.attack;
-      character.stats.addend.defense += equipment.statsAddend.defense;
-      character.stats.addend.agility += equipment.statsAddend.agility;
-      character.stats.addend.luck += equipment.statsAddend.luck;
+      charCalc.stats.addend.hp += equipment.statsAddend.hp;
+      charCalc.stats.addend.pp += equipment.statsAddend.pp;
+      charCalc.stats.addend.attack += equipment.statsAddend.attack;
+      charCalc.stats.addend.defense += equipment.statsAddend.defense;
+      charCalc.stats.addend.agility += equipment.statsAddend.agility;
+      charCalc.stats.addend.luck += equipment.statsAddend.luck;
    }
    updateAllFinalStats();
 }
@@ -141,19 +141,19 @@ function updateAdept()
 {
    /*
    var equipment = database.elements[character.adept];
-   character.stats.addend.hp -= equipment.statsAddend.hp;
-   character.stats.addend.pp -= equipment.statsAddend.pp;
-   character.stats.addend.attack -= equipment.statsAddend.attack;
-   character.stats.addend.defense -= equipment.statsAddend.defense;
-   character.stats.addend.agility -= equipment.statsAddend.agility;
-   character.stats.addend.luck -= equipment.statsAddend.luck;
+   charCalc.stats.addend.hp -= equipment.statsAddend.hp;
+   charCalc.stats.addend.pp -= equipment.statsAddend.pp;
+   charCalc.stats.addend.attack -= equipment.statsAddend.attack;
+   charCalc.stats.addend.defense -= equipment.statsAddend.defense;
+   charCalc.stats.addend.agility -= equipment.statsAddend.agility;
+   charCalc.stats.addend.luck -= equipment.statsAddend.luck;
 
-   character.stats.addend.hp += equipment.statsAddend.hp;
-   character.stats.addend.pp += equipment.statsAddend.pp;
-   character.stats.addend.attack += equipment.statsAddend.attack;
-   character.stats.addend.defense += equipment.statsAddend.defense;
-   character.stats.addend.agility += equipment.statsAddend.agility;
-   character.stats.addend.luck += equipment.statsAddend.luck;
+   charCalc.stats.addend.hp += equipment.statsAddend.hp;
+   charCalc.stats.addend.pp += equipment.statsAddend.pp;
+   charCalc.stats.addend.attack += equipment.statsAddend.attack;
+   charCalc.stats.addend.defense += equipment.statsAddend.defense;
+   charCalc.stats.addend.agility += equipment.statsAddend.agility;
+   charCalc.stats.addend.luck += equipment.statsAddend.luck;
    */
    //TODO: I'm thinking I need react to manage state for me
 
@@ -182,14 +182,14 @@ function updateCharacterName()
 function updateBaseStat(onChangeEvent)
 {
    var stat = onChangeEvent.target.id;
-   character.stats.base[stat] = Number.parseInt(document.getElementById(stat).value);
+   character.stats[stat] = Number.parseInt(document.getElementById(stat).value);
    updateFinalStat(stat);
 }
 
 function updateFinalStat(stat)
 {
-   character.stats.final[stat] = (character.stats.base[stat] + character.stats.addend[stat]) * character.stats.multiplier[stat];
-   document.getElementById(stat + '-final').innerHTML = '' + Math.round(character.stats.final[stat]);
+   charCalc.stats.final[stat] = (character.stats[stat] + charCalc.stats.addend[stat]) * charCalc.stats.multiplier[stat];
+   document.getElementById(stat + '-final').innerHTML = '' + Math.round(charCalc.stats.final[stat]);
 }
 
 function determineClass(adept, combatType, djinnCount)
@@ -254,14 +254,14 @@ var classElementSortOrder = {
 
 function updateClass()
 {
-   var activeClass = determineClass(character.adept, character.combatType, character.djinn.counts);
-   character.activeClass = activeClass.name;
-   character.stats.multiplier.hp = activeClass.statsMultiplier.hp;
-   character.stats.multiplier.pp = activeClass.statsMultiplier.pp;
-   character.stats.multiplier.attack = activeClass.statsMultiplier.attack;
-   character.stats.multiplier.defense = activeClass.statsMultiplier.defense;
-   character.stats.multiplier.agility = activeClass.statsMultiplier.agility;
-   character.stats.multiplier.luck = activeClass.statsMultiplier.luck;
+   var activeClass = determineClass(character.adept, character.combatType, charCalc.djinn.counts);
+   charCalc.activeClass = activeClass.name;
+   charCalc.stats.multiplier.hp = activeClass.statsMultiplier.hp;
+   charCalc.stats.multiplier.pp = activeClass.statsMultiplier.pp;
+   charCalc.stats.multiplier.attack = activeClass.statsMultiplier.attack;
+   charCalc.stats.multiplier.defense = activeClass.statsMultiplier.defense;
+   charCalc.stats.multiplier.agility = activeClass.statsMultiplier.agility;
+   charCalc.stats.multiplier.luck = activeClass.statsMultiplier.luck;
 
    if (null === activeClass.name) document.getElementById('class').innerHTML = 'None';
    else document.getElementById('class').innerHTML = '' + activeClass.name;
@@ -269,26 +269,26 @@ function updateClass()
 
 function updatePsynergy()
 {
-   if (null !== character.activeClass)
+   var psynergyList = [];
+   if (null !== charCalc.activeClass)
    {
-      var activeClass = database.classes[character.activeClass];
-      character.psynergy = [];
+      var activeClass = database.classes[charCalc.activeClass];
       //if (undefined === activeClass) return;  //should only be when class is none
       for (var i = 0; i < activeClass.psynergy.length; ++i)
       {
          var psynergy = activeClass.psynergy[i];
          if (character.level >= psynergy.level)
          {
-            character.psynergy.push(psynergy.name);
+            psynergyList.push(psynergy.name);
          }
       }
    }
-   renderPsynergy(character.psynergy);
+   renderPsynergy(psynergyList);
 }
 
 function updateAllFinalStats()
 {
-   renderDjinn(character.djinn.names);
+   renderDjinn(charCalc.djinn.names);
    renderEquipment(character.equipment);
    updateClass();
    updatePsynergy();
@@ -304,17 +304,17 @@ function addDjinn(onClickEvent)
 {
    var newName = onClickEvent.target.value;
    var djinn = database.djinn[newName];
-   character.djinn.names.push(newName);
-   character.djinn.set.push(newName);
-   character.djinn.state[newName] = 'set';
+   charCalc.djinn.names.push(newName);
+   charCalc.djinn.set.push(newName);
+   character.djinn[newName] = 'set';
 
-   character.stats.addend.hp += djinn.statsAddend.hp;
-   character.stats.addend.pp += djinn.statsAddend.pp;
-   character.stats.addend.attack += djinn.statsAddend.attack;
-   character.stats.addend.defense += djinn.statsAddend.defense;
-   character.stats.addend.agility += djinn.statsAddend.agility;
-   character.stats.addend.luck += djinn.statsAddend.luck;
-   ++character.djinn.counts[djinn.element];
+   charCalc.stats.addend.hp += djinn.statsAddend.hp;
+   charCalc.stats.addend.pp += djinn.statsAddend.pp;
+   charCalc.stats.addend.attack += djinn.statsAddend.attack;
+   charCalc.stats.addend.defense += djinn.statsAddend.defense;
+   charCalc.stats.addend.agility += djinn.statsAddend.agility;
+   charCalc.stats.addend.luck += djinn.statsAddend.luck;
+   ++charCalc.djinn.counts[djinn.element];
 
    updateAllFinalStats();
 }
@@ -323,7 +323,7 @@ function onChangeUpdateDjinn(onClickEvent)
 {
    var djinnName = onClickEvent.target.parentNode.dataset.name;
    var action = onClickEvent.target.value;
-   updateDjinn(djinnName, action, character.djinn.state[djinnName]);
+   updateDjinn(djinnName, action, character.djinn[djinnName]);
 }
 
 function updateDjinn(djinnName, action, previousState)
@@ -332,38 +332,38 @@ function updateDjinn(djinnName, action, previousState)
 
    if ('set' === previousState)
    {
-      character.stats.addend.hp -= djinn.statsAddend.hp;
-      character.stats.addend.pp -= djinn.statsAddend.pp;
-      character.stats.addend.attack -= djinn.statsAddend.attack;
-      character.stats.addend.defense -= djinn.statsAddend.defense;
-      character.stats.addend.agility -= djinn.statsAddend.agility;
-      character.stats.addend.luck -= djinn.statsAddend.luck;
-      --character.djinn.counts[djinn.element];
+      charCalc.stats.addend.hp -= djinn.statsAddend.hp;
+      charCalc.stats.addend.pp -= djinn.statsAddend.pp;
+      charCalc.stats.addend.attack -= djinn.statsAddend.attack;
+      charCalc.stats.addend.defense -= djinn.statsAddend.defense;
+      charCalc.stats.addend.agility -= djinn.statsAddend.agility;
+      charCalc.stats.addend.luck -= djinn.statsAddend.luck;
+      --charCalc.djinn.counts[djinn.element];
    }
    else if ('set' === action)
    {
-      character.stats.addend.hp += djinn.statsAddend.hp;
-      character.stats.addend.pp += djinn.statsAddend.pp;
-      character.stats.addend.attack += djinn.statsAddend.attack;
-      character.stats.addend.defense += djinn.statsAddend.defense;
-      character.stats.addend.agility += djinn.statsAddend.agility;
-      character.stats.addend.luck += djinn.statsAddend.luck;
-      ++character.djinn.counts[djinn.element];
+      charCalc.stats.addend.hp += djinn.statsAddend.hp;
+      charCalc.stats.addend.pp += djinn.statsAddend.pp;
+      charCalc.stats.addend.attack += djinn.statsAddend.attack;
+      charCalc.stats.addend.defense += djinn.statsAddend.defense;
+      charCalc.stats.addend.agility += djinn.statsAddend.agility;
+      charCalc.stats.addend.luck += djinn.statsAddend.luck;
+      ++charCalc.djinn.counts[djinn.element];
    }
 
    //if Standby/Recovery do nothing
 
    //previous remove is only possible when loading
-   if ('remove' !== previousState) character.djinn[previousState].removeByValue(djinnName);
+   if ('remove' !== previousState) charCalc.djinn[previousState].removeByValue(djinnName);
 
    if ('remove' === action)
    {
-      character.djinn.names.removeByValue(djinnName);
+      charCalc.djinn.names.removeByValue(djinnName);
    }
    else
    {
-      character.djinn.state[djinnName] = action;
-      character.djinn[action].push(djinnName);
+      character.djinn[djinnName] = action;
+      charCalc.djinn[action].push(djinnName);
    }
 
    updateAllFinalStats();
@@ -375,12 +375,12 @@ function addEquipment(onClickEvent)
    var equipment = database.equipment[newName];
    character.equipment.push(newName);
 
-   character.stats.addend.hp += equipment.statsAddend.hp;
-   character.stats.addend.pp += equipment.statsAddend.pp;
-   character.stats.addend.attack += equipment.statsAddend.attack;
-   character.stats.addend.defense += equipment.statsAddend.defense;
-   character.stats.addend.agility += equipment.statsAddend.agility;
-   character.stats.addend.luck += equipment.statsAddend.luck;
+   charCalc.stats.addend.hp += equipment.statsAddend.hp;
+   charCalc.stats.addend.pp += equipment.statsAddend.pp;
+   charCalc.stats.addend.attack += equipment.statsAddend.attack;
+   charCalc.stats.addend.defense += equipment.statsAddend.defense;
+   charCalc.stats.addend.agility += equipment.statsAddend.agility;
+   charCalc.stats.addend.luck += equipment.statsAddend.luck;
 
    updateAllFinalStats();
 }
@@ -391,12 +391,12 @@ function removeEquipment(onClickEvent)
    var equipment = database.equipment[oldName];
    character.equipment.removeByValue(oldName);
 
-   character.stats.addend.hp -= equipment.statsAddend.hp;
-   character.stats.addend.pp -= equipment.statsAddend.pp;
-   character.stats.addend.attack -= equipment.statsAddend.attack;
-   character.stats.addend.defense -= equipment.statsAddend.defense;
-   character.stats.addend.agility -= equipment.statsAddend.agility;
-   character.stats.addend.luck -= equipment.statsAddend.luck;
+   charCalc.stats.addend.hp -= equipment.statsAddend.hp;
+   charCalc.stats.addend.pp -= equipment.statsAddend.pp;
+   charCalc.stats.addend.attack -= equipment.statsAddend.attack;
+   charCalc.stats.addend.defense -= equipment.statsAddend.defense;
+   charCalc.stats.addend.agility -= equipment.statsAddend.agility;
+   charCalc.stats.addend.luck -= equipment.statsAddend.luck;
 
    updateAllFinalStats();
 }

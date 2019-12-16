@@ -52,6 +52,6 @@ function EquipmentList(props) {
    );
 }
 
-function renderEquipment() {
-   ReactDOM.render(React.createElement(EquipmentList, { names: character.equipment }), document.getElementById('equipment'));
+function renderEquipment(equipment) {
+   ReactDOM.render(React.createElement(EquipmentList, { names: equipment }), document.getElementById('equipment'));
 }

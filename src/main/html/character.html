@@ -17,10 +17,15 @@
          adept: database.elementOrder[0],
          combatType: database.combatTypes.names[0],
          background: database.backgrounds.names[0],
-         activeClass: null,
          level: 1,
+         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+         djinn: {},
+         equipment: []
+      };
+      var charCalc = {
+         activeClass: null,
          stats: {
-            base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+            //see character for base
             addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
             multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
             final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
@@ -28,13 +33,11 @@
          djinn: {
             counts: {earth: 0, fire: 0, ice: 0, wind: 0},
             names: [],
-            state: {},
+            //see character for state
             set: [],
             standby: [],
             recovery: []
          },
-         equipment: [],
-         psynergy: []
       };
    </script>
    <style>

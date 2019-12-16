@@ -137,9 +137,9 @@ function DjinnElementDropDown(props) {
          options
       );
    }
-   return '';
+   return null;
 }
 
-function renderDjinn() {
-   ReactDOM.render(React.createElement(DjinnEntireList, { names: character.djinn.names }), document.getElementById('djinn'));
+function renderDjinn(djinn) {
+   ReactDOM.render(React.createElement(DjinnEntireList, { names: djinn }), document.getElementById('djinn'));
 }
