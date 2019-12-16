@@ -1,5 +1,33 @@
 'use strict';
 TestSuite.characterJs = {};
+TestSuite.characterJs.load = function (testState = {})
+{
+   TestRunner.clearResults(testState);
+   var assertions = [], input;
+
+   try
+   {
+      Loader.resetData();
+      input = {
+         name: 'name',
+         adept: 'fire',
+         combatType: 'Warrior',
+         background: 'Farmer',
+         level: 2,
+         stats: {hp: 1, pp: 2, attack: 3, defense: 4, agility: 5, luck: 6},
+         djinn: {"Cannon": "standby"},
+         equipment: ['Ixion Mail']
+      };
+      Loader.sendData(input);
+      assertions.push({Expected: input, Actual: save(), Description: 'mirror'});
+   }
+   catch (e)
+   {
+      assertions.push({Error: e, Description: 'mirror'});
+   }
+
+   return TestRunner.displayResults('character.js save/load', assertions, testState);
+};
 TestSuite.characterJs.determineClass = async function (testState = {})
 {
    TestRunner.clearResults(testState);

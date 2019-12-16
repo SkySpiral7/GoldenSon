@@ -13,6 +13,10 @@
    <script>
       'use strict';
       var character = {
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         //gameVersion, parserVersion are strings to support possible future semantic versioning
+         //gameVersion: '1',
+         //parserVersion: '1',
          name: '',
          adept: database.elementOrder[0],
          combatType: database.combatTypes.names[0],
@@ -37,7 +41,7 @@
             set: [],
             standby: [],
             recovery: []
-         },
+         }
       };
    </script>
    <style>
@@ -103,6 +107,35 @@ Luck: <span id="luck-final"></span><br />
 <!--testRunner only works locally-->
 <!---->
 <script src="../../../../Miscellaneous/src/main/javascript/testRunner.js"></script>
+<script>
+   'use strict';
+   var Loader = {};
+   Loader.resetData = function ()
+   {
+      character = {
+         name: '',
+         adept: database.elementOrder[0],
+         combatType: database.combatTypes.names[0],
+         background: database.backgrounds.names[0],
+         level: 1,
+         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+         djinn: {},
+         equipment: []
+      };
+      updateAllFinalStats();
+   };
+   Loader.sendData = function (jsonData)
+   {
+      document.getElementById('code-box').value = JSON.stringify(jsonData);  //to simulate user input
+      document.getElementById('load-text-button')
+      .onclick();
+   };
+
+   TestConfig.betweenEach = function ()
+   {
+      Loader.resetData();
+   };
+</script>
 <script src="../../test/babel/backgroundOrCombatType.js"></script>
 <script src="../../test/babel/djinn.js"></script>
 <script src="../../test/babel/element.js"></script>

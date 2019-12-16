@@ -19,25 +19,7 @@ function saveToTextArea()
 
 function save()
 {
-   var jsonDoc = {stats: {}};
-   //gameVersion, parserVersion are ignored until there is reason to use them
-   //gameVersion, parserVersion are strings to support possible future semantic versioning
-   //jsonDoc.gameVersion = '1';
-   //jsonDoc.parserVersion = '1';
-   jsonDoc.name = character.name;
-   jsonDoc.adept = character.adept;
-   jsonDoc.combatType = character.combatType;
-   jsonDoc.background = character.background;
-   jsonDoc.level = character.level;
-   jsonDoc.stats.hp = character.stats.hp;
-   jsonDoc.stats.pp = character.stats.pp;
-   jsonDoc.stats.attack = character.stats.attack;
-   jsonDoc.stats.defense = character.stats.defense;
-   jsonDoc.stats.agility = character.stats.agility;
-   jsonDoc.stats.luck = character.stats.luck;
-   jsonDoc.djinn = character.djinn;
-   jsonDoc.equipment = character.equipment;
-   return jsonDoc;
+   return JSON.clone(character);
 }
 
 function loadFile()
@@ -83,6 +65,7 @@ function load(jsonDoc)
       multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
       final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
    };
+   //character = jsonDoc  don't do this: we don't want to keep redundant fields
    //gameVersion, parserVersion are ignored until there is reason to use them
    document.getElementById('name').value = character.name = jsonDoc.name;
    if (null === jsonDoc.adept)
