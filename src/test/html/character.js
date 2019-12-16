@@ -1,6 +1,6 @@
 'use strict';
-TestSuite.character = {};
-TestSuite.character.backgroundOrCombatType = async function (testState = {})
+TestSuite.characterHtml = {};
+TestSuite.characterHtml.backgroundOrCombatType = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [], expected;
@@ -29,9 +29,9 @@ TestSuite.character.backgroundOrCombatType = async function (testState = {})
       Description: 'backgroundSelect first option correct'
    });
 
-   return TestRunner.displayResults('TestSuite.character.backgroundOrCombatType', assertions, testState);
+   return TestRunner.displayResults('backgroundOrCombatType.js', assertions, testState);
 };
-TestSuite.character.djinn = async function (testState = {})
+TestSuite.characterHtml.djinn = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [];
@@ -60,9 +60,9 @@ TestSuite.character.djinn = async function (testState = {})
       Description: 'add-wind-djinn exists'
    });
 
-   return TestRunner.displayResults('TestSuite.character.djinn', assertions, testState);
+   return TestRunner.displayResults('djinn.js', assertions, testState);
 };
-TestSuite.character.element = async function (testState = {})
+TestSuite.characterHtml.element = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [];
@@ -85,9 +85,9 @@ TestSuite.character.element = async function (testState = {})
       Description: 'adeptSelect first option correct'
    });
 
-   return TestRunner.displayResults('TestSuite.character.element', assertions, testState);
+   return TestRunner.displayResults('element.js', assertions, testState);
 };
-TestSuite.character.equipment = async function (testState = {})
+TestSuite.characterHtml.equipment = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [];
@@ -98,9 +98,9 @@ TestSuite.character.equipment = async function (testState = {})
       Description: 'add-equipment exists'
    });
 
-   return TestRunner.displayResults('TestSuite.character.equipment', assertions, testState);
+   return TestRunner.displayResults('equipment.js', assertions, testState);
 };
-TestSuite.character.psynergy = async function (testState = {})
+TestSuite.characterHtml.psynergy = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [];
@@ -111,5 +111,5 @@ TestSuite.character.psynergy = async function (testState = {})
       Description: 'psynergy is empty'
    });
 
-   return TestRunner.displayResults('TestSuite.character.psynergy', assertions, testState);
+   return TestRunner.displayResults('psynergy.js', assertions, testState);
 };

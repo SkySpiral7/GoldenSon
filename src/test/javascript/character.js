@@ -1,6 +1,6 @@
 'use strict';
-TestSuite.main = {};
-TestSuite.main.determineClass = async function (testState = {})
+TestSuite.characterJs = {};
+TestSuite.characterJs.determineClass = async function (testState = {})
 {
    TestRunner.clearResults(testState);
    var assertions = [], actual;
@@ -57,5 +57,5 @@ TestSuite.main.determineClass = async function (testState = {})
    });
    //TODO: will likely need to mock the DB to test every element
 
-   return TestRunner.displayResults('TestSuite.main.determineClass', assertions, testState);
+   return TestRunner.displayResults('character.js determineClass', assertions, testState);
 };
