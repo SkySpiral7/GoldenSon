@@ -9,7 +9,6 @@
 
    <script src="../../../generated/database.js"></script>
    <script src="../javascript/prototype.js"></script>
-   <script src="../javascript/character.js"></script>
    <script src="../../../generated/element.js"></script>
    <script src="../../../generated/backgroundOrCombatType.js"></script>
    <script src="../../../generated/djinn.js"></script>
@@ -57,7 +56,7 @@
    Loader.sendData = function (jsonData)
    {
       document.getElementById('code-box').value = JSON.stringify(jsonData);  //to simulate user input
-      loadFromTextAreaCharForward();
+      character.loadFromTextArea();
    };
 
    TestConfig.betweenEach = function ()
@@ -67,10 +66,9 @@
 </script>
 <script src="../../test/babel/backgroundOrCombatType.js"></script>
 <script src="../../test/babel/djinn.js"></script>
+<script src="../../test/babel/character.js"></script>
 <script src="../../test/babel/element.js"></script>
 <script src="../../test/babel/equipment.js"></script>
-<script src="../../test/babel/psynergy.js"></script>
-<script src="../../test/javascript/character.js"></script>
 <br /><br />
 <a href="javascript:TestRunner.testAll();">Run all tests</a><br />
 <label for="testResults">Test Results:</label><br />

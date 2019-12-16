@@ -37,11 +37,3 @@ var BackgroundOrCombatTypeOptions = function (_React$PureComponent) {
 
    return BackgroundOrCombatTypeOptions;
 }(React.PureComponent);
-
-function updateCombatTypeEventForward(onClickEvent) {
-   character.updateCombatType(onClickEvent);
-}
-
-function updateBackgroundEventForward(onClickEvent) {
-   character.updateBackground(onClickEvent);
-}

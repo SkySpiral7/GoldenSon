@@ -110,6 +110,7 @@ function DjinnElementList(props) {
    );
 }
 
+//TODO: remove forwarding by passing down callback. also in equipment
 function onChangeUpdateDjinnEventForward(onClickEvent) {
    character.onChangeUpdateDjinn(onClickEvent);
 }
@@ -146,8 +147,4 @@ function DjinnElementDropDown(props) {
       );
    }
    return null;
-}
-
-function renderDjinn(djinn) {
-   ReactDOM.render(React.createElement(DjinnEntireList, { names: djinn }), document.getElementById('djinn'));
 }

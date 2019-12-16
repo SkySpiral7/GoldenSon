@@ -59,7 +59,3 @@ function removeEquipmentEventForward(onClickEvent) {
 function addEquipmentEventForward(onClickEvent) {
    character.addEquipment(onClickEvent);
 }
-
-function renderEquipment(equipment) {
-   ReactDOM.render(React.createElement(EquipmentList, { names: equipment }), document.getElementById('equipment'));
-}

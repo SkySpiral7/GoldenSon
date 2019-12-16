@@ -14,13 +14,3 @@ class BackgroundOrCombatTypeOptions extends React.PureComponent
       );
    }
 }
-
-function updateCombatTypeEventForward(onClickEvent)
-{
-   character.updateCombatType(onClickEvent);
-}
-
-function updateBackgroundEventForward(onClickEvent)
-{
-   character.updateBackground(onClickEvent);
-}

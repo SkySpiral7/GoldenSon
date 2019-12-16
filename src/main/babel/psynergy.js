@@ -14,11 +14,3 @@ function PsynergyList(props)
       <ul>{listItems}</ul>
    );
 }
-
-function renderPsynergy(psynergy)
-{
-   ReactDOM.render(
-      <PsynergyList names={psynergy} />,
-      document.getElementById('psynergy')
-   );
-}

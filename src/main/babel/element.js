@@ -24,8 +24,3 @@ class ElementOptions extends React.Component
       );
    }
 }
-
-function updateAdeptEventForward(onClickEvent)
-{
-   character.updateAdept(onClickEvent);
-}

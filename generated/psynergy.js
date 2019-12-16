@@ -21,7 +21,3 @@ function PsynergyList(props) {
       listItems
    );
 }
-
-function renderPsynergy(psynergy) {
-   ReactDOM.render(React.createElement(PsynergyList, { names: psynergy }), document.getElementById('psynergy'));
-}

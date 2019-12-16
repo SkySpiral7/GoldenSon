@@ -45,7 +45,3 @@ var ElementOptions = function (_React$Component) {
 
    return ElementOptions;
 }(React.Component);
-
-function updateAdeptEventForward(onClickEvent) {
-   character.updateAdept(onClickEvent);
-}

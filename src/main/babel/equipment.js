@@ -37,11 +37,3 @@ function addEquipmentEventForward(onClickEvent)
 {
    character.addEquipment(onClickEvent);
 }
-
-function renderEquipment(equipment)
-{
-   ReactDOM.render(
-      <EquipmentList names={equipment} />,
-      document.getElementById('equipment')
-   );
-}

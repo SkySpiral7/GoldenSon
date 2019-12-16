@@ -37,12 +37,7 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
    {
       var input = document.getElementById(id);
       input.value = value;
-      updateBaseStatCharForward({target: input});
-   }
-
-   function domInnerHtml(id)
-   {
-      return document.getElementById(id).innerHTML;
+      character.updateBaseStat({target: input});
    }
 
    function addEquipment(name)
@@ -59,25 +54,21 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
       character.addDjinn({target: select});
    }
 
-   try
-   {
-      assertions.push({Expected: 'Priestess', Actual: domInnerHtml('class'), Description: 'class'});
+   assertions.push({Expected: 'Priestess', Actual: character.charCalc.activeClass, Description: 'class'});
 
-      statOnChange('defense', '100');
-      assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'defense class multiply'});
+   statOnChange('defense', '100');
+   assertions.push(
+      {Expected: 90, Actual: character.charCalc.stats.final.defense, Description: 'defense class multiply'});
 
-      addEquipment('Ixion Mail');
-      statOnChange('defense', '74');
-      assertions.push({Expected: '90', Actual: domInnerHtml('defense-final'), Description: 'def mul right order'});
+   addEquipment('Ixion Mail');
+   statOnChange('defense', '74');
+   assertions.push(
+      {Expected: 90, Actual: character.charCalc.stats.final.defense, Description: 'def mul right order'});
 
-      addDjinn('earth', 'Echo');
-      addDjinn('earth', 'Mud');
-      assertions.push({Expected: 'High Priestess', Actual: domInnerHtml('class'), Description: 'class 2'});
-   }
-   catch (e)
-   {
-      assertions.push({Error: e, Description: 'mirror'});
-   }
+   addDjinn('earth', 'Echo');
+   addDjinn('earth', 'Mud');
+   character.updateClass();
+   assertions.push({Expected: 'High Priestess', Actual: character.charCalc.activeClass, Description: 'class 2'});
 
    return TestRunner.displayResults('character.js updateFinalStat', assertions, testState);
 };
