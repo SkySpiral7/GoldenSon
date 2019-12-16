@@ -283,13 +283,13 @@ function updatePsynergy()
          }
       }
    }
-   renderPsynergy();
+   renderPsynergy(character.psynergy);
 }
 
 function updateAllFinalStats()
 {
-   renderDjinn();
-   renderEquipment();
+   renderDjinn(character.djinn.names);
+   renderEquipment(character.equipment);
    updateClass();
    updatePsynergy();
    updateFinalStat('hp');

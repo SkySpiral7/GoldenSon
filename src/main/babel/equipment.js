@@ -28,10 +28,10 @@ function EquipmentList(props)
    );
 }
 
-function renderEquipment()
+function renderEquipment(equipment)
 {
    ReactDOM.render(
-      <EquipmentList names={character.equipment} />,
+      <EquipmentList names={equipment} />,
       document.getElementById('equipment')
    );
 }

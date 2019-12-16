@@ -15,10 +15,10 @@ function PsynergyList(props)
    );
 }
 
-function renderPsynergy()
+function renderPsynergy(psynergy)
 {
    ReactDOM.render(
-      <PsynergyList names={character.psynergy} />,
+      <PsynergyList names={psynergy} />,
       document.getElementById('psynergy')
    );
 }

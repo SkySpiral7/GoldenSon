@@ -89,10 +89,10 @@ function DjinnElementDropDown(props)
    return null;
 }
 
-function renderDjinn()
+function renderDjinn(djinn)
 {
    ReactDOM.render(
-      <DjinnEntireList names={character.djinn.names} />,
+      <DjinnEntireList names={djinn} />,
       document.getElementById('djinn')
    );
 }
