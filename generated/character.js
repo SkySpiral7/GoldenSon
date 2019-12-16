@@ -40,6 +40,7 @@ var CharacterComponent = function (_React$Component) {
 
       var _this = _possibleConstructorReturn(this, (CharacterComponent.__proto__ || Object.getPrototypeOf(CharacterComponent)).call(this, props));
 
+      character = _this;
       _this.state = { hp: 0 };
       _this.updateBaseStatCharForward = _this.updateBaseStatCharForward.bind(_this);
       return _this;

@@ -111,44 +111,49 @@ function CharacterApp()
          final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
       };
       //this.state = jsonDoc  don't do this: we don't want to keep redundant fields
+      var newState = {
+         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+         djinn: {},
+         equipment: []
+      };
       //gameVersion, parserVersion are ignored until there is reason to use them
-      document.getElementById('name').value = this.state.name = jsonDoc.name;
+      document.getElementById('name').value = newState.name = jsonDoc.name;
       if (null === jsonDoc.adept)
       {
          document.getElementById('adeptSelect').value = 'none';
-         this.state.adept = null;
+         newState.adept = null;
       }
-      else document.getElementById('adeptSelect').value = this.state.adept = jsonDoc.adept;
-      document.getElementById('combatTypeSelect').value = this.state.combatType = jsonDoc.combatType;
-      document.getElementById('backgroundSelect').value = this.state.background = jsonDoc.background;
-      document.getElementById('level').value = this.state.level = jsonDoc.level;
-      document.getElementById('hp').value = this.state.stats.hp = jsonDoc.stats.hp;
-      document.getElementById('pp').value = this.state.stats.pp = jsonDoc.stats.pp;
-      document.getElementById('attack').value = this.state.stats.attack = jsonDoc.stats.attack;
-      document.getElementById('defense').value = this.state.stats.defense = jsonDoc.stats.defense;
-      document.getElementById('agility').value = this.state.stats.agility = jsonDoc.stats.agility;
-      document.getElementById('luck').value = this.state.stats.luck = jsonDoc.stats.luck;
+      else document.getElementById('adeptSelect').value = newState.adept = jsonDoc.adept;
+      document.getElementById('combatTypeSelect').value = newState.combatType = jsonDoc.combatType;
+      document.getElementById('backgroundSelect').value = newState.background = jsonDoc.background;
+      document.getElementById('level').value = newState.level = jsonDoc.level;
+      document.getElementById('hp').value = newState.stats.hp = jsonDoc.stats.hp;
+      document.getElementById('pp').value = newState.stats.pp = jsonDoc.stats.pp;
+      document.getElementById('attack').value = newState.stats.attack = jsonDoc.stats.attack;
+      document.getElementById('defense').value = newState.stats.defense = jsonDoc.stats.defense;
+      document.getElementById('agility').value = newState.stats.agility = jsonDoc.stats.agility;
+      document.getElementById('luck').value = newState.stats.luck = jsonDoc.stats.luck;
       charCalc.djinn = {
          counts: {earth: 0, fire: 0, ice: 0, wind: 0},
          names: [],
-         //see this.state for state
+         //see newState for state
          set: [],
          standby: [],
          recovery: []
       };
-      this.state.djinn = jsonDoc.djinn;
-      charCalc.djinn.names = Object.keys(this.state.djinn);
-      this.state.equipment = jsonDoc.equipment;
+      newState.djinn = jsonDoc.djinn;
+      charCalc.djinn.names = Object.keys(newState.djinn);
+      newState.equipment = jsonDoc.equipment;
 
       var i;
       for (i = 0; i < charCalc.djinn.names.length; ++i)
       {
          var djinnName = charCalc.djinn.names[i];
-         this.updateDjinn(djinnName, this.state.djinn[djinnName], 'remove');
+         this.updateDjinn(djinnName, newState.djinn[djinnName], 'remove');
       }
-      for (i = 0; i < this.state.equipment.length; ++i)
+      for (i = 0; i < newState.equipment.length; ++i)
       {
-         var equipment = database.equipment[this.state.equipment[i]];
+         var equipment = database.equipment[newState.equipment[i]];
          charCalc.stats.addend.hp += equipment.statsAddend.hp;
          charCalc.stats.addend.pp += equipment.statsAddend.pp;
          charCalc.stats.addend.attack += equipment.statsAddend.attack;
@@ -156,12 +161,14 @@ function CharacterApp()
          charCalc.stats.addend.agility += equipment.statsAddend.agility;
          charCalc.stats.addend.luck += equipment.statsAddend.luck;
       }
+      this.setState(newState);
       this.updateAllFinalStats();
    };
 
    this.updateLevel = function ()
    {
-      this.state.level = Number.parseInt(document.getElementById('level').value);
+      var level = Number.parseInt(document.getElementById('level').value);
+      this.setState({level: level});
       this.updatePsynergy();
    };
 
@@ -185,32 +192,41 @@ function CharacterApp()
       */
       //TODO: I'm thinking I need react to manage state for me
 
-      this.state.adept = document.getElementById('adeptSelect').value;
+      var adept = document.getElementById('adeptSelect').value;
       //this is an option in the select
-      if ('none' === this.state.adept) this.state.adept = null;
+      if ('none' === adept) adept = null;
+      this.setState({adept: adept});
       this.updateAllFinalStats();
    };
 
    this.updateBackground = function ()
    {
-      this.state.background = document.getElementById('backgroundSelect').value;
+      var background = document.getElementById('backgroundSelect').value;
+      this.setState({background: background});
    };
 
    this.updateCombatType = function ()
    {
-      this.state.combatType = document.getElementById('combatTypeSelect').value;
+      var combatType = document.getElementById('combatTypeSelect').value;
+      this.setState({combatType: combatType});
       this.updateAllFinalStats();
    };
 
    this.updateCharacterName = function ()
    {
-      this.state.name = document.getElementById('name').value;
+      var name = document.getElementById('name').value;
+      this.setState({name: name});
    };
 
    this.updateBaseStat = function (onChangeEvent)
    {
       var stat = onChangeEvent.target.id;
-      this.state.stats[stat] = Number.parseInt(document.getElementById(stat).value);
+      var newVal = Number.parseInt(document.getElementById(stat).value);
+      this.setState((state, props) =>
+      {
+         state.stats[stat] = newVal;
+         return state;
+      });
       this.updateFinalStat(stat);
    };
 
@@ -326,7 +342,11 @@ function CharacterApp()
       var djinn = database.djinn[newName];
       charCalc.djinn.names.push(newName);
       charCalc.djinn.set.push(newName);
-      this.state.djinn[newName] = 'set';
+      this.setState((state, props) =>
+      {
+         state.djinn[newName] = 'set';
+         return state;
+      });
 
       charCalc.stats.addend.hp += djinn.statsAddend.hp;
       charCalc.stats.addend.pp += djinn.statsAddend.pp;
@@ -382,7 +402,11 @@ function CharacterApp()
       }
       else
       {
-         this.state.djinn[djinnName] = action;
+         this.setState((state, props) =>
+         {
+            state.djinn[djinnName] = action;
+            return state;
+         });
          charCalc.djinn[action].push(djinnName);
       }
 
@@ -393,7 +417,11 @@ function CharacterApp()
    {
       var newName = onClickEvent.target.value;
       var equipment = database.equipment[newName];
-      this.state.equipment.push(newName);
+      this.setState((state, props) =>
+      {
+         state.equipment.push(newName);
+         return state;
+      });
 
       charCalc.stats.addend.hp += equipment.statsAddend.hp;
       charCalc.stats.addend.pp += equipment.statsAddend.pp;
@@ -409,7 +437,11 @@ function CharacterApp()
    {
       var oldName = onClickEvent.target.parentNode.dataset.name;
       var equipment = database.equipment[oldName];
-      this.state.equipment.removeByValue(oldName);
+      this.setState((state, props) =>
+      {
+         state.equipment.removeByValue(oldName);
+         return state;
+      });
 
       charCalc.stats.addend.hp -= equipment.statsAddend.hp;
       charCalc.stats.addend.pp -= equipment.statsAddend.pp;
