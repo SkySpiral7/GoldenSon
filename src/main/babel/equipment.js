@@ -1,12 +1,13 @@
 'use strict';
 
+/**props: names, onRemove, onAdd*/
 function EquipmentList(props)
 {
    const listItems = props.names.map((name) =>
    {
       var equipment = database.equipment[name];
       return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
-         <a href="#" onClick={removeEquipmentEventForward}>Remove</a>
+         <a href="#" onClick={props.onRemove}>Remove</a>
          {' '}<b>{name}</b>{'. ' + equipment.description}
       </li>);
    });
@@ -17,7 +18,7 @@ function EquipmentList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-equipment'} id={'add-equipment-li'}>
-         <select onChange={addEquipmentEventForward} id='add-equipment-select'>
+         <select onChange={props.onAdd} id='add-equipment-select'>
             <option>Add Equipment...</option>
             {options}
          </select>
@@ -26,14 +27,4 @@ function EquipmentList(props)
    return (
       <ul>{listItems}</ul>
    );
-}
-
-function removeEquipmentEventForward(onClickEvent)
-{
-   character.removeEquipment(onClickEvent);
-}
-
-function addEquipmentEventForward(onClickEvent)
-{
-   character.addEquipment(onClickEvent);
 }

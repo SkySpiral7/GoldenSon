@@ -1,6 +1,6 @@
 'use strict';
 
-/**props: names*/
+/**props: names, onDjinnChange, onDjinnAdd*/
 function DjinnEntireList(props)
 {
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
@@ -13,21 +13,29 @@ function DjinnEntireList(props)
    return (
       <div>
          <h3>{database.elements.earth.display}</h3>
-         <DjinnElementList names={namesByElement.earth} element="earth" />
+         <DjinnElementList names={namesByElement.earth} element="earth"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
          <h3>{database.elements.fire.display}</h3>
-         <DjinnElementList names={namesByElement.fire} element="fire" />
+         <DjinnElementList names={namesByElement.fire} element="fire"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
          <h3>{database.elements.ice.display}</h3>
-         <DjinnElementList names={namesByElement.ice} element="ice" />
+         <DjinnElementList names={namesByElement.ice} element="ice"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
          <h3>{database.elements.wind.display}</h3>
-         <DjinnElementList names={namesByElement.wind} element="wind" />
+         <DjinnElementList names={namesByElement.wind} element="wind"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
       </div>
    );
 }
 
-/**props: names, element*/
+/**props: names, element, onDjinnChange, onDjinnAdd*/
 function DjinnElementList(props)
 {
    const listItems = props.names.map((name) =>
@@ -40,7 +48,7 @@ function DjinnElementList(props)
       TODO: unleashed button, summon check boxes, Recovery rounds button. but still need an easy/quick way?
       */
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
-         <select onChange={onChangeUpdateDjinnEventForward}>
+         <select onChange={props.onDjinnChange}>
             <option value="set">Set</option>
             <option value="standby">Standby</option>
             <option value="recovery">Recovery</option>
@@ -62,7 +70,7 @@ function DjinnElementList(props)
    if (0 !== options.length)
    {
       listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn-li'}>
-         <DjinnElementDropDown names={props.names} element={props.element} />
+         <DjinnElementDropDown names={props.names} element={props.element} onDjinnAdd={props.onDjinnAdd} />
       </li>);
    }
    return (
@@ -70,18 +78,7 @@ function DjinnElementList(props)
    );
 }
 
-//TODO: remove forwarding by passing down callback. also in equipment
-function onChangeUpdateDjinnEventForward(onClickEvent)
-{
-   character.onChangeUpdateDjinn(onClickEvent);
-}
-
-function addDjinnEventForward(onClickEvent)
-{
-   character.addDjinn(onClickEvent);
-}
-
-/**props: names, element*/
+/**props: names, element, onDjinnAdd*/
 function DjinnElementDropDown(props)
 {
    const options = database.djinn.names
@@ -92,7 +89,7 @@ function DjinnElementDropDown(props)
    );
    if (0 !== options.length)
    {
-      return (<select onChange={addDjinnEventForward} id={'add-' + props.element + '-djinn-select'}>
+      return (<select onChange={props.onDjinnAdd} id={'add-' + props.element + '-djinn-select'}>
          <option>Add {database.elements[props.element].display} Djinn...</option>
          {options}
       </select>);

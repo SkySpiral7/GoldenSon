@@ -1,5 +1,7 @@
 'use strict';
 
+/**props: names, onRemove, onAdd*/
+
 function EquipmentList(props) {
    var listItems = props.names.map(function (name) {
       var equipment = database.equipment[name];
@@ -8,7 +10,7 @@ function EquipmentList(props) {
          { key: 'equipment-' + name, id: 'equipment-' + name, 'data-name': name },
          React.createElement(
             'a',
-            { href: '#', onClick: removeEquipmentEventForward },
+            { href: '#', onClick: props.onRemove },
             'Remove'
          ),
          ' ',
@@ -35,7 +37,7 @@ function EquipmentList(props) {
          { key: 'add-equipment', id: 'add-equipment-li' },
          React.createElement(
             'select',
-            { onChange: addEquipmentEventForward, id: 'add-equipment-select' },
+            { onChange: props.onAdd, id: 'add-equipment-select' },
             React.createElement(
                'option',
                null,
@@ -50,12 +52,4 @@ function EquipmentList(props) {
       null,
       listItems
    );
-}
-
-function removeEquipmentEventForward(onClickEvent) {
-   character.removeEquipment(onClickEvent);
-}
-
-function addEquipmentEventForward(onClickEvent) {
-   character.addEquipment(onClickEvent);
 }

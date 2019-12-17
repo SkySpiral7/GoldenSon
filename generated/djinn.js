@@ -1,6 +1,6 @@
 'use strict';
 
-/**props: names*/
+/**props: names, onDjinnChange, onDjinnAdd*/
 
 function DjinnEntireList(props) {
    var namesByElement = { earth: [], fire: [], ice: [], wind: [] };
@@ -16,29 +16,37 @@ function DjinnEntireList(props) {
          null,
          database.elements.earth.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.earth, element: "earth" }),
+      React.createElement(DjinnElementList, { names: namesByElement.earth, element: "earth",
+         onDjinnChange: props.onDjinnChange,
+         onDjinnAdd: props.onDjinnAdd }),
       React.createElement(
          "h3",
          null,
          database.elements.fire.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.fire, element: "fire" }),
+      React.createElement(DjinnElementList, { names: namesByElement.fire, element: "fire",
+         onDjinnChange: props.onDjinnChange,
+         onDjinnAdd: props.onDjinnAdd }),
       React.createElement(
          "h3",
          null,
          database.elements.ice.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice" }),
+      React.createElement(DjinnElementList, { names: namesByElement.ice, element: "ice",
+         onDjinnChange: props.onDjinnChange,
+         onDjinnAdd: props.onDjinnAdd }),
       React.createElement(
          "h3",
          null,
          database.elements.wind.display
       ),
-      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind" })
+      React.createElement(DjinnElementList, { names: namesByElement.wind, element: "wind",
+         onDjinnChange: props.onDjinnChange,
+         onDjinnAdd: props.onDjinnAdd })
    );
 }
 
-/**props: names, element*/
+/**props: names, element, onDjinnChange, onDjinnAdd*/
 function DjinnElementList(props) {
    var listItems = props.names.map(function (name) {
       var djinn = database.djinn[name];
@@ -53,7 +61,7 @@ function DjinnElementList(props) {
          { key: 'djinn-' + name, id: 'djinn-' + name, "data-name": name },
          React.createElement(
             "select",
-            { onChange: onChangeUpdateDjinnEventForward },
+            { onChange: props.onDjinnChange },
             React.createElement(
                "option",
                { value: "set" },
@@ -100,7 +108,7 @@ function DjinnElementList(props) {
       listItems.push(React.createElement(
          "li",
          { key: 'add-' + props.element + '-djinn', id: 'add-' + props.element + '-djinn-li' },
-         React.createElement(DjinnElementDropDown, { names: props.names, element: props.element })
+         React.createElement(DjinnElementDropDown, { names: props.names, element: props.element, onDjinnAdd: props.onDjinnAdd })
       ));
    }
    return React.createElement(
@@ -110,16 +118,7 @@ function DjinnElementList(props) {
    );
 }
 
-//TODO: remove forwarding by passing down callback. also in equipment
-function onChangeUpdateDjinnEventForward(onClickEvent) {
-   character.onChangeUpdateDjinn(onClickEvent);
-}
-
-function addDjinnEventForward(onClickEvent) {
-   character.addDjinn(onClickEvent);
-}
-
-/**props: names, element*/
+/**props: names, element, onDjinnAdd*/
 function DjinnElementDropDown(props) {
    var options = database.djinn.names.filter(function (name) {
       return database.djinn[name].element === props.element;
@@ -135,7 +134,7 @@ function DjinnElementDropDown(props) {
    if (0 !== options.length) {
       return React.createElement(
          "select",
-         { onChange: addDjinnEventForward, id: 'add-' + props.element + '-djinn-select' },
+         { onChange: props.onDjinnAdd, id: 'add-' + props.element + '-djinn-select' },
          React.createElement(
             "option",
             null,

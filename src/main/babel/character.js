@@ -406,9 +406,13 @@ class CharacterApp extends React.Component
                                 defaultValue={"0"} value={this.state.luck}
                                 min="0" /></label><br />
             <h2>Djinn</h2>
-            <DjinnEntireList names={charCalc.djinn.names} />
+            <DjinnEntireList names={charCalc.djinn.names}
+                             onDjinnChange={this.onChangeUpdateDjinn}
+                             onDjinnAdd={this.addDjinn} />
             <h2>Equipment</h2>
-            <EquipmentList names={this.state.equipment} />
+            <EquipmentList names={this.state.equipment}
+                           onRemove={this.removeEquipment}
+                           onAdd={this.addEquipment} />
             <h2>Final stats</h2>
             Class: {charCalc.activeClassDisplay}<br />
             HP: {Math.round(charCalc.stats.hp)}<br />

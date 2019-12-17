@@ -452,13 +452,17 @@ var CharacterApp = function (_React$Component) {
                null,
                'Djinn'
             ),
-            React.createElement(DjinnEntireList, { names: charCalc.djinn.names }),
+            React.createElement(DjinnEntireList, { names: charCalc.djinn.names,
+               onDjinnChange: this.onChangeUpdateDjinn,
+               onDjinnAdd: this.addDjinn }),
             React.createElement(
                'h2',
                null,
                'Equipment'
             ),
-            React.createElement(EquipmentList, { names: this.state.equipment }),
+            React.createElement(EquipmentList, { names: this.state.equipment,
+               onRemove: this.removeEquipment,
+               onAdd: this.addEquipment }),
             React.createElement(
                'h2',
                null,
