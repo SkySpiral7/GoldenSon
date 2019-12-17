@@ -1,7 +1,7 @@
 'use strict';
 /*
 TODO: need data: background skills, classes for light/dark, equipment, psynergy (main and in classes)
-TODO: use data: elements, backgrounds, combatTypes, skills, Weapon classes
+TODO: use data: skills, Weapon classes
 TODO: sort DB: elements (see below order), names (alphabetically)
 */
 var database = {

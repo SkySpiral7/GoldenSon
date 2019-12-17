@@ -284,7 +284,19 @@ class CharacterApp extends React.Component
       charCalc.djinn.names = Object.keys(this.state.djinn);
 
       const addend = {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0};
-      for (let djinnName of charCalc.djinn.names)
+      let statsAddend = database.elements[this.state.adept].statsAddend;
+      statList.forEach(stat =>
+         {addend[stat] += statsAddend[stat];}
+      );
+      statsAddend = database.backgrounds[this.state.background].statsAddend;
+      statList.forEach(stat =>
+         {addend[stat] += statsAddend[stat];}
+      );
+      statsAddend = database.combatTypes[this.state.combatType].statsAddend;
+      statList.forEach(stat =>
+         {addend[stat] += statsAddend[stat];}
+      );
+      for (const djinnName of charCalc.djinn.names)
       {
          const djinnState = this.state.djinn[djinnName];
          if ('set' === djinnState)
@@ -297,7 +309,7 @@ class CharacterApp extends React.Component
          }
          //charCalc.djinn[djinnState].push(djinnName);
       }
-      for (let equipmentName of this.state.equipment)
+      for (const equipmentName of this.state.equipment)
       {
          const equipment = database.equipment[equipmentName];
          statList.forEach(stat =>

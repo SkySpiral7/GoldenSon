@@ -3,7 +3,8 @@ TestSuite.characterJs = {};
 TestSuite.characterJs.load = function (testState = {})
 {
    TestRunner.clearResults(testState);
-   var assertions = [], input;
+   const assertions = [];
+   let input;
 
    try
    {
@@ -28,40 +29,45 @@ TestSuite.characterJs.load = function (testState = {})
 
    return TestRunner.displayResults('character.js save/load', assertions, testState);
 };
-TestSuite.characterJs.updateFinalStat = function (testState = {})
+TestSuite.characterJs._calcAll = function (testState = {})
 {
    TestRunner.clearResults(testState);
-   var assertions = [];
+   const assertions = [];
 
    function statOnChange(id, value)
    {
-      var input = document.getElementById(id);
+      const input = document.getElementById(id);
       input.value = value;
       character._updateBaseStat({target: input});
    }
 
    function addEquipment(name)
    {
-      var select = document.getElementById('add-equipment-select');
+      const select = document.getElementById('add-equipment-select');
       select.value = name;
       character.addEquipment({target: select});
    }
 
    function addDjinn(element, name)
    {
-      var select = document.getElementById('add-' + element + '-djinn-select');
+      const select = document.getElementById('add-' + element + '-djinn-select');
       select.value = name;
       character.addDjinn({target: select});
    }
 
    assertions.push({Expected: 'Priestess', Actual: character._calcAll().activeClass, Description: 'class'});
 
-   statOnChange('defense', '100');
+   let val = 100
+      - database.elements.earth.statsAddend.defense
+      - database.combatTypes.Mage.statsAddend.defense
+      - database.backgrounds.Academic.statsAddend.defense;
+   statOnChange('defense', val);
    assertions.push(
       {Expected: 90, Actual: character._calcAll().stats.defense, Description: 'defense class multiply'});
 
    addEquipment('Ixion Mail');
-   statOnChange('defense', '74');
+   val -= database.equipment['Ixion Mail'].statsAddend.defense;
+   statOnChange('defense', val);
    assertions.push(
       {Expected: 90, Actual: character._calcAll().stats.defense, Description: 'def mul right order'});
 
@@ -69,14 +75,15 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
    addDjinn('earth', 'Mud');
    assertions.push({Expected: 'High Priestess', Actual: character._calcAll().activeClass, Description: 'class 2'});
 
-   return TestRunner.displayResults('character.js updateFinalStat', assertions, testState);
+   return TestRunner.displayResults('character.js _calcAll', assertions, testState);
 };
 TestSuite.characterJs.determineClass = async function (testState = {})
 {
    TestRunner.clearResults(testState);
-   var assertions = [], actual;
+   const assertions = [];
+   let actual;
 
-   var noClass = {
+   const noClass = {
       name: null,
       statsMultiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1}
    };

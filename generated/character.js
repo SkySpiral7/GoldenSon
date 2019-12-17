@@ -218,6 +218,18 @@ var CharacterApp = function (_React$Component) {
          charCalc.djinn.names = Object.keys(this.state.djinn);
 
          var addend = { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 };
+         var statsAddend = database.elements[this.state.adept].statsAddend;
+         statList.forEach(function (stat) {
+            addend[stat] += statsAddend[stat];
+         });
+         statsAddend = database.backgrounds[this.state.background].statsAddend;
+         statList.forEach(function (stat) {
+            addend[stat] += statsAddend[stat];
+         });
+         statsAddend = database.combatTypes[this.state.combatType].statsAddend;
+         statList.forEach(function (stat) {
+            addend[stat] += statsAddend[stat];
+         });
          var _iteratorNormalCompletion = true;
          var _didIteratorError = false;
          var _iteratorError = undefined;
