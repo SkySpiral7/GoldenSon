@@ -3,7 +3,7 @@
 class CharacterApp extends React.Component
 {
    static _classElementSortOrder = {
-      //element => symbiotic, neutral, conflict
+      //element => symbiotic, neutral, conflict. conflict isn't used
       earth: ['fire', 'ice', 'wind'],
       fire: ['earth', 'wind', 'ice'],
       ice: ['wind', 'earth', 'fire'],
@@ -229,10 +229,7 @@ class CharacterApp extends React.Component
          if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
          if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
 
-         //2 is a no-op since they have same totalDjinn
-         if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
-         if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
-
+         //[2] is a no-op since they have same totalDjinn
          return 0;
       });
       return classList[0];

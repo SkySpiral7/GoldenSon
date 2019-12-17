@@ -174,13 +174,28 @@ TestSuite.characterJs.determineClass = async function (testState = {})
    });
 
    actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+      {"earth": 6, "fire": 3, "ice": 0, "wind": 3});
+   assertions.push({
+      Expected: database.classes.Lord.name,
+      Actual: actual.name,
+      Description: 'Earth: take Earth first'
+   });
+
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 1, "ice": 1, "wind": 1});
    assertions.push({
       Expected: database.classes.Brute.name,
       Actual: actual.name,
-      Description: 'Earth: take Fire first'
+      Description: 'Earth: Fire 2nd'
    });
-   //TODO: will likely need to mock the DB to test every element
+
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+      {"earth": 0, "fire": 0, "ice": 1, "wind": 1});
+   assertions.push({
+      Expected: database.classes.Swordsman.name,
+      Actual: actual.name,
+      Description: 'Earth: Ice 3rd'
+   });
 
    return TestRunner.displayResults('character.js determineClass', assertions, testState);
 };

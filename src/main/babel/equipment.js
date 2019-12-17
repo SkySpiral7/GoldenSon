@@ -5,7 +5,7 @@ function EquipmentList(props)
 {
    const listItems = props.names.map((name) =>
    {
-      var equipment = database.equipment[name];
+      const equipment = database.equipment[name];
       return (<li key={'equipment-' + name} id={'equipment-' + name} data-name={name}>
          <a href="#" onClick={props.onRemove}>Remove</a>
          {' '}<b>{name}</b>{'. ' + equipment.description}

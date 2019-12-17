@@ -40,7 +40,7 @@ function DjinnElementList(props)
 {
    const listItems = props.names.map((name) =>
    {
-      var djinn = database.djinn[name];
+      const djinn = database.djinn[name];
       /*
       Set: gives you stats and class. can be "unleashed" which uses their ability which converts to Standby
       Standby: can be summoned (big attack) which converts to Recovery
@@ -61,7 +61,7 @@ function DjinnElementList(props)
    .filter((name) => !props.names.contains(name))
    .filter((name) =>
    {
-      var djinn = database.djinn[name];
+      const djinn = database.djinn[name];
       return djinn.element === props.element;
    })
    .map((name) =>

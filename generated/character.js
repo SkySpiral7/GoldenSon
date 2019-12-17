@@ -506,11 +506,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Psynergy'
             ),
-            React.createElement(
-               'div',
-               { id: 'section-psynergy' },
-               React.createElement(PsynergyList, { names: charCalc.psynergy })
-            ),
+            React.createElement(PsynergyList, { names: charCalc.psynergy }),
             React.createElement('br', null),
             React.createElement('br', null),
             React.createElement(
@@ -572,10 +568,7 @@ var CharacterApp = function (_React$Component) {
             if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
             if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
 
-            //2 is a no-op since they have same totalDjinn
-            if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
-            if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
-
+            //[2] is a no-op since they have same totalDjinn
             return 0;
          });
          return classList[0];
@@ -602,7 +595,7 @@ var CharacterApp = function (_React$Component) {
 }(React.Component);
 
 CharacterApp._classElementSortOrder = {
-   //element => symbiotic, neutral, conflict
+   //element => symbiotic, neutral, conflict. conflict isn't used
    earth: ['fire', 'ice', 'wind'],
    fire: ['earth', 'wind', 'ice'],
    ice: ['wind', 'earth', 'fire'],
