@@ -82,6 +82,9 @@ var CharacterApp = function (_React$Component) {
       value: function save() {
          return JSON.clone(this.state);
       }
+
+      //could be static
+
    }, {
       key: '_loadFile',
       value: function _loadFile() {
@@ -104,7 +107,7 @@ var CharacterApp = function (_React$Component) {
          fileString = fileString.trim();
          if ('' === fileString) return; //ignore
 
-         var jsonDoc;
+         var jsonDoc = void 0;
          try {
             jsonDoc = JSON.parse(fileString);
             document.getElementById('code-box').value = '';
@@ -181,7 +184,7 @@ var CharacterApp = function (_React$Component) {
       value: function _updateBaseStat(onChangeEvent) {
          var stat = onChangeEvent.target.id;
          var newVal = Number.parseInt(onChangeEvent.target.value);
-         this.setState(function (state, props) {
+         this.setState(function (state) {
             state.stats[stat] = newVal;
             return state;
          });
@@ -225,11 +228,13 @@ var CharacterApp = function (_React$Component) {
 
                var djinnState = this.state.djinn[djinnName];
                if ('set' === djinnState) {
-                  var djinn = database.djinn[djinnName];
-                  statList.forEach(function (stat) {
-                     addend[stat] += djinn.statsAddend[stat];
-                  });
-                  ++charCalc.djinn.counts[djinn.element];
+                  (function () {
+                     var djinn = database.djinn[djinnName];
+                     statList.forEach(function (stat) {
+                        addend[stat] += djinn.statsAddend[stat];
+                     });
+                     ++charCalc.djinn.counts[djinn.element];
+                  })();
                }
                //charCalc.djinn[djinnState].push(djinnName);
             }
@@ -248,6 +253,13 @@ var CharacterApp = function (_React$Component) {
             }
          }
 
+         var _loop = function _loop(equipmentName) {
+            var equipment = database.equipment[equipmentName];
+            statList.forEach(function (stat) {
+               addend[stat] += equipment.statsAddend[stat];
+            });
+         };
+
          var _iteratorNormalCompletion2 = true;
          var _didIteratorError2 = false;
          var _iteratorError2 = undefined;
@@ -256,10 +268,7 @@ var CharacterApp = function (_React$Component) {
             for (var _iterator2 = this.state.equipment[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                var equipmentName = _step2.value;
 
-               var equipment = database.equipment[equipmentName];
-               statList.forEach(function (stat) {
-                  addend[stat] += equipment.statsAddend[stat];
-               });
+               _loop(equipmentName);
             }
          } catch (err) {
             _didIteratorError2 = true;
@@ -288,7 +297,7 @@ var CharacterApp = function (_React$Component) {
       key: 'addDjinn',
       value: function addDjinn(onClickEvent) {
          var newName = onClickEvent.target.value;
-         this.setState(function (state, props) {
+         this.setState(function (state) {
             state.djinn[newName] = 'set';
             return state;
          });
@@ -304,12 +313,12 @@ var CharacterApp = function (_React$Component) {
       key: '_updateDjinn',
       value: function _updateDjinn(djinnName, action) {
          if ('remove' === action) {
-            this.setState(function (state, props) {
+            this.setState(function (state) {
                delete state.djinn[djinnName];
                return state;
             });
          } else {
-            this.setState(function (state, props) {
+            this.setState(function (state) {
                state.djinn[djinnName] = action;
                return state;
             });
@@ -319,7 +328,7 @@ var CharacterApp = function (_React$Component) {
       key: 'addEquipment',
       value: function addEquipment(onClickEvent) {
          var newName = onClickEvent.target.value;
-         this.setState(function (state, props) {
+         this.setState(function (state) {
             state.equipment.push(newName);
             return state;
          });
@@ -328,7 +337,7 @@ var CharacterApp = function (_React$Component) {
       key: 'removeEquipment',
       value: function removeEquipment(onClickEvent) {
          var oldName = onClickEvent.target.parentNode.dataset.name;
-         this.setState(function (state, props) {
+         this.setState(function (state) {
             state.equipment.removeByValue(oldName);
             return state;
          });

@@ -56,7 +56,7 @@ class CharacterApp extends React.Component
 
    _saveToFile()
    {
-      var link = document.getElementById('save-to-file-link');
+      const link = document.getElementById('save-to-file-link');
       link.download = document.getElementById('name').value + '.json';
       link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(this.saveAsString());
    }
@@ -77,11 +77,12 @@ class CharacterApp extends React.Component
       return JSON.clone(this.state);
    }
 
+   //could be static
    _loadFile()
    {
-      var filePath = document.getElementById('file-chooser').files[0];
+      const filePath = document.getElementById('file-chooser').files[0];
       if (undefined === filePath || null === filePath) return;  //no file to load
-      var oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
+      const oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
       oFReader.readAsText(filePath);
       oFReader.onload = function (oFREvent) {character._loadFromString(oFREvent.target.result);};
    }
@@ -96,7 +97,7 @@ class CharacterApp extends React.Component
       fileString = fileString.trim();
       if ('' === fileString) return;  //ignore
 
-      var jsonDoc;
+      let jsonDoc;
       try
       {
          jsonDoc = JSON.parse(fileString);
@@ -115,7 +116,7 @@ class CharacterApp extends React.Component
    load(jsonDoc)
    {
       //this.state = jsonDoc  don't do this: we don't want to keep redundant fields
-      var newState = {
+      const newState = {
          stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
          djinn: {},
          equipment: []
@@ -144,13 +145,13 @@ class CharacterApp extends React.Component
 
    _updateLevel()
    {
-      var level = Number.parseInt(document.getElementById('level').value);
+      const level = Number.parseInt(document.getElementById('level').value);
       this.setState({level: level});
    }
 
    _updateAdept()
    {
-      var adept = document.getElementById('adeptSelect').value;
+      let adept = document.getElementById('adeptSelect').value;
       //this is an option in the select
       if ('none' === adept) adept = null;
       this.setState({adept: adept});
@@ -158,27 +159,27 @@ class CharacterApp extends React.Component
 
    _updateBackground()
    {
-      var background = document.getElementById('backgroundSelect').value;
+      const background = document.getElementById('backgroundSelect').value;
       this.setState({background: background});
    }
 
    _updateCombatType()
    {
-      var combatType = document.getElementById('combatTypeSelect').value;
+      const combatType = document.getElementById('combatTypeSelect').value;
       this.setState({combatType: combatType});
    }
 
    _updateCharacterName()
    {
-      var name = document.getElementById('name').value;
+      const name = document.getElementById('name').value;
       this.setState({name: name});
    }
 
    _updateBaseStat(onChangeEvent)
    {
-      var stat = onChangeEvent.target.id;
-      var newVal = Number.parseInt(onChangeEvent.target.value);
-      this.setState((state, props) =>
+      const stat = onChangeEvent.target.id;
+      const newVal = Number.parseInt(onChangeEvent.target.value);
+      this.setState((state) =>
       {
          state.stats[stat] = newVal;
          return state;
@@ -197,11 +198,11 @@ class CharacterApp extends React.Component
          };
       }
 
-      var classList = database.classes.byRequirement[adept][combatType]
+      const classList = database.classes.byRequirement[adept][combatType]
       //remove classes you don't qualify for
       .filter((newClass) =>
       {
-         var requirementsInQuestion = newClass.requirements[adept][combatType];
+         const requirementsInQuestion = newClass.requirements[adept][combatType];
 
          return (
             djinnCount.earth >= requirementsInQuestion.earth &&
@@ -215,13 +216,13 @@ class CharacterApp extends React.Component
          if (class1.totalDjinn > class2.totalDjinn) return -1;
          if (class1.totalDjinn < class2.totalDjinn) return 1;
 
-         var req1 = class1.requirements[adept][combatType];
-         var req2 = class2.requirements[adept][combatType];
+         const req1 = class1.requirements[adept][combatType];
+         const req2 = class2.requirements[adept][combatType];
 
          if (req1[adept] > req2[adept]) return -1;
          if (req1[adept] < req2[adept]) return 1;
 
-         var elementOrder = CharacterApp._classElementSortOrder[adept];
+         const elementOrder = CharacterApp._classElementSortOrder[adept];
          if (req1[elementOrder[0]] > req2[elementOrder[0]]) return -1;
          if (req1[elementOrder[0]] < req2[elementOrder[0]]) return 1;
 
@@ -239,7 +240,7 @@ class CharacterApp extends React.Component
 
    _updateClass(charCalc)
    {
-      var activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
+      const activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
       charCalc.activeClass = activeClass.name;
 
       if (null === activeClass.name) charCalc.activeClassDisplay = 'None';
@@ -250,14 +251,14 @@ class CharacterApp extends React.Component
 
    static _calcPsynergy(activeClassName, level)
    {
-      var psynergyList = [];
+      const psynergyList = [];
       if (null !== activeClassName)
       {
-         var activeClass = database.classes[activeClassName];
+         const activeClass = database.classes[activeClassName];
          //if (undefined === activeClass) return;  //should only be when class is none
-         for (var i = 0; i < activeClass.psynergy.length; ++i)
+         for (let i = 0; i < activeClass.psynergy.length; ++i)
          {
-            var psynergy = activeClass.psynergy[i];
+            const psynergy = activeClass.psynergy[i];
             if (level >= psynergy.level)
             {
                psynergyList.push(psynergy.name);
@@ -269,9 +270,9 @@ class CharacterApp extends React.Component
 
    _calcAll()
    {
-      var statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
+      const statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
       //these are final stats
-      var charCalc = {stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}};
+      const charCalc = {stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}};
       charCalc.djinn = {
          counts: {earth: 0, fire: 0, ice: 0, wind: 0},
          names: []
@@ -282,13 +283,13 @@ class CharacterApp extends React.Component
       };
       charCalc.djinn.names = Object.keys(this.state.djinn);
 
-      var addend = {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0};
-      for (var djinnName of charCalc.djinn.names)
+      const addend = {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0};
+      for (let djinnName of charCalc.djinn.names)
       {
-         var djinnState = this.state.djinn[djinnName];
+         const djinnState = this.state.djinn[djinnName];
          if ('set' === djinnState)
          {
-            var djinn = database.djinn[djinnName];
+            const djinn = database.djinn[djinnName];
             statList.forEach(stat =>
                {addend[stat] += djinn.statsAddend[stat];}
             );
@@ -296,14 +297,14 @@ class CharacterApp extends React.Component
          }
          //charCalc.djinn[djinnState].push(djinnName);
       }
-      for (var equipmentName of this.state.equipment)
+      for (let equipmentName of this.state.equipment)
       {
-         var equipment = database.equipment[equipmentName];
+         const equipment = database.equipment[equipmentName];
          statList.forEach(stat =>
             {addend[stat] += equipment.statsAddend[stat];}
          );
       }
-      var multiplier = this._updateClass(charCalc);
+      const multiplier = this._updateClass(charCalc);
       charCalc.psynergy = CharacterApp._calcPsynergy(charCalc.activeClass, this.state.level);
       statList.forEach(stat =>
          {charCalc.stats[stat] = (this.state.stats[stat] + addend[stat]) * multiplier[stat];}
@@ -314,8 +315,8 @@ class CharacterApp extends React.Component
 
    addDjinn(onClickEvent)
    {
-      var newName = onClickEvent.target.value;
-      this.setState((state, props) =>
+      const newName = onClickEvent.target.value;
+      this.setState((state) =>
       {
          state.djinn[newName] = 'set';
          return state;
@@ -324,8 +325,8 @@ class CharacterApp extends React.Component
 
    onChangeUpdateDjinn(onClickEvent)
    {
-      var djinnName = onClickEvent.target.parentNode.dataset.name;
-      var action = onClickEvent.target.value;
+      const djinnName = onClickEvent.target.parentNode.dataset.name;
+      const action = onClickEvent.target.value;
       this._updateDjinn(djinnName, action);
    }
 
@@ -333,7 +334,7 @@ class CharacterApp extends React.Component
    {
       if ('remove' === action)
       {
-         this.setState((state, props) =>
+         this.setState((state) =>
          {
             delete state.djinn[djinnName];
             return state;
@@ -341,7 +342,7 @@ class CharacterApp extends React.Component
       }
       else
       {
-         this.setState((state, props) =>
+         this.setState((state) =>
          {
             state.djinn[djinnName] = action;
             return state;
@@ -351,8 +352,8 @@ class CharacterApp extends React.Component
 
    addEquipment(onClickEvent)
    {
-      var newName = onClickEvent.target.value;
-      this.setState((state, props) =>
+      const newName = onClickEvent.target.value;
+      this.setState((state) =>
       {
          state.equipment.push(newName);
          return state;
@@ -361,8 +362,8 @@ class CharacterApp extends React.Component
 
    removeEquipment(onClickEvent)
    {
-      var oldName = onClickEvent.target.parentNode.dataset.name;
-      this.setState((state, props) =>
+      const oldName = onClickEvent.target.parentNode.dataset.name;
+      this.setState((state) =>
       {
          state.equipment.removeByValue(oldName);
          return state;
@@ -371,7 +372,7 @@ class CharacterApp extends React.Component
 
    render()
    {
-      var charCalc = this._calcAll();
+      const charCalc = this._calcAll();
       return (
          <div>
             <h2>General</h2>
@@ -431,7 +432,7 @@ class CharacterApp extends React.Component
             <input type="button" value="Load from Text Area" onClick={this._loadFromTextArea}
                    id="load-text-button" /><br />
             <br />
-            <textarea id="code-box" rows="10" cols="50"></textarea>
+            <textarea id="code-box" rows="10" cols="50" />
          </div>
       );
    }
