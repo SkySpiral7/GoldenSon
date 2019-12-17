@@ -28,7 +28,7 @@ function main()
 
 function generateFromBabel()
 {
-   var babel = require('babel-core');
+   const babel = require('babel-core');
 
    fs.readdir('./src/main/babel', (err, files) =>
    {
@@ -60,7 +60,7 @@ function processDatabase(database)
 {
    function assignNames(object)
    {
-      for (var key in object)
+      for (const key in object)
       {
          object[key].name = key;
       }
@@ -68,28 +68,28 @@ function processDatabase(database)
       object.names.sort();
    }
 
-   assignNames(database.elements);
    assignNames(database.backgrounds);
    assignNames(database.combatTypes);
    assignNames(database.classes);
    assignNames(database.djinn);
+   assignNames(database.elements);
    assignNames(database.equipment);
    assignNames(database.psynergy);
 
    database.classes.byRequirement = {};
-   for (var name of database.classes.names)
+   for (const name of database.classes.names)
    {
-      var classReq = database.classes[name].requirements;
-      for (var element in classReq)
+      const classReq = database.classes[name].requirements;
+      for (const element in classReq)
       {
-         for (var combatType in classReq[element])
+         for (const combatType in classReq[element])
          {
             if (undefined === database.classes.byRequirement[element]) database.classes.byRequirement[element] = {};
             if (undefined === database.classes.byRequirement[element][combatType]) database.classes.byRequirement[element][combatType] = [];
             database.classes.byRequirement[element][combatType].push(database.classes[name]);
 
             //totalDjinn will get written a lot but it's fine
-            var djinnCount = classReq[element][combatType];
+            const djinnCount = classReq[element][combatType];
             database.classes[name].totalDjinn = (djinnCount.earth + djinnCount.fire + djinnCount.ice + djinnCount.wind);
          }
       }

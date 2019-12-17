@@ -15,22 +15,22 @@
 
       function importClass()
       {
-         var input = document.getElementById('input').value;
-         var output = convertClassCsvToJson(input);
+         const input = document.getElementById('input').value;
+         const output = convertClassCsvToJson(input);
          document.getElementById('output').value = JSON.stringify(output);
       }
 
       function convertClassCsvToJson(input)
       {
-         var output = {};
-         var rowList = input.split(/\r?\n/);
-         for (var rawRow of rowList)
+         const output = {};
+         const rowList = input.split(/\r?\n/);
+         for (let rawRow of rowList)
          {
             if (rawRow.contains('\t')) rawRow = '"' + rawRow.replace(/\t/g, '","') + '"';
-            var row = JSON.parse('[' + rawRow + ']');
+            const row = JSON.parse('[' + rawRow + ']');
             if (0 === row.length) continue;
-            var rowObject = mapClassCsvArrayToObject(...row);
-            var initializeClass = false;
+            const rowObject = mapClassCsvArrayToObject(...row);
+            let initializeClass = false;
             if (undefined === output[rowObject.className])
             {
                output[rowObject.className] = {
@@ -40,7 +40,7 @@
                };
                initializeClass = true;
             }
-            var classData = output[rowObject.className];
+            const classData = output[rowObject.className];
             if (undefined === classData.requirements[rowObject.adept]) classData.requirements[rowObject.adept] = {};
             classData.requirements[rowObject.adept][rowObject.combatType] = {
                "earth": Number.parseInt(rowObject.earth),
@@ -58,7 +58,7 @@
                   "agility": (Number.parseFloat(rowObject.agility) / 100),
                   "luck": (Number.parseFloat(rowObject.luck) / 100)
                };
-               for (var i = 0; (i + 1) < rowObject.psynergyList.length; i += 2)
+               for (let i = 0; (i + 1) < rowObject.psynergyList.length; i += 2)
                {
                   classData.psynergy.push({
                      level: Number.parseInt(rowObject.psynergyList[i]),
