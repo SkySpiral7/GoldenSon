@@ -10,7 +10,7 @@ function ClassCountTable()
    const headerRow = (
       <tr key="tr-headers">{headers}</tr>
    );
-   const rows = database.adeptTypes.names.map((name) =>
+   const rows = database.elements.names.map((name) =>
    {
       return (<tr key={'tr-' + name}>
          <td key={'vth-' + name}>{name}</td>

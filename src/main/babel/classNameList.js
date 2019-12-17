@@ -4,7 +4,7 @@ let classNameListState = {element: 'earth', combatType: 'Mage'};
 
 function ElementDropDown()
 {
-   const options = database.adeptTypes.names
+   const options = database.elements.names
    .map((name) =>
       <option key={name}>{name}</option>
    );
@@ -25,12 +25,12 @@ function CombatTypeDropDown()
    .map((name) =>
       <option key={name}>{name}</option>
    );
-   return (<select onChange={updateCombatType} id="combatTypeDropDown" value={classNameListState.combatType}>
+   return (<select onChange={updateCombatTypeDropDown} id="combatTypeDropDown" value={classNameListState.combatType}>
       {options}
    </select>);
 }
 
-function updateCombatType()
+function updateCombatTypeDropDown()
 {
    classNameListState.combatType = document.getElementById('combatTypeDropDown').value;
    renderClassList();
@@ -38,8 +38,8 @@ function updateCombatType()
 
 function ClassListTable()
 {
-   if (undefined === database.classes.byRequirement[classNameListState.element]) return '';
-   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return '';
+   if (undefined === database.classes.byRequirement[classNameListState.element]) return null;
+   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return null;
    let classList = database.classes.byRequirement[classNameListState.element][classNameListState.combatType]
    .map((myClass) =>
    {

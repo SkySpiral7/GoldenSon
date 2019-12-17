@@ -9,33 +9,14 @@
 
    <script src="../../../generated/database.js"></script>
    <script src="../javascript/prototype.js"></script>
-   <script src="../javascript/main.js"></script>
+   <script src="../../../generated/element.js"></script>
+   <script src="../../../generated/backgroundOrCombatType.js"></script>
+   <script src="../../../generated/djinn.js"></script>
+   <script src="../../../generated/equipment.js"></script>
+   <script src="../../../generated/psynergy.js"></script>
    <script>
       'use strict';
-      var character = {
-         name: '',
-         adept: null,
-         combatType: 'Warrior',
-         background: 'Academic',
-         activeClass: null,
-         level: 1,
-         stats: {
-            base: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-            addend: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
-            multiplier: {hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1},
-            final: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0}
-         },
-         djinn: {
-            counts: {earth: 0, fire: 0, ice: 0, wind: 0},
-            names: [],
-            state: {},
-            set: [],
-            standby: [],
-            recovery: []
-         },
-         equipment: [],
-         psynergy: []
-      };
+      var character;
    </script>
    <style>
       body {
@@ -44,68 +25,54 @@
       }
    </style>
 </head>
-<body onload="updateAllFinalStats();">
-<h2>General</h2>
-<label>Name: <input type="text" id="name" value="" onchange="character.name = document.getElementById('name').value;" /></label><br />
-<label>Adept (Elemental Alignment):
-   <select id="adept" onchange="updateAdept();">
-      <option value="none">None</option>
-      <option value="earth">Venus (Earth)</option>
-      <option value="fire">Mars (Fire)</option>
-      <option value="ice">Mercury (Ice)</option>
-      <option value="wind">Jupiter (Wind)</option>
-      <option value="sun">Sol (Sun)</option>
-      <option value="moon">Luna (Moon)</option>
-   </select>
-</label><br />
-<label>Combat type:
-   <select id="combatType" onchange="updateCombatType();">
-      <option value="Warrior">Warrior</option>
-      <option value="Mage">Mage</option>
-      <option value="Rogue">Rogue</option>
-   </select>
-</label><br />
-<label for="backgroundSelect">Background:</label>
-<div style="display:inline-block;" id="backgroundDiv"></div>
-<script src="../../../generated/background.js"></script>
-<br />
-<label>Level: <input type="number" id="level" value="1" min="1" onchange="updateLevel();" /></label><br />
-<h2>Base stats</h2>
-<label>HP: <input type="number" id="hp" onChange="updateBaseStat('hp')" value="0" min="0" /></label><br />
-<label>PP: <input type="number" id="pp" onChange="updateBaseStat('pp')" value="0" min="0" /></label><br />
-<label>Attack: <input type="number" id="attack" onChange="updateBaseStat('attack')" value="0" min="0" /></label><br />
-<label>Defense: <input type="number" id="defense" onChange="updateBaseStat('defense')" value="0"
-                       min="0" /></label><br />
-<label>Agility: <input type="number" id="agility" onChange="updateBaseStat('agility')" value="0"
-                       min="0" /></label><br />
-<label>Luck: <input type="number" id="luck" onChange="updateBaseStat('luck')" value="0" min="0" /></label><br />
-<h2>Djinn</h2>
-<div id="djinn"></div>
-<script src="../../../generated/djinn.js"></script>
-<h2>Equipment</h2>
-<div id="equipment"></div>
-<script src="../../../generated/equipment.js"></script>
-<h2>Final stats</h2>
-Class: <span id="class"></span><br />
-HP: <span id="hp-final"></span><br />
-PP: <span id="pp-final"></span><br />
-Attack: <span id="attack-final"></span><br />
-Defense: <span id="defense-final"></span><br />
-Agility: <span id="agility-final"></span><br />
-Luck: <span id="luck-final"></span><br />
-<h2>Psynergy</h2>
-<div id="psynergy"></div>
-<script src="../../../generated/psynergy.js"></script>
+<body>
+<div style="display:inline-block;" id="characterDiv"></div>
+<script src="../../../generated/character.js"></script>
+
+<!--testRunner only works locally-->
+<!---->
+<script src="../../../../Miscellaneous/src/main/javascript/testRunner.js"></script>
+<script>
+   'use strict';
+   var Loader = {};
+   Loader.resetData = function ()
+   {
+      character.load({
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         //gameVersion, parserVersion are strings to support possible future semantic versioning
+         //gameVersion: '1',
+         //parserVersion: '1',
+         name: '',
+         adept: database.elementOrder[0],
+         combatType: database.combatTypes.names[0],
+         background: database.backgrounds.names[0],
+         level: 1,
+         stats: {hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0},
+         djinn: {},
+         equipment: []
+      });
+   };
+   Loader.sendData = function (jsonData)
+   {
+      document.getElementById('code-box').value = JSON.stringify(jsonData);  //to simulate user input
+      character._loadFromTextArea();
+   };
+
+   TestConfig.betweenEach = function ()
+   {
+      Loader.resetData();
+   };
+</script>
+<script src="../../test/babel/backgroundOrCombatType.js"></script>
+<script src="../../test/babel/djinn.js"></script>
+<script src="../../test/babel/character.js"></script>
+<script src="../../test/babel/element.js"></script>
+<script src="../../test/babel/equipment.js"></script>
 <br /><br />
-<span onClick="saveToFile();"><a href="javascript:alert('This link changes to data as you click it');" download=""
-                                 id="save-to-file-link">Save to File</a></span>
-<input type="button" value="Save To Text Area" onClick="saveToTextArea();" id="save-text-button" />
-<br />
-<input type="file" id="file-chooser" accept=".js,.json" /><br />
-<input type="button" value="Load from File" onClick="loadFile();" />
-<input type="button" value="Load from Text Area" onClick="loadFromTextArea();" id="load-text-button" /><br />
-<br />
-<textarea id="code-box" rows="10" cols="50"></textarea>
+<a href="javascript:TestRunner.testAll();">Run all tests</a><br />
+<label for="testResults">Test Results:</label><br />
+<textarea id="testResults" rows="10" cols="50"></textarea>
+<!---->
 </body>
 </html>
 <!--Links:
@@ -115,5 +82,15 @@ http://www.goldensun-syndicate.net/
 https://goldensun.fandom.com/wiki/Djinn
 
 https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html
+
 not sure how much state can/should be managed by react
+https://reactjs.org/docs/state-and-lifecycle.html
+https://reactjs.org/docs/faq-state.html
+https://redux.js.org/
+
+class help
+https://itnext.io/how-to-properly-define-state-in-react-components-47544eb4c15d
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+
+overall example: https://stackoverflow.com/questions/54121602/displaying-the-sum-of-values-in-react-jsx
 -->

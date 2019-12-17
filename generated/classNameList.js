@@ -3,7 +3,7 @@
 var classNameListState = { element: 'earth', combatType: 'Mage' };
 
 function ElementDropDown() {
-   var options = database.adeptTypes.names.map(function (name) {
+   var options = database.elements.names.map(function (name) {
       return React.createElement(
          'option',
          { key: name },
@@ -32,19 +32,19 @@ function CombatTypeDropDown() {
    });
    return React.createElement(
       'select',
-      { onChange: updateCombatType, id: 'combatTypeDropDown', value: classNameListState.combatType },
+      { onChange: updateCombatTypeDropDown, id: 'combatTypeDropDown', value: classNameListState.combatType },
       options
    );
 }
 
-function updateCombatType() {
+function updateCombatTypeDropDown() {
    classNameListState.combatType = document.getElementById('combatTypeDropDown').value;
    renderClassList();
 }
 
 function ClassListTable() {
-   if (undefined === database.classes.byRequirement[classNameListState.element]) return '';
-   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return '';
+   if (undefined === database.classes.byRequirement[classNameListState.element]) return null;
+   if (undefined === database.classes.byRequirement[classNameListState.element][classNameListState.combatType]) return null;
    var classList = database.classes.byRequirement[classNameListState.element][classNameListState.combatType].map(function (myClass) {
       return {
          name: myClass.name,

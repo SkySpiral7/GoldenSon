@@ -1,32 +1,41 @@
 'use strict';
 
-/**props: names*/
+/**props: names, onDjinnChange, onDjinnAdd*/
 function DjinnEntireList(props)
 {
    const namesByElement = {earth: [], fire: [], ice: [], wind: []};
-   props.names.sorted().forEach((name) =>
+   props.names.sorted()
+   .forEach((name) =>
    {
       const djinn = database.djinn[name];
       namesByElement[djinn.element].push(name);
    });
    return (
       <div>
-         <h3>Venus (Earth)</h3>
-         <DjinnElementList names={namesByElement.earth} element="earth" display="Venus (Earth)" />
+         <h3>{database.elements.earth.display}</h3>
+         <DjinnElementList names={namesByElement.earth} element="earth"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
-         <h3>Mars (Fire)</h3>
-         <DjinnElementList names={namesByElement.fire} element="fire" display="Mars (Fire)" />
+         <h3>{database.elements.fire.display}</h3>
+         <DjinnElementList names={namesByElement.fire} element="fire"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
-         <h3>Mercury (Ice)</h3>
-         <DjinnElementList names={namesByElement.ice} element="ice" display="Mercury (Ice)" />
+         <h3>{database.elements.ice.display}</h3>
+         <DjinnElementList names={namesByElement.ice} element="ice"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
 
-         <h3>Jupiter (Wind)</h3>
-         <DjinnElementList names={namesByElement.wind} element="wind" display="Jupiter (Wind)" />
+         <h3>{database.elements.wind.display}</h3>
+         <DjinnElementList names={namesByElement.wind} element="wind"
+                           onDjinnChange={props.onDjinnChange}
+                           onDjinnAdd={props.onDjinnAdd} />
       </div>
    );
 }
 
-/**props: names, element, display*/
+/**props: names, element, onDjinnChange, onDjinnAdd*/
 function DjinnElementList(props)
 {
    const listItems = props.names.map((name) =>
@@ -39,7 +48,7 @@ function DjinnElementList(props)
       TODO: unleashed button, summon check boxes, Recovery rounds button. but still need an easy/quick way?
       */
       return (<li key={'djinn-' + name} id={'djinn-' + name} data-name={name}>
-         <select onChange={onChangeUpdateDjinn}>
+         <select onChange={props.onDjinnChange}>
             <option value="set">Set</option>
             <option value="standby">Standby</option>
             <option value="recovery">Recovery</option>
@@ -49,7 +58,7 @@ function DjinnElementList(props)
       </li>);
    });
    const options = database.djinn.names
-   .filter((name) => !character.djinn.names.contains(name))
+   .filter((name) => !props.names.contains(name))
    .filter((name) =>
    {
       var djinn = database.djinn[name];
@@ -60,8 +69,8 @@ function DjinnElementList(props)
    );
    if (0 !== options.length)
    {
-      listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn'}>
-         <DjinnElementDropDown element={props.element} display={props.display} />
+      listItems.push(<li key={'add-' + props.element + '-djinn'} id={'add-' + props.element + '-djinn-li'}>
+         <DjinnElementDropDown names={props.names} element={props.element} onDjinnAdd={props.onDjinnAdd} />
       </li>);
    }
    return (
@@ -69,29 +78,21 @@ function DjinnElementList(props)
    );
 }
 
-/**props: element, display*/
+/**props: names, element, onDjinnAdd*/
 function DjinnElementDropDown(props)
 {
    const options = database.djinn.names
    .filter((name) => database.djinn[name].element === props.element)
-   .filter((name) => !character.djinn.names.contains(name))
+   .filter((name) => !props.names.contains(name))
    .map((name) =>
       <option key={name}>{name}</option>
    );
    if (0 !== options.length)
    {
-      return (<select onChange={addDjinn}>
-         <option>Add {props.display} Djinn...</option>
+      return (<select onChange={props.onDjinnAdd} id={'add-' + props.element + '-djinn-select'}>
+         <option>Add {database.elements[props.element].display} Djinn...</option>
          {options}
       </select>);
    }
-   return '';
-}
-
-function renderDjinn()
-{
-   ReactDOM.render(
-      <DjinnEntireList names={character.djinn.names} />,
-      document.getElementById('djinn')
-   );
+   return null;
 }

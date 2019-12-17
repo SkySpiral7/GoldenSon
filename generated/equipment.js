@@ -1,5 +1,7 @@
 'use strict';
 
+/**props: names, onRemove, onAdd*/
+
 function EquipmentList(props) {
    var listItems = props.names.map(function (name) {
       var equipment = database.equipment[name];
@@ -8,7 +10,7 @@ function EquipmentList(props) {
          { key: 'equipment-' + name, id: 'equipment-' + name, 'data-name': name },
          React.createElement(
             'a',
-            { href: '#', onClick: removeEquipment },
+            { href: '#', onClick: props.onRemove },
             'Remove'
          ),
          ' ',
@@ -21,7 +23,7 @@ function EquipmentList(props) {
       );
    });
    var options = database.equipment.names.filter(function (name) {
-      return !character.equipment.contains(name);
+      return !props.names.contains(name);
    }).map(function (name) {
       return React.createElement(
          'option',
@@ -32,10 +34,10 @@ function EquipmentList(props) {
    if (0 !== options.length) {
       listItems.push(React.createElement(
          'li',
-         { key: 'add-equipment', id: 'add-equipment' },
+         { key: 'add-equipment', id: 'add-equipment-li' },
          React.createElement(
             'select',
-            { onChange: addEquipment },
+            { onChange: props.onAdd, id: 'add-equipment-select' },
             React.createElement(
                'option',
                null,
@@ -50,8 +52,4 @@ function EquipmentList(props) {
       null,
       listItems
    );
-}
-
-function renderEquipment() {
-   ReactDOM.render(React.createElement(EquipmentList, { names: character.equipment }), document.getElementById('equipment'));
 }
