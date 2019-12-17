@@ -5,7 +5,7 @@ function PsynergyList(props) {
       var psynergy = database.psynergy[name];
       return React.createElement(
          'li',
-         { key: 'psynergy-' + name, id: 'psynergy-' + name, 'data-name': name },
+         { key: 'psynergy-' + name, id: 'psynergy-' + name },
          React.createElement(
             'b',
             null,

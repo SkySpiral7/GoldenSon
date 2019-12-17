@@ -506,7 +506,11 @@ var CharacterApp = function (_React$Component) {
                null,
                'Psynergy'
             ),
-            React.createElement(PsynergyList, { names: charCalc.psynergy }),
+            React.createElement(
+               'div',
+               { id: 'section-psynergy' },
+               React.createElement(PsynergyList, { names: charCalc.psynergy })
+            ),
             React.createElement('br', null),
             React.createElement('br', null),
             React.createElement(

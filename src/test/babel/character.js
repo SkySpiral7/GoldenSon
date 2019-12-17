@@ -77,6 +77,52 @@ TestSuite.characterJs._calcAll = function (testState = {})
 
    return TestRunner.displayResults('character.js _calcAll', assertions, testState);
 };
+TestSuite.characterJs._calcPsynergy = async function (testState = {})
+{
+   TestRunner.clearResults(testState);
+   const assertions = [];
+
+   assertions.push({
+      Expected: [],
+      Actual: CharacterApp._calcPsynergy(null),
+      Description: 'no class returns empty'
+   });
+
+   assertions.push({
+      Expected: [],
+      Actual: CharacterApp._calcPsynergy('Priestess', 1),
+      Description: 'class has no psynergy'
+   });
+
+   const previous = database.classes.Priestess.psynergy;
+   database.classes.Priestess.psynergy = [{level: 2, name: 'Cure'}, {level: 3, name: 'Quake'}];
+   try
+   {
+      assertions.push({
+         Expected: [],
+         Actual: CharacterApp._calcPsynergy('Priestess', 1),
+         Description: 'too low for any psy'
+      });
+
+      assertions.push({
+         Expected: ['Cure'],
+         Actual: CharacterApp._calcPsynergy('Priestess', 2),
+         Description: 'includes equal lv psy'
+      });
+
+      assertions.push({
+         Expected: ['Cure', 'Quake'],
+         Actual: CharacterApp._calcPsynergy('Priestess', 5),
+         Description: 'lists lower lv psy'
+      });
+   }
+   finally
+   {
+      database.classes.Priestess.psynergy = previous;
+   }
+
+   return TestRunner.displayResults('character.js _calcPsynergy', assertions, testState);
+};
 TestSuite.characterJs.determineClass = async function (testState = {})
 {
    TestRunner.clearResults(testState);

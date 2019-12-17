@@ -4,8 +4,8 @@ function PsynergyList(props)
 {
    const listItems = props.names.map((name) =>
    {
-      var psynergy = database.psynergy[name];
-      return (<li key={'psynergy-' + name} id={'psynergy-' + name} data-name={name}>
+      const psynergy = database.psynergy[name];
+      return (<li key={'psynergy-' + name} id={'psynergy-' + name}>
          <b>{name}</b>{'. ' + psynergy.description}
       </li>);
    });
