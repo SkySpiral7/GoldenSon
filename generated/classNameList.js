@@ -32,12 +32,12 @@ function CombatTypeDropDown() {
    });
    return React.createElement(
       'select',
-      { onChange: updateCombatType, id: 'combatTypeDropDown', value: classNameListState.combatType },
+      { onChange: updateCombatTypeDropDown, id: 'combatTypeDropDown', value: classNameListState.combatType },
       options
    );
 }
 
-function updateCombatType() {
+function updateCombatTypeDropDown() {
    classNameListState.combatType = document.getElementById('combatTypeDropDown').value;
    renderClassList();
 }

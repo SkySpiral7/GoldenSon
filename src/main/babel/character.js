@@ -2,24 +2,19 @@
 
 class CharacterApp extends React.Component
 {
-   //TODO: make class things private and static
-   //rename to this.#charCalc etc. can make some methods static
-   //static #classElementSortOrder; state;
-   classElementSortOrder;
+   static _classElementSortOrder = {
+      //element => symbiotic, neutral, conflict
+      earth: ['fire', 'ice', 'wind'],
+      fire: ['earth', 'wind', 'ice'],
+      ice: ['wind', 'earth', 'fire'],
+      wind: ['ice', 'fire', 'earth']
+   };
    state;
 
    constructor(props)
    {
       super(props);
       character = this;
-
-      this.classElementSortOrder = {
-         //element => symbiotic, neutral, conflict
-         earth: ['fire', 'ice', 'wind'],
-         fire: ['earth', 'wind', 'ice'],
-         ice: ['wind', 'earth', 'fire'],
-         wind: ['ice', 'fire', 'earth']
-      };
 
       this.state = {
          //gameVersion, parserVersion are ignored until there is reason to use them
@@ -36,44 +31,43 @@ class CharacterApp extends React.Component
          equipment: []
       };
 
-      this.saveToFile = this.saveToFile.bind(this);
+      this._saveToFile = this._saveToFile.bind(this);
       this.saveAsString = this.saveAsString.bind(this);
-      this.saveToTextArea = this.saveToTextArea.bind(this);
+      this._saveToTextArea = this._saveToTextArea.bind(this);
       this.save = this.save.bind(this);
-      this.loadFile = this.loadFile.bind(this);
-      this.loadFromTextArea = this.loadFromTextArea.bind(this);
-      this.loadFromString = this.loadFromString.bind(this);
+      this._loadFile = this._loadFile.bind(this);
+      this._loadFromTextArea = this._loadFromTextArea.bind(this);
+      this._loadFromString = this._loadFromString.bind(this);
       this.load = this.load.bind(this);
-      this.updateLevel = this.updateLevel.bind(this);
-      this.updateAdept = this.updateAdept.bind(this);
-      this.updateBackground = this.updateBackground.bind(this);
-      this.updateCombatType = this.updateCombatType.bind(this);
-      this.updateCharacterName = this.updateCharacterName.bind(this);
-      this.updateBaseStat = this.updateBaseStat.bind(this);
-      this.determineClass = this.determineClass.bind(this);
-      this.updateClass = this.updateClass.bind(this);
-      this.calcPsynergy = this.calcPsynergy.bind(this);
-      this.calcAll = this.calcAll.bind(this);
+      this._updateLevel = this._updateLevel.bind(this);
+      this._updateAdept = this._updateAdept.bind(this);
+      this._updateBackground = this._updateBackground.bind(this);
+      this._updateCombatType = this._updateCombatType.bind(this);
+      this._updateCharacterName = this._updateCharacterName.bind(this);
+      this._updateBaseStat = this._updateBaseStat.bind(this);
+      this._updateClass = this._updateClass.bind(this);
+      this._calcAll = this._calcAll.bind(this);
       this.addDjinn = this.addDjinn.bind(this);
       this.onChangeUpdateDjinn = this.onChangeUpdateDjinn.bind(this);
-      this.updateDjinn = this.updateDjinn.bind(this);
+      this._updateDjinn = this._updateDjinn.bind(this);
       this.addEquipment = this.addEquipment.bind(this);
       this.removeEquipment = this.removeEquipment.bind(this);
    }
 
-   saveToFile()
+   _saveToFile()
    {
       var link = document.getElementById('save-to-file-link');
       link.download = document.getElementById('name').value + '.json';
       link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(this.saveAsString());
    }
 
+   //could be private
    saveAsString()
    {
       return JSON.stringify(this.save());
    }
 
-   saveToTextArea()
+   _saveToTextArea()
    {
       document.getElementById('code-box').value = this.saveAsString();
    }
@@ -83,21 +77,21 @@ class CharacterApp extends React.Component
       return JSON.clone(this.state);
    }
 
-   loadFile()
+   _loadFile()
    {
       var filePath = document.getElementById('file-chooser').files[0];
       if (undefined === filePath || null === filePath) return;  //no file to load
       var oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
       oFReader.readAsText(filePath);
-      oFReader.onload = function (oFREvent) {character.loadFromString(oFREvent.target.result);};
+      oFReader.onload = function (oFREvent) {character._loadFromString(oFREvent.target.result);};
    }
 
-   loadFromTextArea()
+   _loadFromTextArea()
    {
-      this.loadFromString(document.getElementById('code-box').value);
+      this._loadFromString(document.getElementById('code-box').value);
    }
 
-   loadFromString(fileString)
+   _loadFromString(fileString)
    {
       fileString = fileString.trim();
       if ('' === fileString) return;  //ignore
@@ -148,13 +142,13 @@ class CharacterApp extends React.Component
       this.setState(newState);
    }
 
-   updateLevel()
+   _updateLevel()
    {
       var level = Number.parseInt(document.getElementById('level').value);
       this.setState({level: level});
    }
 
-   updateAdept()
+   _updateAdept()
    {
       var adept = document.getElementById('adeptSelect').value;
       //this is an option in the select
@@ -162,28 +156,28 @@ class CharacterApp extends React.Component
       this.setState({adept: adept});
    }
 
-   updateBackground()
+   _updateBackground()
    {
       var background = document.getElementById('backgroundSelect').value;
       this.setState({background: background});
    }
 
-   updateCombatType()
+   _updateCombatType()
    {
       var combatType = document.getElementById('combatTypeSelect').value;
       this.setState({combatType: combatType});
    }
 
-   updateCharacterName()
+   _updateCharacterName()
    {
       var name = document.getElementById('name').value;
       this.setState({name: name});
    }
 
-   updateBaseStat(onChangeEvent)
+   _updateBaseStat(onChangeEvent)
    {
       var stat = onChangeEvent.target.id;
-      var newVal = Number.parseInt(document.getElementById(stat).value);
+      var newVal = Number.parseInt(onChangeEvent.target.value);
       this.setState((state, props) =>
       {
          state.stats[stat] = newVal;
@@ -191,7 +185,7 @@ class CharacterApp extends React.Component
       });
    }
 
-   determineClass(adept, combatType, djinnCount)
+   static _determineClass(adept, combatType, djinnCount)
    {
       if (null === adept || undefined === database.classes.byRequirement[adept]
          || undefined === database.classes.byRequirement[adept][combatType])
@@ -227,7 +221,7 @@ class CharacterApp extends React.Component
          if (req1[adept] > req2[adept]) return -1;
          if (req1[adept] < req2[adept]) return 1;
 
-         var elementOrder = this.classElementSortOrder[adept];
+         var elementOrder = CharacterApp._classElementSortOrder[adept];
          if (req1[elementOrder[0]] > req2[elementOrder[0]]) return -1;
          if (req1[elementOrder[0]] < req2[elementOrder[0]]) return 1;
 
@@ -243,9 +237,9 @@ class CharacterApp extends React.Component
       return classList[0];
    }
 
-   updateClass(charCalc)
+   _updateClass(charCalc)
    {
-      var activeClass = this.determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
+      var activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
       charCalc.activeClass = activeClass.name;
 
       if (null === activeClass.name) charCalc.activeClassDisplay = 'None';
@@ -254,7 +248,7 @@ class CharacterApp extends React.Component
       return activeClass.statsMultiplier;
    }
 
-   calcPsynergy(activeClassName)
+   static _calcPsynergy(activeClassName, level)
    {
       var psynergyList = [];
       if (null !== activeClassName)
@@ -264,7 +258,7 @@ class CharacterApp extends React.Component
          for (var i = 0; i < activeClass.psynergy.length; ++i)
          {
             var psynergy = activeClass.psynergy[i];
-            if (this.state.level >= psynergy.level)
+            if (level >= psynergy.level)
             {
                psynergyList.push(psynergy.name);
             }
@@ -273,7 +267,7 @@ class CharacterApp extends React.Component
       return psynergyList;
    }
 
-   calcAll()
+   _calcAll()
    {
       var statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
       //these are final stats
@@ -309,8 +303,8 @@ class CharacterApp extends React.Component
             {addend[stat] += equipment.statsAddend[stat];}
          );
       }
-      var multiplier = this.updateClass(charCalc);
-      charCalc.psynergy = this.calcPsynergy(charCalc.activeClass);
+      var multiplier = this._updateClass(charCalc);
+      charCalc.psynergy = CharacterApp._calcPsynergy(charCalc.activeClass, this.state.level);
       statList.forEach(stat =>
          {charCalc.stats[stat] = (this.state.stats[stat] + addend[stat]) * multiplier[stat];}
       );
@@ -332,10 +326,10 @@ class CharacterApp extends React.Component
    {
       var djinnName = onClickEvent.target.parentNode.dataset.name;
       var action = onClickEvent.target.value;
-      this.updateDjinn(djinnName, action);
+      this._updateDjinn(djinnName, action);
    }
 
-   updateDjinn(djinnName, action)
+   _updateDjinn(djinnName, action)
    {
       if ('remove' === action)
       {
@@ -377,37 +371,37 @@ class CharacterApp extends React.Component
 
    render()
    {
-      var charCalc = this.calcAll();
+      var charCalc = this._calcAll();
       return (
          <div>
             <h2>General</h2>
             <label>Name: <input type="text" id="name" value={this.state.name}
-                                onChange={this.updateCharacterName} /></label><br />
+                                onChange={this._updateCharacterName} /></label><br />
             <label>Adept (Elemental Alignment):
-               <ElementOptions names={database.elements.names} onChange={this.updateAdept} /></label>
+               <ElementOptions names={database.elements.names} onChange={this._updateAdept} /></label>
             <br />
             <label>Combat type:
                <BackgroundOrCombatTypeOptions names={database.combatTypes.names} id="combatTypeSelect"
-                                              onChange={this.updateCombatType} /></label>
+                                              onChange={this._updateCombatType} /></label>
             <br />
             <label>Background:
                <BackgroundOrCombatTypeOptions names={database.backgrounds.names} id="backgroundSelect"
-                                              onChange={this.updateBackground} /></label>
+                                              onChange={this._updateBackground} /></label>
             <br />
             <label>Level: <input type="number" id="level" value={this.state.level} min="1"
-                                 onChange={this.updateLevel} /></label><br />
+                                 onChange={this._updateLevel} /></label><br />
             <h2>Base stats</h2>
-            <label>HP: <input type="number" id="hp" onChange={this.updateBaseStat}
+            <label>HP: <input type="number" id="hp" onChange={this._updateBaseStat}
                               defaultValue={"0"} value={this.state.hp} min="0" /></label><br />
-            <label>PP: <input type="number" id="pp" onChange={this.updateBaseStat} defaultValue={"0"}
+            <label>PP: <input type="number" id="pp" onChange={this._updateBaseStat} defaultValue={"0"}
                               value={this.state.pp} min="0" /></label><br />
-            <label>Attack: <input type="number" id="attack" onChange={this.updateBaseStat}
+            <label>Attack: <input type="number" id="attack" onChange={this._updateBaseStat}
                                   defaultValue={"0"} value={this.state.attack} min="0" /></label><br />
-            <label>Defense: <input type="number" id="defense" onChange={this.updateBaseStat}
+            <label>Defense: <input type="number" id="defense" onChange={this._updateBaseStat}
                                    defaultValue={"0"} value={this.state.defense} min="0" /></label><br />
-            <label>Agility: <input type="number" id="agility" onChange={this.updateBaseStat}
+            <label>Agility: <input type="number" id="agility" onChange={this._updateBaseStat}
                                    defaultValue={"0"} value={this.state.agility} min="0" /></label><br />
-            <label>Luck: <input type="number" id="luck" onChange={this.updateBaseStat}
+            <label>Luck: <input type="number" id="luck" onChange={this._updateBaseStat}
                                 defaultValue={"0"} value={this.state.luck}
                                 min="0" /></label><br />
             <h2>Djinn</h2>
@@ -425,16 +419,16 @@ class CharacterApp extends React.Component
             <h2>Psynergy</h2>
             <PsynergyList names={charCalc.psynergy} />
             <br /><br />
-            <span onClick={this.saveToFile}><a
+            <span onClick={this._saveToFile}><a
                href="javascript:alert('This link changes to data as you click it');"
                download=""
                id="save-to-file-link">Save to File</a></span>
-            <input type="button" value="Save To Text Area" onClick={this.saveToTextArea}
+            <input type="button" value="Save To Text Area" onClick={this._saveToTextArea}
                    id="save-text-button" />
             <br />
             <input type="file" id="file-chooser" accept=".js,.json" /><br />
-            <input type="button" value="Load from File" onClick={this.loadFile} />
-            <input type="button" value="Load from Text Area" onClick={this.loadFromTextArea}
+            <input type="button" value="Load from File" onClick={this._loadFile} />
+            <input type="button" value="Load from Text Area" onClick={this._loadFromTextArea}
                    id="load-text-button" /><br />
             <br />
             <textarea id="code-box" rows="10" cols="50"></textarea>

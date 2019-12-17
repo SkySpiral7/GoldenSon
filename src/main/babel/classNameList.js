@@ -25,12 +25,12 @@ function CombatTypeDropDown()
    .map((name) =>
       <option key={name}>{name}</option>
    );
-   return (<select onChange={updateCombatType} id="combatTypeDropDown" value={classNameListState.combatType}>
+   return (<select onChange={updateCombatTypeDropDown} id="combatTypeDropDown" value={classNameListState.combatType}>
       {options}
    </select>);
 }
 
-function updateCombatType()
+function updateCombatTypeDropDown()
 {
    classNameListState.combatType = document.getElementById('combatTypeDropDown').value;
    renderClassList();

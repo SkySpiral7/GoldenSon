@@ -37,7 +37,7 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
    {
       var input = document.getElementById(id);
       input.value = value;
-      character.updateBaseStat({target: input});
+      character._updateBaseStat({target: input});
    }
 
    function addEquipment(name)
@@ -54,20 +54,20 @@ TestSuite.characterJs.updateFinalStat = function (testState = {})
       character.addDjinn({target: select});
    }
 
-   assertions.push({Expected: 'Priestess', Actual: character.calcAll().activeClass, Description: 'class'});
+   assertions.push({Expected: 'Priestess', Actual: character._calcAll().activeClass, Description: 'class'});
 
    statOnChange('defense', '100');
    assertions.push(
-      {Expected: 90, Actual: character.calcAll().stats.defense, Description: 'defense class multiply'});
+      {Expected: 90, Actual: character._calcAll().stats.defense, Description: 'defense class multiply'});
 
    addEquipment('Ixion Mail');
    statOnChange('defense', '74');
    assertions.push(
-      {Expected: 90, Actual: character.calcAll().stats.defense, Description: 'def mul right order'});
+      {Expected: 90, Actual: character._calcAll().stats.defense, Description: 'def mul right order'});
 
    addDjinn('earth', 'Echo');
    addDjinn('earth', 'Mud');
-   assertions.push({Expected: 'High Priestess', Actual: character.calcAll().activeClass, Description: 'class 2'});
+   assertions.push({Expected: 'High Priestess', Actual: character._calcAll().activeClass, Description: 'class 2'});
 
    return TestRunner.displayResults('character.js updateFinalStat', assertions, testState);
 };
@@ -83,11 +83,11 @@ TestSuite.characterJs.determineClass = async function (testState = {})
 
    try
    {
-      actual = character.determineClass(null);  //ignore combatType, djinnCount
+      actual = CharacterApp._determineClass(null);  //ignore combatType, djinnCount
       assertions.push({Expected: noClass, Actual: actual, Description: 'only adepts have classes'});
 
       //ignore djinnCount
-      actual = character.determineClass(database.elements.moon.name, database.combatTypes.Mage.name);
+      actual = CharacterApp._determineClass(database.elements.moon.name, database.combatTypes.Mage.name);
       assertions.push({Expected: noClass, Actual: actual, Description: 'no classes found'});
       //this test (and prod if check) is temporary. eventually all should have classes
    }
@@ -96,7 +96,7 @@ TestSuite.characterJs.determineClass = async function (testState = {})
       assertions.push({Error: e, Description: 'no classes'});
    }
 
-   actual = character.determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 0, "wind": 0});
    assertions.push({
       Expected: database.classes.Squire.name,
@@ -104,7 +104,7 @@ TestSuite.characterJs.determineClass = async function (testState = {})
       Description: 'base class'
    });
 
-   actual = character.determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 1, "wind": 0});
    assertions.push({
       Expected: database.classes.Swordsman.name,
@@ -112,7 +112,7 @@ TestSuite.characterJs.determineClass = async function (testState = {})
       Description: 'takes highest totalDjinn'
    });
 
-   actual = character.determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 0, "ice": 8, "wind": 0});
    assertions.push({
       Expected: database.classes.Fearless.name,
@@ -120,7 +120,7 @@ TestSuite.characterJs.determineClass = async function (testState = {})
       Description: 'allowed to exceed requirements'
    });
 
-   actual = character.determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
+   actual = CharacterApp._determineClass(database.elements.earth.name, database.combatTypes.Warrior.name,
       {"earth": 0, "fire": 1, "ice": 1, "wind": 1});
    assertions.push({
       Expected: database.classes.Brute.name,

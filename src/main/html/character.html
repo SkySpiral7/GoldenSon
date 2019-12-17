@@ -55,7 +55,7 @@
    Loader.sendData = function (jsonData)
    {
       document.getElementById('code-box').value = JSON.stringify(jsonData);  //to simulate user input
-      character.loadFromTextArea();
+      character._loadFromTextArea();
    };
 
    TestConfig.betweenEach = function ()

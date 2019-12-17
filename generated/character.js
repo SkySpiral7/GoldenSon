@@ -11,23 +11,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CharacterApp = function (_React$Component) {
    _inherits(CharacterApp, _React$Component);
 
-   //TODO: make class things private and static
-   //rename to this.#charCalc etc. can make some methods static
-   //static #classElementSortOrder; state;
    function CharacterApp(props) {
       _classCallCheck(this, CharacterApp);
 
       var _this = _possibleConstructorReturn(this, (CharacterApp.__proto__ || Object.getPrototypeOf(CharacterApp)).call(this, props));
 
       character = _this;
-
-      _this.classElementSortOrder = {
-         //element => symbiotic, neutral, conflict
-         earth: ['fire', 'ice', 'wind'],
-         fire: ['earth', 'wind', 'ice'],
-         ice: ['wind', 'earth', 'fire'],
-         wind: ['ice', 'fire', 'earth']
-      };
 
       _this.state = {
          //gameVersion, parserVersion are ignored until there is reason to use them
@@ -44,47 +33,48 @@ var CharacterApp = function (_React$Component) {
          equipment: []
       };
 
-      _this.saveToFile = _this.saveToFile.bind(_this);
+      _this._saveToFile = _this._saveToFile.bind(_this);
       _this.saveAsString = _this.saveAsString.bind(_this);
-      _this.saveToTextArea = _this.saveToTextArea.bind(_this);
+      _this._saveToTextArea = _this._saveToTextArea.bind(_this);
       _this.save = _this.save.bind(_this);
-      _this.loadFile = _this.loadFile.bind(_this);
-      _this.loadFromTextArea = _this.loadFromTextArea.bind(_this);
-      _this.loadFromString = _this.loadFromString.bind(_this);
+      _this._loadFile = _this._loadFile.bind(_this);
+      _this._loadFromTextArea = _this._loadFromTextArea.bind(_this);
+      _this._loadFromString = _this._loadFromString.bind(_this);
       _this.load = _this.load.bind(_this);
-      _this.updateLevel = _this.updateLevel.bind(_this);
-      _this.updateAdept = _this.updateAdept.bind(_this);
-      _this.updateBackground = _this.updateBackground.bind(_this);
-      _this.updateCombatType = _this.updateCombatType.bind(_this);
-      _this.updateCharacterName = _this.updateCharacterName.bind(_this);
-      _this.updateBaseStat = _this.updateBaseStat.bind(_this);
-      _this.determineClass = _this.determineClass.bind(_this);
-      _this.updateClass = _this.updateClass.bind(_this);
-      _this.calcPsynergy = _this.calcPsynergy.bind(_this);
-      _this.calcAll = _this.calcAll.bind(_this);
+      _this._updateLevel = _this._updateLevel.bind(_this);
+      _this._updateAdept = _this._updateAdept.bind(_this);
+      _this._updateBackground = _this._updateBackground.bind(_this);
+      _this._updateCombatType = _this._updateCombatType.bind(_this);
+      _this._updateCharacterName = _this._updateCharacterName.bind(_this);
+      _this._updateBaseStat = _this._updateBaseStat.bind(_this);
+      _this._updateClass = _this._updateClass.bind(_this);
+      _this._calcAll = _this._calcAll.bind(_this);
       _this.addDjinn = _this.addDjinn.bind(_this);
       _this.onChangeUpdateDjinn = _this.onChangeUpdateDjinn.bind(_this);
-      _this.updateDjinn = _this.updateDjinn.bind(_this);
+      _this._updateDjinn = _this._updateDjinn.bind(_this);
       _this.addEquipment = _this.addEquipment.bind(_this);
       _this.removeEquipment = _this.removeEquipment.bind(_this);
       return _this;
    }
 
    _createClass(CharacterApp, [{
-      key: 'saveToFile',
-      value: function saveToFile() {
+      key: '_saveToFile',
+      value: function _saveToFile() {
          var link = document.getElementById('save-to-file-link');
          link.download = document.getElementById('name').value + '.json';
          link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(this.saveAsString());
       }
+
+      //could be private
+
    }, {
       key: 'saveAsString',
       value: function saveAsString() {
          return JSON.stringify(this.save());
       }
    }, {
-      key: 'saveToTextArea',
-      value: function saveToTextArea() {
+      key: '_saveToTextArea',
+      value: function _saveToTextArea() {
          document.getElementById('code-box').value = this.saveAsString();
       }
    }, {
@@ -93,24 +83,24 @@ var CharacterApp = function (_React$Component) {
          return JSON.clone(this.state);
       }
    }, {
-      key: 'loadFile',
-      value: function loadFile() {
+      key: '_loadFile',
+      value: function _loadFile() {
          var filePath = document.getElementById('file-chooser').files[0];
          if (undefined === filePath || null === filePath) return; //no file to load
          var oFReader = new FileReader(); //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
          oFReader.readAsText(filePath);
          oFReader.onload = function (oFREvent) {
-            character.loadFromString(oFREvent.target.result);
+            character._loadFromString(oFREvent.target.result);
          };
       }
    }, {
-      key: 'loadFromTextArea',
-      value: function loadFromTextArea() {
-         this.loadFromString(document.getElementById('code-box').value);
+      key: '_loadFromTextArea',
+      value: function _loadFromTextArea() {
+         this._loadFromString(document.getElementById('code-box').value);
       }
    }, {
-      key: 'loadFromString',
-      value: function loadFromString(fileString) {
+      key: '_loadFromString',
+      value: function _loadFromString(fileString) {
          fileString = fileString.trim();
          if ('' === fileString) return; //ignore
 
@@ -155,95 +145,51 @@ var CharacterApp = function (_React$Component) {
          this.setState(newState);
       }
    }, {
-      key: 'updateLevel',
-      value: function updateLevel() {
+      key: '_updateLevel',
+      value: function _updateLevel() {
          var level = Number.parseInt(document.getElementById('level').value);
          this.setState({ level: level });
       }
    }, {
-      key: 'updateAdept',
-      value: function updateAdept() {
+      key: '_updateAdept',
+      value: function _updateAdept() {
          var adept = document.getElementById('adeptSelect').value;
          //this is an option in the select
          if ('none' === adept) adept = null;
          this.setState({ adept: adept });
       }
    }, {
-      key: 'updateBackground',
-      value: function updateBackground() {
+      key: '_updateBackground',
+      value: function _updateBackground() {
          var background = document.getElementById('backgroundSelect').value;
          this.setState({ background: background });
       }
    }, {
-      key: 'updateCombatType',
-      value: function updateCombatType() {
+      key: '_updateCombatType',
+      value: function _updateCombatType() {
          var combatType = document.getElementById('combatTypeSelect').value;
          this.setState({ combatType: combatType });
       }
    }, {
-      key: 'updateCharacterName',
-      value: function updateCharacterName() {
+      key: '_updateCharacterName',
+      value: function _updateCharacterName() {
          var name = document.getElementById('name').value;
          this.setState({ name: name });
       }
    }, {
-      key: 'updateBaseStat',
-      value: function updateBaseStat(onChangeEvent) {
+      key: '_updateBaseStat',
+      value: function _updateBaseStat(onChangeEvent) {
          var stat = onChangeEvent.target.id;
-         var newVal = Number.parseInt(document.getElementById(stat).value);
+         var newVal = Number.parseInt(onChangeEvent.target.value);
          this.setState(function (state, props) {
             state.stats[stat] = newVal;
             return state;
          });
       }
    }, {
-      key: 'determineClass',
-      value: function determineClass(adept, combatType, djinnCount) {
-         var _this2 = this;
-
-         if (null === adept || undefined === database.classes.byRequirement[adept] || undefined === database.classes.byRequirement[adept][combatType]) {
-            return {
-               name: null,
-               //need to return all 1 for updateClass
-               statsMultiplier: { hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1 }
-            };
-         }
-
-         var classList = database.classes.byRequirement[adept][combatType]
-         //remove classes you don't qualify for
-         .filter(function (newClass) {
-            var requirementsInQuestion = newClass.requirements[adept][combatType];
-
-            return djinnCount.earth >= requirementsInQuestion.earth && djinnCount.fire >= requirementsInQuestion.fire && djinnCount.ice >= requirementsInQuestion.ice && djinnCount.wind >= requirementsInQuestion.wind;
-         }).sorted(function (class1, class2) {
-            if (class1.totalDjinn > class2.totalDjinn) return -1;
-            if (class1.totalDjinn < class2.totalDjinn) return 1;
-
-            var req1 = class1.requirements[adept][combatType];
-            var req2 = class2.requirements[adept][combatType];
-
-            if (req1[adept] > req2[adept]) return -1;
-            if (req1[adept] < req2[adept]) return 1;
-
-            var elementOrder = _this2.classElementSortOrder[adept];
-            if (req1[elementOrder[0]] > req2[elementOrder[0]]) return -1;
-            if (req1[elementOrder[0]] < req2[elementOrder[0]]) return 1;
-
-            if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
-            if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
-
-            //2 is a no-op since they have same totalDjinn
-            if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
-            if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
-
-            return 0;
-         });
-         return classList[0];
-      }
-   }, {
-      key: 'updateClass',
-      value: function updateClass(charCalc) {
-         var activeClass = this.determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
+      key: '_updateClass',
+      value: function _updateClass(charCalc) {
+         var activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
          charCalc.activeClass = activeClass.name;
 
          if (null === activeClass.name) charCalc.activeClassDisplay = 'None';else charCalc.activeClassDisplay = '' + activeClass.name;
@@ -251,25 +197,9 @@ var CharacterApp = function (_React$Component) {
          return activeClass.statsMultiplier;
       }
    }, {
-      key: 'calcPsynergy',
-      value: function calcPsynergy(activeClassName) {
-         var psynergyList = [];
-         if (null !== activeClassName) {
-            var activeClass = database.classes[activeClassName];
-            //if (undefined === activeClass) return;  //should only be when class is none
-            for (var i = 0; i < activeClass.psynergy.length; ++i) {
-               var psynergy = activeClass.psynergy[i];
-               if (this.state.level >= psynergy.level) {
-                  psynergyList.push(psynergy.name);
-               }
-            }
-         }
-         return psynergyList;
-      }
-   }, {
-      key: 'calcAll',
-      value: function calcAll() {
-         var _this3 = this;
+      key: '_calcAll',
+      value: function _calcAll() {
+         var _this2 = this;
 
          var statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
          //these are final stats
@@ -346,10 +276,10 @@ var CharacterApp = function (_React$Component) {
             }
          }
 
-         var multiplier = this.updateClass(charCalc);
-         charCalc.psynergy = this.calcPsynergy(charCalc.activeClass);
+         var multiplier = this._updateClass(charCalc);
+         charCalc.psynergy = CharacterApp._calcPsynergy(charCalc.activeClass, this.state.level);
          statList.forEach(function (stat) {
-            charCalc.stats[stat] = (_this3.state.stats[stat] + addend[stat]) * multiplier[stat];
+            charCalc.stats[stat] = (_this2.state.stats[stat] + addend[stat]) * multiplier[stat];
          });
 
          return charCalc;
@@ -368,11 +298,11 @@ var CharacterApp = function (_React$Component) {
       value: function onChangeUpdateDjinn(onClickEvent) {
          var djinnName = onClickEvent.target.parentNode.dataset.name;
          var action = onClickEvent.target.value;
-         this.updateDjinn(djinnName, action);
+         this._updateDjinn(djinnName, action);
       }
    }, {
-      key: 'updateDjinn',
-      value: function updateDjinn(djinnName, action) {
+      key: '_updateDjinn',
+      value: function _updateDjinn(djinnName, action) {
          if ('remove' === action) {
             this.setState(function (state, props) {
                delete state.djinn[djinnName];
@@ -406,7 +336,7 @@ var CharacterApp = function (_React$Component) {
    }, {
       key: 'render',
       value: function render() {
-         var charCalc = this.calcAll();
+         var charCalc = this._calcAll();
          return React.createElement(
             'div',
             null,
@@ -420,14 +350,14 @@ var CharacterApp = function (_React$Component) {
                null,
                'Name: ',
                React.createElement('input', { type: 'text', id: 'name', value: this.state.name,
-                  onChange: this.updateCharacterName })
+                  onChange: this._updateCharacterName })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Adept (Elemental Alignment):',
-               React.createElement(ElementOptions, { names: database.elements.names, onChange: this.updateAdept })
+               React.createElement(ElementOptions, { names: database.elements.names, onChange: this._updateAdept })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -435,7 +365,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Combat type:',
                React.createElement(BackgroundOrCombatTypeOptions, { names: database.combatTypes.names, id: 'combatTypeSelect',
-                  onChange: this.updateCombatType })
+                  onChange: this._updateCombatType })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -443,7 +373,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Background:',
                React.createElement(BackgroundOrCombatTypeOptions, { names: database.backgrounds.names, id: 'backgroundSelect',
-                  onChange: this.updateBackground })
+                  onChange: this._updateBackground })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -451,7 +381,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Level: ',
                React.createElement('input', { type: 'number', id: 'level', value: this.state.level, min: '1',
-                  onChange: this.updateLevel })
+                  onChange: this._updateLevel })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -463,7 +393,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'HP: ',
-               React.createElement('input', { type: 'number', id: 'hp', onChange: this.updateBaseStat,
+               React.createElement('input', { type: 'number', id: 'hp', onChange: this._updateBaseStat,
                   defaultValue: "0", value: this.state.hp, min: '0' })
             ),
             React.createElement('br', null),
@@ -471,7 +401,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'PP: ',
-               React.createElement('input', { type: 'number', id: 'pp', onChange: this.updateBaseStat, defaultValue: "0",
+               React.createElement('input', { type: 'number', id: 'pp', onChange: this._updateBaseStat, defaultValue: "0",
                   value: this.state.pp, min: '0' })
             ),
             React.createElement('br', null),
@@ -479,7 +409,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'Attack: ',
-               React.createElement('input', { type: 'number', id: 'attack', onChange: this.updateBaseStat,
+               React.createElement('input', { type: 'number', id: 'attack', onChange: this._updateBaseStat,
                   defaultValue: "0", value: this.state.attack, min: '0' })
             ),
             React.createElement('br', null),
@@ -487,7 +417,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'Defense: ',
-               React.createElement('input', { type: 'number', id: 'defense', onChange: this.updateBaseStat,
+               React.createElement('input', { type: 'number', id: 'defense', onChange: this._updateBaseStat,
                   defaultValue: "0", value: this.state.defense, min: '0' })
             ),
             React.createElement('br', null),
@@ -495,7 +425,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'Agility: ',
-               React.createElement('input', { type: 'number', id: 'agility', onChange: this.updateBaseStat,
+               React.createElement('input', { type: 'number', id: 'agility', onChange: this._updateBaseStat,
                   defaultValue: "0", value: this.state.agility, min: '0' })
             ),
             React.createElement('br', null),
@@ -503,7 +433,7 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'Luck: ',
-               React.createElement('input', { type: 'number', id: 'luck', onChange: this.updateBaseStat,
+               React.createElement('input', { type: 'number', id: 'luck', onChange: this._updateBaseStat,
                   defaultValue: "0", value: this.state.luck,
                   min: '0' })
             ),
@@ -556,7 +486,7 @@ var CharacterApp = function (_React$Component) {
             React.createElement('br', null),
             React.createElement(
                'span',
-               { onClick: this.saveToFile },
+               { onClick: this._saveToFile },
                React.createElement(
                   'a',
                   {
@@ -566,22 +496,89 @@ var CharacterApp = function (_React$Component) {
                   'Save to File'
                )
             ),
-            React.createElement('input', { type: 'button', value: 'Save To Text Area', onClick: this.saveToTextArea,
+            React.createElement('input', { type: 'button', value: 'Save To Text Area', onClick: this._saveToTextArea,
                id: 'save-text-button' }),
             React.createElement('br', null),
             React.createElement('input', { type: 'file', id: 'file-chooser', accept: '.js,.json' }),
             React.createElement('br', null),
-            React.createElement('input', { type: 'button', value: 'Load from File', onClick: this.loadFile }),
-            React.createElement('input', { type: 'button', value: 'Load from Text Area', onClick: this.loadFromTextArea,
+            React.createElement('input', { type: 'button', value: 'Load from File', onClick: this._loadFile }),
+            React.createElement('input', { type: 'button', value: 'Load from Text Area', onClick: this._loadFromTextArea,
                id: 'load-text-button' }),
             React.createElement('br', null),
             React.createElement('br', null),
             React.createElement('textarea', { id: 'code-box', rows: '10', cols: '50' })
          );
       }
+   }], [{
+      key: '_determineClass',
+      value: function _determineClass(adept, combatType, djinnCount) {
+         if (null === adept || undefined === database.classes.byRequirement[adept] || undefined === database.classes.byRequirement[adept][combatType]) {
+            return {
+               name: null,
+               //need to return all 1 for updateClass
+               statsMultiplier: { hp: 1, pp: 1, attack: 1, defense: 1, agility: 1, luck: 1 }
+            };
+         }
+
+         var classList = database.classes.byRequirement[adept][combatType]
+         //remove classes you don't qualify for
+         .filter(function (newClass) {
+            var requirementsInQuestion = newClass.requirements[adept][combatType];
+
+            return djinnCount.earth >= requirementsInQuestion.earth && djinnCount.fire >= requirementsInQuestion.fire && djinnCount.ice >= requirementsInQuestion.ice && djinnCount.wind >= requirementsInQuestion.wind;
+         }).sorted(function (class1, class2) {
+            if (class1.totalDjinn > class2.totalDjinn) return -1;
+            if (class1.totalDjinn < class2.totalDjinn) return 1;
+
+            var req1 = class1.requirements[adept][combatType];
+            var req2 = class2.requirements[adept][combatType];
+
+            if (req1[adept] > req2[adept]) return -1;
+            if (req1[adept] < req2[adept]) return 1;
+
+            var elementOrder = CharacterApp._classElementSortOrder[adept];
+            if (req1[elementOrder[0]] > req2[elementOrder[0]]) return -1;
+            if (req1[elementOrder[0]] < req2[elementOrder[0]]) return 1;
+
+            if (req1[elementOrder[1]] > req2[elementOrder[1]]) return -1;
+            if (req1[elementOrder[1]] < req2[elementOrder[1]]) return 1;
+
+            //2 is a no-op since they have same totalDjinn
+            if (req1[elementOrder[2]] > req2[elementOrder[2]]) return -1;
+            if (req1[elementOrder[2]] < req2[elementOrder[2]]) return 1;
+
+            return 0;
+         });
+         return classList[0];
+      }
+   }, {
+      key: '_calcPsynergy',
+      value: function _calcPsynergy(activeClassName, level) {
+         var psynergyList = [];
+         if (null !== activeClassName) {
+            var activeClass = database.classes[activeClassName];
+            //if (undefined === activeClass) return;  //should only be when class is none
+            for (var i = 0; i < activeClass.psynergy.length; ++i) {
+               var psynergy = activeClass.psynergy[i];
+               if (level >= psynergy.level) {
+                  psynergyList.push(psynergy.name);
+               }
+            }
+         }
+         return psynergyList;
+      }
    }]);
 
    return CharacterApp;
 }(React.Component);
+
+CharacterApp._classElementSortOrder = {
+   //element => symbiotic, neutral, conflict
+   earth: ['fire', 'ice', 'wind'],
+   fire: ['earth', 'wind', 'ice'],
+   ice: ['wind', 'earth', 'fire'],
+   wind: ['ice', 'fire', 'earth']
+};
+
 
 ReactDOM.render(React.createElement(CharacterApp, null), document.getElementById('characterDiv'));
