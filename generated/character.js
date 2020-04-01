@@ -415,14 +415,14 @@ var CharacterApp = function (_React$Component) {
                null,
                'HP: ',
                React.createElement('input', { type: 'number', id: 'hp', onChange: this._updateBaseStat,
-                  defaultValue: "0", value: this.state.hp, min: '0' })
+                  defaultValue: '0', value: this.state.hp, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'PP: ',
-               React.createElement('input', { type: 'number', id: 'pp', onChange: this._updateBaseStat, defaultValue: "0",
+               React.createElement('input', { type: 'number', id: 'pp', onChange: this._updateBaseStat, defaultValue: '0',
                   value: this.state.pp, min: '0' })
             ),
             React.createElement('br', null),
@@ -431,7 +431,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Attack: ',
                React.createElement('input', { type: 'number', id: 'attack', onChange: this._updateBaseStat,
-                  defaultValue: "0", value: this.state.attack, min: '0' })
+                  defaultValue: '0', value: this.state.attack, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -439,7 +439,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Defense: ',
                React.createElement('input', { type: 'number', id: 'defense', onChange: this._updateBaseStat,
-                  defaultValue: "0", value: this.state.defense, min: '0' })
+                  defaultValue: '0', value: this.state.defense, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -447,7 +447,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Agility: ',
                React.createElement('input', { type: 'number', id: 'agility', onChange: this._updateBaseStat,
-                  defaultValue: "0", value: this.state.agility, min: '0' })
+                  defaultValue: '0', value: this.state.agility, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -455,7 +455,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Luck: ',
                React.createElement('input', { type: 'number', id: 'luck', onChange: this._updateBaseStat,
-                  defaultValue: "0", value: this.state.luck,
+                  defaultValue: '0', value: this.state.luck,
                   min: '0' })
             ),
             React.createElement('br', null),

@@ -402,17 +402,17 @@ class CharacterApp extends React.Component
                                  onChange={this._updateLevel} /></label><br />
             <h2>Base stats</h2>
             <label>HP: <input type="number" id="hp" onChange={this._updateBaseStat}
-                              defaultValue={"0"} value={this.state.hp} min="0" /></label><br />
-            <label>PP: <input type="number" id="pp" onChange={this._updateBaseStat} defaultValue={"0"}
+                              defaultValue="0" value={this.state.hp} min="0" /></label><br />
+            <label>PP: <input type="number" id="pp" onChange={this._updateBaseStat} defaultValue="0"
                               value={this.state.pp} min="0" /></label><br />
             <label>Attack: <input type="number" id="attack" onChange={this._updateBaseStat}
-                                  defaultValue={"0"} value={this.state.attack} min="0" /></label><br />
+                                  defaultValue="0" value={this.state.attack} min="0" /></label><br />
             <label>Defense: <input type="number" id="defense" onChange={this._updateBaseStat}
-                                   defaultValue={"0"} value={this.state.defense} min="0" /></label><br />
+                                   defaultValue="0" value={this.state.defense} min="0" /></label><br />
             <label>Agility: <input type="number" id="agility" onChange={this._updateBaseStat}
-                                   defaultValue={"0"} value={this.state.agility} min="0" /></label><br />
+                                   defaultValue="0" value={this.state.agility} min="0" /></label><br />
             <label>Luck: <input type="number" id="luck" onChange={this._updateBaseStat}
-                                defaultValue={"0"} value={this.state.luck}
+                                defaultValue="0" value={this.state.luck}
                                 min="0" /></label><br />
             <h2>Djinn</h2>
             <DjinnEntireList names={charCalc.djinn.names}
