@@ -16,78 +16,25 @@ var CharacterApp = function (_React$Component) {
 
       var _this = _possibleConstructorReturn(this, (CharacterApp.__proto__ || Object.getPrototypeOf(CharacterApp)).call(this, props));
 
-      character = _this;
-
-      _this.state = {
-         //gameVersion, parserVersion are ignored until there is reason to use them
-         //gameVersion, parserVersion are strings to support possible future semantic versioning
-         //gameVersion: '1',
-         //parserVersion: '1',
-         name: '',
-         adept: database.elementOrder[0],
-         combatType: database.combatTypes.names[0],
-         background: database.backgrounds.names[0],
-         level: 1,
-         stats: { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 },
-         djinn: {},
-         equipment: []
-      };
-
-      _this._saveToFile = _this._saveToFile.bind(_this);
-      _this.saveAsString = _this.saveAsString.bind(_this);
-      _this._saveToTextArea = _this._saveToTextArea.bind(_this);
-      _this.save = _this.save.bind(_this);
-      _this._loadFile = _this._loadFile.bind(_this);
-      _this._loadFromTextArea = _this._loadFromTextArea.bind(_this);
-      _this._loadFromString = _this._loadFromString.bind(_this);
-      _this.load = _this.load.bind(_this);
-      _this._updateLevel = _this._updateLevel.bind(_this);
-      _this._updateAdept = _this._updateAdept.bind(_this);
-      _this._updateBackground = _this._updateBackground.bind(_this);
-      _this._updateCombatType = _this._updateCombatType.bind(_this);
-      _this._updateCharacterName = _this._updateCharacterName.bind(_this);
-      _this._updateBaseStat = _this._updateBaseStat.bind(_this);
-      _this._updateClass = _this._updateClass.bind(_this);
-      _this._calcAll = _this._calcAll.bind(_this);
-      _this.addDjinn = _this.addDjinn.bind(_this);
-      _this.onChangeUpdateDjinn = _this.onChangeUpdateDjinn.bind(_this);
-      _this._updateDjinn = _this._updateDjinn.bind(_this);
-      _this.addEquipment = _this.addEquipment.bind(_this);
-      _this.removeEquipment = _this.removeEquipment.bind(_this);
-      return _this;
-   }
-
-   _createClass(CharacterApp, [{
-      key: '_saveToFile',
-      value: function _saveToFile() {
+      _this._saveToFile = function () {
          var link = document.getElementById('save-to-file-link');
          link.download = document.getElementById('name').value + '.json';
-         link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(this.saveAsString());
-      }
+         link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(_this.saveAsString());
+      };
 
-      //could be private
+      _this.saveAsString = function () {
+         return JSON.stringify(_this.save());
+      };
 
-   }, {
-      key: 'saveAsString',
-      value: function saveAsString() {
-         return JSON.stringify(this.save());
-      }
-   }, {
-      key: '_saveToTextArea',
-      value: function _saveToTextArea() {
-         document.getElementById('code-box').value = this.saveAsString();
-      }
-   }, {
-      key: 'save',
-      value: function save() {
-         return JSON.clone(this.state);
-      }
+      _this._saveToTextArea = function () {
+         document.getElementById('code-box').value = _this.saveAsString();
+      };
 
-      //could be static
+      _this.save = function () {
+         return JSON.clone(_this.state);
+      };
 
-   }, {
-      key: '_loadFile',
-      value: function _loadFile() {
+      _this._loadFile = function () {
          var filePath = document.getElementById('file-chooser').files[0];
          if (undefined === filePath || null === filePath) return; //no file to load
          var oFReader = new FileReader(); //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
@@ -95,15 +42,13 @@ var CharacterApp = function (_React$Component) {
          oFReader.onload = function (oFREvent) {
             character._loadFromString(oFREvent.target.result);
          };
-      }
-   }, {
-      key: '_loadFromTextArea',
-      value: function _loadFromTextArea() {
-         this._loadFromString(document.getElementById('code-box').value);
-      }
-   }, {
-      key: '_loadFromString',
-      value: function _loadFromString(fileString) {
+      };
+
+      _this._loadFromTextArea = function () {
+         _this._loadFromString(document.getElementById('code-box').value);
+      };
+
+      _this._loadFromString = function (fileString) {
          fileString = fileString.trim();
          if ('' === fileString) return; //ignore
 
@@ -117,11 +62,10 @@ var CharacterApp = function (_React$Component) {
             throw e; //stop the process and cause a console.error
          }
 
-         this.load(jsonDoc);
-      }
-   }, {
-      key: 'load',
-      value: function load(jsonDoc) {
+         _this.load(jsonDoc);
+      };
+
+      _this.load = function (jsonDoc) {
          //this.state = jsonDoc  don't do this: we don't want to keep redundant fields
          var newState = {
             stats: { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 },
@@ -145,65 +89,55 @@ var CharacterApp = function (_React$Component) {
          document.getElementById('luck').value = newState.stats.luck = jsonDoc.stats.luck;
          newState.djinn = jsonDoc.djinn;
          newState.equipment = jsonDoc.equipment;
-         this.setState(newState);
-      }
-   }, {
-      key: '_updateLevel',
-      value: function _updateLevel() {
+         _this.setState(newState);
+      };
+
+      _this._updateLevel = function () {
          var level = Number.parseInt(document.getElementById('level').value);
-         this.setState({ level: level });
-      }
-   }, {
-      key: '_updateAdept',
-      value: function _updateAdept() {
+         _this.setState({ level: level });
+      };
+
+      _this._updateAdept = function () {
          var adept = document.getElementById('adeptSelect').value;
          //this is an option in the select
          if ('none' === adept) adept = null;
-         this.setState({ adept: adept });
-      }
-   }, {
-      key: '_updateBackground',
-      value: function _updateBackground() {
+         _this.setState({ adept: adept });
+      };
+
+      _this._updateBackground = function () {
          var background = document.getElementById('backgroundSelect').value;
-         this.setState({ background: background });
-      }
-   }, {
-      key: '_updateCombatType',
-      value: function _updateCombatType() {
+         _this.setState({ background: background });
+      };
+
+      _this._updateCombatType = function () {
          var combatType = document.getElementById('combatTypeSelect').value;
-         this.setState({ combatType: combatType });
-      }
-   }, {
-      key: '_updateCharacterName',
-      value: function _updateCharacterName() {
+         _this.setState({ combatType: combatType });
+      };
+
+      _this._updateCharacterName = function () {
          var name = document.getElementById('name').value;
-         this.setState({ name: name });
-      }
-   }, {
-      key: '_updateBaseStat',
-      value: function _updateBaseStat(onChangeEvent) {
+         _this.setState({ name: name });
+      };
+
+      _this._updateBaseStat = function (onChangeEvent) {
          var stat = onChangeEvent.target.id;
          var newVal = Number.parseInt(onChangeEvent.target.value);
-         this.setState(function (state) {
+         _this.setState(function (state) {
             state.stats[stat] = newVal;
             return state;
          });
-      }
-   }, {
-      key: '_updateClass',
-      value: function _updateClass(charCalc) {
-         var activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
+      };
+
+      _this._updateClass = function (charCalc) {
+         var activeClass = CharacterApp._determineClass(_this.state.adept, _this.state.combatType, charCalc.djinn.counts);
          charCalc.activeClass = activeClass.name;
 
          if (null === activeClass.name) charCalc.activeClassDisplay = 'None';else charCalc.activeClassDisplay = '' + activeClass.name;
 
          return activeClass.statsMultiplier;
-      }
-   }, {
-      key: '_calcAll',
-      value: function _calcAll() {
-         var _this2 = this;
+      };
 
+      _this._calcAll = function () {
          var statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
          //these are final stats
          var charCalc = { stats: { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 } };
@@ -215,18 +149,18 @@ var CharacterApp = function (_React$Component) {
             standby: [],
             recovery: []*/
          };
-         charCalc.djinn.names = Object.keys(this.state.djinn);
+         charCalc.djinn.names = Object.keys(_this.state.djinn);
 
          var addend = { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 };
-         var statsAddend = database.elements[this.state.adept].statsAddend;
+         var statsAddend = database.elements[_this.state.adept].statsAddend;
          statList.forEach(function (stat) {
             addend[stat] += statsAddend[stat];
          });
-         statsAddend = database.backgrounds[this.state.background].statsAddend;
+         statsAddend = database.backgrounds[_this.state.background].statsAddend;
          statList.forEach(function (stat) {
             addend[stat] += statsAddend[stat];
          });
-         statsAddend = database.combatTypes[this.state.combatType].statsAddend;
+         statsAddend = database.combatTypes[_this.state.combatType].statsAddend;
          statList.forEach(function (stat) {
             addend[stat] += statsAddend[stat];
          });
@@ -238,7 +172,7 @@ var CharacterApp = function (_React$Component) {
             for (var _iterator = charCalc.djinn.names[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                var djinnName = _step.value;
 
-               var djinnState = this.state.djinn[djinnName];
+               var djinnState = _this.state.djinn[djinnName];
                if ('set' === djinnState) {
                   (function () {
                      var djinn = database.djinn[djinnName];
@@ -277,7 +211,7 @@ var CharacterApp = function (_React$Component) {
          var _iteratorError2 = undefined;
 
          try {
-            for (var _iterator2 = this.state.equipment[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            for (var _iterator2 = _this.state.equipment[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                var equipmentName = _step2.value;
 
                _loop(equipmentName);
@@ -297,67 +231,61 @@ var CharacterApp = function (_React$Component) {
             }
          }
 
-         var multiplier = this._updateClass(charCalc);
-         charCalc.psynergy = CharacterApp._calcPsynergy(charCalc.activeClass, this.state.level);
+         var multiplier = _this._updateClass(charCalc);
+         charCalc.psynergy = CharacterApp._calcPsynergy(charCalc.activeClass, _this.state.level);
          statList.forEach(function (stat) {
-            charCalc.stats[stat] = (_this2.state.stats[stat] + addend[stat]) * multiplier[stat];
+            charCalc.stats[stat] = (_this.state.stats[stat] + addend[stat]) * multiplier[stat];
          });
 
          return charCalc;
-      }
-   }, {
-      key: 'addDjinn',
-      value: function addDjinn(onClickEvent) {
+      };
+
+      _this.addDjinn = function (onClickEvent) {
          var newName = onClickEvent.target.value;
-         this.setState(function (state) {
+         _this.setState(function (state) {
             state.djinn[newName] = 'set';
             return state;
          });
-      }
-   }, {
-      key: 'onChangeUpdateDjinn',
-      value: function onChangeUpdateDjinn(onClickEvent) {
+      };
+
+      _this.onChangeUpdateDjinn = function (onClickEvent) {
          var djinnName = onClickEvent.target.parentNode.dataset.name;
          var action = onClickEvent.target.value;
-         this._updateDjinn(djinnName, action);
-      }
-   }, {
-      key: '_updateDjinn',
-      value: function _updateDjinn(djinnName, action) {
+         _this._updateDjinn(djinnName, action);
+      };
+
+      _this._updateDjinn = function (djinnName, action) {
          if ('remove' === action) {
-            this.setState(function (state) {
+            _this.setState(function (state) {
                delete state.djinn[djinnName];
                return state;
             });
          } else {
-            this.setState(function (state) {
+            _this.setState(function (state) {
                state.djinn[djinnName] = action;
                return state;
             });
          }
-      }
-   }, {
-      key: 'addEquipment',
-      value: function addEquipment(onClickEvent) {
+      };
+
+      _this.addEquipment = function (onClickEvent) {
          var newName = onClickEvent.target.value;
-         this.setState(function (state) {
+         _this.setState(function (state) {
             state.equipment.push(newName);
             return state;
          });
-      }
-   }, {
-      key: 'removeEquipment',
-      value: function removeEquipment(onClickEvent) {
+      };
+
+      _this.removeEquipment = function (onClickEvent) {
          var oldName = onClickEvent.target.parentNode.dataset.name;
-         this.setState(function (state) {
+         _this.setState(function (state) {
             state.equipment.removeByValue(oldName);
             return state;
          });
-      }
-   }, {
-      key: 'render',
-      value: function render() {
-         var charCalc = this._calcAll();
+      };
+
+      _this.render = function () {
+         var charCalc = _this._calcAll();
          return React.createElement(
             'div',
             null,
@@ -370,15 +298,15 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'Name: ',
-               React.createElement('input', { type: 'text', id: 'name', value: this.state.name,
-                  onChange: this._updateCharacterName })
+               React.createElement('input', { type: 'text', id: 'name', value: _this.state.name,
+                  onChange: _this._updateCharacterName })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Adept (Elemental Alignment):',
-               React.createElement(ElementOptions, { names: database.elements.names, onChange: this._updateAdept })
+               React.createElement(ElementOptions, { names: database.elements.names, onChange: _this._updateAdept })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -386,7 +314,7 @@ var CharacterApp = function (_React$Component) {
                null,
                'Combat type:',
                React.createElement(BackgroundOrCombatTypeOptions, { names: database.combatTypes.names, id: 'combatTypeSelect',
-                  onChange: this._updateCombatType })
+                  onChange: _this._updateCombatType })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -394,15 +322,15 @@ var CharacterApp = function (_React$Component) {
                null,
                'Background:',
                React.createElement(BackgroundOrCombatTypeOptions, { names: database.backgrounds.names, id: 'backgroundSelect',
-                  onChange: this._updateBackground })
+                  onChange: _this._updateBackground })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Level: ',
-               React.createElement('input', { type: 'number', id: 'level', value: this.state.level, min: '1',
-                  onChange: this._updateLevel })
+               React.createElement('input', { type: 'number', id: 'level', value: _this.state.level, min: '1',
+                  onChange: _this._updateLevel })
             ),
             React.createElement('br', null),
             React.createElement(
@@ -414,48 +342,48 @@ var CharacterApp = function (_React$Component) {
                'label',
                null,
                'HP: ',
-               React.createElement('input', { type: 'number', id: 'hp', onChange: this._updateBaseStat,
-                  defaultValue: '0', value: this.state.hp, min: '0' })
+               React.createElement('input', { type: 'number', id: 'hp', onChange: _this._updateBaseStat,
+                  defaultValue: '0', value: _this.state.hp, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'PP: ',
-               React.createElement('input', { type: 'number', id: 'pp', onChange: this._updateBaseStat, defaultValue: '0',
-                  value: this.state.pp, min: '0' })
+               React.createElement('input', { type: 'number', id: 'pp', onChange: _this._updateBaseStat, defaultValue: '0',
+                  value: _this.state.pp, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Attack: ',
-               React.createElement('input', { type: 'number', id: 'attack', onChange: this._updateBaseStat,
-                  defaultValue: '0', value: this.state.attack, min: '0' })
+               React.createElement('input', { type: 'number', id: 'attack', onChange: _this._updateBaseStat,
+                  defaultValue: '0', value: _this.state.attack, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Defense: ',
-               React.createElement('input', { type: 'number', id: 'defense', onChange: this._updateBaseStat,
-                  defaultValue: '0', value: this.state.defense, min: '0' })
+               React.createElement('input', { type: 'number', id: 'defense', onChange: _this._updateBaseStat,
+                  defaultValue: '0', value: _this.state.defense, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Agility: ',
-               React.createElement('input', { type: 'number', id: 'agility', onChange: this._updateBaseStat,
-                  defaultValue: '0', value: this.state.agility, min: '0' })
+               React.createElement('input', { type: 'number', id: 'agility', onChange: _this._updateBaseStat,
+                  defaultValue: '0', value: _this.state.agility, min: '0' })
             ),
             React.createElement('br', null),
             React.createElement(
                'label',
                null,
                'Luck: ',
-               React.createElement('input', { type: 'number', id: 'luck', onChange: this._updateBaseStat,
-                  defaultValue: '0', value: this.state.luck,
+               React.createElement('input', { type: 'number', id: 'luck', onChange: _this._updateBaseStat,
+                  defaultValue: '0', value: _this.state.luck,
                   min: '0' })
             ),
             React.createElement('br', null),
@@ -465,16 +393,16 @@ var CharacterApp = function (_React$Component) {
                'Djinn'
             ),
             React.createElement(DjinnEntireList, { names: charCalc.djinn.names,
-               onDjinnChange: this.onChangeUpdateDjinn,
-               onDjinnAdd: this.addDjinn }),
+               onDjinnChange: _this.onChangeUpdateDjinn,
+               onDjinnAdd: _this.addDjinn }),
             React.createElement(
                'h2',
                null,
                'Equipment'
             ),
-            React.createElement(EquipmentList, { names: this.state.equipment,
-               onRemove: this.removeEquipment,
-               onAdd: this.addEquipment }),
+            React.createElement(EquipmentList, { names: _this.state.equipment,
+               onRemove: _this.removeEquipment,
+               onAdd: _this.addEquipment }),
             React.createElement(
                'h2',
                null,
@@ -511,7 +439,7 @@ var CharacterApp = function (_React$Component) {
             React.createElement('br', null),
             React.createElement(
                'span',
-               { onClick: this._saveToFile },
+               { onClick: _this._saveToFile },
                React.createElement(
                   'a',
                   {
@@ -521,20 +449,46 @@ var CharacterApp = function (_React$Component) {
                   'Save to File'
                )
             ),
-            React.createElement('input', { type: 'button', value: 'Save To Text Area', onClick: this._saveToTextArea,
+            React.createElement('input', { type: 'button', value: 'Save To Text Area', onClick: _this._saveToTextArea,
                id: 'save-text-button' }),
             React.createElement('br', null),
             React.createElement('input', { type: 'file', id: 'file-chooser', accept: '.js,.json' }),
             React.createElement('br', null),
-            React.createElement('input', { type: 'button', value: 'Load from File', onClick: this._loadFile }),
-            React.createElement('input', { type: 'button', value: 'Load from Text Area', onClick: this._loadFromTextArea,
+            React.createElement('input', { type: 'button', value: 'Load from File', onClick: _this._loadFile }),
+            React.createElement('input', { type: 'button', value: 'Load from Text Area', onClick: _this._loadFromTextArea,
                id: 'load-text-button' }),
             React.createElement('br', null),
             React.createElement('br', null),
             React.createElement('textarea', { id: 'code-box', rows: '10', cols: '50' })
          );
-      }
-   }], [{
+      };
+
+      character = _this;
+
+      _this.state = {
+         //gameVersion, parserVersion are ignored until there is reason to use them
+         //gameVersion, parserVersion are strings to support possible future semantic versioning
+         //gameVersion: '1',
+         //parserVersion: '1',
+         name: '',
+         adept: database.elementOrder[0],
+         combatType: database.combatTypes.names[0],
+         background: database.backgrounds.names[0],
+         level: 1,
+         stats: { hp: 0, pp: 0, attack: 0, defense: 0, agility: 0, luck: 0 },
+         djinn: {},
+         equipment: []
+      };
+      return _this;
+   }
+
+   //could be private
+
+
+   //could be static
+
+
+   _createClass(CharacterApp, null, [{
       key: '_determineClass',
       value: function _determineClass(adept, combatType, djinnCount) {
          if (null === adept || undefined === database.classes.byRequirement[adept] || undefined === database.classes.byRequirement[adept][combatType]) {

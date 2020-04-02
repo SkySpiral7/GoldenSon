@@ -30,69 +30,47 @@ class CharacterApp extends React.Component
          djinn: {},
          equipment: []
       };
-
-      this._saveToFile = this._saveToFile.bind(this);
-      this.saveAsString = this.saveAsString.bind(this);
-      this._saveToTextArea = this._saveToTextArea.bind(this);
-      this.save = this.save.bind(this);
-      this._loadFile = this._loadFile.bind(this);
-      this._loadFromTextArea = this._loadFromTextArea.bind(this);
-      this._loadFromString = this._loadFromString.bind(this);
-      this.load = this.load.bind(this);
-      this._updateLevel = this._updateLevel.bind(this);
-      this._updateAdept = this._updateAdept.bind(this);
-      this._updateBackground = this._updateBackground.bind(this);
-      this._updateCombatType = this._updateCombatType.bind(this);
-      this._updateCharacterName = this._updateCharacterName.bind(this);
-      this._updateBaseStat = this._updateBaseStat.bind(this);
-      this._updateClass = this._updateClass.bind(this);
-      this._calcAll = this._calcAll.bind(this);
-      this.addDjinn = this.addDjinn.bind(this);
-      this.onChangeUpdateDjinn = this.onChangeUpdateDjinn.bind(this);
-      this._updateDjinn = this._updateDjinn.bind(this);
-      this.addEquipment = this.addEquipment.bind(this);
-      this.removeEquipment = this.removeEquipment.bind(this);
    }
 
-   _saveToFile()
+   _saveToFile = () =>
    {
       const link = document.getElementById('save-to-file-link');
       link.download = document.getElementById('name').value + '.json';
       link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(this.saveAsString());
-   }
+   };
 
    //could be private
-   saveAsString()
+   saveAsString = () =>
    {
       return JSON.stringify(this.save());
-   }
+   };
 
-   _saveToTextArea()
+   _saveToTextArea = () =>
    {
       document.getElementById('code-box').value = this.saveAsString();
-   }
+   };
 
-   save()
+   save = () =>
    {
       return JSON.clone(this.state);
-   }
+   };
 
    //could be static
-   _loadFile()
+   _loadFile = () =>
    {
       const filePath = document.getElementById('file-chooser').files[0];
       if (undefined === filePath || null === filePath) return;  //no file to load
       const oFReader = new FileReader();  //reference: https://developer.mozilla.org/en-US/docs/DOM/FileReader
       oFReader.readAsText(filePath);
       oFReader.onload = function (oFREvent) {character._loadFromString(oFREvent.target.result);};
-   }
+   };
 
-   _loadFromTextArea()
+   _loadFromTextArea = () =>
    {
       this._loadFromString(document.getElementById('code-box').value);
-   }
+   };
 
-   _loadFromString(fileString)
+   _loadFromString = (fileString) =>
    {
       fileString = fileString.trim();
       if ('' === fileString) return;  //ignore
@@ -111,9 +89,9 @@ class CharacterApp extends React.Component
       }
 
       this.load(jsonDoc);
-   }
+   };
 
-   load(jsonDoc)
+   load = (jsonDoc) =>
    {
       //this.state = jsonDoc  don't do this: we don't want to keep redundant fields
       const newState = {
@@ -141,41 +119,41 @@ class CharacterApp extends React.Component
       newState.djinn = jsonDoc.djinn;
       newState.equipment = jsonDoc.equipment;
       this.setState(newState);
-   }
+   };
 
-   _updateLevel()
+   _updateLevel = () =>
    {
       const level = Number.parseInt(document.getElementById('level').value);
       this.setState({level: level});
-   }
+   };
 
-   _updateAdept()
+   _updateAdept = () =>
    {
       let adept = document.getElementById('adeptSelect').value;
       //this is an option in the select
       if ('none' === adept) adept = null;
       this.setState({adept: adept});
-   }
+   };
 
-   _updateBackground()
+   _updateBackground = () =>
    {
       const background = document.getElementById('backgroundSelect').value;
       this.setState({background: background});
-   }
+   };
 
-   _updateCombatType()
+   _updateCombatType = () =>
    {
       const combatType = document.getElementById('combatTypeSelect').value;
       this.setState({combatType: combatType});
-   }
+   };
 
-   _updateCharacterName()
+   _updateCharacterName = () =>
    {
       const name = document.getElementById('name').value;
       this.setState({name: name});
-   }
+   };
 
-   _updateBaseStat(onChangeEvent)
+   _updateBaseStat = (onChangeEvent) =>
    {
       const stat = onChangeEvent.target.id;
       const newVal = Number.parseInt(onChangeEvent.target.value);
@@ -184,7 +162,7 @@ class CharacterApp extends React.Component
          state.stats[stat] = newVal;
          return state;
       });
-   }
+   };
 
    static _determineClass(adept, combatType, djinnCount)
    {
@@ -235,7 +213,7 @@ class CharacterApp extends React.Component
       return classList[0];
    }
 
-   _updateClass(charCalc)
+   _updateClass = (charCalc) =>
    {
       const activeClass = CharacterApp._determineClass(this.state.adept, this.state.combatType, charCalc.djinn.counts);
       charCalc.activeClass = activeClass.name;
@@ -244,7 +222,7 @@ class CharacterApp extends React.Component
       else charCalc.activeClassDisplay = '' + activeClass.name;
 
       return activeClass.statsMultiplier;
-   }
+   };
 
    static _calcPsynergy(activeClassName, level)
    {
@@ -265,7 +243,7 @@ class CharacterApp extends React.Component
       return psynergyList;
    }
 
-   _calcAll()
+   _calcAll = () =>
    {
       const statList = ['hp', 'pp', 'attack', 'defense', 'agility', 'luck'];
       //these are final stats
@@ -320,9 +298,9 @@ class CharacterApp extends React.Component
       );
 
       return charCalc;
-   }
+   };
 
-   addDjinn(onClickEvent)
+   addDjinn = (onClickEvent) =>
    {
       const newName = onClickEvent.target.value;
       this.setState((state) =>
@@ -330,16 +308,16 @@ class CharacterApp extends React.Component
          state.djinn[newName] = 'set';
          return state;
       });
-   }
+   };
 
-   onChangeUpdateDjinn(onClickEvent)
+   onChangeUpdateDjinn = (onClickEvent) =>
    {
       const djinnName = onClickEvent.target.parentNode.dataset.name;
       const action = onClickEvent.target.value;
       this._updateDjinn(djinnName, action);
-   }
+   };
 
-   _updateDjinn(djinnName, action)
+   _updateDjinn = (djinnName, action) =>
    {
       if ('remove' === action)
       {
@@ -357,9 +335,9 @@ class CharacterApp extends React.Component
             return state;
          });
       }
-   }
+   };
 
-   addEquipment(onClickEvent)
+   addEquipment = (onClickEvent) =>
    {
       const newName = onClickEvent.target.value;
       this.setState((state) =>
@@ -367,9 +345,9 @@ class CharacterApp extends React.Component
          state.equipment.push(newName);
          return state;
       });
-   }
+   };
 
-   removeEquipment(onClickEvent)
+   removeEquipment = (onClickEvent) =>
    {
       const oldName = onClickEvent.target.parentNode.dataset.name;
       this.setState((state) =>
@@ -377,9 +355,9 @@ class CharacterApp extends React.Component
          state.equipment.removeByValue(oldName);
          return state;
       });
-   }
+   };
 
-   render()
+   render = () =>
    {
       const charCalc = this._calcAll();
       return (
@@ -448,7 +426,7 @@ class CharacterApp extends React.Component
             <textarea id="code-box" rows="10" cols="50" />
          </div>
       );
-   }
+   };
 }
 
 ReactDOM.render(
