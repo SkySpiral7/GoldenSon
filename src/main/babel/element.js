@@ -1,6 +1,6 @@
 'use strict';
 
-class ElementOptions extends React.Component
+class ElementOptions extends React.PureComponent
 {
    render()
    {
